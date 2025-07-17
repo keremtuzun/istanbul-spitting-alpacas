@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Istanbul Spitting Alpacas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+    body {
+      margin: 0;
+      background: #5d4037;
+      color: #efebe9;
+    }
+    header {
+      background: #4e342e;
+      color: #fff8e1;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    nav {
+      background: #3e2723;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem;
+    }
+    nav button {
+      background: #8d6e63;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+    nav button:hover {
+      background: #a1887f;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    .note {
+      background: #6d4c41;
+      border-left: 4px solid #3e2723;
+      margin: 1rem 0;
+      padding: 1rem;
+      border-radius: 5px;
+    }
+    .note.hidden {
+      display: none;
+    }
+    #notes > div {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Istanbul Spitting Alpacas</h1>
+    <p>Our curated notes board</p>
+  </header>
+
+  <nav>
+    <button onclick="showNotes('all')">All</button>
+    <button onclick="showNotes('best')">The Best Is Yet To Be Or Not To Be?</button>
+    <button onclick="showNotes('futurity')">In Futurity, Someone Prophetic Sees</button>
+    <button onclick="showNotes('future')">The Future Wasn’t Meant to Be</button>
+    <button onclick="showNotes('tryagain')">If At First You Fall, Try, Try Again</button>
+    <button onclick="showNotes('catchfire')">Things Really Do Catch Fire</button>
+    <button onclick="showNotes('speeches')">Speeches that Inspire, Speeches that Spit Fire</button>
+    <button onclick="showNotes('reliving')">Reliving It Up</button>
+    <button onclick="showNotes('entertaining')">Entertaining Ourselves Back to Life</button>
+    <button onclick="showNotes('excite')">Much Excite, Much Ignite</button>
+    <button onclick="showNotes('generative')">The Generative Area: A Mind for Imagination</button>
+    <button onclick="showNotes('backup')">No Backup, But Restore</button>
+    <button onclick="showNotes('punky')">Punky Futures</button>
+  </nav>
+
+  <main id="notes">
+    <!-- Notes groups below, add your notes inside each -->
+    
+    <div id="best">
+      <div class="note">Note 1 for The Best Is Yet To Be Or Not To Be?</div>
+    </div>
+    
+    <div id="futurity">
+      <div class="note">Note 1 for In Futurity, Someone Prophetic Sees</div>
+    </div>
+    
+    <div id="future">
+      <!-- No notes here, so nothing will show -->
+    </div>
+    
+    <div id="tryagain">
+      <div class="note">Note about trying again.</div>
+    </div>
+    
+    <div id="catchfire">
+      <div class="note">Fire-related note here.</div>
+    </div>
+    
+    <div id="speeches">
+      <div class="note">Inspiring speeches note.</div>
+    </div>
+    
+    <div id="reliving">
+      <!-- Empty -->
+    </div>
+    
+    <div id="entertaining">
+      <div class="note">Note about entertaining ourselves.</div>
+    </div>
+    
+    <div id="excite">
+      <!-- Empty -->
+    </div>
+    
+    <div id="generative">
+      <div class="note">Cognitive Processes
+        Memory
+         The brain's ability to encode, store, and retrieve information. Memory supports learning and is essential for imagination, decision-making, and constructing a sense of self.
+        
+        
+        Mental Imagery
+         The ability to recreate or simulate sensory experiences in the mind without external input. For example, visualizing a beach you've visited or imagining a new invention involves mental imagery.
+        
+        
+        Perception
+         The process of interpreting sensory input from the environment (like sights, sounds, and smells) through the senses. It's how we construct a real-time understanding of the world.
+        
+        
+        World View
+         A person’s overall perspective on life, influenced by their experiences, culture, beliefs, and cognition. It shapes how we interpret new information and events.
+        
+        
+         
+        
+        
+        
+        
+        
+        Neurobiological Structures & Functions
+        Neocortex
+         The outermost layer of the brain, involved in higher-order brain functions like reasoning, language, sensory perception, and conscious thought. It's essential for imagination and complex mental imagery.
+        
+        
+        Thalamus
+         A central brain structure that acts like a relay station, directing sensory and motor signals to the cortex. It plays a crucial role in consciousness, sleep, and sensory processing.
+        
+        
+        Frontal Cortex (especially Prefrontal Cortex)
+         The area at the front of the brain responsible for executive functions—planning, decision-making, personality, and moderating social behavior. It's key for imagination, working memory, and self-control.
+        
+        
+        REM Sleep (Rapid Eye Movement Sleep)
+         A sleep stage characterized by vivid dreams and high brain activity similar to wakefulness. REM sleep is crucial for memory consolidation, emotional processing, and possibly creativity and problem-solving through mental simulation.
+        
+        
+        Hallucination vs. Imagination
+        
+        Hallucination: A sensory experience that appears real but is created by the mind, without external stimuli. You see or hear things that aren’t there—often uncontrollably.
+        
+        
+        Imagination: A controlled mental process. You know it’s not real, but you’re voluntarily picturing, simulating, or rehearsing something.
+        
+        
+        Simulation or Rehearsal: Usually goal-directed (e.g., imagining a conversation or practicing a speech in your mind).
+        
+        
+        Daydreaming: A passive, often spontaneous form of imagination, where you drift into a mental scenario. It becomes a hallucination only if you lose the ability to distinguish it from reality.
+        
+        Psychedelics (e.g., LSD, psilocybin, mescaline): These drugs profoundly alter perception, cognition, and affect, often inducing vivid visual imagery and interconnected thoughts.
+        
+        
+        Cannabis: At certain doses, it can enhance associative thinking and creativity, though it may also impair short-term memory or focus.
+        Ketamine: A dissociative anesthetic, sometimes used in therapy, can evoke imaginative, dream-like states and abstract thinking.
+        
+        
+        MDMA (Ecstasy): Known for increasing emotional openness and empathy, it can also enhance introspective imagination.
+        
+        
+        Modafinil or microdoses of psychedelics: Anecdotally reported to boost creativity and idea generation without strong hallucinations.
+        How To Become More Imaginative?
+        Active Imagination: Developed by Carl Jung, this is a method where you deliberately engage with your imagination, almost like having a conversation with your unconscious mind. It is used in Jungian therapy, creative writing, and dream analysis.It lets you dive into inner images and symbols, helping integrate different parts of your psyche but It takes practice and emotional honesty.
+        
+        Hypnagogia: The transitional state between wakefulness and sleep, when the brain is highly suggestible and images or thoughts emerge spontaneously.
+        Thomas Edison and Salvador Dalí reportedly used this state to spark ideas.
+        It’s a natural, semi-dreamlike state where imagination runs free without the usual inner critic but It's hard to control or access deliberately.
+        Mind Wandering: Letting your thoughts drift—especially during undemanding tasks (like walking, showering, or waiting in line).
+        Studies show it supports divergent thinking—generating lots of possible solutions or ideas. Helps incubate problems, often leading to sudden “aha!” moments.
+        
+        Hypnosis: A focused mental state where someone is more open to suggestion and imagery. It is used for: Therapy (e.g., quitting smoking, anxiety), memory retrieval, and enhancing creativity. It quiets the conscious mind and taps into deeper cognitive processes but it requires a skilled guide, and not everyone is equally hypnotizable.
+        Meditation: Practices that train attention and awareness, such as mindfulness or transcendental meditation. It improves focus, reduces stress, and strengthens mental flexibility—all useful for imaginative thinking.
+        Neuroscience links meditation to increased activity in the default mode network, the brain’s “imagination engine.”
+        Psychological Distance: Is thinking about a problem as if it’s far away in time, space, or belonging to someone else. It helps you take a broader, more abstract view—which boosts creativity.
+        Nature Experiences: Spending time in natural environments.
+        Studies show that walking in nature improves mood, attention, and creative problem-solving. Nature helps reset the brain and reduces “cognitive fatigue.”
+        
+        Novel Experiences: Doing something unfamiliar, traveling, trying a new hobby, switching routines. It is effective because: Novelty stimulates dopamine release, which enhances learning and flexibility.
+        
+        Different Types Of Poems
+        Yuen Ren Chao | “Lion-Eating Poet in the Stone Den” (施氏食狮史, c. 1930s): This poem is a remarkable example of constrained writing in Chinese. Composed entirely of characters pronounced "shi" with varying tones, it showcases the complexity and tonal nature of the Chinese language. While the written version is coherent, reading it aloud in Mandarin renders it nearly incomprehensible due to homophonic ambiguity. Chao's work serves as both a linguistic experiment and a critique of efforts to romanize Chinese, highlighting the limitations of phonetic transcription in capturing tonal nuances
+        Marianne Moore | “No Swan So Fine” (1932): Marianne Moore's poem exemplifies her characteristic precision and attention to detail. While not overtly constrained in the traditional sense, Moore often employed syllabic verse and intricate rhyme schemes, imposing self-devised structural limitations. In "No Swan So Fine," she juxtaposes the elegance of a swan with the opulence of a Louis XV candelabrum, exploring themes of beauty and artificiality. Her meticulous word choice and structured form reflect a disciplined approach to poetry, aligning with the principles of constrained writing.
+        
+        
+        
+        Ernest Vincent Wright | Gadsby, Chapter 1 (1939): Gadsby is a novel notable for its lipogrammatic constraint—it avoids the letter 'E' entirely, the most commonly used letter in the English language. This self-imposed limitation challenged Wright to find creative alternatives for common words, resulting in unique phrasings and vocabulary choices. The novel's narrative revolves around revitalizing a fictional city, symbolizing innovation and resilience, much like the linguistic ingenuity required to compose the text .​
+        
+        Dylan Thomas | “Do Not Go Gentle into That Good Night” (1951): Thomas's poem is a quintessential example of a villanelle, a 19-line form with a strict pattern of repetition and rhyme. The poem urges resistance against death, encapsulated in the refrains "Do not go gentle into that good night" and "Rage, rage against the dying of the light." The repetitive structure intensifies the emotional plea, reflecting the speaker's desperation and defiance. Thomas's adherence to the villanelle form amplifies the poem's thematic resonance, demonstrating how structural constraints can enhance expressive power
+        Kimiko Hahn | “[the whale already]” (2022): Kimiko Hahn's poem, while contemporary, engages with constraints through its exploration of scientific terminology and fragmented structure. By integrating specialized language and non-linear composition, Hahn challenges traditional poetic forms, creating a tapestry that reflects the complexities of modern existence. Her work exemplifies how thematic and structural constraints can intersect to produce innovative poetry.​
+        
+        
+        Imagine World 
+        Tommy Dorsey | “Imagination” (1940): This classic jazz standard, with music by Jimmy Van Heusen and lyrics by Johnny Burke, romanticizes imagination as a personal escape into longing and desire. The lyrics suggest that imagination can transform reality, making "a cloudy day sunny" and allowing the narrator to envision a love that may not exist. It's a gentle, wistful take on how imagination can color our perceptions and emotions.
+        Gene Wilder | “Pure Imagination” (1971): Featured in the film Willy Wonka & the Chocolate Factory, this song invites listeners into a world of wonder and creativity. Sung by Gene Wilder's character, Willy Wonka, it encourages embracing the limitless possibilities that imagination offers. The song serves as an ode to creativity, suggesting that through imagination, one can transcend reality and explore boundless worlds.
+        John Lennon | “Imagine” (1971): John Lennon's iconic song envisions a world of peace and unity, free from divisions such as borders, religions, and material possessions. Co-written with Yoko Ono, the lyrics challenge listeners to imagine a harmonious world where humanity lives as one. The song has become a universal anthem for peace, reflecting the power of imagination to inspire societal change.
+        
+        Evanescence | “Imaginary” (2000): In this song, Evanescence explores imagination as a refuge from reality. Lead singer Amy Lee describes creating an inner world to escape personal troubles and the outside world. The lyrics depict a dreamlike sanctuary, highlighting how imagination can serve as a coping mechanism and a source of solace.
+        Cast of Mary Poppins Returns | “Can You Imagine That?” (2018): Performed by Mary Poppins in the film Mary Poppins Returns, this song encourages children to embrace the fantastical and believe in the impossible. Through whimsical lyrics and imaginative scenarios, it underscores the importance of creativity and open-mindedness, especially in the face of adversity. The song celebrates imagination as a tool for joy and resilience</div>
+    </div>
+    
+    <div id="backup">
+      <div class="note">Backup and restore note.</div>
+    </div>
+    
+    <div id="punky">
+      <!-- Empty -->
+    </div>
+  </main>
+
+  <script>
+    function showNotes(id) {
+      const allNotes = document.querySelectorAll('#notes > div');
+      if (id === 'all') {
+        allNotes.forEach(div => {
+          div.style.display = 'block';
+        });
+      } else {
+        allNotes.forEach(div => {
+          div.style.display = div.id === id && div.children.length > 0 ? 'block' : 'none';
+        });
+      }
+    }
+
+    // Show nothing initially, or show all if you prefer
+    // showNotes('all'); // Uncomment to show all on page load
+  </script>
+</body>
+</html>
