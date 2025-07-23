@@ -1,0 +1,1464 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Istanbul Spitting Alpacas - WSC Resources</title>
+<style>
+    :root {
+      --turquoise: #1a8d98;
+      --pale-gold: #e6d8ad;
+      --bg-color: #fffaf0;
+      --text-color: #2c2c2c;
+    }
+
+    /* Dark mode variables */
+    .dark-mode {
+      --bg-color: #1a1a1a;
+      --text-color: #2d4883;
+      --pale-gold: #3a3a2a;
+      --turquoise: #4fd1c5;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--turquoise), #146c75);
+      color: var(--pale-gold);
+      padding: 25px 20px;
+      font-weight: 800;
+      font-size: 2.2rem;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      letter-spacing: 2px;
+    }
+    header img.logo {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 55px;
+      filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.3));
+    }
+
+    nav {
+      background-color: var(--pale-gold);
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 15px 0;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10000;
+    }
+    nav a {
+      position: relative;
+      padding: 5px 0;
+      color: var(--turquoise);
+      cursor: pointer;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+    nav a.active,
+    nav a:hover {
+      color: #146c75;
+      font-weight: 700;
+    }
+    nav a.active::after,
+    nav a:hover::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--turquoise);
+      border-radius: 2px;
+    }
+
+    /* Dark mode toggle button */
+    #dark-mode-toggle {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-left: 20px;
+      color: var(--turquoise);
+    }
+
+    main {
+      max-width: 960px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+      min-height: 60vh;
+    }
+
+    section {
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+    section.active {
+      display: block;
+    }
+
+    h2 {
+      color: var(--turquoise);
+      font-weight: 700;
+      font-size: 2rem;
+      border-left: 6px solid var(--turquoise);
+      padding-left: 12px;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.15rem;
+      background: #f9f5e9;
+      border-left: 4px solid var(--turquoise);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.05);
+      max-width: 850px;
+      margin-bottom: 1.8rem;
+      line-height: 1.55;
+    }
+
+    /* Hero image container */
+    .hero-image-container {
+      max-width: 100%;
+      margin-bottom: 30px;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+    .hero-image {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      height: 350px;
+      transition: transform 0.5s ease;
+    }
+    .hero-image-container:hover .hero-image {
+      transform: scale(1.05);
+    }
+
+    #home .hero-text h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: #146c75;
+      letter-spacing: 1.2px;
+    }
+    #home .hero-text h2 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      color: var(--turquoise);
+      letter-spacing: 2px;
+    }
+    #home .hero-text p {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #146c75;
+    }
+
+    /* About Us layout */
+    .about-content {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      max-width: 900px;
+      margin-top: 10px;
+    }
+    .about-photo {
+      flex: 1 1 45%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .about-photo img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      height: 250px;
+    }
+    .about-text {
+      flex: 1 1 55%;
+    }
+
+    /* Gallery grid */
+    #gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 18px;
+    }
+    #gallery img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+      border: 3px solid var(--turquoise);
+      transition: transform 0.25s ease;
+      cursor: pointer;
+    }
+    #gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.22);
+    }
+
+    /* Notes topic selection */
+    #notes #topic-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: space-between;
+    }
+    #notes #topic-list .category {
+      flex: 1 1 calc(45% - 25px);
+      background: #fffdf8cc;
+      backdrop-filter: blur(8px);
+      border: 2px solid var(--turquoise);
+      border-radius: 16px;
+      padding: 22px 26px;
+      box-shadow: 6px 6px 18px rgb(0 0 0 / 0.12);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--turquoise);
+      user-select: none;
+    }
+    #notes #topic-list .category:hover {
+      background-color: #fff9ee;
+      transform: translateY(-7px);
+    }
+
+
+    /* Topic content inside Notes */
+    #notes #topic-content {
+      display: none;
+      margin-top: 20px;
+    }
+    #notes #topic-content button#back-to-topics {
+      margin-bottom: 20px;
+      padding: 8px 15px;
+      background: var(--turquoise);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    #notes #topic-content button#back-to-topics:hover {
+      background-color: #146c75;
+    }
+    #notes #topic-content #topic-text {
+      font-size:1.15rem;
+      background: #f9f5e9;
+      border-left: 4px solid var(--turquoise);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      max-width: 850px;
+      line-height: 1.6;
+    }
+
+    /* Quizzes list */
+    #quizzes ul {
+      list-style-type: square;
+      padding-left: 30px;
+      font-size: 1.2rem;
+      color: var(--turquoise);
+      max-width: 600px;
+    }
+    #quizzes ul li {
+      margin-bottom: 15px;
+      cursor: pointer;
+      transition: color 0.25s ease;
+      font-weight: 600;
+    }
+    #quizzes ul li:hover {
+      color: #146c75;
+    }
+
+    /* Quiz interface (hidden by default) */
+    #quiz-interface {
+      display: none;
+      margin-top: 20px;
+    }
+    #quiz-interface h3 {
+      color: var(--turquoise);
+    }
+    #quiz-questions {
+      margin-bottom: 20px;
+    }
+    .quiz-question {
+      margin-bottom: 15px;
+      padding: 15px;
+      background: #f9f5e9;
+      border-radius: 8px;
+    }
+    .quiz-option {
+      margin: 8px 0;
+      padding: 8px;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+    }
+    .quiz-option:hover {
+      border-left: 3px solid var(--turquoise);
+    }
+    #quiz-results {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    #back-to-quizzes {
+      margin-top: 20px;
+      padding: 8px 15px;
+      background: var(--turquoise);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* Contact form */
+    #contact form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    #contact input,
+    #contact textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 2px solid var(--turquoise);
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+    }
+    #contact textarea {
+      height: 150px;
+    }
+    #contact button {
+      padding: 10px 20px;
+      background: var(--turquoise);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    /* Responsive */
+    @media (max-width: 720px) {
+      nav {
+        gap: 25px;
+        font-size: 1rem;
+      }
+      #notes #topic-list .category {
+        flex: 1 1 100%;
+      }
+      #gallery {
+        grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+      }
+      header {
+        font-size: 1.8rem;
+      }
+      header img.logo {
+        height: 45px;
+        right: 15px;
+      }
+      main {
+        margin: 25px auto 90px;
+      }
+
+      .about-content {
+        flex-direction: column;
+      }
+      .about-photo, .about-text {
+        flex: unset;
+        width: 100%;
+      }
+      .about-photo img {
+        height: auto;
+        max-height: 300px;
+      }
+
+      .hero-image {
+        height: 220px;
+      }
+    }
+  
+.user-notes {
+  margin-top: 20px;
+  background-color: #f4f9f8;
+  padding: 15px;
+  border: 2px solid var(--turquoise);
+  border-radius: 8px;
+}
+.user-notes textarea {
+  font-family: 'Poppins', sans-serif;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+.user-notes button.save-notes {
+  padding: 8px 14px;
+  background-color: var(--turquoise);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.user-notes button.save-notes:hover {
+  background-color: #146c75;
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    Istanbul Spitting Alpacas - WSC Resources
+    
+</header>
+<nav>
+<a class="active" href="#home">Home</a>
+<a href="#about">About Us</a>
+<a href="#notes">Notes</a>
+<a href="#debate">Debate</a>
+<a href="#quizzes">Quizzes</a>
+<a href="#practice">Practice Lab</a>
+<button id="dark-mode-toggle">🌙</button>
+</nav>
+<main>
+<section class="active" id="home">
+<div class="hero-image-container">
+<img alt="World Scholars Cup Event" class="hero-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrfdZmuVLpQVBCKvaC3hg5t4abczFOdlHaOQ&amp;s"/>
+</div>
+<div class="hero-text">
+<h1>WELCOME TO ISTANBUL SPITTING ALPACAS</h1>
+<h2>YOUR RESOURCE HUB FOR WORLD SCHOLARS CUP</h2>
+<p>Officially preparing students with notes, quizzes, and guidance for the 2025 WSC season.</p>
+
+<h3>Disclaimer</h3>
+<p>May contain false or imitative information</p>
+<p>This website contains references to psychoactive substances, including both legal and illegal drugs, for educational purposes only. It does not encourage or condone drug use. Some of the substances mentioned may have legal restrictions and health risks. Viewer discretion is advised, especially for those under 18.
+
+</p>
+</div>
+
+<!-- moved to Practice Lab -->
+
+
+</section>
+<section id="about">
+<h2>About Us</h2>
+<div class="about-content">
+<div class="about-photo">
+<img alt="Students collaborating" src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&amp;fit=crop&amp;w=600&amp;q=80"/>
+</div>
+<div class="about-text">
+<p>
+            Istanbul Spitting Alpacas is a dedicated organization providing high-quality preparation
+            resources for the World Scholars Cup.
+<p>
+            Our mission is to empower students through comprehensive study notes, debate tips, and curated
+            content across all WSC subjects, helping them excel and enjoy their journey.
+          </p>
+</div>
+
+</div>
+</section>
+<section id="notes">
+<h2>Notes</h2>
+<!-- Topic selection menu -->
+<div id="topic-list">
+<div class="category" data-topic="topic1">The Best is Yet to Be, or Not To Be?</div>
+<div class="category" data-topic="topic2">In Futurity, Someone Prophetic Sees</div>
+<div class="category" data-topic="topic3">The Future Wasn’t Meant to Be</div>
+<div class="category" data-topic="topic4">If At First You Fall, Try, Try Again</div>
+<div class="category" data-topic="topic5">Things Really Do Catch Fire</div>
+<div class="category" data-topic="topic6">Speeches that Inspire, Speeches that Spit Fire</div>
+<div class="category" data-topic="topic7">Reliving It Up</div>
+<div class="category" data-topic="topic8">Entertaining Ourselves Back to Life</div>
+<div class="category" data-topic="topic9">Much Excite, Much Ignite</div>
+<div class="category" data-topic="topic10">The Generative Area: A Mind for Imagination</div>
+<div class="category" data-topic="topic11">No Backup, But Restore</div>
+<div class="category" data-topic="topic12">Punky Futures</div>
+</div>
+<div id="notes">
+<!-- The Best is Yet to Be, or Not To Be? -->
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Best is Yet to Be, or Not To Be?">
+<strong>Big Dig Tunnel Project</strong>
+<p>The most expensive highway project in the United States, plagued by cost overruns, delays, leaks, design flaws, accusations of poor execution and use of substandard materials, criminal charges and arrests, and the death of one motorist.</p>
+<p>Originally scheduled to be completed in 1998 at an estimated cost of $2.8 billion (US$7.4 billion adjusted for inflation as of 2020). However, the project was completed in December 2007 at a cost of over $8.08 billion (in 1982 dollars, $21.5 billion adjusted for inflation), a cost overrun of about 190%.</p>
+<p>As a result of a death, leaks, and other design flaws, the Parsons Brinckerhoff and Bechtel consortium agreed to pay $407 million in restitution and several smaller companies agreed to pay a combined sum of approximately $51 million.</p>
+<p>The political, financial and residential obstacles were magnified when several environmental and engineering obstacles occurred. The downtown area through which the tunnels were to be dug was largely landfill, and included existing Red Line and Blue Line subway tunnels as well as innumerable pipes and utility lines that would have to be replaced or moved. Tunnel workers encountered many unexpected geological and archaeological barriers, ranging from glacial debris to foundations of buried houses and a number of sunken ships lying within the reclaimed land.</p>
+</div>
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Best is Yet to Be, or Not To Be?">
+<strong>Channel Tunnel</strong>
+<p>A 50.46 km (31.35-mile) undersea railway tunnel, opened in 1994, that connects Folkestone (Kent, England) with Coquelles (Pas-de-Calais, France) beneath the English Channel at the Strait of Dover. It is the only fixed link between the island of Great Britain and the European mainland.</p>
+<p>There have been three fires in the tunnel, all on the heavy goods vehicle (HGV) shuttles, that were significant enough to close the tunnel, as well as other minor incidents. On the night of 19/20 February 1996, about 1,000 passengers became trapped in the Channel Tunnel when Eurostar trains from London broke down owing to failures of electronic circuits caused by snow and ice being deposited and then melting on the circuit boards.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Best is Yet to Be, or Not To Be?">
+<strong>California High Speed Rail</strong>
+<p>Phase 1 of the planned route, about 494 miles (795 km) long, runs from the Salesforce Transit Center in San Francisco to the Anaheim Regional Transportation Intermodal Center in Anaheim, with intermediate stops planned for Millbrae, San Jose, Gilroy, Merced, Madera, Fresno, Kings/Tulare (Hanford), Bakersfield, Palmdale, Burbank and Los Angeles. An additional station between Los Angeles and Anaheim, at Norwalk or Fullerton, is being considered.</p>
+<p>Phase 2 would construct two major extensions to the system. The northern extension would stretch 115 miles (185 km) from Merced to Sacramento, with intermediate stops at Modesto and Stockton. It would largely parallel the existing San Joaquins route through the Central Valley. In the south, the system would be extended 167 miles (269 km) from Los Angeles to San Diego. Instead of continuing south from Anaheim, it would split off from the Phase 1 route at Los Angeles Union Station and travel east along I-10 before turning south, following an inland route along I-15 or I-215. This would enable high-speed trains to serve the Inland Empire and inland parts of San Diego County, with stops at Ontario International Airport and Escondido.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Best is Yet to Be, or Not To Be?">
+<strong>Sejong City</strong>
+<p>Founded in 2007 as the new planned capital of South Korea from many parts of the South Chungcheong Province and some parts of North Chungcheong Province to ease congestion in South Korea's current capital and largest city, Seoul, and encourage investment in the country's central region. Since 2012, the government of South Korea has relocated numerous ministries and agencies to Sejong, but many still reside in other cities, primarily Seoul, where the National Assembly and many important government bodies remain.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Best is Yet to Be, or Not To Be?">
+<strong>Hambantota (Sri Lanka)</strong>
+<p>This underdeveloped area was hit hard by the 2004 Indian Ocean tsunami and is undergoing a number of major development projects including the construction of a new sea port and international airport finished in 2013. These projects and others such as Hambantota Cricket Stadium are said to form part of the government's plan to transform Hambantota into the second major urban hub of Sri Lanka, away from Colombo.</p>
+<p>A cement grinding and bagging factory is being set up, as well as fertiliser bagging plants. Large salt plains are a prominent feature of Hambantota. The town is a major producer of salt. A Special Economic Zone of 6,100 hectares (15,000 acres) has been proposed by Prime Minister Ranil Wickremesinghe, out of which approximately 500 hectares (1,235 acres) will be situated in Hambantota to build factories, LNG plants and refineries while the rest will be in Monaragala, Embilipitiya and Matara. A Vocational training Center was opened in 2017 by Prime minister Ranil Wickremesinghe with China to train the workforce needed for the SEZs. Wickramasinghe also came into an agreement with state-owned China Merchants Port Holdings to lease 70 per cent stake of the strategically-located Hambantota port at $1.12 billion, opening Hambantota to the Belt and Road Initiative.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Best is Yet to Be, or Not To Be?">
+<strong>The Line (NEOM)</strong>
+<p>A conceptual linear smart city in Saudi Arabia in Neom, Tabuk Province, housed in a single building, that is designed to have no cars, streets or carbon emissions. The original plans called for the city to span 170 kilometres (110 mi) at a height of 500 m (1,600 ft) and a width of 200 metres (660 ft) sized to accommodate a population of 9 million (25% of Saudi Arabia's 2022 population of 35.5 million). The Line would have an entirely glass mirror exterior. The plan calls for all basic services to be within a five-minute walking distance.</p>
+<p>The Line is eventually planned to be 170 kilometres (110 miles) long. It could stretch from the Red Sea approximately to the city of Tabuk and could have nine million residents, resulting in an average population density of 260,000 per square kilometre (670,000/sq mi). By comparison, Manila, the world's most densely populated city in 2020, had a density of 44,000 per square kilometre (110,000/sq mi). The Line's design consists of two mirrored buildings with an outdoor space in between, having a total width of 200 metres (660 ft) and a height of 500 metres (1,600 ft). This would make it the third tallest building in the country after the Abraj Al-Bait Clock Tower and the Jeddah Tower, and approximately the 12th tallest building in the world.</p>
+<p>The plan is for the city to be powered entirely by renewable energy. It will consist of three layers, one on the surface for pedestrians, one underground for infrastructure, and another underground for transportation. Artificial intelligence will monitor the city and use predictive and data models to find ways to improve daily life for its citizens, with residents being paid for submitting data to The Line.</p>
+<p>It is claimed by the Saudi government that it will create 460,000 jobs, spur economic diversification, and contribute 180 billion SAR (US$48 billion) to domestic GDP by 2030. According to Crown Prince Mohammed bin Salman in 2022, the first phase project is expected to cost SAR 1.2 trillion (US$320 billion), and the Saudi sovereign wealth fund Public Investment Fund (PIF) would provide half of the sum.</p>
+<p>On 5 April 2024, Bloomberg News reported that the project had been scaled back as a result of restrictions over funding by the PIF. Bloomberg cited Saudi officials as expecting a 2030 completion of a 2.4 kilometres (1.5 mi) section of the city which would contain fewer than 300,000 residents, down from an expected 1.5 million.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Best is Yet to Be, or Not To Be?">
+<strong>Khazar Islands</strong>
+<p>The stated plan was for $100 billion, with $30 billion coming from foreign investors and another $30 billion from apartment sales, the city aiming to house 1 million residents in a development with 150 schools, 50 hospitals and daycare centers, numerous parks, shopping malls, cultural centers and a university campus plus a Formula 1 quality racetrack around a centrepiece $2 billion Azerbaijan Tower (planned to have been the tallest in the world). The city was expected to be equipped with 150 bridges and a large municipal airport to connect the islands to the mainland. It is expected that, in general, the city, when completed in 2022-2023, will host 1 million residents. According to the project, the price of completely renovated apartments will be around $4000-$5000 per square meter.</p>
+<p>All of these facilities were to be able to withstand up to magnitude 9.0 earthquakes. The president of the controlling Avesta Group of Companies, Ibrahim Ibrahimov, reportedly had the original idea in a flash while flying between Baku and Dubai. He told reporters that American, Turkish, Arab, and Chinese investors had showed interest in the project, which he described as being like a "new Venice".</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Best is Yet to Be, or Not To Be?">
+<strong>Three Gorges Dam</strong>
+<p>A hydroelectric gravity dam that spans the Yangtze River near Sandouping in Yiling District, Yichang, Hubei province, central China, downstream of the Three Gorges. The world's largest power station by installed capacity (22,500 MW), the Three Gorges Dam generates 95±20 TWh of electricity per year on average, depending on the amount of precipitation in the river basin. After the extensive monsoon rainfalls of 2020, the dam's produced nearly 112 TWh in a year, breaking the previous world record of ~103 TWh set by Itaipu Dam in 2016.</p>
+<p>At current levels, 80% of the land in the area is eroding, depositing about 40 million tons of sediment into the Yangtze annually and according to the National Development and Reform Commission, 366 grams of coal would produce 1 kWh of electricity during 2006. From 2003 to 2007, power production equaled that of 84 million tonnes of standard coal.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Best is Yet to Be, or Not To Be?">
+<strong>Hong Kong-Zhuhai-Macau Bridge (HZMB)</strong>
+<p>A 55-kilometre (34 mi) bridge-tunnel system consisting of a series of three cable-stayed bridges, an undersea tunnel, and four artificial islands. It is both the longest sea crossing and the longest open-sea fixed link in the world. The HZMB spans the Lingding and Jiuzhou channels, connecting Hong Kong, Macau with Zhuhai—a major city on the Pearl River Delta in China.</p>
+<p><b>Problems:</b></p>
+<p><b>Worker deaths and injuries:</b> The number of deaths and injuries during the construction project came under scrutiny in Hong Kong. In addition to nine fatalities on the mainland side, more than ten deaths were reported on the Hong Kong side of the construction project, plus between 234 and 600 injuries, depending on the source. In April 2017, the Construction Site Workers General Union, the Labour Party and the Confederation of Trade Unions demonstrated at the Central Government Complex, demanding the government take action.</p>
+<p><b>Faked safety testing:</b> In 2017, Hong Kong's Independent Commission Against Corruption (ICAC) arrested 21 employees (2 senior executives, 14 laboratory technicians, and 5 laboratory assistants) of Jacobs China Limited, a contractor of the Civil Engineering and Development Department for falsifying concrete test results, thus potentially risking the safety of the bridge for public use. In December 2017, a lab technician pleaded guilty and was sentenced to imprisonment for eight months, while the others await sentencing. Hong Kong's Highways Department conducted tests again after the falsified results were exposed and found all test results met safety standards.</p>
+<p><b>Impact on wildlife:</b> Conservationists at WWF Hong Kong blamed the construction of the HZMB for the falling number of white dolphins in the waters near the bridge. The dolphins found near waters of Lantau were the worst hit with numbers dropping by 60 percent between April 2015 and March 2016.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Best is Yet to Be, or Not To Be?">
+<strong>The New Eurasian Land Bridge</strong>
+<p>Sometimes called the New Silk Road is the rail transport route for moving freight and passengers overland between Pacific seaports to Europe. The Eurasian Land Bridge starts from west China to Moscow whereas The New Eurasian Land Bridge extends from east of China to the center of Europe if it sticks to the plan. Also managers are planning to make the bridge go around Russia due to the ongoing war.</p>
+</div>
+<!-- In Futurity, Someone Prophetic Sees -->
+<div id="futurity-scroll-target"></div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="In Futurity, Someone Prophetic Sees">
+<strong>Loneliness as Global Health Threat</strong>
+<p>The World Health Organization (WHO) has declared loneliness to be a pressing global health threat, with the US surgeon general saying that its mortality effects are equivalent to smoking 15 cigarettes a day. But it also blights the lives of young people. Between 5% and 15% of adolescents are lonely, according to figures that are likely to be underestimated. In Africa, 12.7% adolescents experience loneliness compared to 5.3% in Europe.</p>
+<p>Past studies in the industrialized world have suggested loneliness is on the rise, but without historical data on the issue, it's hard to say how present-day numbers compare over time or across geographical regions. "It's a commonly held belief that around 1 in 12 people experience loneliness at a level that can lead to serious health problems, however, the source of such data are unclear and researchers have never established how widespread loneliness is on a global scale," says epidemiologist Melody Ding from the University of Sydney. Ding and her colleagues have therefore pulled together 57 observational studies on loneliness from 113 countries or territories between 2000 and 2019. The authors hope to use the findings as a pre-pandemic baseline to monitor feelings of lonesomeness going forward. Because loneliness is associated with mental, emotional, and physical well-being, the findings could help reveal emerging issues in public health that must be better addressed. Global loneliness estimates were mostly available for adolescents, and findings among 77 nations suggest the issue can range from 9.2 percent in South-East Asia to 14.4 percent in the Eastern Mediterranean region.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="In Futurity, Someone Prophetic Sees">
+<strong>Robotic Solutions in Japan</strong>
+<p>In Japan, robots are often assumed to be a natural solution to the "problem" of elder care. The country has extensive expertise in industrial robotics and led the world for decades in humanoid-robot research. At the same time, many Japanese people seem—on the surface, at least—to welcome the idea of interacting with robots in everyday life.</p>
+<p>In Japan, many workers face punishing hours, fueling the phenomenon of karōshi, or death by overwork. At the less extreme end of the spectrum, grueling work schedules leave people with little time to find partners and have children. This causes loneliness. For instance, Sony's Albo robot dogs, for example, re-launched by maker Sony after being retired in 2006, inspire such an emotional bond with their owners that some hold funerals when the robotic pets stop working. Tech giant Softbank Robotics produces the Pepper robot, a humanoid designed to provide companionship, which some have taken to integrating into their family as substitute children or grandchildren. At Silver Wing care facility, Pepper is in charge of the midday exercise session.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="In Futurity, Someone Prophetic Sees">
+<strong>The Meta Crisis</strong>
+<p>The term "Meta Crisis" refers to the interconnected, complex crises that overlap and amplify one another. The intersection of finance, technology, and climate presents a multifaceted challenge that reshapes the global economy in several ways:</p>
+<p><b>Economic Disparities:</b> The financialisation of economies has led to growing wealth inequality. Investment in high-yield assets often benefits those already wealthy, while low-income households face financial precarity.</p>
+<p><b>Debt Levels:</b> High levels of personal and national debt create vulnerabilities. Economic downturns or shifts in policy can exacerbate these vulnerabilities, leading to broader financial instability.</p>
+<p><b>Automation and Job Displacement:</b> Technologically disruptive advances in artificial intelligence and automation are transforming labour markets. While technology can increase productivity, it also risks displacing workers, particularly in low-skilled sectors.</p>
+<p><b>Digital Divide:</b> Access to technology varies widely, impacting economic opportunities. Those without adequate digital infrastructure or skills face exclusion from emerging economic benefits.</p>
+<p><b>Environmental Costs:</b> Climate change has very tangible economic impacts, from damage to infrastructure due to extreme weather events to increased insurance costs and resource scarcity.</p>
+<p><b>Transition Costs:</b> Shifting to sustainable practices and renewable energy requires significant investment. While necessary for long-term sustainability, these transitions can impose short-term economic burdens on businesses and consumers.</p>
+<p>To stop their population implosions, countries are turning to immigration, stimulating birth rates and strengthening social services. None of them might be enough - and the long-term fix might be a radical one.</p>
+<p>Many people habitually check their phones for information, even during meals, which reflects our constant access to news and answers. While this can be useful, the flood of often negative or violent content can harm mental health, leading to stress and anxiety. The core question is whether governments or others should limit how much information people can access to protect their well-being.</p>
+
+</div>
+<!-- The Future Wasn't Meant to Be -->
+<div id="meant-scroll-target"></div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Future Wasn't Meant to Be">
+<strong>Alice Coltrane | "Journey In Satchidananda" (1971)</strong>
+<p>A fusion of spiritual jazz and Indian classical music, inspired by Coltrane's deep devotion to Eastern mysticism. The album was influenced by Swami Satchidananda, a guru who emphasized inner peace and divine consciousness.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Future Wasn't Meant to Be">
+<strong>Vangelis | "To the Unknown Man" (1977)</strong>
+<p>Vangelis, known for his cinematic and cosmic compositions, captures the vastness of the unknown. The track reflects themes of human exploration, mystery, and existential longing.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Future Wasn't Meant to Be">
+<strong>Kitaro | "Theme From Silk Road" (1980)</strong>
+<p>A mesmerizing blend of Japanese electronic music and traditional Asian influence. Written for the documentary Silk Road, the piece evokes the mysticism and cultural richness of ancient trade routes. Soft synth pads, gentle melodies, and flowing rhythms create a peaceful yet adventurous mood.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Future Wasn't Meant to Be">
+<strong>Enya | "Caribbean Blue" (1991)</strong>
+<p>A dreamy, ethereal New Age pop song featuring Enya's signature layered vocals and lush instrumentation. Inspired by romanticism, mythology, and nature, it transports listeners into a surreal, celestial landscape. Lyrics reference Greek mythology reinforcing its mystical atmosphere.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Future Wasn't Meant to Be">
+<strong>Enigma | "Return To Innocence" (1994)</strong>
+<p>A fusion of Gregorian chant, tribal elements, and electronic beats, reflecting Enigma's signature sound. The song's message focuses on purity, childhood nostalgia, and spiritual rebirth. The famous indigenous chant (from Taiwan's Amis people) adds a primal, universal connection to the song's theme of returning to an authentic, untainted self.</p>
+
+</div>
+<!-- If At First You Fall, Try, Try Again -->
+<div id="fall-scroll-target"></div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="If At First You Fall, Try, Try Again">
+<strong>Unipolarity vs. Multipolarity</strong>
+<p>Polarity in international relations refers to how power is shared globally. There are three types: unipolarity (one superpower), bipolarity (two superpowers), and multipolarity (multiple centers of power). During the Cold War, the world was bipolar with the USA and USSR. Afterward, the unipolar system emerged with the US as the only superpower. Multipolarity involves several powerful states and global governance through international organizations. Different theories debate which system is more stable, with unipolarity potentially leading to peace and multipolarity resulting in complex relations.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="If At First You Fall, Try, Try Again">
+<strong>Core vs. Periphery Countries</strong>
+<p>Core vs. periphery countries describes the divide between wealthy, influential nations (core) and economically disadvantaged, unstable ones (periphery). The core-periphery model shows the unequal global economic and political relationships, where core countries benefit more from trade and possess advanced production and skilled labor, while periphery countries rely on low-tech and low-wage labor. This concept, known as dependency theory, emerged in the 1960s, illustrating how rich countries exploit poorer ones.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="If At First You Fall, Try, Try Again">
+<strong>Great vs. Small Powers</strong>
+<p>A great power is a country that can influence global affairs due to its military, economic strength, and diplomatic skills. Smaller countries often consider the views of great powers before making their decisions.</p>
+<p>Great powers are recognized in groups like the UN Security Council, NATO, G7, and BRICS. There are proposals for countries like Brazil, Germany, India, and Japan to gain permanent UN Security Council seats, but this faces opposition from Italy. Great power status includes criteria such as military capability, cultural influence, regional engagement, and formal recognition by peers. It also involves an active role in addressing global issues.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="If At First You Fall, Try, Try Again">
+<strong>Controlling vs. Client State</strong>
+<p>A client state is a country that is economically, politically, and militarily dependent on a more powerful controlling state. Alternative names include satellite state and puppet state. Historically, controlling states like Persia and Rome created client states for tribute or troops. Examples include Britain's influence over India and the Soviet Union's impact on Warsaw Pact members.</p>
+<p><b>Key Points:</b></p>
+<p>1. Hidden Influence: Powerful nations use puppet states for indirect influence without military action.</p>
+<p>2. Resource Control: Establishing client states rich in resources secures vital supplies.</p>
+<p>3. Military Outposts: Client states serve as strategic locations for military monitoring and power projection.</p>
+<p>4. Weakening Rivals: Puppet states can limit the influence of competing nations.</p>
+<p>5. Ideological Battlegrounds: During the Cold War, client states promoted differing political and economic systems.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="If At First You Fall, Try, Try Again">
+<strong>Hard Power vs. Soft Power</strong>
+<p>Hard power and soft power are two different ways countries can influence each other in international relations. Joseph Nye popularized these terms to help understand global politics.</p>
+<p><b>Key Points:</b></p>
+<p><b>Hard Power:</b> This is the ability to force other nations to act through military and economic means. Examples include military interventions like the US invasions of Iraq and Afghanistan, imposing sanctions (like on Iran for its nuclear program), trade tariffs seen in the US-China trade war, and using threats in coercive diplomacy, such as the US's threats against North Korea.</p>
+<p><b>Soft Power:</b> This is about attracting and persuading other nations through culture and diplomacy. For instance, the US uses cultural exports like Hollywood and education to spread influence. Other examples include countries leveraging their cultural assets (K-Pop from Korea), maintaining good diplomatic relations, educational exchanges, moral authority through ethical actions, and providing humanitarian aid.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="If At First You Fall, Try, Try Again">
+<strong>Foreign Aid</strong>
+<p>Foreign aid involves transferring resources from one country to another and is not merely free money; it usually comes with specific purposes and conditions. There are two main types: emergency aid for urgent relief during crises like wars and disasters, and development aid aimed at economic support and poverty alleviation. Foreign aid can signal diplomatic approval but is also controversial due to concerns about governance, corruption, and dependency. It differs from direct investment in a country.</p>
+
+</div>
+<!-- Things Really Do Catch Fire -->
+<div id="fire-scroll-target"></div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="Things Really Do Catch Fire">
+<strong>Mount Vesuvius (79 AD, Italy)</strong>
+<p>Cause: High-viscosity magma (andesitic/rhyolitic) trapped gases, leading to a massive Plinian eruption.</p>
+<p>Result: Pyroclastic flows buried Pompeii and Herculaneum.</p>
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="Things Really Do Catch Fire">
+<strong>Huaynaputina (1600, Peru)</strong>
+<p>Cause: Silica-rich magma increased viscosity, trapping gases.</p>
+<p>Result: A VEI-6 eruption caused widespread ashfall, climate cooling, and regional devastation.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="Things Really Do Catch Fire">
+<strong>Unzen Dake (1991, Japan)</strong>
+<p>Cause: Dome collapse triggered pyroclastic flows.</p>
+<p>Result: Explosive eruptions and pyroclastic flows killed 43 people, including volcanologists.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="Things Really Do Catch Fire">
+<strong>Tambora (1815, Indonesia)</strong>
+<p>Cause: Extremely gas-rich magma and a massive magma chamber collapse.</p>
+<p>Result: Largest eruption in recorded history (VEI-7), global climate effects, "Year Without a Summer."</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="Things Really Do Catch Fire">
+<strong>Krakatoa (1883, Indonesia)</strong>
+<p>Cause: Rapid interaction of magma and seawater (phreatomagmatic explosion).</p>
+<p>Result: Catastrophic explosion, tsunamis, and global climate cooling.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="Things Really Do Catch Fire">
+<strong>Lake Nyos (1986, Cameroon)</strong>
+<p>Cause: CO₂ buildup in a volcanic lake (limnic eruption).</p>
+<p>Result: Sudden release of CO₂ suffocated over 1,700 people.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="Things Really Do Catch Fire">
+<strong>Mount St. Helens (1980, USA)</strong>
+<p>Cause: Gas pressure buildup and a landslide uncorking the magma.</p>
+<p>Result: Lateral blast, pyroclastic flows, and ash fallout across the U.S.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="Things Really Do Catch Fire">
+<strong>Eyjafjallajökull (2010, Iceland)</strong>
+<p>Cause: Interaction of magma with glacial ice, increasing explosivity.</p>
+<p>Result: Ash clouds disrupted European air travel for weeks.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="Things Really Do Catch Fire">
+<strong>Hunga Tonga-Hunga Haʻapai (2022, Tonga)</strong>
+<p>Cause: Water-magma interaction intensified the explosion.</p>
+<p>Result: One of the most powerful eruptions recorded, causing tsunamis and atmospheric disturbances.</p>
+
+</div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="Things Really Do Catch Fire">
+<strong>Yellowstone (Past Supereruptions, USA)</strong>
+<p>Cause: Massive magma chamber overpressure and gas buildup.</p>
+<p>Result: Past eruptions reshaped landscapes and affected global climate.</p>
+<div id="speech-scroll-target"></div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="Speeches that Inspire, Speeches that Spit Fire">
+<strong>Speeches That Changed The Future</strong>
+<p><strong>JFK’s Peace Speech (1963):</strong> JFK talked about the Cold War and emphasized the importance of world peace during a tense time in history.</p>
+<p><strong>Red Jacket Talk (1796):</strong> Red Jacket defended Native American religious beliefs and rejected forced conversion to Christianity.</p>
+<p><strong>Haile Selassie (1936):</strong> Spoke to the League of Nations about Italy's invasion of Ethiopia, revealing the League’s weakness and foreshadowing WWII.</p>
+<p><strong>Robert Menzies (1942):</strong> Honored Australian soldiers lost in the Pacific, who were often overshadowed by European or American war narratives.</p>
+<p><strong>Jawaharlal Nehru (1947):</strong> Celebrated India's independence and acknowledged the long and difficult struggle to gain freedom.</p>
+<p><strong>William Wallace — <em>Braveheart</em> (1995):</strong> “They’ll never take our freedom” — a fiery call for freedom, even in the face of death.</p>
+<p><strong>President Whitmore — <em>Independence Day</em> (1996):</strong> “Today we celebrate our Independence Day” — a unifying, global speech before fighting alien invasion.</p>
+<p><strong>President Bartlet — <em>The West Wing</em> (2002):</strong> “The streets of heaven are too crowded” — a touching eulogy after a terrorist attack.</p>
+<p><strong>Prime Minister — <em>Love, Actually</em> (2003):</strong> “We’re a great one too” — asserting national pride and sovereignty with charm and dignity.</p>
+<p><strong>Barack Obama (Mexico, 2013):</strong> Spoke to young Mexicans about shared challenges and a hopeful future built through cooperation.</p>
+<p><strong>FDR’s Fireside Chats:</strong> Radio speeches during the Great Depression and WWII that brought calm and trust to American homes.</p>
+<p><strong>Winston Churchill’s Wartime Broadcasts:</strong> Used his voice on BBC radio to rally morale and show courage during WWII.</p>
+<p><strong>Apollo 11 Moon Landing (1969):</strong> Televised moonwalk united people across the globe in awe and pride.</p>
+<p><strong>Kennedy vs. Nixon Debate (1960):</strong> First TV debate showed how appearance and media shape public opinion.</p>
+<p><strong>“Miracle on Ice” (1980):</strong> Televised U.S. hockey win over the Soviets during the Cold War became a symbol of national pride.</p>
+<p><strong>Neujahrskonzert (Vienna New Year’s Concert):</strong> Classical music tradition evolved from radio to global live stream.</p>
+<p><strong>Voice of America’s Jazz Hour:</strong> Broadcast jazz into the Eastern Bloc as a symbol of freedom during the Cold War.</p>
+<p><strong>Eurovision Song Contest:</strong> TV and internet transformed it into a cultural and political phenomenon.</p>
+<p><strong>Intervision Song Contest:</strong> The Soviet answer to Eurovision, promoting unity across the socialist world via TV.</p>
+</div>
+<div id="topic8-scroll-target"></div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="Entertaining Ourselves Back To Life">
+<strong>Entertaining Ourselves Back To Life</strong>
+<p><b>Gregor Mendel (1822–1884):</b> Known as the father of genetics. His work on pea plants laid the foundation for heredity, but it was ignored for decades. Rediscovered around 1900 — long after his death — and then revolutionized biology.</p>
+<p><b>Alfred Wegener (1880–1930):</b> Proposed continental drift, which was ridiculed at the time. He lacked a mechanism (plate tectonics wasn’t understood yet). His ideas were validated posthumously in the mid-20th century.</p>
+<h4>Writers and Thinkers</h4>
+<p><b>Emily Dickinson (1830–1886):</b> Wrote nearly 1,800 poems but published only a few while alive. Her style was unconventional — dashes, short lines, raw emotion. After her death, her sister found her poems and helped publish them.</p>
+<p><b>Franz Kafka (1883–1924):</b> His work was mostly unpublished during his life. Asked a friend (Max Brod) to burn everything — Brod refused and published it instead. Kafka’s surreal, anxious themes now resonate deeply with modern audiences.</p>
+<p><b>Anne Frank (1929–1945):</b> A young girl’s diary from hiding during the Holocaust. Published by her father, Otto Frank, after the war. Has become one of the most read and taught personal accounts of WWII.</p>
+<h4>Art &amp; Music</h4>
+<p><b>Vivian Maier (1926–2009):</b> A nanny who secretly took over 100,000 street photographs. Her work was found in storage after her death and shocked the art world. She's now compared to the greats like Cartier-Bresson.</p>
+<p><b>Otis Redding (1941–1967):</b> Died in a plane crash at 26. His biggest hit, “(Sittin’ On) The Dock of the Bay”, was released posthumously and became iconic. Legacy cemented as a soul legend.</p>
+<p><b>Jim Croce (1943–1973):</b> Another singer-songwriter who died young. Songs like “Time in a Bottle” and “Operator” gained more depth after his death.</p>
+<p><b>Nick Drake (1948–1974):</b> Virtually unknown while alive. His haunting folk music wasn’t appreciated until decades later. Rediscovered through film and modern musicians citing him as influence.</p>
+<p><b>Insight:</b> In music and art, death can transform perception — listeners/viewers bring nostalgia, tragedy, and reflection into their interpretation of the work. Scarcity makes it more precious.</p>
+<h4>What If?</h4>
+<p><b>Aragorn:</b> A key character in The Lord of the Rings, initially known as Strider. He is the rightful heir to Gondor and Arnor and aids Gandalf in the quest to destroy the One Ring and defeat Sauron. Aragorn loves an elf named Arwen, but they can only marry if he becomes king. After Gandalf vanishes, he leads the Fellowship and tracks down kidnapped hobbits with Legolas and Gimli. He participates in significant battles, including at Helm's Deep and the Pelennor Fields. To aid Frodo, Aragorn attacks Mordor, diverting Sauron’s attention. He becomes king after their victory, marries Arwen, and rules for 122 years.</p>
+<p><b>Jon Snow:</b> A major character from A Song of Ice and Fire and the Game of Thrones series. He is introduced as the illegitimate son of Ned Stark and joins the Night’s Watch. After dying and returning, he becomes Commander and fights the Night King. Jon is revealed to be Aegon Targaryen, the rightful heir to the Iron Throne. Unlike Aragorn, he has a tragic ending, choosing to live in the North after the death of his love.</p>
+<p><b>King Arthur:</b> Starts life as an ordinary boy but pulls Excalibur from a stone, proving his right to rule. He faces challenges from nobles but unites Britain with the help of Merlin and his knights. His story symbolizes justice and heroism, showing that greatness can emerge from humble beginnings.</p>
+</div>
+
+
+<div id="reliving-scroll-target"></div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="Reliving It Up">
+<strong>Resuscitation vs. Resurrection</strong>
+<p><b>Resuscitation:</b> A medical process of reviving someone shortly after clinical death using CPR or equipment. Body and brain must still be intact. Common in ERs and near-drowning events.</p>
+<p><b>Resurrection:</b> A spiritual concept of returning to life after true death. Seen in religion and mythology. Often implies transformation and a new purpose.</p>
+<strong>Afterlife Beliefs</strong>
+<p><b>Valhalla (Norse):</b> Warriors feast in a majestic hall preparing for Ragnarök.</p>
+<p><b>Tartarus (Greek):</b> A deep pit of eternal punishment for evil souls and rebellious gods.</p>
+<p><b>Diyu (Chinese):</b> Layered underworld for judgment and purification before reincarnation.</p>
+<p><b>Jigoku (Japanese):</b> Realm of suffering aligned with one’s sins.</p>
+<p><b>Samsara (Hindu/Buddhist):</b> Endless death and rebirth cycle. Goal is liberation (Moksha/Nirvana).</p>
+<p><b>Nirvana (Buddhism):</b> Peaceful state free from suffering and rebirth.</p>
+<p><b>Happy Hunting Ground:</b> Indigenous North American belief in an eternal land of nature and peace.</p>
+<strong>Tensei: A Different Kind of Portal</strong>
+<p>In Japanese fantasy, death is a portal. The character dies and is reincarnated into another world with memories intact. They gain new purpose, usually involving magic or adventure.</p>
+<strong>Living Past 100?</strong>
+<p>Medical tech may help people live over 100. Bank of America predicts a $600 billion market by 2025.</p>
+<ul>
+<li><b>Genomics:</b> DNA-based medicine. Companies: Illumina.</li>
+<li><b>AI &amp; Big Data:</b> Smarter diagnosis and treatments. Companies: Google, Amazon, Apple.</li>
+<li><b>Future Food:</b> Healthier diets, gene-edited crops. Companies: DowDuPont, WW.</li>
+<li><b>“Ammortality”:</b> Extending healthy lifespan via wearables, surgeries.</li>
+<li><b>Moonshot Medicine:</b> New cures for hard diseases. Companies: Vertex, Sangamo.</li>
+</ul>
+<strong>Frontiers of Longevity</strong>
+<ul>
+<li><b>Cryonics:</b> Freeze body/brain hoping for future revival.</li>
+<li><b>Biomechatronics:</b> Robotic body part replacements.</li>
+<li><b>Regenerative Medicine:</b> Regrow organs from your cells.</li>
+<li><b>Genetic Enhancement:</b> Modify genes to prevent disease or boost traits.</li>
+<li><b>Senolytics:</b> Remove "zombie cells" to slow aging.</li>
+<li><b>Stem Cell Therapy:</b> Repair organs using adaptable cells.</li>
+<li><b>Reproductive Cloning:</b> Create exact DNA copies of people.</li>
+<li><b>Digital Cloning:</b> Upload your mind to a computer—still theoretical.</li>
+</ul>
+<strong>Examples from Literature</strong>
+<ul>
+<li><b>Wordsworth:</b> Childhood links us to the eternal—<em>Ode: Intimations of Immortality</em> (1815).</li>
+<li><b>Tennyson:</b> Immortality without youth is a curse—<em>Tithonus</em> (1833).</li>
+<li><b>Mary Shelley:</b> A man lives forever but is lonely and lost—<em>The Mortal Immortal</em> (1833).</li>
+<li><b>Ray Bradbury:</b> A boy who never ages can’t belong—<em>Hail and Farewell</em> (1948).</li>
+<li><b>Ursula K. Le Guin:</b> Immortals become ghostlike—<em>The Island of the Immortals</em> (1998).</li>
+<li><b>Frieren:</b> Long life without connection is hollow—<em>Frieren: Beyond Journey’s End</em>.</li>
+</ul>
+<strong>Synthetic Biology</strong>
+<p>Engineering living organisms using synthetic DNA. Used to design new organisms or modify existing ones.</p>
+<p><b>Example:</b> In 2002, scientists recreated the polio virus using its genetic code and lab materials.</p>
+<strong>Synthesize vs. Make</strong>
+<ul>
+<li><b>Make:</b> Build from existing materials (e.g., build a chair).</li>
+<li><b>Synthesize:</b> Create from scratch using knowledge of how it works (e.g., synthesize a virus).</li>
+</ul>
+<strong>Why the Arctic Matters</strong>
+<ul>
+<li><b>Permafrost:</b> Preserves ancient DNA and microbes.</li>
+<li><b>Thawing:</b> Releases ancient organisms to study—but risks infections.</li>
+<li><b>Svalbard Global Seed Vault:</b> Stores global seeds to protect against disaster.</li>
+<li><b>Preservation Importance:</b> Biodiversity, food security, and climate adaptation.</li>
+</ul>
+</div>
+<br><br>
+<div id="ignite-scroll-target"></div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="Much Excite, Much Ignite">
+
+<strong>Long Wars</strong>
+<ul>
+  <li><b>War Of Roses:</b> Lancaster vs. York over English throne. Red & white roses represented each side. Lancaster won.</li>
+  <li><b>100 Years War:</b> England vs. France. Fought over French throne and territory. France won.</li>
+  <li><b>Mongol Invasions:</b> Led by Genghis Khan. Expanded into Africa, Asia, and Europe. <em>Note from Güney: WSC loves Mongols!</em></li>
+  <li><b>Punic Wars:</b> Rome vs. Carthage. Rome won, rising as ancient superpower.</li>
+  <li><b>335 Years War:</b> Netherlands vs. Sicily. No battles. Forgotten until peace signed.</li>
+</ul>
+
+<strong>Things Can Explode Sometimes</strong>
+<ul>
+  <li><b>Mount Vesuvius (79 AD):</b> Gas-rich magma buried Pompeii & Herculaneum.</li>
+  <li><b>Huaynaputina (1600):</b> VEI-6 silica blast caused global cooling.</li>
+  <li><b>Unzen Dake (1991):</b> Dome collapse triggered pyroclastic flows.</li>
+  <li><b>Tambora (1815):</b> VEI-7. Caused "Year Without a Summer."</li>
+  <li><b>Krakatoa (1883):</b> Sea-magma blast triggered tsunamis.</li>
+  <li><b>Lake Nyos (1986):</b> CO₂ release suffocated 1,700+ people.</li>
+  <li><b>Mount St. Helens (1980):</b> Landslide and lateral blast.</li>
+  <li><b>Eyjafjallajökull (2010):</b> Magma-ice interaction disrupted air travel.</li>
+  <li><b>Hunga Tonga-Hunga Haʻapai (2022):</b> Underwater eruption caused tsunamis.</li>
+  <li><b>Yellowstone (Historic):</b> Shaped climate and topography during supereruptions.</li>
+</ul>
+
+<strong>Explosion Patterns</strong>
+<ul>
+  <li><b>Key Factors:</b> Gas pressure, magma viscosity, water contact, chamber buildup.</li>
+</ul>
+
+<strong>Types of Eruptions</strong>
+<ul>
+  <li><b>Effusive:</b> Lava flows steadily (e.g., Kīlauea).</li>
+  <li><b>Explosive:</b> Blasts from gas pressure (e.g., Tambora).</li>
+  <li><b>Phreatomagmatic:</b> Magma meets water (e.g., Krakatoa).</li>
+  <li><b>Supereruption:</b> Massive global-impact (e.g., Yellowstone).</li>
+</ul>
+
+<strong>Engine History</strong>
+<ul>
+  <li><b>Internal Combustion (1680):</b> Fuel burns in chamber to move pistons.</li>
+  <li><b>Heat Engine (1698):</b> Turns heat into mechanical work.</li>
+  <li><b>Gas Turbine (1791):</b> Compress + ignite air-fuel for thrust.</li>
+  <li><b>Wankel Rotary (1924):</b> Spins a triangular rotor instead of pistons.</li>
+  <li><b>Otto Engine (1861):</b> Four-stroke combustion cycle.</li>
+  <li><b>Reciprocating Piston (1876):</b> Up-down piston motion converts energy.</li>
+</ul>
+
+<strong>Engine Types</strong>
+<ul>
+  <li><b>Rotary:</b> Continuous power using spinning rotors.</li>
+  <li><b>Continuous Combustion:</b> Constant fuel burn for uninterrupted power.</li>
+</ul>
+
+<strong>Fuel Types</strong>
+<ul>
+  <li><b>Hydrocarbon:</b> Standard transport/power fuel.</li>
+  <li><b>Diesel:</b> Heavy machinery and vehicles.</li>
+  <li><b>ETBE:</b> Oxygen-rich additive to clean gasoline.</li>
+  <li><b>Biodiesel:</b> Biomass-based renewable fuel.</li>
+  <li><b>Bioethanol:</b> Alcohol fuel from plant biomass.</li>
+  <li><b>Hydrogen:</b> Clean fuel from water/air.</li>
+</ul>
+
+</div>
+
+<div id="imagination-scroll-target"></div>
+<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<div class="note" data-category="The Generative Area: A Mind for Imagination">
+
+  <strong>How Imagination Works</strong>
+  <ul>
+    <li><b>Memory:</b> Stores and retrieves info. Essential for learning, decisions, and imagination.</li>
+    <li><b>Mental Imagery:</b> Simulates senses without input (e.g., visualizing a beach).</li>
+    <li><b>Perception:</b> Interprets sensory info to build real-time understanding.</li>
+    <li><b>World View:</b> Life perspective shaped by beliefs, culture, and experience.</li>
+  </ul>
+
+  <strong>Brain Structures</strong>
+  <ul>
+    <li><b>Neocortex:</b> Controls logic, language, and conscious thought.</li>
+    <li><b>Thalamus:</b> Routes sensory signals and aids consciousness.</li>
+    <li><b>Prefrontal Cortex:</b> Manages decisions, planning, and imagination.</li>
+    <li><b>REM Sleep:</b> Dream-rich phase tied to creativity and memory.</li>
+  </ul>
+
+  <strong>Hallucination vs. Imagination</strong>
+  <ul>
+    <li><b>Hallucination:</b> Involuntary sensory experience with no input.</li>
+    <li><b>Imagination:</b> Controlled mental simulation; we know it's not real.</li>
+    <li><b>Simulation:</b> Rehearsing actions mentally (e.g., speeches).</li>
+    <li><b>Daydreaming:</b> Spontaneous drifting into inner worlds.</li>
+  </ul>
+
+  <strong>Psychoactive Effects</strong>
+  <ul>
+    <li><b>Psychedelics:</b> LSD, shrooms cause vivid mental imagery.</li>
+    <li><b>Cannabis:</b> Boosts creativity but may blur focus.</li>
+    <li><b>Ketamine:</b> Induces dream-like imaginative states.</li>
+    <li><b>MDMA:</b> Enhances emotional openness and reflection.</li>
+    <li><b>Microdosing:</b> May aid creativity without strong effects.</li>
+  </ul>
+
+  <strong>Boosting Imagination</strong>
+  <ul>
+    <li><b>Active Imagination:</b> Jung’s method of inner dialogue.</li>
+    <li><b>Hypnagogia:</b> Creativity-rich state before sleep (used by Edison & Dalí).</li>
+    <li><b>Mind Wandering:</b> Letting thoughts drift to spark ideas.</li>
+    <li><b>Hypnosis:</b> Focused suggestive state for creativity and therapy.</li>
+    <li><b>Meditation:</b> Trains attention; activates the default mode network.</li>
+    <li><b>Psychological Distance:</b> Abstract/distant thinking sparks new views.</li>
+    <li><b>Nature:</b> Walking boosts focus, mood, and flexible thinking.</li>
+    <li><b>Novelty:</b> New experiences increase dopamine and adaptability.</li>
+  </ul>
+
+  <strong>Constrained Poetry</strong>
+  <ul>
+    <li><b>Yuen Ren Chao – “Lion-Eating Poet”:</b> Chinese poem using only "shi" in different tones.</li>
+    <li><b>Marianne Moore – “No Swan So Fine”:</b> Precise, syllabic form contrasting beauty and artifice.</li>
+    <li><b>Ernest V. Wright – Gadsby:</b> Entire novel written without using the letter “E.”</li>
+    <li><b>Dylan Thomas – “Do Not Go Gentle...”:</b> Villanelle with emotional, structured repetition.</li>
+    <li><b>Kimiko Hahn – “[the whale already]”:</b> Scientific terms + fragmented structure = modern complexity.</li>
+  </ul>
+
+  <strong>Imagination in Music</strong>
+  <ul>
+    <li><b>Tommy Dorsey – “Imagination”:</b> Longing and dreamscape through romanticized imagination.</li>
+    <li><b>Gene Wilder – “Pure Imagination”:</b> From *Willy Wonka*, invites limitless creativity.</li>
+    <li><b>John Lennon – “Imagine”:</b> Peaceful vision of a united, borderless world.</li>
+    <li><b>Evanescence – “Imaginary”:</b> Inner world as a personal refuge from reality.</li>
+    <li><b>Mary Poppins – “Can You Imagine That?”:</b> Whimsy and resilience through fantasy thinking.</li>
+  </ul>
+
+</div>
+
+
+</div>
+<div id="topic-content">
+<button id="back-to-topics">← Back to Topics</button>
+<div id="topic-text"></div>
+</div>
+</section>
+<section id="quizzes">
+<h2>Quizzes</h2>
+<ul id="quiz-list"></ul>
+<!-- Quiz interface (hidden by default) -->
+<div id="quiz-interface">
+<button id="back-to-quizzes">← Back to Quizzes</button>
+<h3 id="quiz-title"></h3>
+<div id="quiz-questions"></div>
+<button id="submit-quiz">Submit Quiz</button>
+<div id="quiz-results"></div>
+</div>
+
+  
+
+
+  <p style="margin-top: 20px; font-size: 1.2rem;">
+    👉 <a href="https://forms.gle/pQPogfC1dhHpJg4j7" target="_blank" style="color: var(--turquoise); font-weight: 600;">23.07.2025 Quiz</a>
+  </p>
+
+</section>
+
+<section id="debate">
+  <h2>Debate Tips & Tricks (WSC Style)</h2>
+  <p><strong>Know the Format:</strong><br>
+  WSC debates use a 3-on-3 format with three rounds: Opening, Rebuttal, and Closing. Each debater must speak exactly once. Time is limited, so structure is everything.</p>
+
+  <p><strong>Roles Matter:</strong><br>
+  - 1st Speaker: Define the team's stance and structure the argument. Set tone.<br>
+  - 2nd Speaker: Deepen argumentation, introduce case studies, and start dismantling opponents.<br>
+  - 3rd Speaker: Rebut and wrap. Don’t introduce new arguments—this is the “mic drop” moment.</p>
+
+  <p><strong>“WSC Language” Wins Rounds:</strong><br>
+  Judges reward thematic alignment. Use WSC concepts, phrasing, and even alpaca metaphors if it fits! Tie back to the current theme ("The World Reimagined", etc.) as often as possible.</p>
+
+  <p><strong>Debate Like a Scholar, Not a Politician:</strong><br>
+  WSC values insight over aggression. Show empathy, curiosity, and ethical reasoning. It’s not just about proving you're right—it’s about showing how you *thought* through the issue.</p>
+
+  <p><strong>Evidence Isn’t Everything:</strong><br>
+  Unlike Model UN or Policy Debate, WSC does not require cited sources. Instead, use general knowledge, analogies, and hypothetical thought experiments. A clever metaphor can beat a boring fact.</p>
+
+  <p><strong>Use the “Yes, But...” Strategy:</strong><br>
+  Acknowledge what the opponent says, then twist it to your favor. Judges love debaters who listen and respond—not just recite rehearsed speeches.</p>
+
+  <p><strong>Memorize These Power Phrases:</strong><br>
+  - “While that may seem valid on the surface…”<br>
+  - “Let’s unpack that assumption…”<br>
+  - “This isn’t just about X, it’s about what X *represents*.”<br>
+  - “But what if we flipped the perspective entirely?”<br>
+  - “It’s easy to say that, but let’s follow that logic to its end.”</p>
+
+  <p><strong>Practice With Wacky Motions:</strong><br>
+  WSC often uses abstract or funny motions like “This House Believes That Dreams Should Be Taxed.” Don't panic. Break it down logically and focus on *why* it matters, not just what it means.</p>
+
+  <p><strong>Debating Tips from WSC Champions:</strong><br>
+  - Build your arguments like a story: hook → insight → twist → moral.<br>
+  - Use examples that spark curiosity: space law, AI ethics, Greek myths, sci-fi, ancient rituals—anything goes.<br>
+  - Anticipate rebuttals and prepare “blocks” to neutralize them.<br>
+  - Don't underestimate the closing speech—it’s your legacy moment.</p>
+
+  <p><strong>Final Advice:</strong><br>
+  Be original. Be clear. Be human. A thoughtful pause or an unexpected analogy can make your speech unforgettable. And always—speak with alpaca confidence.</p>
+</section>
+
+<section id="practice">
+  <h2>Practice Lab: Motions & Timer</h2>
+  <p>Use this space to simulate real WSC debate conditions. Generate thought-provoking motions from the 2025 theme “Reigniting The Future” and practice timed speeches with our 4-minute timer.</p>
+
+  <!-- moved to Practice Lab -->
+    <h3>🕒 Debate Timer</h3>
+    <button onclick="startDebateTimer()" style="padding: 10px 18px; font-size: 1rem; background: var(--turquoise); color: white; border: none; border-radius: 6px; font-weight: 600;">Start 4-Minute Timer</button>
+    <button onclick="start1DebateTimer()" style="padding: 10px 18px; font-size: 1rem; background: var(--turquoise); color: white; border: none; border-radius: 6px; font-weight: 600;">Start 1-Minute Timer</button>
+    <p id="timerDisplay" style="font-size: 2rem; margin-top: 15px; color: var(--turquoise); font-weight: bold;"></p>
+
+    <br><br>
+    <h3>🎲 WSC 2025 Motion Generator</h3>
+    <button onclick="generateMotion()" style="padding: 10px 18px; font-size: 1rem; background: var(--turquoise); color: white; border: none; border-radius: 6px; font-weight: 600;">Generate Motion</button>
+    <p id="motionDisplay" style="font-size: 1.3rem; background: #f9f5e9; border-left: 4px solid var(--turquoise); border-radius: 8px; padding: 15px; margin-top: 15px;"></p>
+  </div>
+</section>
+
+</main>
+<script>
+function setupUserNotes() {
+  document.querySelectorAll('.note').forEach(note => {
+    const category = note.getAttribute('data-category');
+    const textarea = note.querySelector('textarea');
+    const saveBtn = note.querySelector('.save-notes');
+
+    if (textarea && saveBtn) {
+      const saved = localStorage.getItem(`user-note-${category}`);
+      if (saved) textarea.value = saved;
+
+      saveBtn.addEventListener('click', () => {
+        localStorage.setItem(`user-note-${category}`, textarea.value);
+        alert('Notes saved for "' + category + '"');
+      });
+    }
+  });
+}
+
+document.querySelectorAll('.category').forEach(category => {
+  category.addEventListener('click', () => {
+    const topicKey = category.getAttribute('data-topic');
+    document.getElementById('topic-text').innerHTML = notesData[topicKey] || '<p>Content coming soon. Check back later!</p>';
+    document.getElementById('topic-list').style.display = 'none';
+    document.getElementById('topic-content').style.display = 'block';
+
+    if (topicKey === 'topic2') {
+      document.getElementById('futurity-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
+    }
+        if (topicKey === 'topic3') {
+      document.getElementById('meant-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
+    }
+        if (topicKey === 'topic4') {
+      document.getElementById('fall-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
+    }
+        if (topicKey === 'topic5') {
+      document.getElementById('fire-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
+    }
+        if (topicKey === 'topic6') {
+      document.getElementById('speech-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
+    }
+        if (topicKey === 'topic8') {
+      document.getElementById('topic8-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
+    }
+            if (topicKey === 'topic7') {
+      document.getElementById('reliving-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
+    }
+        if (topicKey === 'topic9') {
+      document.getElementById('ignite-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
+    }
+        if (topicKey === 'topic10') {
+      document.getElementById('imagination-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
+    }
+       /* if (topicKey === 'topic11') {
+      document.getElementById('backup-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
+    }
+        if (topicKey === 'topic12') {
+      document.getElementById('punky-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
+    }*/
+
+    setupUserNotes();
+  });
+});
+
+window.addEventListener('DOMContentLoaded', setupUserNotes);
+</script>
+<script>
+    // --- Dark Mode Toggle ---
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    });
+
+    // --- Navigation ---
+    const navLinks = document.querySelectorAll('nav a:not(#dark-mode-toggle)');
+    const sections = document.querySelectorAll('main section');
+
+    function activateSection(id) {
+      sections.forEach(section => {
+        section.classList.toggle('active', section.id === id);
+      });
+
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+
+      // Reset Notes/Quizzes view if their sections are activated
+      if (id === 'notes') {
+        document.getElementById('topic-list').style.display = 'flex';
+        document.getElementById('topic-content').style.display = 'none';
+      } else if (id === 'quizzes') {
+        document.getElementById('quiz-list').style.display = 'block';
+        document.getElementById('quiz-interface').style.display = 'none';
+      }
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').slice(1);
+        activateSection(targetId);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Initialize page: show only home section
+    activateSection('home');
+
+    // --- Notes Functionality ---
+ document.getElementById('back-to-topics').addEventListener('click', function() {
+      document.getElementById('topic-list').style.display = 'flex';
+      document.getElementById('topic-content').style.display = 'none';
+      document.getElementById('notes').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('back-to-topics').style.display = 'block';
+      document.getElementById('notes').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Real WSC notes content
+    const notesData = {
+      topic1: `
+        <h3>The Best is Yet to Be, or Not To Be?</h3>
+        <p><strong>Theme:</strong> Optimism vs. Pessimism in Future Predictions</p>
+        <p><strong>Key Scholars:</strong> Hans Rosling ("Factfulness"), Steven Pinker ("Enlightenment Now")</p>
+        <p><strong>Debate Points:</strong>
+          <ul>
+            <li>Evidence of global progress (life expectancy, poverty reduction)</li>
+            <li>Cognitive biases that skew perceptions of the future</li>
+            <li>Counterarguments: Climate change, inequality risks</li>
+          </ul>
+        </p>
+
+      `,
+      topic2: `
+        <h3>In Futurity, Someone Prophetic Sees</h3>
+        <p><strong>Theme:</strong> Accuracy of historical predictions</p>
+        <p><strong>Case Studies:</strong>
+          <ul>
+            <li>Jules Verne's 19th-century sci-fi vs. actual 20th-century tech</li>
+            <li>Economist predictions vs. reality (2008 financial crisis)</li>
+          </ul>
+        </p>
+      `,
+      // Add more topics...
+    };
+
+    // Search notes
+    notesSearch.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      document.querySelectorAll('#topic-list .category').forEach(category => {
+        const text = category.textContent.toLowerCase();
+        category.style.display = text.includes(searchTerm) ? 'flex' : 'none';
+      });
+    });
+
+    // Show topic content
+    topicList.querySelectorAll('.category').forEach(category => {
+      category.addEventListener('click', () => {
+        const topicKey = category.getAttribute('data-topic');
+        topicText.innerHTML = notesData[topicKey] || '<p>Content coming soon. Check back later!</p>';
+        topicList.style.display = 'none';
+        topicContent.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    backBtn.addEventListener('click', () => {
+      topicContent.style.display = 'none';
+      topicList.style.display = 'flex';
+      notesSearch.value = '';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // --- Quizzes Functionality ---
+    const quizList = document.getElementById('quiz-list');
+    const quizInterface = document.getElementById('quiz-interface');
+    const quizTitle = document.getElementById('quiz-title');
+    const quizQuestions = document.getElementById('quiz-questions');
+    const submitQuizBtn = document.getElementById('submit-quiz');
+    const quizResults = document.getElementById('quiz-results');
+    const backToQuizzesBtn = document.getElementById('back-to-quizzes');
+
+    // Quiz data
+    const quizData = {
+      science: {
+        title: "Science Essentials Quiz",
+        questions: [
+          {
+            question: "What is the powerhouse of the cell?",
+            options: ["Nucleus", "Mitochondria", "Ribosome"],
+            answer: 1
+          },
+          {
+            question: "Which gas is most abundant in Earth's atmosphere?",
+            options: ["Oxygen", "Nitrogen", "Carbon Dioxide"],
+            answer: 1
+          }
+        ]
+      },
+      history: {
+        title: "World History Quiz",
+        questions: [
+          {
+            question: "The Industrial Revolution began in which country?",
+            options: ["France", "United States", "Great Britain"],
+            answer: 2
+          }
+        ]
+      }
+      // Add more quizzes...
+    };
+
+    // Load quiz
+    quizList.querySelectorAll('li').forEach(quiz => {
+      quiz.addEventListener('click', () => {
+        const quizKey = quiz.getAttribute('data-quiz');
+        const quiz = quizData[quizKey];
+       
+        quizTitle.textContent = quiz.title;
+        quizQuestions.innerHTML = '';
+       
+        quiz.questions.forEach((q, i) => {
+          const questionEl = document.createElement('div');
+          questionEl.className = 'quiz-question';
+          questionEl.innerHTML = `
+            <p><strong>Question ${i + 1}:</strong> ${q.question}</p>
+            ${q.options.map((opt, j) => `
+              <div class="quiz-option" data-question="${i}" data-option="${j}">
+                ${String.fromCharCode(65 + j)}. ${opt}
+              </div>
+            `).join('')}
+          `;
+          quizQuestions.appendChild(questionEl);
+        });
+
+        quizList.style.display = 'none';
+        quizInterface.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Submit quiz
+    submitQuizBtn.addEventListener('click', () => {
+      let score = 0;
+      const selectedOptions = document.querySelectorAll('.quiz-option.selected');
+     
+      selectedOptions.forEach(opt => {
+        const questionIdx = parseInt(opt.getAttribute('data-question'));
+        const optionIdx = parseInt(opt.getAttribute('data-option'));
+        const correctAnswer = quizData[currentQuiz].questions[questionIdx].answer;
+       
+        if (optionIdx === correctAnswer) {
+          score++;
+          opt.style.backgroundColor = '#e6f7e6';
+        } else {
+          opt.style.backgroundColor = '#ffebeb';
+        }
+      });
+
+      quizResults.innerHTML = `You scored ${score} out of ${quizData[currentQuiz].questions.length}!`;
+    });
+
+    // Select quiz options
+    quizQuestions.addEventListener('click', (e) => {
+      const option = e.target.closest('.quiz-option');
+      if (!option) return;
+     
+      const questionIdx = option.getAttribute('data-question');
+      document.querySelectorAll(`.quiz-option[data-question="${questionIdx}"]`).forEach(opt => {
+        opt.classList.remove('selected');
+      });
+     
+      option.classList.add('selected');
+    });
+
+    // Back to quizzes list
+    backToQuizzesBtn.addEventListener('click', () => {
+      quizInterface.style.display = 'none';
+      quizList.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // --- Contact Form ---
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for your message! We’ll respond soon.');
+      contactForm.reset();
+    });
+
+    // --- Lazy Load Images ---
+    const lazyLoadImages = () => {
+      document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+        if (img.getBoundingClientRect().top < window.innerHeight + 100) {
+          img.loading = 'eager'; // Force load when near viewport
+        }
+      });
+    };
+    window.addEventListener('scroll', lazyLoadImages);
+    lazyLoadImages(); // Initial check
+  </script>
+
+
+<script>
+function startDebateTimer() {
+  let duration = 4 * 60; // 4 minutes in seconds
+  const display = document.getElementById("timerDisplay");
+  clearInterval(window.timerInterval);
+  window.timerInterval = setInterval(() => {
+    const minutes = Math.floor(duration / 60);
+    const seconds = duration % 60;
+    display.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    if (--duration < 0) {
+      clearInterval(window.timerInterval);
+      display.textContent = "Time's up! ⏰";
+    }
+  }, 1000);
+}
+
+function start1DebateTimer() {
+  let duration = 1 * 60; // 4 minutes in seconds
+  const display = document.getElementById("timerDisplay");
+  clearInterval(window.timerInterval);
+  window.timerInterval = setInterval(() => {
+    const minutes = Math.floor(duration / 60);
+    const seconds = duration % 60;
+    display.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    if (--duration < 0) {
+      clearInterval(window.timerInterval);
+      display.textContent = "Time's up! ⏰";
+    }
+  }, 1000);
+}
+
+// WSC 2025-Aligned Motions
+const motions = [
+  "That the future should be built by artists, not engineers.",
+  "That the line between science and fiction should be erased.",
+  "That forgotten futures deserve a second chance.",
+  "That we should give AI the power to rewrite history.",
+  "That nostalgia is the greatest enemy of progress.",
+  "That extinct species should decide how we reimagine the world.",
+  "That the end of the world should be televised.",
+  "That rewarding those who fail is a spectacular idea.",
+  "That humanity should leave Earth to save it.",
+  "That we should reimagine time as a shared public resource.",
+  "That humanity should prioritize uploading consciousness over space colonization.",
+  "That AI-generated art is the true successor to human creativity.",
+  "That governments should mandate digital detox years to reclaim imagination.",
+  "That children should vote on policies affecting the next century.",
+  "That nostalgia should be taxed as a barrier to progress.",
+  "That extinct species (via de-extinction) should inherit Earth’s protected lands.",
+];
+
+function generateMotion() {
+  const motion = motions[Math.floor(Math.random() * motions.length)];
+  document.getElementById("motionDisplay").textContent = motion;
+}
+</script>
+
+</body>
