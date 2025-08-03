@@ -16,10 +16,10 @@
 
 /* Dark mode variables */
 .dark-mode {
-  --bg-color: #1a1a1a;
+  --bg-color: #0b1231;
   --text-color: #2d4883;
   --pale-gold: #3a3a2a;
-  --turquoise: #4fd1c5;
+  --turquoise: #186058;
 }
 
 html, body {
@@ -362,6 +362,11 @@ p {
         height: 220px;
       }
 
+      .flashcard .question,
+.flashcard .answer {
+  padding: 30px 0; /* Adjust this value as needed for more space */
+}
+
       
 
     }
@@ -383,6 +388,7 @@ p {
 <a href="#quizzes">Quizzes</a>
 <a href="#practice">Practice Lab</a>
 <a href="#documents">Documents</a>
+<a href="#flashcard">Flashcards</a>
 
 <button id="dark-mode-toggle">🌙</button>
 </nav>
@@ -2158,28 +2164,204 @@ p {
   </p>
 </section>
 
+<!--<script>
+document.querySelectorAll("nav a").forEach(link => {
+  link.addEventListener("click", function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute("href").substring(1);
+    document.querySelectorAll("main section").forEach(section => {
+      section.classList.remove("active");
+    });
+    document.getElementById(targetId).classList.add("active");
+  });
+});
+</script>-->
+
+<script>
+function toggleFlashcard(card) {
+  const answer = card.querySelector('.answer');
+  if (answer.style.display === "none") {
+    answer.style.display = "block";
+  } else {
+    answer.style.display = "none";
+  }
+}
+</script>
+
+
+
+<section id="flashcard">
+  <h2>🃏 Interactive Flashcards</h2>
+
+  <script>
+  function toggleFlashcard(element) {
+    const allFlashcards = document.querySelectorAll('.flashcard');
+    
+    allFlashcards.forEach(card => {
+      const cardAnswer = card.querySelector('.answer');
+      const cardQuestion = card.querySelector('.question');
+
+      if (card === element) {
+        // This is the clicked flashcard, toggle its answer
+        if (cardAnswer.style.display === 'none') {
+          cardAnswer.style.display = 'block';
+          cardQuestion.classList.remove('active'); // Remove active class from question when answer is shown
+        } else {
+          cardAnswer.style.display = 'none';
+          cardQuestion.classList.add('active'); // Add active class back to question when answer is hidden
+        }
+      } else {
+        // This is another flashcard, hide its answer
+        cardAnswer.style.display = 'none';
+        cardQuestion.classList.add('active'); // Ensure other questions are active (visible)
+      }
+    });
+  }
+</script>
+
+<h3>From: The Best is Yet to Be, or Not To Be?</h3>
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What was the initial estimated cost and completion year of the Big Dig Tunnel Project?</div>
+    <br> <div class="answer" style="display:none;">$2.8 billion (US$7.4 billion adjusted for inflation as of 2020), scheduled for 1998.</div>
+  </div>
+  <hr class="flashcard-separator">
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What was the final cost and completion year of the Big Dig Tunnel Project?</div>
+    <br> <div class="answer" style="display:none;">Over $8.08 billion (in 1982 dollars, $21.5 billion adjusted for inflation), completed in December 2007.</div>
+  </div>
+  <hr class="flashcard-separator">
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What problems plagued the Big Dig Tunnel Project?</div>
+    <br> <div class="answer" style="display:none;">Cost overruns, delays, leaks, design flaws, substandard materials, criminal charges, and one motorist's death.</div>
+  </div>
+  <hr class="flashcard-separator">
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What incident occurred in the Channel Tunnel in 1996?</div>
+    <br> <div class="answer" style="display:none;">About 1,000 passengers were trapped when Eurostar trains broke down due to snow and ice affecting electronic circuits.</div>
+  </div>
+  <hr class="flashcard-separator">
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What is the "New Eurasian Land Bridge"?</div>
+    <br> <div class="answer" style="display:none;">A rail route connecting east China to the center of Europe, with plans to go around Russia.</div>
+  </div>
+  <hr class="flashcard-separator">
+
+  <h3>From: In Futurity, Someone Prophetic Sees</h3>
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">Who was Nostradamus?</div>
+    <br> <div class="answer" style="display:none;">A 16th-century French astrologer known for his mysterious poems believed to be predictions.</div>
+  </div>
+  <hr class="flashcard-separator">
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What is divination?</div>
+    <br> <div class="answer" style="display:none;">Any way of trying to discover what's going to happen in the future, often through magic or spiritual means.</div>
+  </div>
+  <hr class="flashcard-separator">
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What is astrology?</div>
+    <br> <div class="answer" style="display:none;">The idea that positions of stars and planets can affect what happens on Earth and to people.</div>
+  </div>
+  <hr class="flashcard-separator">
+
+  <h3>From: Reliving It Up</h3>
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What is the difference between resuscitation and resurrection?</div>
+    <br> <div class="answer" style="display:none;">Resuscitation is a medical process of reviving someone shortly after clinical death, while resurrection is a spiritual concept of returning to life after true death.</div>
+  </div>
+  <hr class="flashcard-separator">
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What is Valhalla in Norse mythology?</div>
+    <br> <div class="answer" style="display:none;">A majestic hall where warriors feast, preparing for Ragnarök.</div>
+  </div>
+  <hr class="flashcard-separator">
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What is "Taylor's Version" in the context of Taylor Swift's music?</div>
+    <br> <div class="answer" style="display:none;">Re-recorded albums by Taylor Swift to reclaim artistic ownership.</div>
+  </div>
+  <hr class="flashcard-separator">
+
+  <h3>From: Punky Futures</h3>
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">Who published the Futurist Manifesto in 1909?</div>
+    <br> <div class="answer" style="display:none;">Italian poet Filippo Tommaso Marinetti.</div>
+  </div>
+  <hr class="flashcard-separator">
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What is Afrofuturism?</div>
+    <br> <div class="answer" style="display:none;">It merges African culture, history, and diaspora experiences with technology, speculative fiction, and cosmic visions, centering Black empowerment.</div>
+  </div>
+  <hr class="flashcard-separator">
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What does Solarpunk envision?</div>
+    <br> <div class="answer" style="display:none;">A world where sustainable technology and ecology coexist, emphasizing beauty, cooperation, and resilience.</div>
+  </div>
+  <hr class="flashcard-separator">
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What is Atompunk?</div>
+    <br> <div class="answer" style="display:none;">A subgenre drawing from the Atomic Age (1945-1960s), imagining a future of rayguns, rocket cars, and Cold War paranoia.</div>
+  </div>
+  <hr class="flashcard-separator">
+
+  <h3>From: If At First You Fall, Try, Try Again</h3>
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What is the "Curse of the Pharaohs"?</div>
+    <br> <div class="answer" style="display:none;">A supposed curse affecting anyone disturbing the mummies of ancient Egyptian pharaohs.</div>
+  </div>
+  <hr class="flashcard-separator">
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What does the story of the curse of Tutankhamun's tomb illustrate?</div>
+    <br> <div class="answer" style="display:none;">The power of a narrative to shape public perception and fears around historical events.</div>
+  </div>
+  <hr class="flashcard-separator">
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What is confirmation bias?</div>
+    <br> <div class="answer" style="display:none;">The tendency to interpret new evidence as confirmation of one's existing beliefs or theories.</div>
+  </div>
+  <hr class="flashcard-separator">
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What is the "Texas Sharpshooter Fallacy"?</div>
+    <br> <div class="answer" style="display:none;">When someone picks out a cluster in data and then draws a target around it, making it seem significant when it's just random chance.</div>
+  </div>
+  <hr class="flashcard-separator">
+  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+    <div class="question active">What is the "Dunning-Kruger Effect"?</div>
+    <br> <div class="answer" style="display:none;">A cognitive bias where people with low ability at a task overestimate their own ability.</div>
+  </div>
+  <hr class="flashcard-separator">
+</section>
+
+<!--<section id="donation">
+  <h2>Support TEV - Foundation for underprivileged kids in terms of education.</h2>
+  <p>After you donate, we'll add your name to our thank you list.</p>
+
+  <form id="donationForm">
+    <input type="text" name="name" placeholder="Name Surname" required />
+    <input type="email" name="email" placeholder="E-mail(mandatory)" />
+    <button type="submit">Donate and continue</button>
+  </form>
+</section>
+
+<script>
+  document.getElementById("donationForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+
+    // Örn: basit email ile gönderme, veya webhook sistemine bağlama
+    console.log("Donater:", name, email); // burada e-posta atılabilir
+
+    // Form gönderildikten sonra TEV bağış sayfasına yönlendir
+    window.location.href = "https://bagis.tev.org.tr/";
+  });
+</script>-->
+
 
 
 
 </main>
 <script>
-function setupUserNotes() {
-  document.querySelectorAll('.note').forEach(note => {
-    const category = note.getAttribute('data-category');
-    const textarea = note.querySelector('textarea');
-    const saveBtn = note.querySelector('.save-notes');
 
-    if (textarea && saveBtn) {
-      const saved = localStorage.getItem(`user-note-${category}`);
-      if (saved) textarea.value = saved;
-
-      saveBtn.addEventListener('click', () => {
-        localStorage.setItem(`user-note-${category}`, textarea.value);
-        alert('Notes saved for "' + category + '"');
-      });
-    }
-  });
-}
 
 document.querySelectorAll('.category').forEach(category => {
   category.addEventListener('click', () => {
