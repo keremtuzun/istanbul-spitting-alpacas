@@ -8,19 +8,20 @@
 <title>Istanbul Spitting Alpacas - WSC Resources</title>
 <style>
 :root {
-  --turquoise: #1a8d98;
-  --pale-gold: #e6d8ad;
-  --bg-color: #fffaf0;
-  --text-color: #2c2c2c;
+  --turquoise: #b73e3e;       /* Deep warm red */
+  --pale-gold: #f0c7b4;       /* Soft warm beige-pink */
+  --bg-color: #fff5f2;        /* Light warm background */
+  --text-color: #4b1f1f;      /* Deep brown-red for contrast */
 }
 
-/* Dark mode variables */
+/* Dark mode variables - warm, muted reds */
 .dark-mode {
-  --bg-color: #0b1231;
-  --text-color: #2d4883;
-  --pale-gold: #3a3a2a;
-  --turquoise: #186058;
+  --bg-color: #2c0b0e;        /* Deep burgundy */
+  --text-color: #fbe5e0;      /* Pale peach-pink text */
+  --pale-gold: #d8a58e;       /* Muted warm highlight */
+  --turquoise: #d64545;       /* Lighter warm red */
 }
+
 
 html, body {
   margin: 0;
@@ -35,7 +36,7 @@ html, body {
 }
 
 header {
-  background: linear-gradient(90deg, var(--turquoise), #146c75);
+  background: linear-gradient(90deg, var(--turquoise), #751424);
   color: var(--pale-gold);
   padding: 25px 20px;
   font-weight: 800;
@@ -63,7 +64,7 @@ nav {
   padding: 15px 0;
   font-weight: 600;
   font-size: 1.1rem;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 10px rgba(248, 71, 71, 0.1);
   position: sticky;
   top: 0;
   z-index: 10000;
@@ -80,7 +81,7 @@ nav a {
 
 nav a.active,
 nav a:hover {
-  color: #146c75;
+  color: #e46756;
   font-weight: 700;
 }
 
@@ -170,7 +171,7 @@ p {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 0.4rem;
-  color: #146c75;
+  color: #952d0e;
   letter-spacing: 1.2px;
 }
 
@@ -185,34 +186,96 @@ p {
 #home .hero-text p {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #146c75;
+  color: #952d0e;
 }
 
 /* About Us layout */
+#about {
+  background-color: #f9f6f1;
+  padding: 5rem 1rem;
+}
+
+.about-wrapper {
+  max-width: 1100px; /* Slightly wider */
+  margin: 0 auto;
+  text-align: center;
+}
+
+#about h2 {
+  font-size: 3rem; /* Larger heading */
+  color: #8B0000;
+  margin-bottom: 3rem;
+}
+
 .about-content {
   display: flex;
-  gap: 30px;
-  align-items: center;
-  max-width: 900px;
-  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: left;
 }
 
 .about-photo {
-  flex: 1 1 45%;
-  border-radius: 12px;
+  flex: 1 1 480px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
 }
 
 .about-photo img {
   width: 100%;
-  display: block;
+  height: 100%;
   object-fit: cover;
-  height: 250px;
+  max-height: 380px;
+  border-radius: 16px;
+  display: block;
 }
 
 .about-text {
-  flex: 1 1 55%;
+  flex: 1 1 480px;
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.about-text h1 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: var(--turquoise);
+}
+
+.about-text p {
+  margin-bottom: 1rem;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-photo,
+  .about-text {
+    width: 100%;
+    flex: none;
+  }
+
+  .about-photo img {
+    max-height: 300px;
+    height: auto;
+  }
+
+  .about-text h1 {
+    font-size: 1.4rem;
+  }
 }
 
 /* Gallery grid */
@@ -288,7 +351,7 @@ p {
 }
 
 #notes #topic-content button#back-to-topics:hover {
-  background-color: #146c75;
+  background-color: #c76e0f;
 }
 
 #notes #topic-content #topic-text {
@@ -352,6 +415,9 @@ p {
       .about-photo, .about-text {
         flex: unset;
         width: 100%;
+        margin-top: 2rem; /* 👈 This moves the image slightly lower */
+
+
       }
       .about-photo img {
         height: auto;
@@ -400,13 +466,21 @@ p {
 <div class="hero-text">
 <h1>WELCOME TO ISTANBUL SPITTING ALPACAS</h1>
 <h2>YOUR RESOURCE HUB FOR WORLD SCHOLARS CUP</h2>
-<p>Officially preparing students with notes, quizzes, and guidance for the 2025 WSC season.</p>
+<p>
+  📸 Follow us on Instagram:  
+  <a href="https://instagram.com/istanbul_spitting_alpacas" target="_blank" style="color: var(--turquoise); font-weight: bold;">
+    @istanbul_spitting_alpacas
+  </a>
+</p>
 
+<br>
+<br>
 <h3>Disclaimer</h3>
 <p>May contain false or imitative information</p>
 <p>This website contains references to psychoactive substances, including both legal and illegal drugs, for educational purposes only. It does not encourage or condone drug use. Some of the substances mentioned may have legal restrictions and health risks. Viewer discretion is advised, especially for those under 18.
 
 </p>
+
 </div>
 
 <!-- moved to Practice Lab -->
@@ -418,16 +492,46 @@ p {
 <div class="about-content">
 <div class="about-photo">
 <img alt="Students collaborating" src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&amp;fit=crop&amp;w=600&amp;q=80"/>
+<br>
+<br>
+<br>
+<br>
+<br>
+<img src="C:\Users\Kerem\OneDrive\Desktop\resim\3a8d969a-5a49-4fd0-a269-2578231498d3.jpg"/>
 </div>
 <div class="about-text">
-<p>
-            Istanbul Spitting Alpacas is a dedicated organization providing high-quality preparation
-            resources for the World Scholars Cup.
-<p>
-            Our mission is to empower students through comprehensive study notes, debate tips, and curated
-            content across all WSC subjects, helping them excel and enjoy their journey.
-          </p>
+  <h1>Officially preparing students with notes, quizzes, and guidance for the 2025 WSC season.</h1>
+        <p>Istanbul Spitting Alpacas is a youth-led organization committed to helping students prepare for the
+       World Scholar's Cup with passion and purpose.</p>
+      <p>
+        We offer curated study materials, debate strategies, and fun community-driven content to make your WSC journey 
+        both effective and memorable.
+      </p>
+      <p>
+        Whether you're burning the midnight oil or chasing alpaca-themed glory, we’ve got your back.
+      </p>
+      <h2>Our Achievements</h2>
+      <p>Stockholm Globals:
+Medals: 50/
+Trophy: 5/
+Ranking: 6/
+Bucharest Regionals:
+Medals: 30/
+Ranking: 12/
+Yale ToC:
+Medals: 24/
+Ranking: 30/
+Istanbul Regionals:
+Medals: 27/
+Ranking: 1/
+Ranking: 7</p>
 </div>
+<p>
+  📸More of us on Instagram:  
+  <a href="https://instagram.com/istanbul_spitting_alpacas" target="_blank" style="color: var(--turquoise); font-weight: bold;">
+    @istanbul_spitting_alpacas
+  </a>
+</p>
 
 </div>
 </section>
