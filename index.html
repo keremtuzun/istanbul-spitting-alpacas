@@ -148,21 +148,38 @@ p {
 }
 
 .hero-image-container {
+  position: relative;
+  text-align: center;
   max-width: 100%;
-  margin-bottom: 30px;
-  overflow: hidden;
-  border-radius: 14px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
 .hero-image {
   width: 100%;
-  display: block;
+  max-height: 500px;
   object-fit: cover;
-  height: 350px;
-  transition: transform 0.5s ease;
+  border-radius: 10px;
 }
 
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255,255,255,0.7);
+  border: none;
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
 .hero-image-container:hover .hero-image {
   transform: scale(1.05);
 }
@@ -484,8 +501,11 @@ p {
 <main>
 <section class="active" id="home">
 <div class="hero-image-container">
-<img alt="World Scholars Cup Event" class="hero-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrfdZmuVLpQVBCKvaC3hg5t4abczFOdlHaOQ&amp;s"/>
+  <button class="arrow left" onclick="changeImage(-1)">&#8592;</button>
+  <img id="hero-image" class="hero-image" src="f2c62936-3735-4da5-a96d-f4dd4f42b9e8.jpg" alt="Slide Image">
+  <button class="arrow right" onclick="changeImage(1)">&#8594;</button>
 </div>
+
 <div class="hero-text">
 <h1>WELCOME TO ISTANBUL SPITTING ALPACAS</h1>
 <h2>YOUR RESOURCE HUB FOR WORLD SCHOLARS CUP</h2>
@@ -1058,313 +1078,313 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 <div id="fall-scroll-target"></div>
 <hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
 <div class="note" data-category="If At First You Fall, Try, Try Again">
-<h2 data-start="259" data-end="315">1. The Third Rome Concept and Its Modern Implications</h2>
-<h3 data-start="317" data-end="342">Historical Background</h3>
-<ul data-start="343" data-end="763">
-    <li data-start="343" data-end="513">
-        <p data-start="345" data-end="513"><strong data-start="345" data-end="385">Filofei (16th century Russian monk):</strong> Proposed the idea that Russia is the &ldquo;Third Rome,&rdquo; following the decline of Rome (First Rome) and Constantinople (Second Rome).</p>
-    </li>
-    <li data-start="514" data-end="664">
-        <p data-start="516" data-end="664">This meant Russia saw itself as the rightful spiritual and political successor, inheriting the mantle of Orthodox Christianity and imperial destiny.</p>
-    </li>
-    <li data-start="665" data-end="763">
-        <p data-start="667" data-end="763">Implied Russia had a special role in preserving true Christian faith and authority in the world.</p>
-    </li>
+<h2>1. The Third Rome Concept and Its Modern Implications</h2>
+<h3>Historical Background</h3>
+<ul>
+<li>
+<p><strong>Filofei (16th century Russian monk):</strong> Proposed the idea that Russia is the “Third Rome,” following the decline of Rome (First Rome) and Constantinople (Second Rome).</p>
+</li>
+<li>
+<p>This meant Russia saw itself as the rightful spiritual and political successor, inheriting the mantle of Orthodox Christianity and imperial destiny.</p>
+</li>
+<li>
+<p>Implied Russia had a special role in preserving true Christian faith and authority in the world.</p>
+</li>
 </ul>
-<h3 data-start="765" data-end="801">Geopolitical Concepts to Explore</h3>
-<ul data-start="802" data-end="1754">
-    <li data-start="802" data-end="1017">
-        <p data-start="804" data-end="838"><strong data-start="804" data-end="838">Unipolarity vs. Multipolarity:</strong></p>
-        <ul data-start="841" data-end="1017">
-            <li data-start="841" data-end="914">
-                <p data-start="843" data-end="914">Unipolarity: A single dominant global power (e.g., U.S. post-Cold War).</p>
-            </li>
-            <li data-start="917" data-end="1017">
-                <p data-start="919" data-end="1017">Multipolarity: Several influential powers coexist (e.g., current rising China, EU, Russia, India).</p>
-            </li>
-        </ul>
-    </li>
-    <li data-start="1018" data-end="1190">
-        <p data-start="1020" data-end="1043"><strong data-start="1020" data-end="1043">Core vs. Periphery:</strong></p>
-        <ul data-start="1046" data-end="1190">
-            <li data-start="1046" data-end="1109">
-                <p data-start="1048" data-end="1109">Core powers hold economic, military, and political dominance.</p>
-            </li>
-            <li data-start="1112" data-end="1190">
-                <p data-start="1114" data-end="1190">Periphery regions are less powerful, often dependent or influenced by cores.</p>
-            </li>
-        </ul>
-    </li>
-    <li data-start="1191" data-end="1366">
-        <p data-start="1193" data-end="1220"><strong data-start="1193" data-end="1220">Great vs. Small Powers:</strong></p>
-        <ul data-start="1223" data-end="1366">
-            <li data-start="1223" data-end="1291">
-                <p data-start="1225" data-end="1291">Great powers influence global affairs (e.g., U.S., China, Russia).</p>
-            </li>
-            <li data-start="1294" data-end="1366">
-                <p data-start="1296" data-end="1366">Small powers have limited influence and often align with great powers.</p>
-            </li>
-        </ul>
-    </li>
-    <li data-start="1367" data-end="1550">
-        <p data-start="1369" data-end="1403"><strong data-start="1369" data-end="1403">Controlling vs. Client States:</strong></p>
-        <ul data-start="1406" data-end="1550">
-            <li data-start="1406" data-end="1465">
-                <p data-start="1408" data-end="1465">Controlling states exercise direct or indirect dominance.</p>
-            </li>
-            <li data-start="1468" data-end="1550">
-                <p data-start="1470" data-end="1550">Client states maintain some autonomy but are politically/economically dependent.</p>
-            </li>
-        </ul>
-    </li>
-    <li data-start="1551" data-end="1680">
-        <p data-start="1553" data-end="1577"><strong data-start="1553" data-end="1577">Soft vs. Hard Power:</strong></p>
-        <ul data-start="1580" data-end="1680">
-            <li data-start="1580" data-end="1625">
-                <p data-start="1582" data-end="1625">Hard power: Military and economic coercion.</p>
-            </li>
-            <li data-start="1628" data-end="1680">
-                <p data-start="1630" data-end="1680">Soft power: Cultural influence, diplomacy, values.</p>
-            </li>
-        </ul>
-    </li>
-    <li data-start="1681" data-end="1754">
-        <p data-start="1683" data-end="1706"><strong data-start="1683" data-end="1706">Foreign Assistance:</strong></p>
-        <ul data-start="1709" data-end="1754">
-            <li data-start="1709" data-end="1754">
-                <p data-start="1711" data-end="1754">Aid can build alliances or exert influence.</p>
-            </li>
-        </ul>
-    </li>
+<h3>Geopolitical Concepts to Explore</h3>
+<ul>
+<li>
+<p><strong>Unipolarity vs. Multipolarity:</strong></p>
+<ul>
+<li>
+<p>Unipolarity: A single dominant global power (e.g., U.S. post-Cold War).</p>
+</li>
+<li>
+<p>Multipolarity: Several influential powers coexist (e.g., current rising China, EU, Russia, India).</p>
+</li>
 </ul>
-<h3 data-start="1756" data-end="1784">Modern Discussion Points</h3>
-<ul data-start="1785" data-end="2064">
-    <li data-start="1785" data-end="1857">
-        <p data-start="1787" data-end="1857">Could there be a new &quot;Rome&quot; today? Would it be unipolar or multipolar?</p>
-    </li>
-    <li data-start="1858" data-end="1917">
-        <p data-start="1860" data-end="1917">What would such an empire&rsquo;s core and periphery look like?</p>
-    </li>
-    <li data-start="1918" data-end="2001">
-        <p data-start="1920" data-end="2001">Would Greenland or other territories be part of it strategically or symbolically?</p>
-    </li>
-    <li data-start="2002" data-end="2064">
-        <p data-start="2004" data-end="2064">Would a new empire be stabilizing or destabilizing globally?</p>
-    </li>
+</li>
+<li>
+<p><strong>Core vs. Periphery:</strong></p>
+<ul>
+<li>
+<p>Core powers hold economic, military, and political dominance.</p>
+</li>
+<li>
+<p>Periphery regions are less powerful, often dependent or influenced by cores.</p>
+</li>
 </ul>
-<hr data-start="2066" data-end="2069">
-<h2 data-start="2071" data-end="2115">2. The History of Empires&rsquo; Second Chances</h2>
-<h3 data-start="2117" data-end="2175">Empires that Tried to Recreate or Revive Past Glories:</h3>
-<ul data-start="2176" data-end="2930">
-    <li data-start="2176" data-end="2311">
-        <p data-start="2178" data-end="2311"><strong data-start="2178" data-end="2202">Neo-Assyrian Empire:</strong> Attempted resurgence in the early 1st millennium BCE; short-lived, tried to reassert Mesopotamian dominance.</p>
-    </li>
-    <li data-start="2312" data-end="2422">
-        <p data-start="2314" data-end="2422"><strong data-start="2314" data-end="2339">Song Dynasty (China):</strong> Tried to restore Chinese cultural and political order after earlier fragmentation.</p>
-    </li>
-    <li data-start="2423" data-end="2535">
-        <p data-start="2425" data-end="2535"><strong data-start="2425" data-end="2446">Byzantine Empire:</strong> Continuation of the Eastern Roman Empire; long-lived but struggled against Ottoman rise.</p>
-    </li>
-    <li data-start="2536" data-end="2632">
-        <p data-start="2538" data-end="2632"><strong data-start="2538" data-end="2561">Carolingian Empire:</strong> Charlemagne&rsquo;s empire aimed to revive Western Roman imperial authority.</p>
-    </li>
-    <li data-start="2633" data-end="2703">
-        <p data-start="2635" data-end="2703"><strong data-start="2635" data-end="2656">Ottonian dynasty:</strong> Attempted to restore Holy Roman Empire ideals.</p>
-    </li>
-    <li data-start="2704" data-end="2809">
-        <p data-start="2706" data-end="2809"><strong data-start="2706" data-end="2736">Meiji Restoration (Japan):</strong> Revived Japan by combining traditional imperial rule with modernization.</p>
-    </li>
-    <li data-start="2810" data-end="2930">
-        <p data-start="2812" data-end="2930"><strong data-start="2812" data-end="2830">Neo-Sovietism:</strong> Contemporary nostalgia and attempts to reassert Russia&rsquo;s post-Soviet influence reminiscent of USSR.</p>
-    </li>
+</li>
+<li>
+<p><strong>Great vs. Small Powers:</strong></p>
+<ul>
+<li>
+<p>Great powers influence global affairs (e.g., U.S., China, Russia).</p>
+</li>
+<li>
+<p>Small powers have limited influence and often align with great powers.</p>
+</li>
 </ul>
-<h3 data-start="2932" data-end="2955">Success and Failure</h3>
-<ul data-start="2956" data-end="3231">
-    <li data-start="2956" data-end="3023">
-        <p data-start="2958" data-end="3023">Most revivals fell short of original empires&rsquo; scale or influence.</p>
-    </li>
-    <li data-start="3024" data-end="3100">
-        <p data-start="3026" data-end="3100">Some regimes lasted longer than the originals, but often in changed forms.</p>
-    </li>
-    <li data-start="3101" data-end="3231">
-        <p data-start="3103" data-end="3231">Attempting to emulate past empires can lead to nationalism, modernization, or cultural renaissance &mdash; or to conflict and decline.</p>
-    </li>
+</li>
+<li>
+<p><strong>Controlling vs. Client States:</strong></p>
+<ul>
+<li>
+<p>Controlling states exercise direct or indirect dominance.</p>
+</li>
+<li>
+<p>Client states maintain some autonomy but are politically/economically dependent.</p>
+</li>
 </ul>
-<hr data-start="3233" data-end="3236">
-<h2 data-start="3238" data-end="3303">3. Reconstruction of Destroyed Buildings: Continuation or New?</h2>
-<h3 data-start="3305" data-end="3329">Examples to Consider</h3>
-<ul data-start="3330" data-end="4129">
-    <li data-start="3330" data-end="3443">
-        <p data-start="3332" data-end="3443"><strong data-start="3332" data-end="3360">Bibliotheca Alexandrina:</strong> Modern reconstruction inspired by ancient Library of Alexandria; symbolic but new.</p>
-    </li>
-    <li data-start="3444" data-end="3554">
-        <p data-start="3446" data-end="3554"><strong data-start="3446" data-end="3462">White House:</strong> Has been rebuilt and renovated several times after damage; remains continuous as U.S. seat.</p>
-    </li>
-    <li data-start="3555" data-end="3639">
-        <p data-start="3557" data-end="3639"><strong data-start="3557" data-end="3572">Notre Dame:</strong> Undergoing reconstruction after 2019 fire; debate on authenticity.</p>
-    </li>
-    <li data-start="3640" data-end="3725">
-        <p data-start="3642" data-end="3725"><strong data-start="3642" data-end="3669">Basilica of Saint Paul:</strong> Rebuilt multiple times; retains religious significance.</p>
-    </li>
-    <li data-start="3726" data-end="3790">
-        <p data-start="3728" data-end="3790"><strong data-start="3728" data-end="3740">Babylon:</strong> Archaeological ruins and partial reconstructions.</p>
-    </li>
-    <li data-start="3791" data-end="3881">
-        <p data-start="3793" data-end="3881"><strong data-start="3793" data-end="3810">Shuri Castle:</strong> Destroyed in WWII, rebuilt multiple times; symbolic Okinawan heritage.</p>
-    </li>
-    <li data-start="3882" data-end="3962">
-        <p data-start="3884" data-end="3962"><strong data-start="3884" data-end="3907">Yellow Crane Tower:</strong> Rebuilt numerous times, maintaining cultural identity.</p>
-    </li>
-    <li data-start="3963" data-end="4016">
-        <p data-start="3965" data-end="4016"><strong data-start="3965" data-end="3980">Stonehenge:</strong> Ancient, not rebuilt but preserved.</p>
-    </li>
-    <li data-start="4017" data-end="4129">
-        <p data-start="4019" data-end="4129"><strong data-start="4019" data-end="4043">Shakespeare&rsquo;s Globe:</strong> Modern reconstruction of original theatre; blends history and modern theater culture.</p>
-    </li>
+</li>
+<li>
+<p><strong>Soft vs. Hard Power:</strong></p>
+<ul>
+<li>
+<p>Hard power: Military and economic coercion.</p>
+</li>
+<li>
+<p>Soft power: Cultural influence, diplomacy, values.</p>
+</li>
 </ul>
-<h3 data-start="4131" data-end="4152">Discussion Points</h3>
-<ul data-start="4153" data-end="4338">
-    <li data-start="4153" data-end="4220">
-        <p data-start="4155" data-end="4220">Is reconstruction preserving heritage or creating a new artifact?</p>
-    </li>
-    <li data-start="4221" data-end="4263">
-        <p data-start="4223" data-end="4263">What defines authenticity in rebuilding?</p>
-    </li>
-    <li data-start="4264" data-end="4338">
-        <p data-start="4266" data-end="4338">Can the rebuilt structure hold the same cultural and historical meaning?</p>
-    </li>
+</li>
+<li>
+<p><strong>Foreign Assistance:</strong></p>
+<ul>
+<li>
+<p>Aid can build alliances or exert influence.</p>
+</li>
 </ul>
-<hr data-start="4340" data-end="4343">
-<h2 data-start="4345" data-end="4443">4. Isaac Asimov&rsquo;s Foundation Series and the Role of Knowledge Keepers in Civilization&rsquo;s Restart</h2>
-<h3 data-start="4445" data-end="4456">Premise</h3>
-<ul data-start="4457" data-end="4711">
-    <li data-start="4457" data-end="4523">
-        <p data-start="4459" data-end="4523">Galactic Empire collapsing leads to thousands of years of chaos.</p>
-    </li>
-    <li data-start="4524" data-end="4606">
-        <p data-start="4526" data-end="4606">A mathematician uses psychohistory (predictive math) to plan a shorter dark age.</p>
-    </li>
-    <li data-start="4607" data-end="4711">
-        <p data-start="4609" data-end="4711">The plan involves a secluded colony of librarians creating a grand encyclopedia to preserve knowledge.</p>
-    </li>
+</li>
 </ul>
-<h3 data-start="4713" data-end="4734">Discussion Points</h3>
-<ul data-start="4735" data-end="5118">
-    <li data-start="4735" data-end="4892">
-        <p data-start="4737" data-end="4892">Would librarians be the best choice to restart a civilization? Pros: preservation, knowledge management. Cons: lack of practical power or innovation focus?</p>
-    </li>
-    <li data-start="4893" data-end="4972">
-        <p data-start="4895" data-end="4972">If not librarians, then who? Scientists? Technocrats? Politicians? Educators?</p>
-    </li>
-    <li data-start="4973" data-end="5042">
-        <p data-start="4975" data-end="5042">How much should math and big data be trusted to predict the future?</p>
-    </li>
-    <li data-start="5043" data-end="5118">
-        <p data-start="5045" data-end="5118">Can data-driven forecasts guide policy in complex sociopolitical systems?</p>
-    </li>
+<h3>Modern Discussion Points</h3>
+<ul>
+<li>
+<p>Could there be a new "Rome" today? Would it be unipolar or multipolar?</p>
+</li>
+<li>
+<p>What would such an empire’s core and periphery look like?</p>
+</li>
+<li>
+<p>Would Greenland or other territories be part of it strategically or symbolically?</p>
+</li>
+<li>
+<p>Would a new empire be stabilizing or destabilizing globally?</p>
+</li>
 </ul>
-<hr data-start="5120" data-end="5123">
-<h2 data-start="5125" data-end="5187">5. De-Extinction of Brands and Companies: Honesty and Value</h2>
-<h3 data-start="5189" data-end="5219">Examples of Revived Brands</h3>
-<ul data-start="5220" data-end="5521">
-    <li data-start="5220" data-end="5303">
-        <p data-start="5222" data-end="5303"><strong data-start="5222" data-end="5233">Pan Am:</strong> Airline brand resurrected by private firm for luxury charter flights.</p>
-    </li>
-    <li data-start="5304" data-end="5372">
-        <p data-start="5306" data-end="5372"><strong data-start="5306" data-end="5327">Pan Am (fashion):</strong> Brand used for clothing line in South Korea.</p>
-    </li>
-    <li data-start="5373" data-end="5521">
-        <p data-start="5375" data-end="5521"><strong data-start="5375" data-end="5462">RCA, Westinghouse, Polaroid, RadioShack, Gateway, Nokia, Sansui, Eastern Air Lines:</strong> Brands revived or repurposed in new industries or markets.</p>
-    </li>
+<hr>
+<h2>2. The History of Empires’ Second Chances</h2>
+<h3>Empires that Tried to Recreate or Revive Past Glories:</h3>
+<ul>
+<li>
+<p><strong>Neo-Assyrian Empire:</strong> Attempted resurgence in the early 1st millennium BCE; short-lived, tried to reassert Mesopotamian dominance.</p>
+</li>
+<li>
+<p><strong>Song Dynasty (China):</strong> Tried to restore Chinese cultural and political order after earlier fragmentation.</p>
+</li>
+<li>
+<p><strong>Byzantine Empire:</strong> Continuation of the Eastern Roman Empire; long-lived but struggled against Ottoman rise.</p>
+</li>
+<li>
+<p><strong>Carolingian Empire:</strong> Charlemagne’s empire aimed to revive Western Roman imperial authority.</p>
+</li>
+<li>
+<p><strong>Ottonian dynasty:</strong> Attempted to restore Holy Roman Empire ideals.</p>
+</li>
+<li>
+<p><strong>Meiji Restoration (Japan):</strong> Revived Japan by combining traditional imperial rule with modernization.</p>
+</li>
+<li>
+<p><strong>Neo-Sovietism:</strong> Contemporary nostalgia and attempts to reassert Russia’s post-Soviet influence reminiscent of USSR.</p>
+</li>
 </ul>
-<h3 data-start="5523" data-end="5544">Discussion Points</h3>
-<ul data-start="5545" data-end="5828">
-    <li data-start="5545" data-end="5626">
-        <p data-start="5547" data-end="5626">Is reviving a brand without original connections dishonest or clever marketing?</p>
-    </li>
-    <li data-start="5627" data-end="5689">
-        <p data-start="5629" data-end="5689">Does the revived brand&rsquo;s legacy help or harm consumer trust?</p>
-    </li>
-    <li data-start="5690" data-end="5761">
-        <p data-start="5692" data-end="5761">Which defunct brands would you want to see revived, and in what form?</p>
-    </li>
-    <li data-start="5762" data-end="5828">
-        <p data-start="5764" data-end="5828">Could nostalgia and brand recognition be exploited or respected?</p>
-    </li>
+<h3>Success and Failure</h3>
+<ul>
+<li>
+<p>Most revivals fell short of original empires’ scale or influence.</p>
+</li>
+<li>
+<p>Some regimes lasted longer than the originals, but often in changed forms.</p>
+</li>
+<li>
+<p>Attempting to emulate past empires can lead to nationalism, modernization, or cultural renaissance — or to conflict and decline.</p>
+</li>
 </ul>
-<hr data-start="5830" data-end="5833">
-<h2 data-start="5835" data-end="5900">6. Revival of Vintage Technologies: Nostalgia vs. Practicality</h2>
-<h3 data-start="5902" data-end="5914">Examples</h3>
-<ul data-start="5915" data-end="6127">
-    <li data-start="5915" data-end="5994">
-        <p data-start="5917" data-end="5994">Disposable cameras, handheld gaming devices, vinyl records, film photography.</p>
-    </li>
-    <li data-start="5995" data-end="6070">
-        <p data-start="5997" data-end="6070">Shortwave radio, AM radio, pagers, magnetic tape storage, physical media.</p>
-    </li>
-    <li data-start="6071" data-end="6127">
-        <p data-start="6073" data-end="6127">3.5-inch floppy disks as novelty or collectible items.</p>
-    </li>
+<hr>
+<h2>3. Reconstruction of Destroyed Buildings: Continuation or New?</h2>
+<h3>Examples to Consider</h3>
+<ul>
+<li>
+<p><strong>Bibliotheca Alexandrina:</strong> Modern reconstruction inspired by ancient Library of Alexandria; symbolic but new.</p>
+</li>
+<li>
+<p><strong>White House:</strong> Has been rebuilt and renovated several times after damage; remains continuous as U.S. seat.</p>
+</li>
+<li>
+<p><strong>Notre Dame:</strong> Undergoing reconstruction after 2019 fire; debate on authenticity.</p>
+</li>
+<li>
+<p><strong>Basilica of Saint Paul:</strong> Rebuilt multiple times; retains religious significance.</p>
+</li>
+<li>
+<p><strong>Babylon:</strong> Archaeological ruins and partial reconstructions.</p>
+</li>
+<li>
+<p><strong>Shuri Castle:</strong> Destroyed in WWII, rebuilt multiple times; symbolic Okinawan heritage.</p>
+</li>
+<li>
+<p><strong>Yellow Crane Tower:</strong> Rebuilt numerous times, maintaining cultural identity.</p>
+</li>
+<li>
+<p><strong>Stonehenge:</strong> Ancient, not rebuilt but preserved.</p>
+</li>
+<li>
+<p><strong>Shakespeare’s Globe:</strong> Modern reconstruction of original theatre; blends history and modern theater culture.</p>
+</li>
 </ul>
-<h3 data-start="6129" data-end="6164">Why Do Some Products Come Back?</h3>
-<ul data-start="6165" data-end="6340">
-    <li data-start="6165" data-end="6210">
-        <p data-start="6167" data-end="6210">Nostalgia for tactile or analog experience.</p>
-    </li>
-    <li data-start="6211" data-end="6242">
-        <p data-start="6213" data-end="6242">Aesthetic or cultural appeal.</p>
-    </li>
-    <li data-start="6243" data-end="6301">
-        <p data-start="6245" data-end="6301">Simplicity or unique limitations that foster creativity.</p>
-    </li>
-    <li data-start="6302" data-end="6340">
-        <p data-start="6304" data-end="6340">Reaction against digital saturation.</p>
-    </li>
+<h3>Discussion Points</h3>
+<ul>
+<li>
+<p>Is reconstruction preserving heritage or creating a new artifact?</p>
+</li>
+<li>
+<p>What defines authenticity in rebuilding?</p>
+</li>
+<li>
+<p>Can the rebuilt structure hold the same cultural and historical meaning?</p>
+</li>
 </ul>
-<h3 data-start="6342" data-end="6363">Discussion Points</h3>
-<ul data-start="6364" data-end="6554">
-    <li data-start="6364" data-end="6437">
-        <p data-start="6366" data-end="6437">When do older, less capable technologies feel preferable to newer ones?</p>
-    </li>
-    <li data-start="6438" data-end="6507">
-        <p data-start="6440" data-end="6507">Is the resurgence driven by community, culture, or genuine utility?</p>
-    </li>
-    <li data-start="6508" data-end="6554">
-        <p data-start="6510" data-end="6554">What might future &quot;vintage&quot; technologies be?</p>
-    </li>
+<hr>
+<h2>4. Isaac Asimov’s Foundation Series and the Role of Knowledge Keepers in Civilization’s Restart</h2>
+<h3>Premise</h3>
+<ul>
+<li>
+<p>Galactic Empire collapsing leads to thousands of years of chaos.</p>
+</li>
+<li>
+<p>A mathematician uses psychohistory (predictive math) to plan a shorter dark age.</p>
+</li>
+<li>
+<p>The plan involves a secluded colony of librarians creating a grand encyclopedia to preserve knowledge.</p>
+</li>
 </ul>
-<hr data-start="6556" data-end="6559">
-<h2 data-start="6561" data-end="6631">7. Artistic and Musical De-Extinction: Old Music Killing New Music?</h2>
-<h3 data-start="6633" data-end="6651">Considerations</h3>
-<ul data-start="6652" data-end="6913">
-    <li data-start="6652" data-end="6713">
-        <p data-start="6654" data-end="6713">Revival of classical, vinyl-era, and retro styles in music.</p>
-    </li>
-    <li data-start="6714" data-end="6777">
-        <p data-start="6716" data-end="6777">Sampling and remixing old music as foundation for new genres.</p>
-    </li>
-    <li data-start="6778" data-end="6847">
-        <p data-start="6780" data-end="6847">Commercial dominance of nostalgic or legacy artists vs. new talent.</p>
-    </li>
-    <li data-start="6848" data-end="6913">
-        <p data-start="6850" data-end="6913">Whether audiences&rsquo; preferences for old styles limit innovation.</p>
-    </li>
+<h3>Discussion Points</h3>
+<ul>
+<li>
+<p>Would librarians be the best choice to restart a civilization? Pros: preservation, knowledge management. Cons: lack of practical power or innovation focus?</p>
+</li>
+<li>
+<p>If not librarians, then who? Scientists? Technocrats? Politicians? Educators?</p>
+</li>
+<li>
+<p>How much should math and big data be trusted to predict the future?</p>
+</li>
+<li>
+<p>Can data-driven forecasts guide policy in complex sociopolitical systems?</p>
+</li>
 </ul>
-<h3 data-start="6915" data-end="6936">Discussion Points</h3>
-<ul data-start="6937" data-end="7118">
-    <li data-start="6937" data-end="6989">
-        <p data-start="6939" data-end="6989">Is old music overshadowing or inspiring new music?</p>
-    </li>
-    <li data-start="6990" data-end="7054">
-        <p data-start="6992" data-end="7054">Does recycling old art inhibit creativity or preserve culture?</p>
-    </li>
-    <li data-start="7055" data-end="7118">
-        <p data-start="7057" data-end="7118">How do streaming algorithms and media influence these trends?</p>
-    </li>
+<hr>
+<h2>5. De-Extinction of Brands and Companies: Honesty and Value</h2>
+<h3>Examples of Revived Brands</h3>
+<ul>
+<li>
+<p><strong>Pan Am:</strong> Airline brand resurrected by private firm for luxury charter flights.</p>
+</li>
+<li>
+<p><strong>Pan Am (fashion):</strong> Brand used for clothing line in South Korea.</p>
+</li>
+<li>
+<p><strong>RCA, Westinghouse, Polaroid, RadioShack, Gateway, Nokia, Sansui, Eastern Air Lines:</strong> Brands revived or repurposed in new industries or markets.</p>
+</li>
 </ul>
-<hr data-start="7120" data-end="7123">
-<h1 data-start="7125" data-end="7134">Summary</h1>
-<p data-start="7136" data-end="7497">This comprehensive note explores a spectrum of themes from imperial legacy and geopolitical theory to cultural reconstruction, knowledge preservation, brand resurrection, technology nostalgia, and artistic cycles. Each topic invites deep consideration of history&rsquo;s role in shaping present and future dynamics, and the tensions between continuity and innovation.</p>
+<h3>Discussion Points</h3>
+<ul>
+<li>
+<p>Is reviving a brand without original connections dishonest or clever marketing?</p>
+</li>
+<li>
+<p>Does the revived brand’s legacy help or harm consumer trust?</p>
+</li>
+<li>
+<p>Which defunct brands would you want to see revived, and in what form?</p>
+</li>
+<li>
+<p>Could nostalgia and brand recognition be exploited or respected?</p>
+</li>
+</ul>
+<hr>
+<h2>6. Revival of Vintage Technologies: Nostalgia vs. Practicality</h2>
+<h3>Examples</h3>
+<ul>
+<li>
+<p>Disposable cameras, handheld gaming devices, vinyl records, film photography.</p>
+</li>
+<li>
+<p>Shortwave radio, AM radio, pagers, magnetic tape storage, physical media.</p>
+</li>
+<li>
+<p>3.5-inch floppy disks as novelty or collectible items.</p>
+</li>
+</ul>
+<h3>Why Do Some Products Come Back?</h3>
+<ul>
+<li>
+<p>Nostalgia for tactile or analog experience.</p>
+</li>
+<li>
+<p>Aesthetic or cultural appeal.</p>
+</li>
+<li>
+<p>Simplicity or unique limitations that foster creativity.</p>
+</li>
+<li>
+<p>Reaction against digital saturation.</p>
+</li>
+</ul>
+<h3>Discussion Points</h3>
+<ul>
+<li>
+<p>When do older, less capable technologies feel preferable to newer ones?</p>
+</li>
+<li>
+<p>Is the resurgence driven by community, culture, or genuine utility?</p>
+</li>
+<li>
+<p>What might future "vintage" technologies be?</p>
+</li>
+</ul>
+<hr>
+<h2>7. Artistic and Musical De-Extinction: Old Music Killing New Music?</h2>
+<h3>Considerations</h3>
+<ul>
+<li>
+<p>Revival of classical, vinyl-era, and retro styles in music.</p>
+</li>
+<li>
+<p>Sampling and remixing old music as foundation for new genres.</p>
+</li>
+<li>
+<p>Commercial dominance of nostalgic or legacy artists vs. new talent.</p>
+</li>
+<li>
+<p>Whether audiences’ preferences for old styles limit innovation.</p>
+</li>
+</ul>
+<h3>Discussion Points</h3>
+<ul>
+<li>
+<p>Is old music overshadowing or inspiring new music?</p>
+</li>
+<li>
+<p>Does recycling old art inhibit creativity or preserve culture?</p>
+</li>
+<li>
+<p>How do streaming algorithms and media influence these trends?</p>
+</li>
+</ul>
+<hr>
+<h1>Summary</h1>
+<p>This comprehensive note explores a spectrum of themes from imperial legacy and geopolitical theory to cultural reconstruction, knowledge preservation, brand resurrection, technology nostalgia, and artistic cycles. Each topic invites deep consideration of history’s role in shaping present and future dynamics, and the tensions between continuity and innovation.</p>
 <p><br></p>
 </div>
 <!-- Things Really Do Catch Fire -->
@@ -1677,139 +1697,95 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 <hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
 <div class="note" data-category="Entertaining Ourselves Back To Life">
 <h2>1. The Prophesied Return: From Myth to Politics</h2>
-  <p>In Tolkien’s <strong>The Return of the King</strong>, Aragorn’s return unites the fractured kingdoms of men against darkness. But this is far from the only story where a noble figure re-emerges to restore unity, peace, or hope.</p>
-
-  <h3>Examples of "Return" Figures</h3>
-  <ul>
-    <li><strong>Horus</strong> (Egyptian mythology): Avenger of Osiris, symbol of rightful kingship.</li>
-    <li><strong>Yudhishthira</strong> (Mahabharata): Exiled king who returns to claim his throne and restore dharma.</li>
-    <li><strong>Jesus</strong> (Christian tradition): Promised messiah who will return to bring divine justice and salvation.</li>
-    <li><strong>King Arthur</strong> (British legend): Said to return in England’s hour of greatest need.</li>
-    <li><strong>Richard the Lionheart</strong>: Symbol of crusader kinghood; mythologized return from captivity.</li>
-    <li><strong>Charles II & Louis XVIII</strong>: Monarchs restored after periods of revolutionary rule.</li>
-    <li><strong>Henry VII</strong>: Rose from exile to found the Tudor dynasty.</li>
-    <li><strong>Juan Carlos I</strong>: Returned Spain to democracy after Franco’s dictatorship.</li>
-    <li><strong>Rodrigo Belmonte</strong> (in <em>El Cid</em>): Military hero who symbolizes honor and justice.</li>
-    <li><strong>Prince Caspian</strong> (C.S. Lewis): Returns from obscurity to restore the Narnian line.</li>
-    <li><strong>The Hobbit / Kimba the White Lion</strong>: Thematic use of royal return to restore balance.</li>
-  </ul>
-
-  <h3>Discussion:</h3>
-  <ul>
-    <li>Why do these stories persist? They address cultural longings for legitimacy, unity, and moral clarity.</li>
-    <li>Modern parallels: Taylor Swift reclaiming her music, returning exiled politicians, spiritual figures like the Dalai Lama.</li>
-    <li>Could AI or deepfake tech symbolically “resurrect” leaders or artists?</li>
-  </ul>
-
-  <h2>2. Comebacks and Second Acts: When Failure Isn't Final</h2>
-  <h3>Triumphant Returnees</h3>
-  <ul>
-    <li><strong>Dante</strong>: Exiled, wrote <em>The Divine Comedy</em>, redefining literature.</li>
-    <li><strong>Confucius</strong>: Politically ignored, later revered worldwide.</li>
-    <li><strong>Friedrich Engels</strong>: Preserved Marx’s work and legacy.</li>
-    <li><strong>Albert Einstein</strong>: Revitalized science after escaping fascism.</li>
-  </ul>
-
-  <h3>Failed Comebacks</h3>
-  <ul>
-    <li><strong>Napoleon</strong>: Returned from Elba only to be defeated at Waterloo.</li>
-    <li><strong>Leon Trotsky</strong>: Exiled, prolific, but ultimately failed to reclaim power.</li>
-    <li><strong>Jimmy Carter</strong>: From a criticized president to global humanitarian.</li>
-    <li><strong>Belarus Free Theatre</strong>: Repressed at home, praised abroad.</li>
-    <li><strong>An-My Lê</strong>: Exile turned into artistic success.</li>
-    <li><strong>Sun Mu</strong>: Political defector using art as protest.</li>
-  </ul>
-
-  <h3>Discussion:</h3>
-  <ul>
-    <li>Comebacks succeed when timing and public sentiment align.</li>
-    <li>When is a second act too late—or too early?</li>
-  </ul>
-
-  <h2>3. Posthumous Fame: Reigniting a Legacy</h2>
-  <blockquote>“Funny when you're dead how people start listenin’.” — The Band Perry</blockquote>
-
-  <h3>Now-Famous After Death</h3>
-  <ul>
-    <li><strong>Vincent van Gogh</strong>: Iconic posthumously.</li>
-    <li><strong>Gregor Mendel</strong>: Father of genetics, unnoticed during life.</li>
-    <li><strong>Alfred Wegener</strong>: Vindicated after death.</li>
-    <li><strong>Emily Dickinson</strong>: Nearly unpublished in life; now essential.</li>
-    <li><strong>Franz Kafka</strong>: Wanted his work destroyed; now canonized.</li>
-    <li><strong>Anne Frank</strong>: Her diary became a global symbol of hope and tragedy.</li>
-    <li><strong>Vivian Maier</strong>: Secret photographer revealed by chance.</li>
-    <li><strong>Otis Redding, Jim Croce, Nick Drake</strong>: Beloved after early deaths.</li>
-  </ul>
-
-  <h3>Discussion:</h3>
-  <ul>
-    <li>Should we focus more on supporting living creators?</li>
-    <li>Does death create myth—or highlight truth?</li>
-  </ul>
-
-  <h2>4. Re-recording, Rewriting, Reviving</h2>
-  <h3>The Taylor Swift Effect</h3>
-  <ul>
-    <li>“Taylor’s Version” albums reclaimed artistic ownership.</li>
-    <li>Same songs, new meaning—both commercial and symbolic.</li>
-  </ul>
-
-  <h3>Discussion:</h3>
-  <ul>
-    <li>When is the right time to remake a work?</li>
-    <li>Should permission always be required?</li>
-    <li>Can a remake enhance or erase an original?</li>
-  </ul>
-
-  <h2>5. Digital Doubles and Virtual Voices</h2>
-  <ul>
-    <li><strong>Porter Robinson’s “Po-uta”</strong>: Vocaloid version of his own voice.</li>
-    <li>Hollywood actors now license AI clones of themselves.</li>
-  </ul>
-
-  <h3>Discussion:</h3>
-  <ul>
-    <li>Does authorship matter in AI-generated art?</li>
-    <li>Would an “AI-Beethoven” symphony still be Beethoven?</li>
-    <li>Can clones ever fully replace human creativity?</li>
-  </ul>
-
-  <h2>6. The “Unfinished”: Completing the Work of the Dead</h2>
-  <h3>Beethoven’s 10th Symphony</h3>
-  <ul>
-    <li><strong>Barry Cooper’s version (1990s)</strong>: Human-led speculation.</li>
-    <li><strong>AI version (2021)</strong>: Data + sketches = completion.</li>
-  </ul>
-
-  <h3>Discussion:</h3>
-  <ul>
-    <li>Which feels more authentic?</li>
-    <li>What unfinished works would you want to see completed?</li>
-  </ul>
-
-  <h2>7. Open Creation and the Power of the Public</h2>
-  <ul>
-    <li><strong>EPIC: The Musical</strong> – Jorge Rivera-Herrans shared every step on TikTok.</li>
-    <li>Mixes Homer’s myth with modern music and storytelling.</li>
-    <li>Sample: “Wouldn’t You Like” – Hermes as disco god.</li>
-  </ul>
-
-  <h3>Discussion:</h3>
-  <ul>
-    <li>Should more creators involve the public during development?</li>
-    <li>What do we gain—or lose—from collaborative storytelling?</li>
-  </ul>
-
-  <h2>Summary: The Return, The Revision, The Resurrection</h2>
-  <p>Whether it’s Aragorn reclaiming the throne or Taylor Swift reclaiming her discography, the theme of return—from exile, from death, from silence—resonates across history, myth, politics, and art.</p>
-
-  <h3>These stories ask timeless questions:</h3>
-  <ul>
-    <li>What is worth reviving?</li>
-    <li>Who has the right to return—or rewrite?</li>
-    <li>Is authenticity a feeling, a fact, or a function of legacy?</li>
-  </ul>
-
+<p>In Tolkien’s <strong>The Return of the King</strong>, Aragorn’s return unites the fractured kingdoms of men against darkness. But this is far from the only story where a noble figure re-emerges to restore unity, peace, or hope.</p>
+<h3>Examples of "Return" Figures</h3>
+<p><strong>Horus</strong> (Egyptian mythology): Avenger of Osiris, symbol of rightful kingship.</p>
+<p><strong>Yudhishthira</strong> (Mahabharata): Exiled king who returns to claim his throne and restore dharma.</p>
+<p><strong>Jesus</strong> (Christian tradition): Promised messiah who will return to bring divine justice and salvation.</p>
+<p><strong>King Arthur</strong> (British legend): Said to return in England’s hour of greatest need.</p>
+<p><strong>Richard the Lionheart</strong>: Symbol of crusader kinghood; mythologized return from captivity.</p>
+<p><strong>Charles II & Louis XVIII</strong>: Monarchs restored after periods of revolutionary rule.</p>
+<p><strong>Henry VII</strong>: Rose from exile to found the Tudor dynasty.</p>
+<p><strong>Juan Carlos I</strong>: Returned Spain to democracy after Franco’s dictatorship.</p>
+<p><strong>Rodrigo Belmonte</strong> (in <em>El Cid</em>): Military hero who symbolizes honor and justice.</p>
+<p><strong>Prince Caspian</strong> (C.S. Lewis): Returns from obscurity to restore the Narnian line.</p>
+<p><strong>The Hobbit / Kimba the White Lion</strong>: Thematic use of royal return to restore balance.</p>
+<h3>Discussion:</h3>
+<p>Why do these stories persist? They address cultural longings for legitimacy, unity, and moral clarity.</p>
+<p>Modern parallels: Taylor Swift reclaiming her music, returning exiled politicians, spiritual figures like the Dalai Lama.</p>
+<p>Could AI or deepfake tech symbolically “resurrect” leaders or artists?</p>
+<hr>
+<h2>2. Comebacks and Second Acts: When Failure Isn't Final</h2>
+<h3>Triumphant Returnees</h3>
+<p><strong>Dante</strong>: Exiled, wrote <em>The Divine Comedy</em>, redefining literature.</p>
+<p><strong>Confucius</strong>: Politically ignored, later revered worldwide.</p>
+<p><strong>Friedrich Engels</strong>: Preserved Marx’s work and legacy.</p>
+<p><strong>Albert Einstein</strong>: Revitalized science after escaping fascism.</p>
+<h3>Failed Comebacks</h3>
+<p><strong>Napoleon</strong>: Returned from Elba only to be defeated at Waterloo.</p>
+<p><strong>Leon Trotsky</strong>: Exiled, prolific, but ultimately failed to reclaim power.</p>
+<p><strong>Jimmy Carter</strong>: From a criticized president to global humanitarian.</p>
+<p><strong>Belarus Free Theatre</strong>: Repressed at home, praised abroad.</p>
+<p><strong>An-My Lê</strong>: Exile turned into artistic success.</p>
+<p><strong>Sun Mu</strong>: Political defector using art as protest.</p>
+<h3>Discussion:</h3>
+<p>Comebacks succeed when timing and public sentiment align.</p>
+<p>When is a second act too late—or too early?</p>
+<hr>
+<h2>3. Posthumous Fame: Reigniting a Legacy</h2>
+<p>“Funny when you're dead how people start listenin’.” — The Band Perry</p>
+<h3>Now-Famous After Death</h3>
+<p><strong>Vincent van Gogh</strong>: Iconic posthumously.</p>
+<p><strong>Gregor Mendel</strong>: Father of genetics, unnoticed during life.</p>
+<p><strong>Alfred Wegener</strong>: Vindicated after death.</p>
+<p><strong>Emily Dickinson</strong>: Nearly unpublished in life; now essential.</p>
+<p><strong>Franz Kafka</strong>: Wanted his work destroyed; now canonized.</p>
+<p><strong>Anne Frank</strong>: Her diary became a global symbol of hope and tragedy.</p>
+<p><strong>Vivian Maier</strong>: Secret photographer revealed by chance.</p>
+<p><strong>Otis Redding, Jim Croce, Nick Drake</strong>: Beloved after early deaths.</p>
+<h3>Discussion:</h3>
+<p>Should we focus more on supporting living creators?</p>
+<p>Does death create myth—or highlight truth?</p>
+<hr>
+<h2>4. Re-recording, Rewriting, Reviving</h2>
+<h3>The Taylor Swift Effect</h3>
+<p>“Taylor’s Version” albums reclaimed artistic ownership.</p>
+<p>Same songs, new meaning—both commercial and symbolic.</p>
+<h3>Discussion:</h3>
+<p>When is the right time to remake a work?</p>
+<p>Should permission always be required?</p>
+<p>Can a remake enhance or erase an original?</p>
+<hr>
+<h2>5. Digital Doubles and Virtual Voices</h2>
+<p><strong>Porter Robinson’s “Po-uta”</strong>: Vocaloid version of his own voice.</p>
+<p>Hollywood actors now license AI clones of themselves.</p>
+<h3>Discussion:</h3>
+<p>Does authorship matter in AI-generated art?</p>
+<p>Would an “AI-Beethoven” symphony still be Beethoven?</p>
+<p>Can clones ever fully replace human creativity?</p>
+<hr>
+<h2>6. The “Unfinished”: Completing the Work of the Dead</h2>
+<h3>Beethoven’s 10th Symphony</h3>
+<p><strong>Barry Cooper’s version (1990s)</strong>: Human-led speculation.</p>
+<p><strong>AI version (2021)</strong>: Data + sketches = completion.</p>
+<h3>Discussion:</h3>
+<p>Which feels more authentic?</p>
+<p>What unfinished works would you want to see completed?</p>
+<hr>
+<h2>7. Open Creation and the Power of the Public</h2>
+<p><strong>EPIC: The Musical</strong> – Jorge Rivera-Herrans shared every step on TikTok.</p>
+<p>Mixes Homer’s myth with modern music and storytelling.</p>
+<p>Sample: “Wouldn’t You Like” – Hermes as disco god.</p>
+<h3>Discussion:</h3>
+<p>Should more creators involve the public during development?</p>
+<p>What do we gain—or lose—from collaborative storytelling?</p>
+<hr>
+<h2>Summary: The Return, The Revision, The Resurrection</h2>
+<p>Whether it’s Aragorn reclaiming the throne or Taylor Swift reclaiming her discography, the theme of return—from exile, from death, from silence—resonates across history, myth, politics, and art.</p>
+<h3>These stories ask timeless questions:</h3>
+<p>What is worth reviving?</p>
+<p>Who has the right to return—or rewrite?</p>
+<p>Is authenticity a feeling, a fact, or a function of legacy?</p>
 </body>
 </div>
 
@@ -1881,138 +1857,93 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 <div id="ignite-scroll-target"></div>
 <hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
 <div class="note" data-category="Much Excite, Much Ignite">
-
 <strong>Long Wars</strong>
-<ul>
-  <li><b>War Of Roses:</b> Lancaster vs. York over English throne. Red & white roses represented each side. Lancaster won.</li>
-  <li><b>100 Years War:</b> England vs. France. Fought over French throne and territory. France won.</li>
-  <li><b>Mongol Invasions:</b> Led by Genghis Khan. Expanded into Africa, Asia, and Europe. <em>Note from Güney: WSC loves Mongols!</em></li>
-  <li><b>Punic Wars:</b> Rome vs. Carthage. Rome won, rising as ancient superpower.</li>
-  <li><b>335 Years War:</b> Netherlands vs. Sicily. No battles. Forgotten until peace signed.</li>
-</ul>
-
+<p><b>War Of Roses:</b> Lancaster vs. York over English throne. Red & white roses represented each side. Lancaster won.</p>
+<p><b>100 Years War:</b> England vs. France. Fought over French throne and territory. France won.</p>
+<p><b>Mongol Invasions:</b> Led by Genghis Khan. Expanded into Africa, Asia, and Europe. <em>Note from Güney: WSC loves Mongols!</em></p>
+<p><b>Punic Wars:</b> Rome vs. Carthage. Rome won, rising as ancient superpower.</p>
+<p><b>335 Years War:</b> Netherlands vs. Sicily. No battles. Forgotten until peace signed.</p>
 <strong>Things Can Explode Sometimes</strong>
-<ul>
-  <li><b>Mount Vesuvius (79 AD):</b> Gas-rich magma buried Pompeii & Herculaneum.</li>
-  <li><b>Huaynaputina (1600):</b> VEI-6 silica blast caused global cooling.</li>
-  <li><b>Unzen Dake (1991):</b> Dome collapse triggered pyroclastic flows.</li>
-  <li><b>Tambora (1815):</b> VEI-7. Caused "Year Without a Summer."</li>
-  <li><b>Krakatoa (1883):</b> Sea-magma blast triggered tsunamis.</li>
-  <li><b>Lake Nyos (1986):</b> CO₂ release suffocated 1,700+ people.</li>
-  <li><b>Mount St. Helens (1980):</b> Landslide and lateral blast.</li>
-  <li><b>Eyjafjallajökull (2010):</b> Magma-ice interaction disrupted air travel.</li>
-  <li><b>Hunga Tonga-Hunga Haʻapai (2022):</b> Underwater eruption caused tsunamis.</li>
-  <li><b>Yellowstone (Historic):</b> Shaped climate and topography during supereruptions.</li>
-</ul>
-
+<p><b>Mount Vesuvius (79 AD):</b> Gas-rich magma buried Pompeii & Herculaneum.</p>
+<p><b>Huaynaputina (1600):</b> VEI-6 silica blast caused global cooling.</p>
+<p><b>Unzen Dake (1991):</b> Dome collapse triggered pyroclastic flows.</p>
+<p><b>Tambora (1815):</b> VEI-7. Caused "Year Without a Summer."</p>
+<p><b>Krakatoa (1883):</b> Sea-magma blast triggered tsunamis.</p>
+<p><b>Lake Nyos (1986):</b> CO₂ release suffocated 1,700+ people.</p>
+<p><b>Mount St. Helens (1980):</b> Landslide and lateral blast.</p>
+<p><b>Eyjafjallajökull (2010):</b> Magma-ice interaction disrupted air travel.</p>
+<p><b>Hunga Tonga-Hunga Haʻapai (2022):</b> Underwater eruption caused tsunamis.</p>
+<p><b>Yellowstone (Historic):</b> Shaped climate and topography during supereruptions.</p>
 <strong>Explosion Patterns</strong>
-<ul>
-  <li><b>Key Factors:</b> Gas pressure, magma viscosity, water contact, chamber buildup.</li>
-</ul>
-
+<p><b>Key Factors:</b> Gas pressure, magma viscosity, water contact, chamber buildup.</p>
 <strong>Types of Eruptions</strong>
-<ul>
-  <li><b>Effusive:</b> Lava flows steadily (e.g., Kīlauea).</li>
-  <li><b>Explosive:</b> Blasts from gas pressure (e.g., Tambora).</li>
-  <li><b>Phreatomagmatic:</b> Magma meets water (e.g., Krakatoa).</li>
-  <li><b>Supereruption:</b> Massive global-impact (e.g., Yellowstone).</li>
-</ul>
-
+<p><b>Effusive:</b> Lava flows steadily (e.g., Kīlauea).</p>
+<p><b>Explosive:</b> Blasts from gas pressure (e.g., Tambora).</p>
+<p><b>Phreatomagmatic:</b> Magma meets water (e.g., Krakatoa).</p>
+<p><b>Supereruption:</b> Massive global-impact (e.g., Yellowstone).</p>
 <strong>Engine History</strong>
-<ul>
-  <li><b>Internal Combustion (1680):</b> Fuel burns in chamber to move pistons.</li>
-  <li><b>Heat Engine (1698):</b> Turns heat into mechanical work.</li>
-  <li><b>Gas Turbine (1791):</b> Compress + ignite air-fuel for thrust.</li>
-  <li><b>Wankel Rotary (1924):</b> Spins a triangular rotor instead of pistons.</li>
-  <li><b>Otto Engine (1861):</b> Four-stroke combustion cycle.</li>
-  <li><b>Reciprocating Piston (1876):</b> Up-down piston motion converts energy.</li>
-</ul>
-
+<p><b>Internal Combustion (1680):</b> Fuel burns in chamber to move pistons.</p>
+<p><b>Heat Engine (1698):</b> Turns heat into mechanical work.</p>
+<p><b>Gas Turbine (1791):</b> Compress + ignite air-fuel for thrust.</p>
+<p><b>Wankel Rotary (1924):</b> Spins a triangular rotor instead of pistons.</p>
+<p><b>Otto Engine (1861):</b> Four-stroke combustion cycle.</p>
+<p><b>Reciprocating Piston (1876):</b> Up-down piston motion converts energy.</p>
 <strong>Engine Types</strong>
-<ul>
-  <li><b>Rotary:</b> Continuous power using spinning rotors.</li>
-  <li><b>Continuous Combustion:</b> Constant fuel burn for uninterrupted power.</li>
-</ul>
-
+<p><b>Rotary:</b> Continuous power using spinning rotors.</p>
+<p><b>Continuous Combustion:</b> Constant fuel burn for uninterrupted power.</p>
 <strong>Fuel Types</strong>
-<ul>
-  <li><b>Hydrocarbon:</b> Standard transport/power fuel.</li>
-  <li><b>Diesel:</b> Heavy machinery and vehicles.</li>
-  <li><b>ETBE:</b> Oxygen-rich additive to clean gasoline.</li>
-  <li><b>Biodiesel:</b> Biomass-based renewable fuel.</li>
-  <li><b>Bioethanol:</b> Alcohol fuel from plant biomass.</li>
-  <li><b>Hydrogen:</b> Clean fuel from water/air.</li>
-</ul>
-
+<p><b>Hydrocarbon:</b> Standard transport/power fuel.</p>
+<p><b>Diesel:</b> Heavy machinery and vehicles.</p>
+<p><b>ETBE:</b> Oxygen-rich additive to clean gasoline.</p>
+<p><b>Biodiesel:</b> Biomass-based renewable fuel.</p>
+<p><b>Bioethanol:</b> Alcohol fuel from plant biomass.</p>
+<p><b>Hydrogen:</b> Clean fuel from water/air.</p>
 </div>
-
 <div id="imagination-scroll-target"></div>
 <hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
 <div class="note" data-category="The Generative Area: A Mind for Imagination">
-
-  <strong>How Imagination Works</strong>
-  <ul>
-    <li><b>Memory:</b> Stores and retrieves info. Essential for learning, decisions, and imagination.</li>
-    <li><b>Mental Imagery:</b> Simulates senses without input (e.g., visualizing a beach).</li>
-    <li><b>Perception:</b> Interprets sensory info to build real-time understanding.</li>
-    <li><b>World View:</b> Life perspective shaped by beliefs, culture, and experience.</li>
-  </ul>
-
-  <strong>Brain Structures</strong>
-  <ul>
-    <li><b>Neocortex:</b> Controls logic, language, and conscious thought.</li>
-    <li><b>Thalamus:</b> Routes sensory signals and aids consciousness.</li>
-    <li><b>Prefrontal Cortex:</b> Manages decisions, planning, and imagination.</li>
-    <li><b>REM Sleep:</b> Dream-rich phase tied to creativity and memory.</li>
-  </ul>
-
-  <strong>Hallucination vs. Imagination</strong>
-  <ul>
-    <li><b>Hallucination:</b> Involuntary sensory experience with no input.</li>
-    <li><b>Imagination:</b> Controlled mental simulation; we know it's not real.</li>
-    <li><b>Simulation:</b> Rehearsing actions mentally (e.g., speeches).</li>
-    <li><b>Daydreaming:</b> Spontaneous drifting into inner worlds.</li>
-  </ul>
-
-  <strong>Psychoactive Effects</strong>
-  <ul>
-    <li><b>Psychedelics:</b> LSD, shrooms cause vivid mental imagery.</li>
-    <li><b>Cannabis:</b> Boosts creativity but may blur focus.</li>
-    <li><b>Ketamine:</b> Induces dream-like imaginative states.</li>
-    <li><b>MDMA:</b> Enhances emotional openness and reflection.</li>
-    <li><b>Microdosing:</b> May aid creativity without strong effects.</li>
-  </ul>
-
-  <strong>Boosting Imagination</strong>
-  <ul>
-    <li><b>Active Imagination:</b> Jung’s method of inner dialogue.</li>
-    <li><b>Hypnagogia:</b> Creativity-rich state before sleep (used by Edison & Dalí).</li>
-    <li><b>Mind Wandering:</b> Letting thoughts drift to spark ideas.</li>
-    <li><b>Hypnosis:</b> Focused suggestive state for creativity and therapy.</li>
-    <li><b>Meditation:</b> Trains attention; activates the default mode network.</li>
-    <li><b>Psychological Distance:</b> Abstract/distant thinking sparks new views.</li>
-    <li><b>Nature:</b> Walking boosts focus, mood, and flexible thinking.</li>
-    <li><b>Novelty:</b> New experiences increase dopamine and adaptability.</li>
-  </ul>
-
-  <strong>Constrained Poetry</strong>
-  <ul>
-    <li><b>Yuen Ren Chao – “Lion-Eating Poet”:</b> Chinese poem using only "shi" in different tones.</li>
-    <li><b>Marianne Moore – “No Swan So Fine”:</b> Precise, syllabic form contrasting beauty and artifice.</li>
-    <li><b>Ernest V. Wright – Gadsby:</b> Entire novel written without using the letter “E.”</li>
-    <li><b>Dylan Thomas – “Do Not Go Gentle...”:</b> Villanelle with emotional, structured repetition.</li>
-    <li><b>Kimiko Hahn – “[the whale already]”:</b> Scientific terms + fragmented structure = modern complexity.</li>
-  </ul>
-
-  <strong>Imagination in Music</strong>
-  <ul>
-    <li><b>Tommy Dorsey – “Imagination”:</b> Longing and dreamscape through romanticized imagination.</li>
-    <li><b>Gene Wilder – “Pure Imagination”:</b> From *Willy Wonka*, invites limitless creativity.</li>
-    <li><b>John Lennon – “Imagine”:</b> Peaceful vision of a united, borderless world.</li>
-    <li><b>Evanescence – “Imaginary”:</b> Inner world as a personal refuge from reality.</li>
-    <li><b>Mary Poppins – “Can You Imagine That?”:</b> Whimsy and resilience through fantasy thinking.</li>
-  </ul>
-
+<strong>How Imagination Works</strong>
+<p><b>Memory:</b> Stores and retrieves info. Essential for learning, decisions, and imagination.</p>
+<p><b>Mental Imagery:</b> Simulates senses without input (e.g., visualizing a beach).</p>
+<p><b>Perception:</b> Interprets sensory info to build real-time understanding.</p>
+<p><b>World View:</b> Life perspective shaped by beliefs, culture, and experience.</p>
+<strong>Brain Structures</strong>
+<p><b>Neocortex:</b> Controls logic, language, and conscious thought.</p>
+<p><b>Thalamus:</b> Routes sensory signals and aids consciousness.</p>
+<p><b>Prefrontal Cortex:</b> Manages decisions, planning, and imagination.</p>
+<p><b>REM Sleep:</b> Dream-rich phase tied to creativity and memory.</p>
+<strong>Hallucination vs. Imagination</strong>
+<p><b>Hallucination:</b> Involuntary sensory experience with no input.</p>
+<p><b>Imagination:</b> Controlled mental simulation; we know it's not real.</p>
+<p><b>Simulation:</b> Rehearsing actions mentally (e.g., speeches).</p>
+<p><b>Daydreaming:</b> Spontaneous drifting into inner worlds.</p>
+<strong>Psychoactive Effects</strong>
+<p><b>Psychedelics:</b> LSD, shrooms cause vivid mental imagery.</p>
+<p><b>Cannabis:</b> Boosts creativity but may blur focus.</p>
+<p><b>Ketamine:</b> Induces dream-like imaginative states.</p>
+<p><b>MDMA:</b> Enhances emotional openness and reflection.</p>
+<p><b>Microdosing:</b> May aid creativity without strong effects.</p>
+<strong>Boosting Imagination</strong>
+<p><b>Active Imagination:</b> Jung’s method of inner dialogue.</p>
+<p><b>Hypnagogia:</b> Creativity-rich state before sleep (used by Edison & Dalí).</p>
+<p><b>Mind Wandering:</b> Letting thoughts drift to spark ideas.</p>
+<p><b>Hypnosis:</b> Focused suggestive state for creativity and therapy.</p>
+<p><b>Meditation:</b> Trains attention; activates the default mode network.</p>
+<p><b>Psychological Distance:</b> Abstract/distant thinking sparks new views.</p>
+<p><b>Nature:</b> Walking boosts focus, mood, and flexible thinking.</p>
+<p><b>Novelty:</b> New experiences increase dopamine and adaptability.</p>
+<strong>Constrained Poetry</strong>
+<p><b>Yuen Ren Chao – “Lion-Eating Poet”:</b> Chinese poem using only "shi" in different tones.</p>
+<p><b>Marianne Moore – “No Swan So Fine”:</b> Precise, syllabic form contrasting beauty and artifice.</p>
+<p><b>Ernest V. Wright – Gadsby:</b> Entire novel written without using the letter “E.”</p>
+<p><b>Dylan Thomas – “Do Not Go Gentle...”:</b> Villanelle with emotional, structured repetition.</p>
+<p><b>Kimiko Hahn – “[the whale already]”:</b> Scientific terms + fragmented structure = modern complexity.</p>
+<strong>Imagination in Music</strong>
+<p><b>Tommy Dorsey – “Imagination”:</b> Longing and dreamscape through romanticized imagination.</p>
+<p><b>Gene Wilder – “Pure Imagination”:</b> From *Willy Wonka*, invites limitless creativity.</p>
+<p><b>John Lennon – “Imagine”:</b> Peaceful vision of a united, borderless world.</p>
+<p><b>Evanescence – “Imaginary”:</b> Inner world as a personal refuge from reality.</p>
+<p><b>Mary Poppins – “Can You Imagine That?”:</b> Whimsy and resilience through fantasy thinking.</p>
 </div>
 
 
@@ -2062,89 +1993,64 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 
 <div id="punky-scroll-target"></div>
 <hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
-<div class="note" data-category= "Punky Futures">
-  <h1>The Future Imagined: From Futurism to Solarpunk</h1>
-
-  <h2>1. Origins of Futurism</h2>
-  <p>In 1909, Italian poet <strong>Filippo Tommaso Marinetti</strong> published the <em>Futurist Manifesto</em>, a radical call for cultural transformation. He glorified speed, technology, youth, violence, and the machine—a break from tradition in favor of a future defined by dynamism and power.</p>
-  <h3>Key Works:</h3>
-  <ul>
-    <li><strong>Giacomo Balla</strong> – <em>Dynamism of a Dog on a Leash</em> (1912): Captures motion and mechanical repetition in a simple daily scene.</li>
-    <li><strong>Umberto Boccioni</strong> – <em>Unique Forms of Continuity in Space</em> (1913): A bronze figure in stride, symbolizing speed and progress.</li>
-  </ul>
-  <h3>Discussion:</h3>
-  <ul>
-    <li>How does futurism differ from science fiction? Is one aesthetic and the other narrative?</li>
-    <li>Should we value unrealized predictions for what they say about hopes and fears?</li>
-  </ul>
-
-  <h2>2. Afrofuturism: Black Visions of the Future</h2>
-  <p><strong>Afrofuturism</strong> merges African culture, history, and diaspora experiences with technology, speculative fiction, and cosmic visions. Emerging in the mid-20th century, it reimagines futures that center Black empowerment and survival.</p>
-  <h3>Key Works:</h3>
-  <ul>
-    <li><strong>Sun Ra</strong> – <em>Space Is the Place</em> (1973): Jazz-infused sci-fi film and philosophy on music, escape, and Black liberation.</li>
-    <li><strong>Marvel's Black Panther</strong>: From comic (1977) to blockbuster (2018), Wakanda symbolizes a high-tech, unconquered African nation.</li>
-    <li><strong>Grace Jones</strong> – <em>Nightclubbing</em> (1981): Fashion and sound blend futurism and androgyny.</li>
-    <li><strong>Flying Lotus</strong> – <em>Galaxy in Janaki</em> (2010): Electronic cosmic journey grounded in African spirituality.</li>
-    <li><strong>Kendrick Lamar</strong> – <em>Black Panther Album</em> (2018): Fuses Black power and futuristic soundscapes.</li>
-    <li><strong>Cyrus Kabiru</strong> – <em>Miyale Ya Blue</em> (2020): Futuristic eyewear sculptures reflecting African innovation.</li>
-  </ul>
-  <h3>Discussion:</h3>
-  <ul>
-    <li>What defines Afrofuturism? Aesthetics, themes, or cultural standpoint?</li>
-    <li>Could we have <em>Asiafuturism</em> or <em>Latinx-futurism</em>? What would they look like?</li>
-  </ul>
-
-  <h2>3. Solarpunk: Hope in Harmony</h2>
-  <p><strong>Solarpunk</strong> envisions a world where sustainable technology and ecology coexist. It contrasts dystopias by emphasizing beauty, cooperation, and resilience. Think solar panels wrapped in vines, cities grown not built.</p>
-  <h3>Key Works:</h3>
-  <ul>
-    <li><strong>Hayao Miyazaki</strong> – <em>Nausicaa of the Valley of the Wind</em> (1984): A toxic future saved by eco-awareness and compassion.</li>
-    <li><strong>Gojira</strong> – <em>Global Warming</em> (2005): Metal song lamenting ecological collapse with hope for change.</li>
-    <li><strong>Overwatch</strong> (2016): Features utopian cityscapes with diverse heroes, clean energy, and AI cooperation.</li>
-    <li><strong>N.K. Jemisin</strong> – <em>The Ones Who Stay and Fight</em> (2020): A moral utopia where evil is actively rejected.</li>
-    <li><strong>Common</strong> – <em>Imagine</em> (2021): A hopeful anthem envisioning peace and unity.</li>
-    <li><strong>Christian Holland</strong> – <em>Wind Farmer</em> (2022): Visualizes energy workers as environmental stewards.</li>
-    <li><strong>Free Lives</strong> – <em>Terra Nil</em> (2023): A reverse city-builder focused on ecosystem restoration.</li>
-    <li><strong>Utopian Art Machine</strong> – <em>SolarPunk Anthem</em> (2024): Music that expresses renewable harmony.</li>
-    <li><strong>Lynn D. Jung</strong> – <em>We Cast Our Eyes to the Unknowable Now</em> (2025): Futurist prose poem on ecological imagination.</li>
-  </ul>
-  <h3>Discussion:</h3>
-  <ul>
-    <li>Why are optimistic futures so rare in pop culture?</li>
-    <li>Would you want to live in a solarpunk society?</li>
-    <li>Which solarpunk ideas are already real—vertical farms, solar villages, etc?</li>
-  </ul>
-
-  <h2>4. Atompunk: Retro Futures and Atomic Aesthetics</h2>
-  <p><strong>Atompunk</strong> draws from the Atomic Age—1945 to the 1960s—imagining a future of rayguns, rocket cars, and Cold War paranoia. It reflects mid-century optimism about nuclear power and space colonization, with a side of fallout shelters.</p>
-  <h3>Key Works:</h3>
-  <ul>
-    <li><strong>Sons of the Pioneers</strong> – <em>Old Man Atom</em> (1945): Satirical take on atomic war.</li>
-    <li><strong>The Golden Gate Quartet</strong> – <em>Atom and Evil</em> (1946): Gospel-themed nuclear warning.</li>
-    <li><strong>Five Stars</strong> – <em>Atom Bomb Baby</em> (1957): Rockabilly with nuclear flirtation.</li>
-    <li><strong>Tom Lehrer</strong> – <em>So Long, Mom (A Song for World War III)</em> (1965): Darkly comic Cold War satire.</li>
-    <li><strong>Fallout</strong> franchise (1997–present): A grim, ironic world stuck in a retro-futuristic loop after nuclear disaster.</li>
-  </ul>
-  <h3>Discussion:</h3>
-  <ul>
-    <li>What attracts people to the past’s version of the future?</li>
-    <li>Is atompunk more hopeful or fearful at heart?</li>
-    <li>Would you want to live in an atompunk society?</li>
-  </ul>
-
-  <h2>Summary: Visions of the Future</h2>
-  <p>From the violent beauty of Marinetti’s manifesto to the ecological calm of solarpunk, artists across generations have imagined futures to escape, critique, or dream toward. Whether Afro-, solar-, or atom-punk, each movement reflects the values and fears of its time.</p>
-
-  <blockquote>
-    "Every act of futurism is also a reflection of the present—and what we wish it could become."
-  </blockquote>
-
-  <ul>
-    <li>Which future speaks to you most—and why?</li>
-    <li>Should more futures be imagined through non-Western lenses?</li>
-    <li>What kind of future would you create?</li>
-  </ul>
+<div class="note" data-category="Punky Futures">
+<h1>The Future Imagined: From Futurism to Solarpunk</h1>
+<h2>1. Origins of Futurism</h2>
+<p>In 1909, Italian poet <strong>Filippo Tommaso Marinetti</strong> published the <em>Futurist Manifesto</em>, a radical call for cultural transformation. He glorified speed, technology, youth, violence, and the machine—a break from tradition in favor of a future defined by dynamism and power.</p>
+<h3>Key Works:</h3>
+<p><strong>Giacomo Balla</strong> – <em>Dynamism of a Dog on a Leash</em> (1912): Captures motion and mechanical repetition in a simple daily scene.</p>
+<p><strong>Umberto Boccioni</strong> – <em>Unique Forms of Continuity in Space</em> (1913): A bronze figure in stride, symbolizing speed and progress.</p>
+<h3>Discussion:</h3>
+<p>How does futurism differ from science fiction? Is one aesthetic and the other narrative?</p>
+<p>Should we value unrealized predictions for what they say about hopes and fears?</p>
+<h2>2. Afrofuturism: Black Visions of the Future</h2>
+<p><strong>Afrofuturism</strong> merges African culture, history, and diaspora experiences with technology, speculative fiction, and cosmic visions. Emerging in the mid-20th century, it reimagines futures that center Black empowerment and survival.</p>
+<h3>Key Works:</h3>
+<p><strong>Sun Ra</strong> – <em>Space Is the Place</em> (1973): Jazz-infused sci-fi film and philosophy on music, escape, and Black liberation.</p>
+<p><strong>Marvel's Black Panther</strong>: From comic (1977) to blockbuster (2018), Wakanda symbolizes a high-tech, unconquered African nation.</p>
+<p><strong>Grace Jones</strong> – <em>Nightclubbing</em> (1981): Fashion and sound blend futurism and androgyny.</p>
+<p><strong>Flying Lotus</strong> – <em>Galaxy in Janaki</em> (2010): Electronic cosmic journey grounded in African spirituality.</p>
+<p><strong>Kendrick Lamar</strong> – <em>Black Panther Album</em> (2018): Fuses Black power and futuristic soundscapes.</p>
+<p><strong>Cyrus Kabiru</strong> – <em>Miyale Ya Blue</em> (2020): Futuristic eyewear sculptures reflecting African innovation.</p>
+<h3>Discussion:</h3>
+<p>What defines Afrofuturism? Aesthetics, themes, or cultural standpoint?</p>
+<p>Could we have <em>Asiafuturism</em> or <em>Latinx-futurism</em>? What would they look like?</p>
+<h2>3. Solarpunk: Hope in Harmony</h2>
+<p><strong>Solarpunk</strong> envisions a world where sustainable technology and ecology coexist. It contrasts dystopias by emphasizing beauty, cooperation, and resilience. Think solar panels wrapped in vines, cities grown not built.</p>
+<h3>Key Works:</h3>
+<p><strong>Hayao Miyazaki</strong> – <em>Nausicaa of the Valley of the Wind</em> (1984): A toxic future saved by eco-awareness and compassion.</p>
+<p><strong>Gojira</strong> – <em>Global Warming</em> (2005): Metal song lamenting ecological collapse with hope for change.</p>
+<p><strong>Overwatch</strong> (2016): Features utopian cityscapes with diverse heroes, clean energy, and AI cooperation.</p>
+<p><strong>N.K. Jemisin</strong> – <em>The Ones Who Stay and Fight</em> (2020): A moral utopia where evil is actively rejected.</p>
+<p><strong>Common</strong> – <em>Imagine</em> (2021): A hopeful anthem envisioning peace and unity.</p>
+<p><strong>Christian Holland</strong> – <em>Wind Farmer</em> (2022): Visualizes energy workers as environmental stewards.</p>
+<p><strong>Free Lives</strong> – <em>Terra Nil</em> (2023): A reverse city-builder focused on ecosystem restoration.</p>
+<p><strong>Utopian Art Machine</strong> – <em>SolarPunk Anthem</em> (2024): Music that expresses renewable harmony.</p>
+<p><strong>Lynn D. Jung</strong> – <em>We Cast Our Eyes to the Unknowable Now</em> (2025): Futurist prose poem on ecological imagination.</p>
+<h3>Discussion:</h3>
+<p>Why are optimistic futures so rare in pop culture?</p>
+<p>Would you want to live in a solarpunk society?</p>
+<p>Which solarpunk ideas are already real—vertical farms, solar villages, etc?</p>
+<h2>4. Atompunk: Retro Futures and Atomic Aesthetics</h2>
+<p><strong>Atompunk</strong> draws from the Atomic Age—1945 to the 1960s—imagining a future of rayguns, rocket cars, and Cold War paranoia. It reflects mid-century optimism about nuclear power and space colonization, with a side of fallout shelters.</p>
+<h3>Key Works:</h3>
+<p><strong>Sons of the Pioneers</strong> – <em>Old Man Atom</em> (1945): Satirical take on atomic war.</p>
+<p><strong>The Golden Gate Quartet</strong> – <em>Atom and Evil</em> (1946): Gospel-themed nuclear warning.</p>
+<p><strong>Five Stars</strong> – <em>Atom Bomb Baby</em> (1957): Rockabilly with nuclear flirtation.</p>
+<p><strong>Tom Lehrer</strong> – <em>So Long, Mom (A Song for World War III)</em> (1965): Darkly comic Cold War satire.</p>
+<p><strong>Fallout</strong> franchise (1997–present): A grim, ironic world stuck in a retro-futuristic loop after nuclear disaster.</p>
+<h3>Discussion:</h3>
+<p>What attracts people to the past’s version of the future?</p>
+<p>Is atompunk more hopeful or fearful at heart?</p>
+<p>Would you want to live in an atompunk society?</p>
+<h2>Summary: Visions of the Future</h2>
+<p>From the violent beauty of Marinetti’s manifesto to the ecological calm of solarpunk, artists across generations have imagined futures to escape, critique, or dream toward. Whether Afro-, solar-, or atom-punk, each movement reflects the values and fears of its time.</p>
+<blockquote>
+"Every act of futurism is also a reflection of the present—and what we wish it could become."
+</blockquote>
+<p>Which future speaks to you most—and why?</p>
+<p>Should more futures be imagined through non-Western lenses?</p>
+<p>What kind of future would you create?</p>
 </body>
 </html>
 </div>
@@ -2822,6 +2728,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const nav = document.querySelector('nav');
     nav.classList.toggle('show');
   }
+</script>
+<script>
+const images = [
+  "d2cc9bbe-2ca0-4423-9a49-89e4fe896a84.jpg",
+  "b7d87fc9-7a3b-4961-99d5-f10266d5e55e.jpg",
+  "7affa499-0314-44fc-8252-71ff75018e5d.jpg"
+];
+
+let currentImageIndex = 0;
+
+function changeImage(direction) {
+  currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+  document.getElementById("hero-image").src = images[currentImageIndex];
+}
 </script>
 
 
