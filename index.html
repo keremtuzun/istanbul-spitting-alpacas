@@ -8,21 +8,22 @@
 <title>Istanbul Spitting Alpacas - WSC Resources</title>
  <link rel="icon" href="0a435026-d202-4690-aa25-6e6c30fb994b.jpg" type="image/x-icon" />
 <style>
+
+
+
 :root {
-  --turquoise: #b73e3e;       /* Deep warm red */
-  --pale-gold: #f0c7b4;       /* Soft warm beige-pink */
-  --bg-color: #fff5f2;        /* Light warm background */
-  --text-color: #4b1f1f;      /* Deep brown-red for contrast */
+  --turquoise: #b73e3e;
+  --pale-gold: #f0c7b4;
+  --bg-color: #fff5f2;
+  --text-color: #4b1f1f;
 }
 
-/* Dark mode variables - warm, muted reds */
 .dark-mode {
-  --bg-color: #2c0b0e;        /* Deep burgundy */
-  --text-color: #fbe5e0;      /* Pale peach-pink text */
-  --pale-gold: #d8a58e;       /* Muted warm highlight */
-  --turquoise: #d64545;       /* Lighter warm red */
+  --bg-color: #2c0b0e;
+  --text-color: #fbe5e0;
+  --pale-gold: #d8a58e;
+  --turquoise: #d64545;
 }
-
 
 html, body {
   margin: 0;
@@ -56,7 +57,6 @@ header img.logo {
   height: 55px;
   filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.3));
 }
-
 
 nav {
   background-color: var(--pale-gold);
@@ -99,7 +99,6 @@ nav a:hover::after {
   border-radius: 2px;
 }
 
-/* Dark mode toggle button */
 #dark-mode-toggle {
   background: none;
   border: none;
@@ -114,7 +113,7 @@ main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  min-height: calc(100vh - 160px); /* Adjust if header/nav are taller */
+  min-height: calc(100vh - 160px);
 }
 
 section {
@@ -148,7 +147,6 @@ p {
   line-height: 1.55;
 }
 
-/* Hero image container */
 .hero-image-container {
   max-width: 100%;
   margin-bottom: 30px;
@@ -191,20 +189,19 @@ p {
   color: #952d0e;
 }
 
-/* About Us layout */
 #about {
   background-color: #f9f6f1;
   padding: 5rem 1rem;
 }
 
 .about-wrapper {
-  max-width: 1100px; /* Slightly wider */
+  max-width: 1100px;
   margin: 0 auto;
   text-align: center;
 }
 
 #about h2 {
-  font-size: 3rem; /* Larger heading */
+  font-size: 3rem;
   color: #8B0000;
   margin-bottom: 3rem;
 }
@@ -256,31 +253,6 @@ p {
   margin-bottom: 1rem;
 }
 
-/* === Responsive === */
-@media (max-width: 768px) {
-  .about-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .about-photo,
-  .about-text {
-    width: 100%;
-    flex: none;
-  }
-
-  .about-photo img {
-    max-height: 300px;
-    height: auto;
-  }
-
-  .about-text h1 {
-    font-size: 1.4rem;
-  }
-}
-
-/* Gallery grid */
 #gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
@@ -303,7 +275,6 @@ p {
   box-shadow: 0 8px 18px rgba(0,0,0,0.22);
 }
 
-/* Notes topic selection */
 #notes #topic-list {
   display: flex;
   flex-wrap: wrap;
@@ -332,7 +303,6 @@ p {
   transform: translateY(-7px);
 }
 
-/* Topic content inside Notes */
 #notes #topic-content {
   display: none;
   margin-top: 20px;
@@ -357,7 +327,7 @@ p {
 }
 
 #notes #topic-content #topic-text {
-  font-size:1.15rem;
+  font-size: 1.15rem;
   background: #f9f5e9;
   border-left: 4px solid var(--turquoise);
   border-radius: 8px;
@@ -377,67 +347,116 @@ p {
   text-align: left;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    
+/* Responsive: max-width 768px */
+@media (max-width: 768px) {
+  /* This rule shows the hamburger button on mobile */
+  .hamburger {
+    display: block;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: var(--turquoise);
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    z-index: 10001;
+    cursor: pointer;
+  }
 
+  /* This rule hides the nav menu off-screen on mobile */
+  nav {
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 70%;
+    background-color: var(--pale-gold);
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 25px;
+    padding-top: 100px;
+    transition: right 0.3s ease;
+    z-index: 10000;
+  }
 
+  /* This class is added by JavaScript to slide the menu into view */
+  nav.show {
+    right: 0;
+  }
 
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
+  /* Adjust spacing and font size for mobile links */
+  nav a,
+  #dark-mode-toggle {
+    font-size: 1.2rem;
+    padding: 10px 0;
+  }
+}
 
-    /* Responsive */
-    @media (max-width: 720px) {
-      nav {
-        gap: 25px;
-        font-size: 1rem;
-      }
-      #notes #topic-list .category {
-        flex: 1 1 100%;
-      }
-      #gallery {
-        grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
-      }
-      header {
-        font-size: 1.8rem;
-      }
-      header img.logo {
-        height: 45px;
-        right: 15px;
-      }
-      main {
-        margin: 25px auto 90px;
-      }
+/* Responsive: max-width 720px */
+@media (max-width: 720px) {
+  /* These are additional tweaks for very small screens */
+  nav {
+    gap: 25px;
+    font-size: 1rem;
+  }
 
-      .about-content {
-        flex-direction: column;
-      }
-      .about-photo, .about-text {
-        flex: unset;
-        width: 100%;
-        margin-top: 2rem; /* 👈 This moves the image slightly lower */
+  #notes #topic-list .category {
+    flex: 1 1 100%;
+  }
 
+  #gallery {
+    grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+  }
 
-      }
-      .about-photo img {
-        height: auto;
-        max-height: 300px;
-      }
+  header {
+    font-size: 1.8rem;
+  }
 
-      .hero-image {
-        height: 220px;
-      }
+  header img.logo {
+    height: 45px;
+    right: 15px;
+  }
 
-      .flashcard .question,
-.flashcard .answer {
-  padding: 30px 0; /* Adjust this value as needed for more space */
+  main {
+    margin: 25px auto 90px;
+  }
+
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-photo,
+  .about-text {
+    flex: unset;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .about-photo img {
+    height: auto;
+    max-height: 300px;
+  }
+
+  .hero-image {
+    height: 220px;
+  }
+
+  .flashcard .question,
+  .flashcard .answer {
+    padding: 30px 0;
+  }
 }
 
       
 
-    }
+    
   
 
 </style>
@@ -449,6 +468,8 @@ p {
     Istanbul Spitting Alpacas - WSC Resources
    
 </header>
+<button class="hamburger" onclick="toggleMenu()">☰</button>
+
 <nav>
 <a class="active" href="#home">Home</a>
 <a href="#about">About Us</a>
@@ -2674,6 +2695,7 @@ document.getElementById('back-to-topics').addEventListener('click', function() {
         category.style.display = text.includes(searchTerm) ? 'flex' : 'none';
       });
     });
+    
 
     // Show topic content
     topicList.querySelectorAll('.category').forEach(category => {
@@ -2693,134 +2715,7 @@ document.getElementById('back-to-topics').addEventListener('click', function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // --- Quizzes Functionality ---
-    const quizList = document.getElementById('quiz-list');
-    const quizInterface = document.getElementById('quiz-interface');
-    const quizTitle = document.getElementById('quiz-title');
-    const quizQuestions = document.getElementById('quiz-questions');
-    const submitQuizBtn = document.getElementById('submit-quiz');
-    const quizResults = document.getElementById('quiz-results');
-    const backToQuizzesBtn = document.getElementById('back-to-quizzes');
-
-    // Quiz data
-    const quizData = {
-      science: {
-        title: "Science Essentials Quiz",
-        questions: [
-          {
-            question: "What is the powerhouse of the cell?",
-            options: ["Nucleus", "Mitochondria", "Ribosome"],
-            answer: 1
-          },
-          {
-            question: "Which gas is most abundant in Earth's atmosphere?",
-            options: ["Oxygen", "Nitrogen", "Carbon Dioxide"],
-            answer: 1
-          }
-        ]
-      },
-      history: {
-        title: "World History Quiz",
-        questions: [
-          {
-            question: "The Industrial Revolution began in which country?",
-            options: ["France", "United States", "Great Britain"],
-            answer: 2
-          }
-        ]
-      }
-      // Add more quizzes...
-    };
-
-    // Load quiz
-    quizList.querySelectorAll('li').forEach(quiz => {
-      quiz.addEventListener('click', () => {
-        const quizKey = quiz.getAttribute('data-quiz');
-        const quiz = quizData[quizKey];
-       
-        quizTitle.textContent = quiz.title;
-        quizQuestions.innerHTML = '';
-       
-        quiz.questions.forEach((q, i) => {
-          const questionEl = document.createElement('div');
-          questionEl.className = 'quiz-question';
-          questionEl.innerHTML = `
-            <p><strong>Question ${i + 1}:</strong> ${q.question}</p>
-            ${q.options.map((opt, j) => `
-              <div class="quiz-option" data-question="${i}" data-option="${j}">
-                ${String.fromCharCode(65 + j)}. ${opt}
-              </div>
-            `).join('')}
-          `;
-          quizQuestions.appendChild(questionEl);
-        });
-
-        quizList.style.display = 'none';
-        quizInterface.style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    });
-
-    // Submit quiz
-    submitQuizBtn.addEventListener('click', () => {
-      let score = 0;
-      const selectedOptions = document.querySelectorAll('.quiz-option.selected');
-     
-      selectedOptions.forEach(opt => {
-        const questionIdx = parseInt(opt.getAttribute('data-question'));
-        const optionIdx = parseInt(opt.getAttribute('data-option'));
-        const correctAnswer = quizData[currentQuiz].questions[questionIdx].answer;
-       
-        if (optionIdx === correctAnswer) {
-          score++;
-          opt.style.backgroundColor = '#e6f7e6';
-        } else {
-          opt.style.backgroundColor = '#ffebeb';
-        }
-      });
-
-      quizResults.innerHTML = `You scored ${score} out of ${quizData[currentQuiz].questions.length}!`;
-    });
-
-    // Select quiz options
-    quizQuestions.addEventListener('click', (e) => {
-      const option = e.target.closest('.quiz-option');
-      if (!option) return;
-     
-      const questionIdx = option.getAttribute('data-question');
-      document.querySelectorAll(`.quiz-option[data-question="${questionIdx}"]`).forEach(opt => {
-        opt.classList.remove('selected');
-      });
-     
-      option.classList.add('selected');
-    });
-
-    // Back to quizzes list
-    backToQuizzesBtn.addEventListener('click', () => {
-      quizInterface.style.display = 'none';
-      quizList.style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // --- Contact Form ---
-    const contactForm = document.getElementById('contact-form');
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Thank you for your message! We’ll respond soon.');
-      contactForm.reset();
-    });
-
-    // --- Lazy Load Images ---
-    const lazyLoadImages = () => {
-      document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-        if (img.getBoundingClientRect().top < window.innerHeight + 100) {
-          img.loading = 'eager'; // Force load when near viewport
-        }
-      });
-    };
-    window.addEventListener('scroll', lazyLoadImages);
-    lazyLoadImages(); // Initial check
-  </script>
+</script>
 
 
 <script>
@@ -2909,6 +2804,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelector('#notes')?.scrollIntoView({ behavior: 'smooth' });
     });
   });
+  
 
   const back = document.getElementById('back-to-topics');
   if (back) {
@@ -2919,6 +2815,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 </script>
+
+
+<script>
+  function toggleMenu() {
+    const nav = document.querySelector('nav');
+    nav.classList.toggle('show');
+  }
+</script>
+
 
 
 </body>
