@@ -28,8 +28,8 @@
 
 .dark-mode {
   --bg-color: #2c0b0e;
-  --text-color: #fbe5e0;
-  --pale-gold: #d8a58e;
+  --text-color: #b37724;
+  --pale-gold: #49210e;
   --turquoise: #d64545;
 }
 
@@ -55,6 +55,7 @@ header {
   position: relative;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   letter-spacing: 2px;
+  
 }
 
 header img.logo {
@@ -78,6 +79,7 @@ nav {
   position: sticky;
   top: 0;
   z-index: 10000;
+  position: sticky; top: 0;
 }
 
 nav a {
@@ -198,6 +200,10 @@ p {
   margin-bottom: 0.4rem;
   color: #952d0e;
   letter-spacing: 1.2px;
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
 
 #home .hero-text h2 {
@@ -206,12 +212,20 @@ p {
   margin-bottom: 0.8rem;
   color: var(--turquoise);
   letter-spacing: 2px;
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
 
 #home .hero-text p {
   font-size: 1.3rem;
   font-weight: 600;
   color: #952d0e;
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
 
 #about {
@@ -240,7 +254,7 @@ p {
   max-width: 1100px;
   margin: 0 auto;
   padding: 2rem 1rem;
-  text-align: left;
+  text-align: center;
 }
 
 .about-photo {
@@ -252,13 +266,14 @@ p {
 }
 
 .about-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  max-height: 380px;
-  border-radius: 16px;
   display: block;
+  width: 100%;
+  margin-bottom: 120px; /* Increased space between images */
+  border-radius: 16px;
+  object-fit: cover;
 }
+
+
 
 .about-text {
   flex: 1 1 480px;
@@ -369,14 +384,34 @@ p {
 }
 
 .note p {
-  text-align: left;
+  text-align: center;
+}
+.flashcards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.flashcard {
+    background-color: var(--pale-gold); /* Sets the background color using a variable for dark mode support */
+    border: 2px solid var(--turquoise); /* Adds a border, also using a variable */
+    border-radius: 12px;
+    min-height: 150px;
+    flex: 1 1 300px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
 /* Responsive: max-width 768px */
 @media (max-width: 768px) {
   /* This rule shows the hamburger button on mobile */
@@ -477,7 +512,11 @@ p {
   .flashcard .answer {
     padding: 30px 0;
   }
+
 }
+
+
+
 
       
 
@@ -515,79 +554,34 @@ p {
 </div>
 
 <div class="hero-text">
-<h1>WELCOME TO ISTANBUL SPITTING ALPACAS</h1>
-<h2>YOUR RESOURCE HUB FOR WORLD SCHOLARS CUP</h2>
+<h2>WELCOME TO ISTANBUL SPITTING ALPACAS</h2>
+<h1>YOUR RESOURCE HUB FOR WORLD SCHOLARS CUP</h1>
+
+<br/>
+
+<h1>Disclaimer</h1>
+<p>May contain false or imitative information! 
+  This website contains references to psychoactive substances, including both legal and illegal drugs, for educational purposes only. It does not encourage or condone drug use. Some of the substances mentioned may have legal restrictions and health risks. Viewer discretion is advised, especially for those under 18.
+
 <p>
   📸 Follow us on Instagram:  
   <a href="https://instagram.com/istanbul_spitting_alpacas" style="color: var(--turquoise); font-weight: bold;" target="_blank">
     @istanbul_spitting_alpacas
   </a>
-</p>
-<br/>
-<br/>
-<h3>Disclaimer</h3>
-<p>May contain false or imitative information</p>
-<p>This website contains references to psychoactive substances, including both legal and illegal drugs, for educational purposes only. It does not encourage or condone drug use. Some of the substances mentioned may have legal restrictions and health risks. Viewer discretion is advised, especially for those under 18.
-
-</p>
 </div>
 <!-- moved to Practice Lab -->
 </section>
 <section id="about">
-<h2>Our Objective</h2>
 <div class="about-content">
 <div class="about-photo">
 <img alt="Students collaborating" src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&amp;fit=crop&amp;w=600&amp;q=80"/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 <img src="f2c62936-3735-4da5-a96d-f4dd4f42b9e8.jpg"/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 <img src="14e0f39f-14fb-4b4a-b405-593cf8e9e253.jpg"/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 <img src="39a5cdbe-d6dd-4f7d-bbcd-53ba31225d93.jpg"/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 <img src="unnamed.jpg"/>
 </div>
 <div class="about-text">
+  <h2>Our Objective</h2>
 <p>Officially preparing students with notes, quizzes, and guidance for the 2025 WSC season.</p>
 <p>Istanbul Spitting Alpacas is a youth-led organization committed to helping students prepare for the
        World Scholar's Cup with passion and purpose.</p>
@@ -2313,110 +2307,110 @@ function toggleFlashcard(card) {
 </script>
 
 <h3>From: The Best is Yet to Be, or Not To Be?</h3>
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">What was the initial estimated cost and completion year of the Big Dig Tunnel Project?</div>
     <br> <div class="answer" style="display:none;">$2.8 billion (US$7.4 billion adjusted for inflation as of 2020), scheduled for 1998.</div>
   </div>
   <hr class="flashcard-separator">
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)" >
     <div class="question active">What was the final cost and completion year of the Big Dig Tunnel Project?</div>
     <br> <div class="answer" style="display:none;">Over $8.08 billion (in 1982 dollars, $21.5 billion adjusted for inflation), completed in December 2007.</div>
   </div>
   <hr class="flashcard-separator">
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)" >
     <div class="question active">What problems plagued the Big Dig Tunnel Project?</div>
     <br> <div class="answer" style="display:none;">Cost overruns, delays, leaks, design flaws, substandard materials, criminal charges, and one motorist's death.</div>
   </div>
   <hr class="flashcard-separator">
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">What incident occurred in the Channel Tunnel in 1996?</div>
     <br> <div class="answer" style="display:none;">About 1,000 passengers were trapped when Eurostar trains broke down due to snow and ice affecting electronic circuits.</div>
   </div>
   <hr class="flashcard-separator">
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">What is the "New Eurasian Land Bridge"?</div>
     <br> <div class="answer" style="display:none;">A rail route connecting east China to the center of Europe, with plans to go around Russia.</div>
   </div>
   <hr class="flashcard-separator">
 
   <h3>From: In Futurity, Someone Prophetic Sees</h3>
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)" >
     <div class="question active">Who was Nostradamus?</div>
     <br> <div class="answer" style="display:none;">A 16th-century French astrologer known for his mysterious poems believed to be predictions.</div>
   </div>
   <hr class="flashcard-separator">
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">What is divination?</div>
     <br> <div class="answer" style="display:none;">Any way of trying to discover what's going to happen in the future, often through magic or spiritual means.</div>
   </div>
   <hr class="flashcard-separator">
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)" >
     <div class="question active">What is astrology?</div>
     <br> <div class="answer" style="display:none;">The idea that positions of stars and planets can affect what happens on Earth and to people.</div>
   </div>
   <hr class="flashcard-separator">
 
   <h3>From: Reliving It Up</h3>
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">What is the difference between resuscitation and resurrection?</div>
     <br> <div class="answer" style="display:none;">Resuscitation is a medical process of reviving someone shortly after clinical death, while resurrection is a spiritual concept of returning to life after true death.</div>
   </div>
   <hr class="flashcard-separator">
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">What is Valhalla in Norse mythology?</div>
     <br> <div class="answer" style="display:none;">A majestic hall where warriors feast, preparing for Ragnarök.</div>
   </div>
   <hr class="flashcard-separator">
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">What is "Taylor's Version" in the context of Taylor Swift's music?</div>
     <br> <div class="answer" style="display:none;">Re-recorded albums by Taylor Swift to reclaim artistic ownership.</div>
   </div>
   <hr class="flashcard-separator">
 
   <h3>From: Punky Futures</h3>
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">Who published the Futurist Manifesto in 1909?</div>
     <br> <div class="answer" style="display:none;">Italian poet Filippo Tommaso Marinetti.</div>
   </div>
   <hr class="flashcard-separator">
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">What is Afrofuturism?</div>
     <br> <div class="answer" style="display:none;">It merges African culture, history, and diaspora experiences with technology, speculative fiction, and cosmic visions, centering Black empowerment.</div>
   </div>
   <hr class="flashcard-separator">
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">What does Solarpunk envision?</div>
     <br> <div class="answer" style="display:none;">A world where sustainable technology and ecology coexist, emphasizing beauty, cooperation, and resilience.</div>
   </div>
   <hr class="flashcard-separator">
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">What is Atompunk?</div>
     <br> <div class="answer" style="display:none;">A subgenre drawing from the Atomic Age (1945-1960s), imagining a future of rayguns, rocket cars, and Cold War paranoia.</div>
   </div>
   <hr class="flashcard-separator">
 
   <h3>From: If At First You Fall, Try, Try Again</h3>
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">What is the "Curse of the Pharaohs"?</div>
     <br> <div class="answer" style="display:none;">A supposed curse affecting anyone disturbing the mummies of ancient Egyptian pharaohs.</div>
   </div>
   <hr class="flashcard-separator">
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">What does the story of the curse of Tutankhamun's tomb illustrate?</div>
     <br> <div class="answer" style="display:none;">The power of a narrative to shape public perception and fears around historical events.</div>
   </div>
   <hr class="flashcard-separator">
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">What is confirmation bias?</div>
     <br> <div class="answer" style="display:none;">The tendency to interpret new evidence as confirmation of one's existing beliefs or theories.</div>
   </div>
   <hr class="flashcard-separator">
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">What is the "Texas Sharpshooter Fallacy"?</div>
     <br> <div class="answer" style="display:none;">When someone picks out a cluster in data and then draws a target around it, making it seem significant when it's just random chance.</div>
   </div>
   <hr class="flashcard-separator">
-  <div class="flashcard" onclick="toggleFlashcard(this)" style="background:#e6d8ad;border:2px solid #1a8d98;border-radius:10px;padding:20px;margin-bottom:20px;cursor:pointer;">
+  <div class="flashcard" onclick="toggleFlashcard(this)">
     <div class="question active">What is the "Dunning-Kruger Effect"?</div>
     <br> <div class="answer" style="display:none;">A cognitive bias where people with low ability at a task overestimate their own ability.</div>
   </div>
