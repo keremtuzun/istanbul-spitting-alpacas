@@ -407,7 +407,57 @@ align-items: center;
     align-items: center;
     text-align: center;
 }
+#discussion-forum {
+  background: var(--bg-color);
+  color: var(--text-color);
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 40px auto;
+  border-radius: 12px;
+}
 
+#discussion-forum textarea {
+  background: var(--pale-gold);
+  color: var(--text-color);
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  resize: vertical;
+}
+
+#discussion-forum button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  background: var(--turquoise);
+  color: var(--pale-gold);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#discussion-forum button:hover {
+  background: #9b3333; /* slightly darker turquoise for hover */
+}
+
+#postsContainer > div {
+  background: var(--pale-gold);
+  border: 1px solid var(--turquoise);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  color: var(--text-color);
+    max-width: 150%;         /* Allow full width (or specify a larger max-width) */
+  min-height: 100px;       /* Make it taller */
+  overflow-y: auto;        /* Keep vertical scroll if content overflows */
+  padding: 10px;           /* Optional padding */
+  box-sizing: border-box;
+}
+
+#postsContainer small {
+  color: var(--turquoise);
+}
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -513,6 +563,7 @@ align-items: center;
     padding: 30px 0;
   }
 
+
 }
 
 
@@ -543,6 +594,7 @@ align-items: center;
 <a href="#practice">Practice Lab</a>
 <a href="#documents">Documents</a>
 <a href="#flashcard">Flashcards</a>
+<a href="#discussion-forum">Discussion</a>
 <button id="dark-mode-toggle">🌙</button>
 </nav>
 <main>
@@ -2101,8 +2153,13 @@ Afrofuturist icon.
     <p style="margin-top: 20px; font-size: 1.2rem;">
     👉 <a href="https://forms.gle/dMhtUne3DGRnZefN8" target="_blank" style="color: var(--turquoise); font-weight: 600;">31.07.2025 Quiz</a>
   </p>
+    <p style="margin-top: 20px; font-size: 1.2rem;">
+    👉 <a href="https://forms.gle/rPdvgUg1rNiqBnT36" target="_blank" style="color: var(--turquoise); font-weight: 600;">10.08.2025 Quiz</a>
+  </p>
 
 </section>
+
+
 
 <section id="debate">
   <h2>Debate Tips & Tricks (WSC Style)</h2>
@@ -2260,6 +2317,69 @@ Afrofuturist icon.
     </a>
   </p>
 </section>
+
+<section id="discussion-forum" style="padding:40px 20px; max-width:800px; margin:40px auto; border-radius:12px;">
+  <h2>Community Discussion Forum</h2>
+  
+  <form id="postForm" style="margin-bottom:30px;">
+    <textarea id="postContent" placeholder="Write your question or comment here..." rows="3" required style="width:100%; padding:10px; border-radius:8px; border:1px solid #ccc;"></textarea>
+    <button type="submit" style="margin-top:10px; padding:10px 15px; border:none; border-radius:8px; cursor:pointer;">Post</button>
+  </form>
+
+  <div id="postsContainer" style="max-height:400px; overflow-y:auto;">
+    <!-- Posts will appear here -->
+  </div>
+</section>
+
+<script>
+  const postForm = document.getElementById('postForm');
+  const postsContainer = document.getElementById('postsContainer');
+
+  // Load saved posts from localStorage
+  let posts = JSON.parse(localStorage.getItem('forumPosts')) || [];
+
+  function displayPosts() {
+    postsContainer.innerHTML = '';
+    if(posts.length === 0) {
+      postsContainer.innerHTML = '<p>No posts yet. Be the first to post!</p>';
+      return;
+    }
+    posts.forEach((post, index) => {
+      const postEl = document.createElement('div');
+      postEl.style.background = '#fff';
+      postEl.style.border = '1px solid #ddd';
+      postEl.style.borderRadius = '8px';
+      postEl.style.padding = '15px';
+      postEl.style.marginBottom = '15px';
+      postEl.innerHTML = `
+        <p>${post.content}</p>
+        <small style="color:#888;">Posted on ${new Date(post.timestamp).toLocaleString()}</small>
+      `;
+      postsContainer.appendChild(postEl);
+    });
+  }
+
+  postForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const content = document.getElementById('postContent').value.trim();
+    if(content.length === 0) return;
+
+    const newPost = {
+      content,
+      timestamp: Date.now()
+    };
+
+    posts.unshift(newPost); // add to top
+    localStorage.setItem('forumPosts', JSON.stringify(posts));
+    displayPosts();
+
+    postForm.reset();
+  });
+
+  // Display posts on page load
+  displayPosts();
+</script>
+
 
 <!--<script>
 document.querySelectorAll("nav a").forEach(link => {
