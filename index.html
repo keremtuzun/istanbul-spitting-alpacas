@@ -386,6 +386,16 @@ align-items: center;
 .note p {
   text-align: center;
 }
+.hr {
+  width: 100vw;                     /* Full viewport width */
+  position: relative;               /* Allows left/translate centering */
+  left: 50%;                         /* Centering trick */
+  transform: translateX(-50%);       /* Counter half the width to center */
+  border: 3px solid var(--turquoise);
+  border-radius: 4px;
+  margin: 50px 0;                    /* Vertical spacing */
+  box-sizing: border-box;            /* Include border in total width */
+}
 .flashcards-container {
     display: flex;
     flex-wrap: wrap;
@@ -458,6 +468,67 @@ align-items: center;
 #postsContainer small {
   color: var(--turquoise);
 }
+.dropdown {
+  position: relative;
+  display: flex;          /* make it flex to align button like nav links */
+  align-items: center;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: var(--turquoise); /* match nav links */
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 5px 0;
+  letter-spacing: normal;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+  color: #e46756;  /* match nav hover */
+  outline: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; /* dropdown below button */
+  left: 0;
+  background-color: var(--pale-gold); /* match nav bg */
+  min-width: 160px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 10;
+  border-radius: 5px;
+  padding: 8px 0;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: var(--turquoise);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.dropdown-content a:hover {
+  background-color: #b73e3e;  /* your --turquoise */
+  color: var(--pale-gold);
+  font-weight: 700;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  display: block;
+}
+
+
+
+
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -494,6 +565,7 @@ align-items: center;
     padding-top: 100px;
     transition: right 0.3s ease;
     z-index: 10000;
+    align-items: center; /* <-- Add this to vertically align */
   }
 
   /* This class is added by JavaScript to slide the menu into view */
@@ -564,6 +636,7 @@ align-items: center;
   }
 
 
+
 }
 
 
@@ -586,40 +659,65 @@ align-items: center;
 <button class="hamburger" onclick="toggleMenu()">☰</button>
 
 <nav>
-<a class="active" href="#home">Home</a>
-<a href="#about">About Us</a>
-<a href="#notes">Notes</a>
-<a href="#debate">Debate</a>
-<a href="#quizzes">Quizzes</a>
-<a href="#practice">Practice Lab</a>
-<a href="#documents">Documents</a>
-<a href="#flashcard">Flashcards</a>
-<a href="#discussion-forum">Discussion</a>
-<button id="dark-mode-toggle">🌙</button>
+  <a class="active" href="#home">Home</a>
+  <a href="#about">About Us</a>
+    <a href="#discussion-forum">Discussion</a>
+  <div class="dropdown">
+    <button class="dropbtn">Resources ▼</button>
+    <div class="dropdown-content">
+      <a href="#notes">Notes</a>
+      <a href="#debate">Debate</a>
+      <a href="#quizzes">Quizzes</a>
+      <a href="#documents">Documents</a>
+      <a href="#practice">Practice Lab</a>
+      <a href="#flashcard">Flashcards</a>
+    </div>
+  </div>
+  
+  
+
+
+  <button id="dark-mode-toggle">🌙</button>
 </nav>
 <main>
 <section class="active" id="home">
 <div class="hero-image-container">
+  <h2>WELCOME TO ISTANBUL SPITTING ALPACAS</h2>
+  <br>
   <button class="arrow left" onclick="changeImage(-1)">&#8592;</button>
   <img id="hero-image" class="hero-image" src="f2c62936-3735-4da5-a96d-f4dd4f42b9e8.jpg" alt="Slide Image">
   <button class="arrow right" onclick="changeImage(1)">&#8594;</button>
 </div>
 
 <div class="hero-text">
-<h2>WELCOME TO ISTANBUL SPITTING ALPACAS</h2>
-<h1>YOUR RESOURCE HUB FOR WORLD SCHOLARS CUP</h1>
 
-<br/>
+<h1>YOUR RESOURCE HUB FOR THE WORLD SCHOLARS CUP</h1>
+<hr class = "hr">
+
 
 <h1>Disclaimer</h1>
 <p>May contain false or imitative information! 
   This website contains references to psychoactive substances, including both legal and illegal drugs, for educational purposes only. It does not encourage or condone drug use. Some of the substances mentioned may have legal restrictions and health risks. Viewer discretion is advised, especially for those under 18.
 
-<p>
-  📸 Follow us on Instagram:  
-  <a href="https://instagram.com/istanbul_spitting_alpacas" style="color: var(--turquoise); font-weight: bold;" target="_blank">
-    @istanbul_spitting_alpacas
-  </a>
+<hr class = "hr">
+<div style="display: flex; gap: 20px; align-items: center;">
+  <p style="margin: 0;">
+    📸 Follow us on Instagram:  
+    <a href="https://instagram.com/istanbul_spitting_alpacas" style="color: var(--turquoise); font-weight: bold;">
+      @istanbul_spitting_alpacas
+    </a>
+  </p>
+  <p style="margin: 0;">
+    📧 Contact us: 
+    <a href="mailto:keremtuzun17@gmail.com" style="color: var(--turquoise); font-weight: bold;">
+      keremtuzun17@gmail.com
+     <a href="mailto:guneyk2029@stu.koc.k12.tr" style="color: var(--turquoise); font-weight: bold;">
+      guneyk2029@stu.koc.k12.tr
+    </a>
+  </p>
+</div>
+
+
 </div>
 <!-- moved to Practice Lab -->
 </section>
@@ -627,9 +725,10 @@ align-items: center;
 <div class="about-content">
 <div class="about-photo">
 <img alt="Students collaborating" src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&amp;fit=crop&amp;w=600&amp;q=80"/>
+<img src="39a5cdbe-d6dd-4f7d-bbcd-53ba31225d93.jpg"/>
 <img src="f2c62936-3735-4da5-a96d-f4dd4f42b9e8.jpg"/>
 <img src="14e0f39f-14fb-4b4a-b405-593cf8e9e253.jpg"/>
-<img src="39a5cdbe-d6dd-4f7d-bbcd-53ba31225d93.jpg"/>
+
 <img src="unnamed.jpg"/>
 </div>
 <div class="about-text">
@@ -703,7 +802,7 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 </div>
 <div id="notes">
 <!-- The Best is Yet to Be, or Not To Be? -->
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 
 <div class="note" data-category="The Best is Yet to Be, or Not To Be?">
 <div class="note-content">
@@ -722,7 +821,7 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 
 </div>
 </div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="The Best is Yet to Be, or Not To Be?">
 <strong>Channel Tunnel</strong>
 <!--<img src="data:image/jpeg;base64,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" alt="Diagram or cross-section of Channel Tunnel undersea structure" style="width:100%; max-width:800px; margin-bottom:15px;">-->
@@ -730,27 +829,27 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 <p>There have been three fires in the tunnel, all on the heavy goods vehicle (HGV) shuttles, that were significant enough to close the tunnel, as well as other minor incidents. On the night of 19/20 February 1996, about 1,000 passengers became trapped in the Channel Tunnel when Eurostar trains from London broke down owing to failures of electronic circuits caused by snow and ice being deposited and then melting on the circuit boards.</p>
 
 </div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="The Best is Yet to Be, or Not To Be?">
 <strong>California High Speed Rail</strong>
 <p>Phase 1 of the planned route, about 494 miles (795 km) long, runs from the Salesforce Transit Center in San Francisco to the Anaheim Regional Transportation Intermodal Center in Anaheim, with intermediate stops planned for Millbrae, San Jose, Gilroy, Merced, Madera, Fresno, Kings/Tulare (Hanford), Bakersfield, Palmdale, Burbank and Los Angeles. An additional station between Los Angeles and Anaheim, at Norwalk or Fullerton, is being considered.</p>
 <p>Phase 2 would construct two major extensions to the system. The northern extension would stretch 115 miles (185 km) from Merced to Sacramento, with intermediate stops at Modesto and Stockton. It would largely parallel the existing San Joaquins route through the Central Valley. In the south, the system would be extended 167 miles (269 km) from Los Angeles to San Diego. Instead of continuing south from Anaheim, it would split off from the Phase 1 route at Los Angeles Union Station and travel east along I-10 before turning south, following an inland route along I-15 or I-215. This would enable high-speed trains to serve the Inland Empire and inland parts of San Diego County, with stops at Ontario International Airport and Escondido.</p>
 
 </div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="The Best is Yet to Be, or Not To Be?">
 <strong>Sejong City</strong>
 <p>Founded in 2007 as the new planned capital of South Korea from many parts of the South Chungcheong Province and some parts of North Chungcheong Province to ease congestion in South Korea's current capital and largest city, Seoul, and encourage investment in the country's central region. Since 2012, the government of South Korea has relocated numerous ministries and agencies to Sejong, but many still reside in other cities, primarily Seoul, where the National Assembly and many important government bodies remain.</p>
 
 </div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="The Best is Yet to Be, or Not To Be?">
 <strong>Hambantota (Sri Lanka)</strong>
 <p>This underdeveloped area was hit hard by the 2004 Indian Ocean tsunami and is undergoing a number of major development projects including the construction of a new sea port and international airport finished in 2013. These projects and others such as Hambantota Cricket Stadium are said to form part of the government's plan to transform Hambantota into the second major urban hub of Sri Lanka, away from Colombo.</p>
 <p>A cement grinding and bagging factory is being set up, as well as fertiliser bagging plants. Large salt plains are a prominent feature of Hambantota. The town is a major producer of salt. A Special Economic Zone of 6,100 hectares (15,000 acres) has been proposed by Prime Minister Ranil Wickremesinghe, out of which approximately 500 hectares (1,235 acres) will be situated in Hambantota to build factories, LNG plants and refineries while the rest will be in Monaragala, Embilipitiya and Matara. A Vocational training Center was opened in 2017 by Prime minister Ranil Wickremesinghe with China to train the workforce needed for the SEZs. Wickramasinghe also came into an agreement with state-owned China Merchants Port Holdings to lease 70 per cent stake of the strategically-located Hambantota port at $1.12 billion, opening Hambantota to the Belt and Road Initiative.</p>
 
 </div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="The Best is Yet to Be, or Not To Be?">
 <strong>The Line (NEOM)</strong>
 <p>A conceptual linear smart city in Saudi Arabia in Neom, Tabuk Province, housed in a single building, that is designed to have no cars, streets or carbon emissions. The original plans called for the city to span 170 kilometres (110 mi) at a height of 500 m (1,600 ft) and a width of 200 metres (660 ft) sized to accommodate a population of 9 million (25% of Saudi Arabia's 2022 population of 35.5 million). The Line would have an entirely glass mirror exterior. The plan calls for all basic services to be within a five-minute walking distance.</p>
@@ -760,21 +859,21 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 <p>On 5 April 2024, Bloomberg News reported that the project had been scaled back as a result of restrictions over funding by the PIF. Bloomberg cited Saudi officials as expecting a 2030 completion of a 2.4 kilometres (1.5 mi) section of the city which would contain fewer than 300,000 residents, down from an expected 1.5 million.</p>
 
 </div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="The Best is Yet to Be, or Not To Be?">
 <strong>Khazar Islands</strong>
 <p>The stated plan was for $100 billion, with $30 billion coming from foreign investors and another $30 billion from apartment sales, the city aiming to house 1 million residents in a development with 150 schools, 50 hospitals and daycare centers, numerous parks, shopping malls, cultural centers and a university campus plus a Formula 1 quality racetrack around a centrepiece $2 billion Azerbaijan Tower (planned to have been the tallest in the world). The city was expected to be equipped with 150 bridges and a large municipal airport to connect the islands to the mainland. It is expected that, in general, the city, when completed in 2022-2023, will host 1 million residents. According to the project, the price of completely renovated apartments will be around $4000-$5000 per square meter.</p>
 <p>All of these facilities were to be able to withstand up to magnitude 9.0 earthquakes. The president of the controlling Avesta Group of Companies, Ibrahim Ibrahimov, reportedly had the original idea in a flash while flying between Baku and Dubai. He told reporters that American, Turkish, Arab, and Chinese investors had showed interest in the project, which he described as being like a "new Venice".</p>
 
 </div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="The Best is Yet to Be, or Not To Be?">
 <strong>Three Gorges Dam</strong>
 <p>A hydroelectric gravity dam that spans the Yangtze River near Sandouping in Yiling District, Yichang, Hubei province, central China, downstream of the Three Gorges. The world's largest power station by installed capacity (22,500 MW), the Three Gorges Dam generates 95±20 TWh of electricity per year on average, depending on the amount of precipitation in the river basin. After the extensive monsoon rainfalls of 2020, the dam's produced nearly 112 TWh in a year, breaking the previous world record of ~103 TWh set by Itaipu Dam in 2016.</p>
 <p>At current levels, 80% of the land in the area is eroding, depositing about 40 million tons of sediment into the Yangtze annually and according to the National Development and Reform Commission, 366 grams of coal would produce 1 kWh of electricity during 2006. From 2003 to 2007, power production equaled that of 84 million tonnes of standard coal.</p>
 
 </div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="The Best is Yet to Be, or Not To Be?">
 <strong>Hong Kong-Zhuhai-Macau Bridge (HZMB)</strong>
 <p>A 55-kilometre (34 mi) bridge-tunnel system consisting of a series of three cable-stayed bridges, an undersea tunnel, and four artificial islands. It is both the longest sea crossing and the longest open-sea fixed link in the world. The HZMB spans the Lingding and Jiuzhou channels, connecting Hong Kong, Macau with Zhuhai—a major city on the Pearl River Delta in China.</p>
@@ -784,14 +883,14 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 <p><b>Impact on wildlife:</b> Conservationists at WWF Hong Kong blamed the construction of the HZMB for the falling number of white dolphins in the waters near the bridge. The dolphins found near waters of Lantau were the worst hit with numbers dropping by 60 percent between April 2015 and March 2016.</p>
 
 </div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="The Best is Yet to Be, or Not To Be?">
 <strong>The New Eurasian Land Bridge</strong>
 <p>Sometimes called the New Silk Road is the rail transport route for moving freight and passengers overland between Pacific seaports to Europe. The Eurasian Land Bridge starts from west China to Moscow whereas The New Eurasian Land Bridge extends from east of China to the center of Europe if it sticks to the plan. Also managers are planning to make the bridge go around Russia due to the ongoing war.</p>
 </div>
 <!-- In Futurity, Someone Prophetic Sees -->
 <div id="futurity-scroll-target"></div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="In Futurity, Someone Prophetic Sees">
 <h2><strong><span style="color:#1b1c1d;font-size:15pt;font-family:'Google Sans',sans-serif;">Peeking into Tomorrow: Why We Want to Know What&apos;s Next!</span></strong></h2>
 <p><span style="color:#1b1c1d;font-size:12pt;font-family:'Google Sans Text',sans-serif;">Imagine you&apos;re about to take a big test. Wouldn&apos;t it be awesome if you knew exactly what questions would be on it? That&apos;s kind of how people feel about the future! For a very, very long time, humans have been super curious about what&apos;s going to happen next. This big idea is what all the information we&apos;re talking about is really about.</span></p>
@@ -1085,7 +1184,7 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 </div>
 <!-- The Future Wasn't Meant to Be -->
 <div id="meant-scroll-target"></div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="The Future Wasn't Meant to Be">
   <h3>🚀 Futuristic Technologies That Never Took Off</h3>
   <p>Across the 20th century and into the early 2000s, there was an unshakable belief that technology would unlock utopia. Yet many celebrated innovations failed to cross from imagination to implementation. Rocket mail promised supersonic deliveries but was shelved due to safety risks and cost. Flying cars captured public fascination, but technical complexity, air traffic control issues, and noise pollution made them largely impractical. Ground-effect vehicles, designed to skim above surfaces using aerodynamic lift, never found safe or commercial applications.</p>
@@ -1130,7 +1229,7 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 </div>
 <!-- If At First You Fall, Try, Try Again -->
 <div id="fall-scroll-target"></div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="If At First You Fall, Try, Try Again">
 <h2>1. The Third Rome Concept and Its Modern Implications</h2>
 <h3>Historical Background</h3>
@@ -1443,7 +1542,7 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 </div>
 <!-- Things Really Do Catch Fire -->
 <div id="fire-scroll-target"></div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="Things Really Do Catch Fire">
 <h2 data-start="234" data-end="280">1. What Is Fire? The Science Behind Burning</h2>
 <h3 data-start="282" data-end="309">Key Scientific Concepts</h3>
@@ -1722,7 +1821,7 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 
 
 <div id="speech-scroll-target"></div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="Speeches that Inspire, Speeches that Spit Fire">
 <strong>Speeches That Changed The Future</strong>
 <p><strong>JFK’s Peace Speech (1963):</strong> JFK talked about the Cold War and emphasized the importance of world peace during a tense time in history.</p>
@@ -1748,7 +1847,7 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 
 
 <div id="topic8-scroll-target"></div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="Entertaining Ourselves Back To Life">
 <h2>1. The Prophesied Return: From Myth to Politics</h2>
 <p>In Tolkien’s <strong>The Return of the King</strong>, Aragorn’s return unites the fractured kingdoms of men against darkness. But this is far from the only story where a noble figure re-emerges to restore unity, peace, or hope.</p>
@@ -1845,7 +1944,7 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 
 
 <div id="reliving-scroll-target"></div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="Reliving It Up">
 <strong>Resuscitation vs. Resurrection</strong>
 <p><b>Resuscitation:</b> A medical process of reviving someone shortly after clinical death using CPR or equipment. Body and brain must still be intact. Common in ERs and near-drowning events.</p>
@@ -1909,7 +2008,7 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 
 
 <div id="ignite-scroll-target"></div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="Much Excite, Much Ignite">
 <strong>Long Wars</strong>
 <p><b>War Of Roses:</b> Lancaster vs. York over English throne. Red & white roses represented each side. Lancaster won.</p>
@@ -1954,7 +2053,7 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 <p><b>Hydrogen:</b> Clean fuel from water/air.</p>
 </div>
 <div id="imagination-scroll-target"></div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="The Generative Area: A Mind for Imagination">
 <strong>How Imagination Works</strong>
 <p><b>Memory:</b> Stores and retrieves info. Essential for learning, decisions, and imagination.</p>
@@ -2002,7 +2101,7 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 
 
 <div id="backup-scroll-target"></div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category= "No Backup, But Restore">
 <strong>Ragtime | “Wheels of a Dream” (1998) vs. “Wheels of a Dream” (2009)</strong>
 <p>“Wheels of a Dream” was part of the original 1998 Broadway production of <em>Ragtime</em>, a powerful duet about hope and the American dream. Although well-received, the production didn’t leave a lasting mark. In 2009, the revival featured the same song but with more emotionally layered performances and a fresh interpretation that resonated more deeply with modern audiences. The new version found success by making the same material more impactful through performance and staging.</p>
@@ -2046,7 +2145,7 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 </div>
 
 <div id="punky-scroll-target"></div>
-<hr style="border: 3px solid var(--turquoise); border-radius: 4px; margin: 50px 0;">
+<hr class="hr">
 <div class="note" data-category="Punky Futures">
 <h1>The Future Imagined: From Futurism to Solarpunk</h1>
 <h2>1. Origins of Futurism</h2>
