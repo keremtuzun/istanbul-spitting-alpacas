@@ -525,8 +525,155 @@ align-items: center;
   display: block;
 }
 
+#login-link {
+    margin-left: auto;
+    align-self: center;
+}
 
 
+
+#login-page h2 {
+    text-align: center;
+    border-left: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+#login-page form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#login-page label {
+    font-weight: 600;
+}
+
+#login-page input[type="email"],
+#login-page input[type="password"] {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--turquoise);
+    font-size: 1rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+#login-page .remember-me-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* New CSS for the Modal */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+}
+
+.close-button {
+    float: right;
+    cursor: pointer;
+    font-size: 24px;
+}
+.close-button:hover,
+.close-button:focus {
+  color: var(--turquoise);
+  text-decoration: none;
+  cursor: pointer;
+}
+#graphContainer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--pale-gold); /* Using a variable for dark mode support */
+  border-top: 2px solid var(--turquoise); /* Adds a separating line */
+  padding: 10px;
+  box-shadow: 0 -4px 8px rgba(0,0,0,0.15); /* A subtle shadow on top */
+  z-index: 9999; /* Ensures it stays on top of other content */
+}
+
+#graphContainer h2 {
+  font-size: 1.2rem;
+  text-align: center;
+  border-left: none;
+  padding-left: 0;
+  margin-bottom: 5px;
+}
+
+/* Progress Section Styling */
+#progressSection {
+  font-family: 'Poppins', sans-serif;
+}
+
+#progressSection label {
+  font-size: 1.15rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+#progressSection input[type="number"] {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--turquoise);
+  font-size: 1rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 200px;
+}
+
+#progressSection button {
+  padding: 10px 15px;
+  background: var(--turquoise);
+  color: var(--pale-gold);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin: 5px 0;
+}
+
+#progressSection button:hover {
+  background-color: #9b3333;
+}
+
+#progressSection h2 {
+  color: var(--turquoise);
+  font-weight: 700;
+  font-size: 2rem;
+  border-left: 6px solid var(--turquoise);
+  padding-left: 12px;
+  margin-bottom: 1rem;
+}
+
+#progressSection #currentSectionDisplay {
+  font-weight: 600;
+  color: var(--turquoise);
+}
+
+#progressChartCanvas {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+}
 
 
 @keyframes fadeIn {
@@ -649,6 +796,13 @@ align-items: center;
 
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+
+<style>
+/* Set Your Goals sadece Progress bölümünde görünsün */
+#progressSection { display: none; }
+#progress.active #progressSection { display: block; }
+</style>
+
 </head>
 <body>
 <header>
@@ -658,29 +812,37 @@ align-items: center;
 </header>
 <button class="hamburger" onclick="toggleMenu()">☰</button>
 
+<!-- Navigation Bar -->
+<!-- Navigation bar -->
 <nav>
-  <a class="active" href="#home">Home</a>
-  <a href="#about">About Us</a>
-    <a href="#discussion-forum">Discussion</a>
+  <a class="active" href="#home" onclick="showSection('home')">Home</a>
+  <a href="#about" onclick="showSection('about')">About Us</a>
+  <a href="#discussion-forum" onclick="showSection('discussion-forum')">Discussion</a>
   <div class="dropdown">
     <button class="dropbtn">Resources ▼</button>
     <div class="dropdown-content">
-      <a href="#notes">Notes</a>
-      <a href="#debate">Debate</a>
-      <a href="#quizzes">Quizzes</a>
-      <a href="#documents">Documents</a>
-      <a href="#practice">Practice Lab</a>
-      <a href="#flashcard">Flashcards</a>
+      <a href="#notes" onclick="showSection('notes')">Notes</a>
+      <a href="#debate" onclick="showSection('debate')">Debate</a>
+      <a href="#quizzes" onclick="showSection('quizzes')">Quizzes</a>
+      <a href="#documents" onclick="showSection('documents')">Documents</a>
+      <a href="#practice" onclick="showSection('practice')">Practice Lab</a>
+      <a href="#flashcard" onclick="showSection('flashcard')">Flashcards</a>
+      
     </div>
   </div>
-  
-  
 
-
+  <a href="#Login" onclick="document.getElementById('login-modal').style.display='block'">Login</a>
+  <a href="#progress" id="progress-link" onclick="showSection('progress')">Progress</a>
+<span id="user-email-display" style="margin-left: 10px; font-weight: bold; color: var(--turquoise);"></span>
   <button id="dark-mode-toggle">🌙</button>
-</nav>
+  </nav>
+<!-- Login form section (hidden by default) -->
+
+
+
+
 <main>
-<section class="active" id="home">
+  <section class="active" id="home">
 <div class="hero-image-container">
   <h2>WELCOME TO ISTANBUL SPITTING ALPACAS</h2>
   <br>
@@ -781,6 +943,154 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 </p>
 </div>
 </section>
+
+<!-- Login Modal -->
+<div id="login-modal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close-button" onclick="closeLoginModal()">&times;</span>
+    <div id="login-page">
+      <h2>Login / Sign Up</h2>
+      <form id="login-form">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <div class="remember-me-container">
+          <input type="checkbox" id="remember-me">
+          <label for="remember-me">Remember me for a month</label>
+        </div>
+
+        <button type="button" id="login-submit">Login</button>
+        <button type="button" id="signup-submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+function openLoginModal() {
+  document.getElementById('login-modal').style.display = 'block';
+}
+</script>
+<script>
+    function closeLoginModal() {
+        console.log("closeLoginModal() called."); // Add this
+        const modal = document.getElementById('login-modal');
+        if (modal) { // Add a check to ensure modal exists
+            modal.style.display = 'none';
+            modal.classList.remove('open');
+            console.log("Modal display set to none."); // Add this
+        } else {
+            console.log("Error: login-modal element not found.");
+        }
+    }
+</script>
+<section id="progress">
+
+<div id="progressSection" class="section">
+    <h2>Set Your Goals</h2>
+    <div>
+        <label>Notes goal (minutes): <input type="number" id="goalNotes"></label><br>
+        <label>Debate goal (minutes): <input type="number" id="goalDebate"></label><br>
+        <label>Quiz goal (minutes): <input type="number" id="goalQuiz"></label><br>
+        <label>Documents goal (minutes): <input type="number" id="goalDocuments"></label><br>
+        <label>Flashcards goal (minutes): <input type="number" id="goalFlashcards"></label><br>
+        <label>Practice Lab goal (minutes): <input type="number" id="goalPracticeLab"></label><br>
+        <button onclick="setGoals()">Save Goals</button>
+    </div>
+
+    <h2>Time Tracking</h2>
+    <p>Currently tracking: <strong id="currentSectionDisplay">None</strong></p>
+    <button onclick="startSection('Notes')">Start Notes Timer</button>
+    <button onclick="startSection('Debate')">Start Debate Timer</button>
+    <button onclick="startSection('Quiz')">Start Quiz Timer</button>
+    <button onclick="startSection('Documents')">Start Documents Timer</button>
+    <button onclick="startSection('PracticeLab')">Start Practice Lab Timer</button>
+    <button onclick="startSection('Flashcards')">Start Flashcards Timer</button>
+    <button onclick="endSection()">Stop Timer</button>
+
+    <h2>Your Goals vs Actuals</h2>
+    <canvas id="progressChartCanvas"></canvas>
+</div>
+</section>
+
+<script>
+let chart;
+let goals = { Notes: 0, Debate: 0, Quiz: 0, PracticeLab: 0, Documents: 0, Flashcards: 0 };
+let actuals = { Notes: 0, Debate: 0, Quiz: 0, PracticeLab: 0, Documents: 0, Flashcards: 0 };
+let currentSection = null;
+let sectionStartTime = null;
+
+function showSection(sectionId) {
+    // Tüm section'ları gizle
+    document.querySelectorAll('main > section').forEach(sec => sec.classList.remove('active'));
+
+    // İstenen section'ı göster
+    const selectedSection = document.getElementById(sectionId);
+    if (selectedSection) {
+        selectedSection.classList.add('active');
+    }
+
+    // Sadece Progress'te chart güncelle
+    if (sectionId === 'progress') {
+        updateChart();
+    }
+}
+
+function setGoals() {
+    goals.Notes = parseInt(document.getElementById('goalNotes').value) || 0;
+    goals.Debate = parseInt(document.getElementById('goalDebate').value) || 0;
+    goals.Quiz = parseInt(document.getElementById('goalQuiz').value) || 0;
+    goals.Documents = parseInt(document.getElementById('goalDocuments').value) || 0;
+    goals.Flashcards = parseInt(document.getElementById('goalFlashcards').value) || 0;
+    goals.PracticeLab = parseInt(document.getElementById('goalPracticeLab').value) || 0;
+    updateChart();
+}
+
+function startSection(sectionName) {
+    if(currentSection && currentSection !== sectionName) endSection();
+    currentSection = sectionName;
+    sectionStartTime = Date.now();
+    document.getElementById('currentSectionDisplay').textContent = sectionName;
+}
+
+function endSection() {
+    if(!currentSection || !sectionStartTime) return;
+    const minutesSpent = (Date.now() - sectionStartTime) / 60000;
+    actuals[currentSection] += minutesSpent;
+    sectionStartTime = null;
+    currentSection = null;
+    document.getElementById('currentSectionDisplay').textContent = "None";
+    updateChart();
+}
+
+function updateChart() {
+    const ctx = document.getElementById('progressChartCanvas').getContext('2d');
+    if(chart) chart.destroy();
+    chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: Object.keys(goals),
+            datasets: [
+                { label: 'Goal', data: Object.values(goals), backgroundColor: 'rgba(54, 162, 235, 0.5)' },
+                { label: 'Actual', data: Object.values(actuals), backgroundColor: 'rgba(75, 192, 192, 0.5)' }
+            ]
+        },
+        options: { responsive: true, scales: { y: { beginAtZero: true } } }
+    });
+}
+
+// Başlangıçta Progress görünür olsun
+showSection('progressSection');
+</script>
+
+
+</body>
+
+
+
 
 
 <section id="notes">
@@ -1939,6 +2249,60 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 <p>What is worth reviving?</p>
 <p>Who has the right to return—or rewrite?</p>
 <p>Is authenticity a feeling, a fact, or a function of legacy?</p>
+
+<script>
+// Remove duplicate declaration of loggedIn if it exists elsewhere in the file
+// let loggedIn = false; // <-- DELETE this line if already declared globally
+
+function setUserEmail(email) {
+    document.getElementById("user-email-display").textContent = email;
+}
+
+function showLoggedInUI(email) {
+    loggedIn = true;
+    setUserEmail(email);
+    document.getElementById("progress").style.display = "block";
+    document.getElementById("progress-link").style.display = "inline-block";
+    document.querySelector('a[href="#Login"]').style.display = "none";
+}
+
+function showLoggedOutUI() {
+    loggedIn = false;
+    setUserEmail("");
+    document.getElementById("progress").style.display = "none";
+    document.getElementById("progress-link").style.display = "none";
+    document.querySelector('a[href="#Login"]').style.display = "inline-block";
+}
+
+document.getElementById("login-submit").addEventListener("click", function() {
+    const email = document.getElementById("email").value;
+    if (email) {
+        showLoggedInUI(email);
+    }
+    closeLoginModal();
+});
+
+document.getElementById("signup-submit").addEventListener("click", function() {
+    const email = document.getElementById("email").value;
+    if (email) {
+        showLoggedInUI(email);
+    }
+    closeLoginModal();
+
+// Hide progress section & show login by default
+window.addEventListener("DOMContentLoaded", function() {
+    showLoggedOutUI();
+});
+
+// Close modal if clicking outside of it
+window.addEventListener("click", function(e) {
+    const modal = document.getElementById("login-modal");
+    if (e.target === modal) {
+        closeLoginModal();
+    }
+});
+</script>
+
 </body>
 </div>
 
@@ -2214,6 +2578,60 @@ Afrofuturist icon.
 <p>Which future speaks to you most—and why?</p>
 <p>Should more futures be imagined through non-Western lenses?</p>
 <p>What kind of future would you create?</p>
+
+<script>
+// let loggedIn = false; // <-- Removed duplicate declaration
+
+function setUserEmail(email) {
+    document.getElementById("user-email-display").textContent = email;
+}
+
+function showLoggedInUI(email) {
+    loggedIn = true;
+    setUserEmail(email);
+    document.getElementById("progress").style.display = "block";
+    document.getElementById("progress-link").style.display = "inline-block";
+    document.querySelector('a[href="#Login"]').style.display = "none";
+}
+
+function showLoggedOutUI() {
+    loggedIn = false;
+    setUserEmail("");
+    document.getElementById("progress").style.display = "none";
+    document.getElementById("progress-link").style.display = "none";
+    document.querySelector('a[href="#Login"]').style.display = "inline-block";
+}
+
+document.getElementById("login-submit").addEventListener("click", function() {
+    const email = document.getElementById("email").value;
+    if (email) {
+        showLoggedInUI(email);
+    }
+    closeLoginModal();
+});
+
+document.getElementById("signup-submit").addEventListener("click", function() {
+    const email = document.getElementById("email").value;
+    if (email) {
+        showLoggedInUI(email);
+    }
+    closeLoginModal();
+});
+
+// Hide progress section & show login by default
+window.addEventListener("DOMContentLoaded", function() {
+    showLoggedOutUI();
+});
+
+// Close modal if clicking outside of it
+window.addEventListener("click", function(e) {
+    const modal = document.getElementById("login-modal");
+    if (e.target === modal) {
+        closeLoginModal();
+    }
+});
+</script>
+
 </body>
 </html>
 </div>
@@ -3013,8 +3431,207 @@ function changeImage(direction) {
   document.getElementById("hero-image").src = images[currentImageIndex];
 }
 </script>
+<!-- Chart.js CDN -->
+
+    <div id="login-modal" style="display: none;">
+        </div>
+    <a href="#" id="progress-link" style="display: none;">Progress</a>
+    
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const loginLink = document.getElementById("login-link");
+    const loginSubmit = document.getElementById("login-submit");
+    const signupSubmit = document.getElementById("signup-submit");
+    const progressLink = document.getElementById("progress-link");
+    const rememberMe = document.getElementById("remember-me");
+
+    let allUserData = JSON.parse(localStorage.getItem("allUserData")) || {};
+    let currentUserEmail = localStorage.getItem("currentUser");
+
+    function showSection(sectionId) {
+    // Tüm section'ları gizle
+    document.querySelectorAll('main > section').forEach(sec => sec.classList.remove('active'));
+
+    // İstenen section'ı göster
+    const selectedSection = document.getElementById(sectionId);
+    if (selectedSection) {
+        selectedSection.classList.add('active');
+    }
+
+    // Sadece Progress'te chart güncelle
+    if (sectionId === 'progress') {
+        updateChart();
+    }
+});
+        const activeSection = document.getElementById(sectionId);
+        if (activeSection) {
+            activeSection.classList.add('active');
+        }
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.classList.remove('active');
+        });
+        const activeLink = document.querySelector(`nav a[href="#${sectionId}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+    
+
+    function updateNavUI(isLoggedIn) {
+        if (isLoggedIn) {
+            loginLink.style.display = "none";
+            progressLink.style.display = "inline-block";
+        } else {
+            loginLink.style.display = "inline-block";
+            progressLink.style.display = "none";
+        }
+    }
+
+    function handleLogin(email) {
+    currentUserEmail = email;
+    localStorage.setItem("currentUser", currentUserEmail);
+
+    if (!allUserData[currentUserEmail]) {
+        allUserData[currentUserEmail] = {};
+    }
+    localStorage.setItem("allUserData", JSON.stringify(allUserData));
+    
+    updateNavUI(true);
+    showSection('home');
+    closeLoginModal(); // Use the new function
+    alert(`Welcome, ${email}!`);
+}
+
+    loginSubmit.addEventListener("click", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        if (email && password) {
+            handleLogin(email);
+        } else {
+            alert("Please fill in both email and password.");
+        }
+    });
+
+    signupSubmit.addEventListener("click", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        if (email && password) {
+            handleLogin(email);
+        } else {
+            alert("Please fill in both email and password.");
+        }
+    });
+
+    document.querySelectorAll("nav a").forEach(link => {
+        link.addEventListener("click", (e) => {
+            const sectionId = link.getAttribute("href").replace("#", "");
+            if (sectionId) {
+                 e.preventDefault();
+                 showSection(sectionId);
+
+                 if (currentUserEmail && sectionId !== "login-page") {
+                     startTracking(sectionId);
+                 }
+            }
+        });
+    });
+
+    updateNavUI(!!currentUserEmail);
+
+    const initialSectionId = window.location.hash ? window.location.hash.substring(1) : 'home';
+    showSection(initialSectionId);
+
+    let studyData = allUserData[currentUserEmail] || {};
+    let currentSection2 = null;
+    let startTime = null;
+
+    function startTracking(section) {
+        if (currentSection2) {
+            const timeSpent = (Date.now() - startTime) / 1000 / 60;
+            studyData[currentSection2] = (studyData[currentSection2] || 0) + timeSpent;
+            allUserData[currentUserEmail] = studyData;
+            localStorage.setItem("allUserData", JSON.stringify(allUserData));
+        }
+        currentSection2 = section;
+        startTime = Date.now();
+    }
+
+    document.getElementById("progress-link").addEventListener("click", () => {
+        const ctx = document.getElementById('progressChart').getContext('2d');
+        if (window.myProgressChart) {
+            window.myProgressChart.destroy();
+        }
+        window.myProgressChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(studyData),
+                datasets: [{
+                    label: 'Minutes Spent',
+                    data: Object.values(studyData),
+                    backgroundColor: '#b73e3e'
+                }]
+            }
+        });
+    });
+</script>
 
 
+
+
+<script>
+let loggedIn = false;
+
+function setUserEmail(email) {
+    document.getElementById("user-email-display").textContent = email;
+}
+
+function showLoggedInUI(email) {
+    loggedIn = true;
+    setUserEmail(email);
+    document.getElementById("progress").style.display = "block";
+    document.getElementById("progress-link").style.display = "inline-block";
+    document.querySelector('a[href="#Login"]').style.display = "none";
+}
+
+function showLoggedOutUI() {
+    loggedIn = false;
+    setUserEmail("");
+    document.getElementById("progress").style.display = "none";
+    document.getElementById("progress-link").style.display = "none";
+    document.querySelector('a[href="#Login"]').style.display = "inline-block";
+}
+
+document.getElementById("login-submit").addEventListener("click", function() {
+    const email = document.getElementById("email").value;
+    if (email) {
+        showLoggedInUI(email);
+    }
+    closeLoginModal();
+});
+
+document.getElementById("signup-submit").addEventListener("click", function() {
+    const email = document.getElementById("email").value;
+    if (email) {
+        showLoggedInUI(email);
+    }
+    closeLoginModal();
+});
+
+// Hide progress section & show login by default
+window.addEventListener("DOMContentLoaded", function() {
+    showLoggedOutUI();
+});
+
+// Close modal if clicking outside of it
+window.addEventListener("click", function(e) {
+    const modal = document.getElementById("login-modal");
+    if (e.target === modal) {
+        closeLoginModal();
+    }
+});
+</script>
 
 </body>
 
