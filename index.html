@@ -3632,6 +3632,102 @@ window.addEventListener("click", function(e) {
     }
 });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const progressSection = document.getElementById('progressSection');
+        const setGoalForm = document.getElementById('setGoalForm');
+
+        if (loginForm) {
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+
+                const response = await fetch('http://127.0.0.1:5000/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const data = await response.json();
+                console.log(data.message);
+
+                if (response.ok) {
+                    localStorage.setItem('userId', data.userId);
+                    if (data.progress) {
+                        localStorage.setItem('userProgress', data.progress);
+                    }
+                    displayProgress();
+                }
+            });
+        }
+
+        if (signupForm) {
+            signupForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('signupEmail').value;
+                const password = document.getElementById('signupPassword').value;
+
+                const response = await fetch('http://127.0.0.1:5000/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const data = await response.json();
+                console.log(data.message);
+                // Optionally, log in the user after successful sign up
+            });
+        }
+
+        if (setGoalForm) {
+            setGoalForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const dailyGoal = document.getElementById('dailyGoal').value;
+                const weeklyGoal = document.getElementById('weeklyGoal').value;
+                const progressData = JSON.stringify({ dailyGoal, weeklyGoal });
+                localStorage.setItem('userProgress', progressData);
+                await saveProgress(progressData);
+                displayProgress();
+            });
+        }
+
+        async function saveProgress(progressData) {
+            const userId = localStorage.getItem('userId');
+            if (!userId) {
+                console.error("User not logged in.");
+                return;
+            }
+
+            const response = await fetch('http://127.0.0.1:5000/save-progress', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId, progress: progressData }),
+            });
+            const data = await response.json();
+            console.log(data.message);
+        }
+
+        function displayProgress() {
+            const userId = localStorage.getItem('userId');
+            if (userId) {
+                const progressData = JSON.parse(localStorage.getItem('userProgress'));
+                if (progressData) {
+                    // Update UI with progressData
+                    console.log('Displaying progress:', progressData);
+                }
+                document.getElementById('loginSection').style.display = 'none';
+                progressSection.style.display = 'block';
+            } else {
+                document.getElementById('loginSection').style.display = 'block';
+                progressSection.style.display = 'none';
+            }
+        }
+    });
+</script>
+
 
 </body>
 

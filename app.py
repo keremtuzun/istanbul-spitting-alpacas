@@ -58,7 +58,7 @@ def save_progress():
     else:
         new_progress = Progress(user_id=user_id, data=progress_data)
         db.session.add(new_progress)
-        
+
     db.session.commit()
     return jsonify({"message": "Progress saved successfully!"}), 200
 
