@@ -852,7 +852,6 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
   </form>
 </section>
 
-
 <section id="notes">
 <h2>Notes</h2>
 <!-- Topic selection menu -->
@@ -2294,7 +2293,6 @@ Afrofuturist icon.
 <div id="topic-text"></div>
 </div>
 </section>
-
 <section id="quizzes">
 <h2>Quizzes</h2>
 <ul id="quiz-list"></ul>
@@ -2392,7 +2390,6 @@ Afrofuturist icon.
     <p id="motionDisplay" style="font-size: 1.3rem; background: #f9f5e9; border-left: 4px solid var(--turquoise); border-radius: 8px; padding: 15px; margin-top: 15px;"></p>
   </div>
 </section>
-
 
 <section id="documents">
   <h2>Documents</h2>
@@ -3130,9 +3127,27 @@ function changeImage(direction) {
         }
     }
 
+    function handleLogin(email) {
+        currentUserEmail = email;
+        localStorage.setItem("currentUser", currentUserEmail);
 
+        if (!allUserData[currentUserEmail]) {
+            allUserData[currentUserEmail] = {};
+        }
+        localStorage.setItem("allUserData", JSON.stringify(allUserData));
+        
+        updateNavUI(true);
+        showSection('home');
+    }
 
-
+    loginSubmit.addEventListener("click", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        if (email && password) {
+            handleLogin(email);
+        }
+    });
 
     signupSubmit.addEventListener("click", (e) => {
         e.preventDefault();
@@ -3195,16 +3210,6 @@ function changeImage(direction) {
         });
     });
 </script>
-<script>
-function switchSection(id) {
-  document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-}
-
-document.getElementById("documentsBtn").addEventListener("click", () => switchSection("documents"));
-document.getElementById("flashcardBtn").addEventListener("click", () => switchSection("flashcard"));
-</script>
-
 
 
 </body>
