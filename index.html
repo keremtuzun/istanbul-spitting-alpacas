@@ -716,8 +716,6 @@ align-items: center;
       <a href="#flashcard">Flashcards</a>
     </div>
   </div>
-  <a href="#login-page" id="login-link">Login</a>
-  <a href="#progress" id="progress-link" style="display:none;">Progress</a>
   <button id="dark-mode-toggle">🌙</button>
 </nav>
 <!-- Login form section (hidden by default) -->
@@ -833,24 +831,6 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 </div>
 </section>
 
-<section id="progress">
-  <h2>Login / Sign Up</h2>
-  <form id="login-form">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-
-    <div class="remember-me-container">
-      <input type="checkbox" id="remember-me">
-      <label for="remember-me">Remember me for a month</label>
-    </div>
-
-    <button type="button" id="login-submit">Login</button>
-    <button type="button" id="signup-submit">Sign Up</button>
-  </form>
-</section>
 
 <section id="notes">
 <h2>Notes</h2>
@@ -3084,132 +3064,8 @@ function changeImage(direction) {
 </script>
 <!-- Chart.js CDN -->
 
-    <div id="login-modal" style="display: none;">
-        </div>
-    <a href="#" id="progress-link" style="display: none;">Progress</a>
-    
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    const loginLink = document.getElementById("login-link");
-    const loginSubmit = document.getElementById("login-submit");
-    const signupSubmit = document.getElementById("signup-submit");
-    const progressLink = document.getElementById("progress-link");
-    const rememberMe = document.getElementById("remember-me");
 
-    let allUserData = JSON.parse(localStorage.getItem("allUserData")) || {};
-    let currentUserEmail = localStorage.getItem("currentUser");
-
-    function showSection(sectionId) {
-        document.querySelectorAll("main section").forEach(section => {
-            section.classList.remove('active');
-        });
-        const activeSection = document.getElementById(sectionId);
-        if (activeSection) {
-            activeSection.classList.add('active');
-        }
-
-        document.querySelectorAll('nav a').forEach(link => {
-            link.classList.remove('active');
-        });
-        const activeLink = document.querySelector(`nav a[href="#${sectionId}"]`);
-        if (activeLink) {
-            activeLink.classList.add('active');
-        }
-    }
-
-    function updateNavUI(isLoggedIn) {
-        if (isLoggedIn) {
-            loginLink.style.display = "none";
-            progressLink.style.display = "inline-block";
-        } else {
-            loginLink.style.display = "inline-block";
-            progressLink.style.display = "none";
-        }
-    }
-
-    function handleLogin(email) {
-        currentUserEmail = email;
-        localStorage.setItem("currentUser", currentUserEmail);
-
-        if (!allUserData[currentUserEmail]) {
-            allUserData[currentUserEmail] = {};
-        }
-        localStorage.setItem("allUserData", JSON.stringify(allUserData));
-        
-        updateNavUI(true);
-        showSection('home');
-    }
-
-    loginSubmit.addEventListener("click", (e) => {
-        e.preventDefault();
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        if (email && password) {
-            handleLogin(email);
-        }
-    });
-
-    signupSubmit.addEventListener("click", (e) => {
-        e.preventDefault();
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        if (email && password) {
-            handleLogin(email);
-        }
-    });
-
-    document.querySelectorAll("nav a").forEach(link => {
-        link.addEventListener("click", (e) => {
-            const sectionId = link.getAttribute("href").replace("#", "");
-            if (sectionId) {
-                 e.preventDefault();
-                 showSection(sectionId);
-
-                 if (currentUserEmail && sectionId !== "login-page") {
-                     startTracking(sectionId);
-                 }
-            }
-        });
-    });
-
-    updateNavUI(!!currentUserEmail);
-
-    const initialSectionId = window.location.hash ? window.location.hash.substring(1) : 'home';
-    showSection(initialSectionId);
-
-    let studyData = allUserData[currentUserEmail] || {};
-    let currentSection = null;
-    let startTime = null;
-
-    function startTracking(section) {
-        if (currentSection) {
-            const timeSpent = (Date.now() - startTime) / 1000 / 60;
-            studyData[currentSection] = (studyData[currentSection] || 0) + timeSpent;
-            allUserData[currentUserEmail] = studyData;
-            localStorage.setItem("allUserData", JSON.stringify(allUserData));
-        }
-        currentSection = section;
-        startTime = Date.now();
-    }
-
-    document.getElementById("progress-link").addEventListener("click", () => {
-        const ctx = document.getElementById('progressChart').getContext('2d');
-        if (window.myProgressChart) {
-            window.myProgressChart.destroy();
-        }
-        window.myProgressChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: Object.keys(studyData),
-                datasets: [{
-                    label: 'Minutes Spent',
-                    data: Object.values(studyData),
-                    backgroundColor: '#b73e3e'
-                }]
-            }
-        });
-    });
-</script>
+  
 
 
 </body>
