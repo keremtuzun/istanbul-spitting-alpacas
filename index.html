@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -419,61 +418,55 @@ align-items: center;
     text-align: center;
 }
 #discussion-forum {
-  /* Updated to take more space and have a modern, sleek look */
-  background: var(--pale-gold); /* Using pale-gold for a softer background */
+  background: var(--bg-color);
   color: var(--text-color);
-  padding: 2.5rem; /* Increased padding */
-  max-width: 900px; /* Increased max-width for more space */
+  padding: 40px 20px;
+  max-width: 800px;
   margin: 40px auto;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Added a subtle shadow */
 }
 
 #discussion-forum textarea {
-  background: var(--bg-color); /* Lighter background for the textarea */
+  background: var(--pale-gold);
   color: var(--text-color);
-  border: 1px solid var(--turquoise); /* A subtle border */
+  border: none;
   border-radius: 8px;
-  padding: 15px; /* Increased padding */
+  padding: 10px;
   width: 100%;
   resize: vertical;
-  min-height: 120px; /* Made the textarea taller */
-  font-size: 1rem;
 }
 
 #discussion-forum button {
-  margin-top: 15px;
-  padding: 12px 20px;
+  margin-top: 10px;
+  padding: 10px 15px;
   border: none;
   background: var(--turquoise);
-  color: #fff; /* Changed text color to white for better contrast */
+  color: var(--pale-gold);
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.3s ease;
 }
 
 #discussion-forum button:hover {
-  background: #9b3333;
+  background: #9b3333; /* slightly darker turquoise for hover */
 }
 
 #postsContainer > div {
-  background: var(--bg-color); /* Lighter background for individual posts */
-  border: 1px solid #e0e0e0; /* A very light border */
-  border-left: 5px solid var(--turquoise); /* Added a prominent left border for flair */
+  background: var(--pale-gold);
+  border: 1px solid var(--turquoise);
   border-radius: 8px;
-  padding: 20px; /* Increased padding for better spacing */
-  margin-bottom: 20px; /* Increased bottom margin */
+  padding: 15px;
+  margin-bottom: 15px;
   color: var(--text-color);
-  max-width: 100%; /* Ensures posts take up the full container width */
+    max-width: 150%;         /* Allow full width (or specify a larger max-width) */
+  min-height: 100px;       /* Make it taller */
+  overflow-y: auto;        /* Keep vertical scroll if content overflows */
+  padding: 10px;           /* Optional padding */
   box-sizing: border-box;
 }
 
 #postsContainer small {
-  color: #888; /* Softer color for the timestamp/username */
-  display: block; /* Ensures it's on its own line */
-  margin-top: 10px;
-  font-size: 0.9rem;
+  color: var(--turquoise);
 }
 .dropdown {
   position: relative;
@@ -537,6 +530,9 @@ align-items: center;
     align-self: center;
 }
 
+#login-page {
+  display: block;
+}
 
 
 #login-page h2 {
@@ -572,115 +568,7 @@ align-items: center;
     gap: 8px;
 }
 
-/* New CSS for the Modal */
-.modal {
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-}
 
-.modal-content {
-    background-color: white;
-    margin: 10% auto;
-    padding: 20px;
-    width: 80%;
-    max-width: 400px;
-}
-
-.close-button {
-    float: right;
-    cursor: pointer;
-    font-size: 24px;
-}
-.close-button:hover,
-.close-button:focus {
-  color: var(--turquoise);
-  text-decoration: none;
-  cursor: pointer;
-}
-#graphContainer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: var(--pale-gold); /* Using a variable for dark mode support */
-  border-top: 2px solid var(--turquoise); /* Adds a separating line */
-  padding: 10px;
-  box-shadow: 0 -4px 8px rgba(0,0,0,0.15); /* A subtle shadow on top */
-  z-index: 9999; /* Ensures it stays on top of other content */
-}
-
-#graphContainer h2 {
-  font-size: 1.2rem;
-  text-align: center;
-  border-left: none;
-  padding-left: 0;
-  margin-bottom: 5px;
-}
-
-/* Progress Section Styling */
-#progressSection {
-  font-family: 'Poppins', sans-serif;
-}
-
-#progressSection label {
-  font-size: 1.15rem;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-#progressSection input[type="number"] {
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid var(--turquoise);
-  font-size: 1rem;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  margin-bottom: 1rem;
-  width: 100%;
-  max-width: 200px;
-}
-
-#progressSection button {
-  padding: 10px 15px;
-  background: var(--turquoise);
-  color: var(--pale-gold);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-  margin: 5px 0;
-}
-
-#progressSection button:hover {
-  background-color: #9b3333;
-}
-
-#progressSection h2 {
-  color: var(--turquoise);
-  font-weight: 700;
-  font-size: 2rem;
-  border-left: 6px solid var(--turquoise);
-  padding-left: 12px;
-  margin-bottom: 1rem;
-}
-
-#progressSection #currentSectionDisplay {
-  font-weight: 600;
-  color: var(--turquoise);
-}
-
-#progressChartCanvas {
-  width: 100%;
-  max-width: 800px;
-  margin: 20px auto;
-}
 
 
 @keyframes fadeIn {
@@ -803,13 +691,6 @@ align-items: center;
 
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
-
-<style>
-/* Set Your Goals sadece Progress bölümünde görünsün */
-#progressSection { display: none; }
-#progress.active #progressSection { display: block; }
-</style>
-
 </head>
 <body>
 <header>
@@ -819,31 +700,38 @@ align-items: center;
 </header>
 <button class="hamburger" onclick="toggleMenu()">☰</button>
 
+<!-- Navigation Bar -->
+<!-- Navigation bar -->
 <nav>
-  <a class="active" href="#home" onclick="showSection('home')">Home</a>
-  <a href="#about" onclick="showSection('about')">About Us</a>
-  <a href="#discussion-forum" onclick="showSection('discussion-forum')">Discussion</a>
+  <a class="active" href="#home">Home</a>
+  <a href="#about">About Us</a>
+  <a href="#discussion-forum">Discussion</a>
   <div class="dropdown">
     <button class="dropbtn">Resources ▼</button>
     <div class="dropdown-content">
-      <a href="#notes" onclick="showSection('notes')">Notes</a>
-      <a href="#debate" onclick="showSection('debate')">Debate</a>
-      <a href="#quizzes" onclick="showSection('quizzes')">Quizzes</a>
-      <a href="#documents" onclick="showSection('documents')">Documents</a>
-      <a href="#practice" onclick="showSection('practice')">Practice Lab</a>
-      <a href="#flashcard" onclick="showSection('flashcard')">Flashcards</a>
-      
+      <a href="#notes">Notes</a>
+      <a href="#debate">Debate</a>
+      <a href="#quizzes">Quizzes</a>
+      <a href="#documents">Documents</a>
+      <a href="#flashcard">Flashcards</a>
     </div>
   </div>
-
-  <a href="#Login" onclick="document.getElementById('login-modal').style.display='block'">Login</a>
-  <a href="#progress" id="progress-link" onclick="showSection('progress')">Progress</a>
-<a href="#" id="logout-link" onclick="logout()" style="display: none;">Logout</a>
-<span id="user-email-display" style="margin-left: 10px; font-weight: bold; color: var(--turquoise);"></span>
+  <a href="#login-page" id="login-link">Login</a>
+  <a href="#progress" id="progress-link" style="display:none;">Progress</a>
   <button id="dark-mode-toggle">🌙</button>
-  </nav>
+</nav>
+<!-- Login form section (hidden by default) -->
+
+
+
+
 <main>
-  <section class="active" id="home">
+  <section id="progress">
+  <h2>Your Study Progress</h2>
+  <canvas id="progressChart"></canvas>
+</section>
+
+<section class="active" id="home">
 <div class="hero-image-container">
   <h2>WELCOME TO ISTANBUL SPITTING ALPACAS</h2>
   <br>
@@ -882,6 +770,7 @@ align-items: center;
 
 
 </div>
+<!-- moved to Practice Lab -->
 </section>
 <section id="about">
 <div class="about-content">
@@ -944,353 +833,24 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 </div>
 </section>
 
-<div id="login-modal" class="modal" style="display: none;">
-  <div class="modal-content">
-    <span class="close-button" onclick="closeLoginModal()">&times;</span>
-    <div id="login-page">
-      <h2>Login / Sign Up</h2>
-      <form id="login-form">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-
-        <div class="remember-me-container">
-          <input type="checkbox" id="remember-me">
-          <label for="remember-me">Remember me for a month</label>
-        </div>
-
-        <button type="button" id="login-submit">Login</button>
-        <button type="button" id="signup-submit">Sign Up</button>
-      </form>
-    </div>
-  </div>
-</div>
-
-<script>
-function openLoginModal() {
-  document.getElementById('login-modal').style.display = 'block';
-}
-</script>
-<script>
-    function closeLoginModal() {
-        console.log("closeLoginModal() called."); // Add this
-        const modal = document.getElementById('login-modal');
-        if (modal) { // Add a check to ensure modal exists
-            modal.style.display = 'none';
-            modal.classList.remove('open');
-            console.log("Modal display set to none."); // Add this
-        } else {
-            console.log("Error: login-modal element not found.");
-        }
-    }
-</script>
 <section id="progress">
+  <h2>Login / Sign Up</h2>
+  <form id="login-form">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
 
-<div id="progressSection" class="section">
-    <h2>Set Your Goals</h2>
-    <div>
-        <label>Notes goal (minutes): <input type="number" id="goalNotes"></label><br>
-        <label>Debate goal (minutes): <input type="number" id="goalDebate"></label><br>
-        <label>Quiz goal (minutes): <input type="number" id="goalQuiz"></label><br>
-        <label>Documents goal (minutes): <input type="number" id="goalDocuments"></label><br>
-        <label>Flashcards goal (minutes): <input type="number" id="goalFlashcards"></label><br>
-        <label>Practice Lab goal (minutes): <input type="number" id="goalPracticeLab"></label><br>
-        <button onclick="setGoals()">Save Goals</button>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <div class="remember-me-container">
+      <input type="checkbox" id="remember-me">
+      <label for="remember-me">Remember me for a month</label>
     </div>
 
-    <h2>Time Tracking</h2>
-    <p>Currently tracking: <strong id="currentSectionDisplay">None</strong></p>
-    <button onclick="startSection('Notes')">Start Notes Timer</button>
-    <button onclick="startSection('Debate')">Start Debate Timer</button>
-    <button onclick="startSection('Quiz')">Start Quiz Timer</button>
-    <button onclick="startSection('Documents')">Start Documents Timer</button>
-    <button onclick="startSection('PracticeLab')">Start Practice Lab Timer</button>
-    <button onclick="startSection('Flashcards')">Start Flashcards Timer</button>
-    <button onclick="endSection()">Stop Timer</button>
-
-    <h2>Your Goals vs Actuals</h2>
-    <canvas id="progressChartCanvas"></canvas>
-</div>
+    <button type="button" id="login-submit">Login</button>
+    <button type="button" id="signup-submit">Sign Up</button>
+  </form>
 </section>
-
-<script>
-let chart;
-let goals = { Notes: 0, Debate: 0, Quiz: 0, PracticeLab: 0, Documents: 0, Flashcards: 0 };
-let actuals = { Notes: 0, Debate: 0, Quiz: 0, PracticeLab: 0, Documents: 0, Flashcards: 0 };
-let currentSection = null;
-let sectionStartTime = null;
-let currentUserEmail = null;
-
-function showSection(sectionId) {
-    document.querySelectorAll('main > section').forEach(sec => sec.classList.remove('active'));
-    const selectedSection = document.getElementById(sectionId);
-    if (selectedSection) {
-        selectedSection.classList.add('active');
-    }
-    if (sectionId === 'progress') {
-        updateChart();
-    }
-}
-
-async function setGoals() {
-    goals.Notes = parseInt(document.getElementById('goalNotes').value) || 0;
-    goals.Debate = parseInt(document.getElementById('goalDebate').value) || 0;
-    goals.Quiz = parseInt(document.getElementById('goalQuiz').value) || 0;
-    goals.Documents = parseInt(document.getElementById('goalDocuments').value) || 0;
-    goals.Flashcards = parseInt(document.getElementById('goalFlashcards').value) || 0;
-    goals.PracticeLab = parseInt(document.getElementById('goalPracticeLab').value) || 0;
-    updateChart();
-    await saveProgress();
-}
-
-function startSection(sectionName) {
-    if(currentSection && currentSection !== sectionName) endSection();
-    currentSection = sectionName;
-    sectionStartTime = Date.now();
-    document.getElementById('currentSectionDisplay').textContent = sectionName;
-}
-
-async function endSection() {
-    if(!currentSection || !sectionStartTime) return;
-    const minutesSpent = (Date.now() - sectionStartTime) / 60000;
-    actuals[currentSection] += minutesSpent;
-    sectionStartTime = null;
-    currentSection = null;
-    document.getElementById('currentSectionDisplay').textContent = "None";
-    updateChart();
-    await saveProgress();
-}
-
-function updateChart() {
-    const ctx = document.getElementById('progressChartCanvas').getContext('2d');
-    if(chart) chart.destroy();
-    chart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: Object.keys(goals),
-            datasets: [
-                { label: 'Goal', data: Object.values(goals), backgroundColor: 'rgba(54, 162, 235, 0.5)' },
-                { label: 'Actual', data: Object.values(actuals), backgroundColor: 'rgba(75, 192, 192, 0.5)' }
-            ]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-}
-
-async function saveProgress() {
-    if (!currentUserEmail) return;
-    try {
-        const response = await fetch('/save_progress', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${currentUserEmail}` // Or use session cookies
-            },
-            body: JSON.stringify({
-                email: currentUserEmail,
-                goals: goals,
-                actuals: actuals
-            })
-        });
-        if (!response.ok) {
-            throw new Error('Failed to save progress');
-        }
-    } catch (error) {
-        console.error('Error saving progress:', error);
-    }
-}
-
-async function loadProgress() {
-    if (!currentUserEmail) return;
-    try {
-        const response = await fetch('/get_progress', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${currentUserEmail}` // Or use session cookies
-            },
-            body: JSON.stringify({
-                email: currentUserEmail
-            })
-        });
-        if (response.ok) {
-            const data = await response.json();
-            if (data.goals && data.actuals) {
-                goals = data.goals;
-                actuals = data.actuals;
-                // Update input fields
-                document.getElementById('goalNotes').value = goals.Notes;
-                document.getElementById('goalDebate').value = goals.Debate;
-                document.getElementById('goalQuiz').value = goals.Quiz;
-                document.getElementById('goalDocuments').value = goals.Documents;
-                document.getElementById('goalFlashcards').value = goals.Flashcards;
-                document.getElementById('goalPracticeLab').value = goals.PracticeLab;
-                updateChart();
-            }
-        } else {
-            console.error('Failed to load progress:', response.statusText);
-        }
-    } catch (error) {
-        console.error('Error loading progress:', error);
-    }
-}
-
-async function handleLogin() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    try {
-        const response = await fetch('/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email, password }),
-        });
-        const data = await response.json();
-        if (response.ok) {
-            currentUserEmail = email;
-            document.getElementById('user-email-display').textContent = email;
-            closeLoginModal();
-            await loadProgress();
-        } else {
-            alert(data.message || 'Login failed');
-        }
-    } catch (error) {
-        console.error('Login error:', error);
-        alert('Login failed. Please try again.');
-    }
-}
-
-async function handleSignup() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    try {
-        const response = await fetch('/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email, password }),
-        });
-        const data = await response.json();
-        if (response.ok) {
-            alert('Signup successful! You can now log in.');
-            // Automatically log in after signup
-            currentUserEmail = email;
-            document.getElementById('user-email-display').textContent = email;
-            closeLoginModal();
-            await loadProgress();
-        } else {
-            alert(data.message || 'Signup failed');
-        }
-    } catch (error) {
-        console.error('Signup error:', error);
-        alert('Signup failed. Please try again.');
-    }
-}
-
-function handleLogout() {
-    // Clear any user-specific data
-    currentUserEmail = null;
-    goals = { Notes: 0, Debate: 0, Quiz: 0, PracticeLab: 0, Documents: 0, Flashcards: 0 };
-    actuals = { Notes: 0, Debate: 0, Quiz: 0, PracticeLab: 0, Documents: 0, Flashcards: 0 };
-    // Update UI
-    showLoggedOutUI();
-    // You might also want to alert the user or redirect them
-    alert("You have been logged out.");
-}
-
-function setUserEmail(email) {
-    document.getElementById("user-email-display").textContent = email;
-}
-
-function showLoggedInUI(email) {
-    loggedIn = true;
-    setUserEmail(email);
-    document.getElementById("progress").style.display = "block";
-    document.getElementById("progress-link").style.display = "inline-block";
-    document.querySelector('a[href="#Login"]').style.display = "none";
-    document.getElementById("logout-link").style.display = "inline-block";
-}
-
-function showLoggedOutUI() {
-    loggedIn = false;
-    setUserEmail("");
-    document.getElementById("progress").style.display = "none";
-    document.getElementById("progress-link").style.display = "none";
-    document.querySelector('a[href="#Login"]').style.display = "inline-block";
-    document.getElementById("logout-link").style.display = "none";
-}
-
-document.getElementById("login-submit").addEventListener("click", function() {
-    const email = document.getElementById("email").value;
-    if (email) {
-        showLoggedInUI(email);
-    }
-    closeLoginModal();
-});
-
-document.getElementById("signup-submit").addEventListener("click", function() {
-    const email = document.getElementById("email").value;
-    if (email) {
-        showLoggedInUI(email);
-    }
-    closeLoginModal();
-});
-
-// Hide progress section & show login by default
-window.addEventListener("DOMContentLoaded", function() {
-    showLoggedOutUI();
-});
-
-// Close modal if clicking outside of it
-window.addEventListener("click", function(e) {
-    const modal = document.getElementById("login-modal");
-    if (e.target === modal) {
-        closeLoginModal();
-    }
-});
-// Add this function to your existing script
-function logout() {
-    showLoggedOutUI();
-    // You might also want to clear any saved progress or user data here
-    // For example, if you're using localStorage or session cookies.
-}
-
-// Update the existing showLoggedInUI function
-function showLoggedInUI(email) {
-    loggedIn = true;
-    setUserEmail(email);
-    document.getElementById("progress").style.display = "block";
-    document.getElementById("progress-link").style.display = "inline-block";
-    document.querySelector('a[href="#Login"]').style.display = "none";
-    document.getElementById("logout-link").style.display = "inline-block"; // Show the new logout link
-}
-
-// Update the existing showLoggedOutUI function
-function showLoggedOutUI() {
-    loggedIn = false;
-    setUserEmail("");
-    document.getElementById("progress").style.display = "none";
-    document.getElementById("progress-link").style.display = "none";
-    document.querySelector('a[href="#Login"]').style.display = "inline-block";
-    document.getElementById("logout-link").style.display = "none"; // Hide the logout link
-}
-</script>
-
-</body>
-
-
-
 
 
 <section id="notes">
@@ -2449,60 +2009,6 @@ function showLoggedOutUI() {
 <p>What is worth reviving?</p>
 <p>Who has the right to return—or rewrite?</p>
 <p>Is authenticity a feeling, a fact, or a function of legacy?</p>
-
-<script>
-// Remove duplicate declaration of loggedIn if it exists elsewhere in the file
-// let loggedIn = false; // <-- DELETE this line if already declared globally
-
-function setUserEmail(email) {
-    document.getElementById("user-email-display").textContent = email;
-}
-
-function showLoggedInUI(email) {
-    loggedIn = true;
-    setUserEmail(email);
-    document.getElementById("progress").style.display = "block";
-    document.getElementById("progress-link").style.display = "inline-block";
-    document.querySelector('a[href="#Login"]').style.display = "none";
-}
-
-function showLoggedOutUI() {
-    loggedIn = false;
-    setUserEmail("");
-    document.getElementById("progress").style.display = "none";
-    document.getElementById("progress-link").style.display = "none";
-    document.querySelector('a[href="#Login"]').style.display = "inline-block";
-}
-
-document.getElementById("login-submit").addEventListener("click", function() {
-    const email = document.getElementById("email").value;
-    if (email) {
-        showLoggedInUI(email);
-    }
-    closeLoginModal();
-});
-
-document.getElementById("signup-submit").addEventListener("click", function() {
-    const email = document.getElementById("email").value;
-    if (email) {
-        showLoggedInUI(email);
-    }
-    closeLoginModal();
-
-// Hide progress section & show login by default
-window.addEventListener("DOMContentLoaded", function() {
-    showLoggedOutUI();
-});
-
-// Close modal if clicking outside of it
-window.addEventListener("click", function(e) {
-    const modal = document.getElementById("login-modal");
-    if (e.target === modal) {
-        closeLoginModal();
-    }
-});
-</script>
-
 </body>
 </div>
 
@@ -2778,60 +2284,6 @@ Afrofuturist icon.
 <p>Which future speaks to you most—and why?</p>
 <p>Should more futures be imagined through non-Western lenses?</p>
 <p>What kind of future would you create?</p>
-
-<script>
-// let loggedIn = false; // <-- Removed duplicate declaration
-
-function setUserEmail(email) {
-    document.getElementById("user-email-display").textContent = email;
-}
-
-function showLoggedInUI(email) {
-    loggedIn = true;
-    setUserEmail(email);
-    document.getElementById("progress").style.display = "block";
-    document.getElementById("progress-link").style.display = "inline-block";
-    document.querySelector('a[href="#Login"]').style.display = "none";
-}
-
-function showLoggedOutUI() {
-    loggedIn = false;
-    setUserEmail("");
-    document.getElementById("progress").style.display = "none";
-    document.getElementById("progress-link").style.display = "none";
-    document.querySelector('a[href="#Login"]').style.display = "inline-block";
-}
-
-document.getElementById("login-submit").addEventListener("click", function() {
-    const email = document.getElementById("email").value;
-    if (email) {
-        showLoggedInUI(email);
-    }
-    closeLoginModal();
-});
-
-document.getElementById("signup-submit").addEventListener("click", function() {
-    const email = document.getElementById("email").value;
-    if (email) {
-        showLoggedInUI(email);
-    }
-    closeLoginModal();
-});
-
-// Hide progress section & show login by default
-window.addEventListener("DOMContentLoaded", function() {
-    showLoggedOutUI();
-});
-
-// Close modal if clicking outside of it
-window.addEventListener("click", function(e) {
-    const modal = document.getElementById("login-modal");
-    if (e.target === modal) {
-        closeLoginModal();
-    }
-});
-</script>
-
 </body>
 </html>
 </div>
@@ -2842,6 +2294,7 @@ window.addEventListener("click", function(e) {
 <div id="topic-text"></div>
 </div>
 </section>
+
 <section id="quizzes">
 <h2>Quizzes</h2>
 <ul id="quiz-list"></ul>
@@ -2921,9 +2374,9 @@ window.addEventListener("click", function(e) {
 
   <p><strong>Final Advice:</strong><br>
   Be original. Be clear. Be human. A thoughtful pause or an unexpected analogy can make your speech unforgettable. And always—speak with alpaca confidence.</p>
-</section>
 
-<section id="practice">
+  <hr class="hr">
+
   <h2>Practice Lab: Motions & Timer</h2>
   <p>Use this space to simulate real WSC debate conditions. Generate thought-provoking motions from the 2025 theme “Reigniting The Future” and practice timed speeches with our 4-minute timer.</p>
 
@@ -2939,6 +2392,7 @@ window.addEventListener("click", function(e) {
     <p id="motionDisplay" style="font-size: 1.3rem; background: #f9f5e9; border-left: 4px solid var(--turquoise); border-radius: 8px; padding: 15px; margin-top: 15px;"></p>
   </div>
 </section>
+
 
 <section id="documents">
   <h2>Documents</h2>
@@ -3649,20 +3103,9 @@ function changeImage(direction) {
     let currentUserEmail = localStorage.getItem("currentUser");
 
     function showSection(sectionId) {
-    // Tüm section'ları gizle
-    document.querySelectorAll('main > section').forEach(sec => sec.classList.remove('active'));
-
-    // İstenen section'ı göster
-    const selectedSection = document.getElementById(sectionId);
-    if (selectedSection) {
-        selectedSection.classList.add('active');
-    }
-
-    // Sadece Progress'te chart güncelle
-    if (sectionId === 'progress') {
-        updateChart();
-    }
-});
+        document.querySelectorAll("main section").forEach(section => {
+            section.classList.remove('active');
+        });
         const activeSection = document.getElementById(sectionId);
         if (activeSection) {
             activeSection.classList.add('active');
@@ -3675,7 +3118,7 @@ function changeImage(direction) {
         if (activeLink) {
             activeLink.classList.add('active');
         }
-    
+    }
 
     function updateNavUI(isLoggedIn) {
         if (isLoggedIn) {
@@ -3688,19 +3131,17 @@ function changeImage(direction) {
     }
 
     function handleLogin(email) {
-    currentUserEmail = email;
-    localStorage.setItem("currentUser", currentUserEmail);
+        currentUserEmail = email;
+        localStorage.setItem("currentUser", currentUserEmail);
 
-    if (!allUserData[currentUserEmail]) {
-        allUserData[currentUserEmail] = {};
+        if (!allUserData[currentUserEmail]) {
+            allUserData[currentUserEmail] = {};
+        }
+        localStorage.setItem("allUserData", JSON.stringify(allUserData));
+        
+        updateNavUI(true);
+        showSection('home');
     }
-    localStorage.setItem("allUserData", JSON.stringify(allUserData));
-    
-    updateNavUI(true);
-    showSection('home');
-    closeLoginModal(); // Use the new function
-    alert(`Welcome, ${email}!`);
-}
 
     loginSubmit.addEventListener("click", (e) => {
         e.preventDefault();
@@ -3708,8 +3149,6 @@ function changeImage(direction) {
         const password = document.getElementById("password").value;
         if (email && password) {
             handleLogin(email);
-        } else {
-            alert("Please fill in both email and password.");
         }
     });
 
@@ -3719,8 +3158,6 @@ function changeImage(direction) {
         const password = document.getElementById("password").value;
         if (email && password) {
             handleLogin(email);
-        } else {
-            alert("Please fill in both email and password.");
         }
     });
 
@@ -3744,17 +3181,17 @@ function changeImage(direction) {
     showSection(initialSectionId);
 
     let studyData = allUserData[currentUserEmail] || {};
-    let currentSection2 = null;
+    let currentSection = null;
     let startTime = null;
 
     function startTracking(section) {
-        if (currentSection2) {
+        if (currentSection) {
             const timeSpent = (Date.now() - startTime) / 1000 / 60;
-            studyData[currentSection2] = (studyData[currentSection2] || 0) + timeSpent;
+            studyData[currentSection] = (studyData[currentSection] || 0) + timeSpent;
             allUserData[currentUserEmail] = studyData;
             localStorage.setItem("allUserData", JSON.stringify(allUserData));
         }
-        currentSection2 = section;
+        currentSection = section;
         startTime = Date.now();
     }
 
@@ -3776,61 +3213,14 @@ function changeImage(direction) {
         });
     });
 </script>
-
-
-
-
 <script>
-let loggedIn = false;
-
-function setUserEmail(email) {
-    document.getElementById("user-email-display").textContent = email;
+function switchSection(id) {
+  document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
 }
 
-function showLoggedInUI(email) {
-    loggedIn = true;
-    setUserEmail(email);
-    document.getElementById("progress").style.display = "block";
-    document.getElementById("progress-link").style.display = "inline-block";
-    document.querySelector('a[href="#Login"]').style.display = "none";
-}
-
-function showLoggedOutUI() {
-    loggedIn = false;
-    setUserEmail("");
-    document.getElementById("progress").style.display = "none";
-    document.getElementById("progress-link").style.display = "none";
-    document.querySelector('a[href="#Login"]').style.display = "inline-block";
-}
-
-document.getElementById("login-submit").addEventListener("click", function() {
-    const email = document.getElementById("email").value;
-    if (email) {
-        showLoggedInUI(email);
-    }
-    closeLoginModal();
-});
-
-document.getElementById("signup-submit").addEventListener("click", function() {
-    const email = document.getElementById("email").value;
-    if (email) {
-        showLoggedInUI(email);
-    }
-    closeLoginModal();
-});
-
-// Hide progress section & show login by default
-window.addEventListener("DOMContentLoaded", function() {
-    showLoggedOutUI();
-});
-
-// Close modal if clicking outside of it
-window.addEventListener("click", function(e) {
-    const modal = document.getElementById("login-modal");
-    if (e.target === modal) {
-        closeLoginModal();
-    }
-});
+document.getElementById("documentsBtn").addEventListener("click", () => switchSection("documents"));
+document.getElementById("flashcardBtn").addEventListener("click", () => switchSection("flashcard"));
 </script>
 
 
