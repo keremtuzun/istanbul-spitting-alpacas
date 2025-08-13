@@ -1,85 +1,103 @@
-from flask import Flask, render_template, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
+from flask import Flask, request, jsonify, session
+from flask_cors import CORS
+import uuid # For generating user IDs
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.config['SECRET_KEY'] = 'thisisasecretkey'
-db = SQLAlchemy(app)
+CORS(app, supports_credentials=True) # Enable CORS for frontend communication
+app.secret_key = 'your_secret_key_here' # Replace with a strong secret key
 
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'login'
+# In-memory storage for demonstration purposes
+# In a real app, use a database (e.g., SQLite, PostgreSQL)
+users = {} # {email: {password: '...', user_id: '...', progress: {goals: {}, actuals: {}}}}
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+@app.route('/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    email = data.get('username') # Changed from 'email' to 'username' to match frontend script
+    password = data.get('password')
 
-class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), nullable=False, unique=True)
-    password = db.Column(db.String(80), nullable=False)
-    # New relationship to store progress data
-    progress = db.relationship('Progress', backref='user', lazy=True)
+    if not email or not password:
+        return jsonify({'message': 'Email and password are required'}), 400
 
-class Progress(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    goals = db.Column(db.String(500), nullable=False)
-    actuals = db.Column(db.String(500), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    if email in users:
+        return jsonify({'message': 'User already exists'}), 409
 
-@app.route('/')
-def home():
-    return render_template('home.html')
+    user_id = str(uuid.uuid4())
+    users[email] = {
+        'password': password,
+        'user_id': user_id,
+        'progress': {
+            'goals': {'Notes': 0, 'Debate': 0, 'Quiz': 0, 'PracticeLab': 0, 'Documents': 0, 'Flashcards': 0},
+            'actuals': {'Notes': 0, 'Debate': 0, 'Quiz': 0, 'PracticeLab': 0, 'Documents': 0, 'Flashcards': 0}
+        }
+    }
+    return jsonify({'message': 'User registered successfully', 'userId': user_id}), 201
 
-@app.route('/login')
+@app.route('/login', methods=['POST'])
 def login():
-    return render_template('login.html')
+    data = request.get_json()
+    email = data.get('username') # Changed from 'email' to 'username' to match frontend script
+    password = data.get('password')
 
-@app.route('/dashboard')
-@login_required
-def dashboard():
-    return render_template('dashboard.html')
+    if not email or not password:
+        return jsonify({'message': 'Email and password are required'}), 400
 
-@app.route('/logout')
-@login_required
+    user = users.get(email)
+    if user and user['password'] == password:
+        session['user_id'] = user['user_id'] # Store user_id in session
+        session['user_email'] = email # Store user_email in session
+        return jsonify({
+            'message': 'Login successful',
+            'userId': user['user_id'],
+            'progress': user['progress'] # Send progress data on login
+        }), 200
+    return jsonify({'message': 'Invalid credentials'}), 401
+
+@app.route('/logout', methods=['POST'])
 def logout():
-    logout_user()
-    return render_template('home.html')
+    session.pop('user_id', None)
+    session.pop('user_email', None)
+    return jsonify({'message': 'Logged out successfully'}), 200
 
 @app.route('/save_progress', methods=['POST'])
-@login_required
 def save_progress():
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({"error": "User not logged in"}), 401
+    
     data = request.json
-    goals_data = data.get('goals')
-    actuals_data = data.get('actuals')
+    goals = data.get('goals')
+    actuals = data.get('actuals')
     
-    # Check if a progress entry already exists for the user
-    existing_progress = Progress.query.filter_by(user_id=current_user.id).first()
-    
-    if existing_progress:
-        existing_progress.goals = goals_data
-        existing_progress.actuals = actuals_data
-    else:
-        new_progress = Progress(goals=goals_data, actuals=actuals_data, user_id=current_user.id)
-        db.session.add(new_progress)
-    
-    db.session.commit()
-    return jsonify({'success': True}), 200
+    for email, user_data in users.items():
+        if user_data['user_id'] == user_id:
+            user_data['progress'] = {
+                'goals': goals,
+                'actuals': actuals
+            }
+            return jsonify({"message": "Progress saved successfully"}), 200
+            
+    return jsonify({"error": "User not found"}), 404
 
 @app.route('/get_progress', methods=['GET'])
-@login_required
 def get_progress():
-    progress = Progress.query.filter_by(user_id=current_user.id).first()
-    if progress:
-        return jsonify({
-            'goals': progress.goals,
-            'actuals': progress.actuals
-        }), 200
-    else:
-        return jsonify({'goals': '[]', 'actuals': '[]'}), 200
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({"error": "User not logged in"}), 401
+        
+    for email, user_data in users.items():
+        if user_data['user_id'] == user_id:
+            progress = user_data.get('progress', {'goals': {}, 'actuals': {}})
+            return jsonify(progress), 200
+            
+    return jsonify({"error": "User not found"}), 404
 
-if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
+@app.route('/dashboard')
+def dashboard():
+    if 'user_id' in session:
+        return jsonify({'message': 'User is logged in'}), 200
+    return jsonify({'message': 'User is not logged in'}), 401
+
+if __name__ == '__main__':
     app.run(debug=True)
+

@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -418,55 +419,61 @@ align-items: center;
     text-align: center;
 }
 #discussion-forum {
-  background: var(--bg-color);
+  /* Updated to take more space and have a modern, sleek look */
+  background: var(--pale-gold); /* Using pale-gold for a softer background */
   color: var(--text-color);
-  padding: 40px 20px;
-  max-width: 800px;
+  padding: 2.5rem; /* Increased padding */
+  max-width: 900px; /* Increased max-width for more space */
   margin: 40px auto;
   border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Added a subtle shadow */
 }
 
 #discussion-forum textarea {
-  background: var(--pale-gold);
+  background: var(--bg-color); /* Lighter background for the textarea */
   color: var(--text-color);
-  border: none;
+  border: 1px solid var(--turquoise); /* A subtle border */
   border-radius: 8px;
-  padding: 10px;
+  padding: 15px; /* Increased padding */
   width: 100%;
   resize: vertical;
+  min-height: 120px; /* Made the textarea taller */
+  font-size: 1rem;
 }
 
 #discussion-forum button {
-  margin-top: 10px;
-  padding: 10px 15px;
+  margin-top: 15px;
+  padding: 12px 20px;
   border: none;
   background: var(--turquoise);
-  color: var(--pale-gold);
+  color: #fff; /* Changed text color to white for better contrast */
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 #discussion-forum button:hover {
-  background: #9b3333; /* slightly darker turquoise for hover */
+  background: #9b3333;
 }
 
 #postsContainer > div {
-  background: var(--pale-gold);
-  border: 1px solid var(--turquoise);
+  background: var(--bg-color); /* Lighter background for individual posts */
+  border: 1px solid #e0e0e0; /* A very light border */
+  border-left: 5px solid var(--turquoise); /* Added a prominent left border for flair */
   border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px;
+  padding: 20px; /* Increased padding for better spacing */
+  margin-bottom: 20px; /* Increased bottom margin */
   color: var(--text-color);
-    max-width: 150%;         /* Allow full width (or specify a larger max-width) */
-  min-height: 100px;       /* Make it taller */
-  overflow-y: auto;        /* Keep vertical scroll if content overflows */
-  padding: 10px;           /* Optional padding */
+  max-width: 100%; /* Ensures posts take up the full container width */
   box-sizing: border-box;
 }
 
 #postsContainer small {
-  color: var(--turquoise);
+  color: #888; /* Softer color for the timestamp/username */
+  display: block; /* Ensures it's on its own line */
+  margin-top: 10px;
+  font-size: 0.9rem;
 }
 .dropdown {
   position: relative;
@@ -812,8 +819,6 @@ align-items: center;
 </header>
 <button class="hamburger" onclick="toggleMenu()">☰</button>
 
-<!-- Navigation Bar -->
-<!-- Navigation bar -->
 <nav>
   <a class="active" href="#home" onclick="showSection('home')">Home</a>
   <a href="#about" onclick="showSection('about')">About Us</a>
@@ -833,14 +838,10 @@ align-items: center;
 
   <a href="#Login" onclick="document.getElementById('login-modal').style.display='block'">Login</a>
   <a href="#progress" id="progress-link" onclick="showSection('progress')">Progress</a>
+<a href="#" id="logout-link" onclick="logout()" style="display: none;">Logout</a>
 <span id="user-email-display" style="margin-left: 10px; font-weight: bold; color: var(--turquoise);"></span>
   <button id="dark-mode-toggle">🌙</button>
   </nav>
-<!-- Login form section (hidden by default) -->
-
-
-
-
 <main>
   <section class="active" id="home">
 <div class="hero-image-container">
@@ -881,7 +882,6 @@ align-items: center;
 
 
 </div>
-<!-- moved to Practice Lab -->
 </section>
 <section id="about">
 <div class="about-content">
@@ -944,7 +944,6 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 </div>
 </section>
 
-<!-- Login Modal -->
 <div id="login-modal" class="modal" style="display: none;">
   <div class="modal-content">
     <span class="close-button" onclick="closeLoginModal()">&times;</span>
@@ -1022,24 +1021,20 @@ let goals = { Notes: 0, Debate: 0, Quiz: 0, PracticeLab: 0, Documents: 0, Flashc
 let actuals = { Notes: 0, Debate: 0, Quiz: 0, PracticeLab: 0, Documents: 0, Flashcards: 0 };
 let currentSection = null;
 let sectionStartTime = null;
+let currentUserEmail = null;
 
 function showSection(sectionId) {
-    // Tüm section'ları gizle
     document.querySelectorAll('main > section').forEach(sec => sec.classList.remove('active'));
-
-    // İstenen section'ı göster
     const selectedSection = document.getElementById(sectionId);
     if (selectedSection) {
         selectedSection.classList.add('active');
     }
-
-    // Sadece Progress'te chart güncelle
     if (sectionId === 'progress') {
         updateChart();
     }
 }
 
-function setGoals() {
+async function setGoals() {
     goals.Notes = parseInt(document.getElementById('goalNotes').value) || 0;
     goals.Debate = parseInt(document.getElementById('goalDebate').value) || 0;
     goals.Quiz = parseInt(document.getElementById('goalQuiz').value) || 0;
@@ -1047,6 +1042,7 @@ function setGoals() {
     goals.Flashcards = parseInt(document.getElementById('goalFlashcards').value) || 0;
     goals.PracticeLab = parseInt(document.getElementById('goalPracticeLab').value) || 0;
     updateChart();
+    await saveProgress();
 }
 
 function startSection(sectionName) {
@@ -1056,7 +1052,7 @@ function startSection(sectionName) {
     document.getElementById('currentSectionDisplay').textContent = sectionName;
 }
 
-function endSection() {
+async function endSection() {
     if(!currentSection || !sectionStartTime) return;
     const minutesSpent = (Date.now() - sectionStartTime) / 60000;
     actuals[currentSection] += minutesSpent;
@@ -1064,6 +1060,7 @@ function endSection() {
     currentSection = null;
     document.getElementById('currentSectionDisplay').textContent = "None";
     updateChart();
+    await saveProgress();
 }
 
 function updateChart() {
@@ -1078,268 +1075,216 @@ function updateChart() {
                 { label: 'Actual', data: Object.values(actuals), backgroundColor: 'rgba(75, 192, 192, 0.5)' }
             ]
         },
-        options: { responsive: true, scales: { y: { beginAtZero: true } } }
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
     });
 }
 
-// Başlangıçta Progress görünür olsun
-showSection('progressSection');
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const loginForm = document.getElementById('loginForm');
-        const signupForm = document.getElementById('signupForm');
-        const progressSection = document.getElementById('progressSection');
-        const setGoalForm = document.getElementById('setGoalForm');
-
-        if (loginForm) {
-            loginForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const email = document.getElementById('loginEmail').value;
-                const password = document.getElementById('loginPassword').value;
-
-                const response = await fetch('http://127.0.0.1:5000/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password }),
-                });
-
-                const data = await response.json();
-                console.log(data.message);
-
-                if (response.ok) {
-                    localStorage.setItem('userId', data.userId);
-                    if (data.progress) {
-                        localStorage.setItem('userProgress', data.progress);
-                    }
-                    displayProgress();
-                }
-            });
-        }
-
-        if (signupForm) {
-            signupForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const email = document.getElementById('signupEmail').value;
-                const password = document.getElementById('signupPassword').value;
-
-                const response = await fetch('http://127.0.0.1:5000/register', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password }),
-                });
-
-                const data = await response.json();
-                console.log(data.message);
-                // Optionally, log in the user after successful sign up
-            });
-        }
-
-        if (setGoalForm) {
-            setGoalForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const dailyGoal = document.getElementById('dailyGoal').value;
-                const weeklyGoal = document.getElementById('weeklyGoal').value;
-                const progressData = JSON.stringify({ dailyGoal, weeklyGoal });
-                localStorage.setItem('userProgress', progressData);
-                await saveProgress(progressData);
-                displayProgress();
-            });
-        }
-
-        async function saveProgress(progressData) {
-            const userId = localStorage.getItem('userId');
-            if (!userId) {
-                console.error("User not logged in.");
-                return;
-            }
-
-            const response = await fetch('http://127.0.0.1:5000/save-progress', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ userId, progress: progressData }),
-            });
-            const data = await response.json();
-            console.log(data.message);
-        }
-
-        function displayProgress() {
-            const userId = localStorage.getItem('userId');
-            if (userId) {
-                const progressData = JSON.parse(localStorage.getItem('userProgress'));
-                if (progressData) {
-                    // Update UI with progressData
-                    console.log('Displaying progress:', progressData);
-                }
-                document.getElementById('loginSection').style.display = 'none';
-                progressSection.style.display = 'block';
-            } else {
-                document.getElementById('loginSection').style.display = 'block';
-                progressSection.style.display = 'none';
-            }
-        }
-    });
-</script>
-<script>
-
-
-    // --- Modal and UI Functions ---
-
-    function openLoginModal() {
-        document.getElementById('login-modal').style.display = 'block';
-    }
-
-    function closeLoginModal() {
-        document.getElementById('login-modal').style.display = 'none';
-    }
-
-    function showLoggedInUI() {
-        document.getElementById("progress").style.display = "block";
-        document.getElementById("login-modal").style.display = "none";
-    }
-
-    function showLoggedOutUI() {
-        document.getElementById("progress").style.display = "none";
-        document.getElementById("login-modal").style.display = "block";
-    }
-
-    // --- Progress Tracking and Chart Functions ---
-
-    function setGoals() {
-        goals.Notes = parseInt(document.getElementById('goalNotes').value) || 0;
-        goals.Debate = parseInt(document.getElementById('goalDebate').value) || 0;
-        goals.Quiz = parseInt(document.getElementById('goalQuiz').value) || 0;
-        goals.Documents = parseInt(document.getElementById('goalDocuments').value) || 0;
-        goals.Flashcards = parseInt(document.getElementById('goalFlashcards').value) || 0;
-        goals.PracticeLab = parseInt(document.getElementById('goalPracticeLab').value) || 0;
-        updateChart();
-        saveProgress(); // Save goals to the backend
-    }
-
-    function startSection(sectionName) {
-        if(currentSection && currentSection !== sectionName) endSection();
-        currentSection = sectionName;
-        sectionStartTime = Date.now();
-        document.getElementById('currentSectionDisplay').textContent = sectionName;
-    }
-
-    function endSection() {
-        if(!currentSection || !sectionStartTime) return;
-        const minutesSpent = (Date.now() - sectionStartTime) / 60000;
-        actuals[currentSection] = (actuals[currentSection] || 0) + minutesSpent;
-        sectionStartTime = null;
-        currentSection = null;
-        document.getElementById('currentSectionDisplay').textContent = "None";
-        updateChart();
-        saveProgress(); // Save actuals to the backend
-    }
-
-    function updateChart() {
-        const ctx = document.getElementById('progressChartCanvas').getContext('2d');
-        if(chart) chart.destroy();
-        chart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: Object.keys(goals),
-                datasets: [
-                    { label: 'Goal', data: Object.values(goals), backgroundColor: 'rgba(54, 162, 235, 0.5)' },
-                    { label: 'Actual', data: Object.values(actuals), backgroundColor: 'rgba(75, 192, 192, 0.5)' }
-                ]
+async function saveProgress() {
+    if (!currentUserEmail) return;
+    try {
+        const response = await fetch('/save_progress', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${currentUserEmail}` // Or use session cookies
             },
-            options: { responsive: true, scales: { y: { beginAtZero: true } } }
+            body: JSON.stringify({
+                email: currentUserEmail,
+                goals: goals,
+                actuals: actuals
+            })
         });
-    }
-
-    function renderLists() {
-        // This function is no longer needed since the chart now handles display
-    }
-
-    // --- Backend API Integration ---
-
-    async function saveProgress() {
-        try {
-            await fetch('/save_progress', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ goals: JSON.stringify(goals), actuals: JSON.stringify(actuals) })
-            });
-            console.log('Progress saved successfully.');
-        } catch (error) {
-            console.error('Error saving progress:', error);
+        if (!response.ok) {
+            throw new Error('Failed to save progress');
         }
+    } catch (error) {
+        console.error('Error saving progress:', error);
     }
+}
 
-    async function loadProgress() {
-        try {
-            const response = await fetch('/get_progress');
-            if (response.ok) {
-                const data = await response.json();
-                if (data.goals && data.actuals) {
-                    goals = JSON.parse(data.goals);
-                    actuals = JSON.parse(data.actuals);
-                    // Update input fields with loaded goals
-                    for (const key in goals) {
-                        const input = document.getElementById(`goal${key}`);
-                        if (input) input.value = goals[key];
-                    }
-                }
+async function loadProgress() {
+    if (!currentUserEmail) return;
+    try {
+        const response = await fetch('/get_progress', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${currentUserEmail}` // Or use session cookies
+            },
+            body: JSON.stringify({
+                email: currentUserEmail
+            })
+        });
+        if (response.ok) {
+            const data = await response.json();
+            if (data.goals && data.actuals) {
+                goals = data.goals;
+                actuals = data.actuals;
+                // Update input fields
+                document.getElementById('goalNotes').value = goals.Notes;
+                document.getElementById('goalDebate').value = goals.Debate;
+                document.getElementById('goalQuiz').value = goals.Quiz;
+                document.getElementById('goalDocuments').value = goals.Documents;
+                document.getElementById('goalFlashcards').value = goals.Flashcards;
+                document.getElementById('goalPracticeLab').value = goals.PracticeLab;
                 updateChart();
-            } else {
-                console.error('Failed to load progress:', response.statusText);
             }
-        } catch (error) {
-            console.error('Error loading progress:', error);
+        } else {
+            console.error('Failed to load progress:', response.statusText);
         }
+    } catch (error) {
+        console.error('Error loading progress:', error);
     }
+}
 
-    async function handleLogin() {
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+async function handleLogin() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    try {
         const response = await fetch('/login', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ email, password }),
         });
         const data = await response.json();
         if (response.ok) {
-            console.log(data.message);
-            showLoggedInUI();
-            loadProgress(); // Load user data on successful login
+            currentUserEmail = email;
+            document.getElementById('user-email-display').textContent = email;
+            closeLoginModal();
+            await loadProgress();
         } else {
-            alert(data.message);
+            alert(data.message || 'Login failed');
         }
+    } catch (error) {
+        console.error('Login error:', error);
+        alert('Login failed. Please try again.');
     }
+}
 
-    async function handleSignup() {
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const response = await fetch('/register', {
+async function handleSignup() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    try {
+        const response = await fetch('/signup', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ email, password }),
         });
         const data = await response.json();
-        alert(data.message);
         if (response.ok) {
-            handleLogin(); // Log in the user after successful signup
+            alert('Signup successful! You can now log in.');
+            // Automatically log in after signup
+            currentUserEmail = email;
+            document.getElementById('user-email-display').textContent = email;
+            closeLoginModal();
+            await loadProgress();
+        } else {
+            alert(data.message || 'Signup failed');
         }
+    } catch (error) {
+        console.error('Signup error:', error);
+        alert('Signup failed. Please try again.');
     }
+}
 
-    // --- Event Listeners and Initialization ---
+function handleLogout() {
+    // Clear any user-specific data
+    currentUserEmail = null;
+    goals = { Notes: 0, Debate: 0, Quiz: 0, PracticeLab: 0, Documents: 0, Flashcards: 0 };
+    actuals = { Notes: 0, Debate: 0, Quiz: 0, PracticeLab: 0, Documents: 0, Flashcards: 0 };
+    // Update UI
+    showLoggedOutUI();
+    // You might also want to alert the user or redirect them
+    alert("You have been logged out.");
+}
 
-    document.getElementById('login-submit').addEventListener('click', handleLogin);
-    document.getElementById('signup-submit').addEventListener('click', handleSignup);
-    document.getElementById('goal-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        setGoals();
-    });
+function setUserEmail(email) {
+    document.getElementById("user-email-display").textContent = email;
+}
 
-    document.addEventListener('DOMContentLoaded', () => {
-        // You'll need to check for a logged-in session on page load
-        // This example assumes the backend redirects or sets a cookie
-        // For now, the user must log in to see progress
-        showLoggedOutUI();
-    });
+function showLoggedInUI(email) {
+    loggedIn = true;
+    setUserEmail(email);
+    document.getElementById("progress").style.display = "block";
+    document.getElementById("progress-link").style.display = "inline-block";
+    document.querySelector('a[href="#Login"]').style.display = "none";
+    document.getElementById("logout-link").style.display = "inline-block";
+}
+
+function showLoggedOutUI() {
+    loggedIn = false;
+    setUserEmail("");
+    document.getElementById("progress").style.display = "none";
+    document.getElementById("progress-link").style.display = "none";
+    document.querySelector('a[href="#Login"]').style.display = "inline-block";
+    document.getElementById("logout-link").style.display = "none";
+}
+
+document.getElementById("login-submit").addEventListener("click", function() {
+    const email = document.getElementById("email").value;
+    if (email) {
+        showLoggedInUI(email);
+    }
+    closeLoginModal();
+});
+
+document.getElementById("signup-submit").addEventListener("click", function() {
+    const email = document.getElementById("email").value;
+    if (email) {
+        showLoggedInUI(email);
+    }
+    closeLoginModal();
+});
+
+// Hide progress section & show login by default
+window.addEventListener("DOMContentLoaded", function() {
+    showLoggedOutUI();
+});
+
+// Close modal if clicking outside of it
+window.addEventListener("click", function(e) {
+    const modal = document.getElementById("login-modal");
+    if (e.target === modal) {
+        closeLoginModal();
+    }
+});
+// Add this function to your existing script
+function logout() {
+    showLoggedOutUI();
+    // You might also want to clear any saved progress or user data here
+    // For example, if you're using localStorage or session cookies.
+}
+
+// Update the existing showLoggedInUI function
+function showLoggedInUI(email) {
+    loggedIn = true;
+    setUserEmail(email);
+    document.getElementById("progress").style.display = "block";
+    document.getElementById("progress-link").style.display = "inline-block";
+    document.querySelector('a[href="#Login"]').style.display = "none";
+    document.getElementById("logout-link").style.display = "inline-block"; // Show the new logout link
+}
+
+// Update the existing showLoggedOutUI function
+function showLoggedOutUI() {
+    loggedIn = false;
+    setUserEmail("");
+    document.getElementById("progress").style.display = "none";
+    document.getElementById("progress-link").style.display = "none";
+    document.querySelector('a[href="#Login"]').style.display = "inline-block";
+    document.getElementById("logout-link").style.display = "none"; // Hide the logout link
+}
 </script>
 
 </body>
