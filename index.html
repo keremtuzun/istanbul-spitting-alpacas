@@ -1180,7 +1180,167 @@ showSection('progressSection');
         }
     });
 </script>
+<script>
 
+
+    // --- Modal and UI Functions ---
+
+    function openLoginModal() {
+        document.getElementById('login-modal').style.display = 'block';
+    }
+
+    function closeLoginModal() {
+        document.getElementById('login-modal').style.display = 'none';
+    }
+
+    function showLoggedInUI() {
+        document.getElementById("progress").style.display = "block";
+        document.getElementById("login-modal").style.display = "none";
+    }
+
+    function showLoggedOutUI() {
+        document.getElementById("progress").style.display = "none";
+        document.getElementById("login-modal").style.display = "block";
+    }
+
+    // --- Progress Tracking and Chart Functions ---
+
+    function setGoals() {
+        goals.Notes = parseInt(document.getElementById('goalNotes').value) || 0;
+        goals.Debate = parseInt(document.getElementById('goalDebate').value) || 0;
+        goals.Quiz = parseInt(document.getElementById('goalQuiz').value) || 0;
+        goals.Documents = parseInt(document.getElementById('goalDocuments').value) || 0;
+        goals.Flashcards = parseInt(document.getElementById('goalFlashcards').value) || 0;
+        goals.PracticeLab = parseInt(document.getElementById('goalPracticeLab').value) || 0;
+        updateChart();
+        saveProgress(); // Save goals to the backend
+    }
+
+    function startSection(sectionName) {
+        if(currentSection && currentSection !== sectionName) endSection();
+        currentSection = sectionName;
+        sectionStartTime = Date.now();
+        document.getElementById('currentSectionDisplay').textContent = sectionName;
+    }
+
+    function endSection() {
+        if(!currentSection || !sectionStartTime) return;
+        const minutesSpent = (Date.now() - sectionStartTime) / 60000;
+        actuals[currentSection] = (actuals[currentSection] || 0) + minutesSpent;
+        sectionStartTime = null;
+        currentSection = null;
+        document.getElementById('currentSectionDisplay').textContent = "None";
+        updateChart();
+        saveProgress(); // Save actuals to the backend
+    }
+
+    function updateChart() {
+        const ctx = document.getElementById('progressChartCanvas').getContext('2d');
+        if(chart) chart.destroy();
+        chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(goals),
+                datasets: [
+                    { label: 'Goal', data: Object.values(goals), backgroundColor: 'rgba(54, 162, 235, 0.5)' },
+                    { label: 'Actual', data: Object.values(actuals), backgroundColor: 'rgba(75, 192, 192, 0.5)' }
+                ]
+            },
+            options: { responsive: true, scales: { y: { beginAtZero: true } } }
+        });
+    }
+
+    function renderLists() {
+        // This function is no longer needed since the chart now handles display
+    }
+
+    // --- Backend API Integration ---
+
+    async function saveProgress() {
+        try {
+            await fetch('/save_progress', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ goals: JSON.stringify(goals), actuals: JSON.stringify(actuals) })
+            });
+            console.log('Progress saved successfully.');
+        } catch (error) {
+            console.error('Error saving progress:', error);
+        }
+    }
+
+    async function loadProgress() {
+        try {
+            const response = await fetch('/get_progress');
+            if (response.ok) {
+                const data = await response.json();
+                if (data.goals && data.actuals) {
+                    goals = JSON.parse(data.goals);
+                    actuals = JSON.parse(data.actuals);
+                    // Update input fields with loaded goals
+                    for (const key in goals) {
+                        const input = document.getElementById(`goal${key}`);
+                        if (input) input.value = goals[key];
+                    }
+                }
+                updateChart();
+            } else {
+                console.error('Failed to load progress:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error loading progress:', error);
+        }
+    }
+
+    async function handleLogin() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const response = await fetch('/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+        });
+        const data = await response.json();
+        if (response.ok) {
+            console.log(data.message);
+            showLoggedInUI();
+            loadProgress(); // Load user data on successful login
+        } else {
+            alert(data.message);
+        }
+    }
+
+    async function handleSignup() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const response = await fetch('/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+        });
+        const data = await response.json();
+        alert(data.message);
+        if (response.ok) {
+            handleLogin(); // Log in the user after successful signup
+        }
+    }
+
+    // --- Event Listeners and Initialization ---
+
+    document.getElementById('login-submit').addEventListener('click', handleLogin);
+    document.getElementById('signup-submit').addEventListener('click', handleSignup);
+    document.getElementById('goal-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        setGoals();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // You'll need to check for a logged-in session on page load
+        // This example assumes the backend redirects or sets a cookie
+        // For now, the user must log in to see progress
+        showLoggedOutUI();
+    });
+</script>
 
 </body>
 
