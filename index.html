@@ -417,6 +417,7 @@ align-items: center;
     align-items: center;
     text-align: center;
 }
+/* New CSS for the Discussion Forum */
 #discussion-forum {
   background: var(--bg-color);
   color: var(--text-color);
@@ -424,50 +425,64 @@ align-items: center;
   max-width: 800px;
   margin: 40px auto;
   border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 #discussion-forum textarea {
   background: var(--pale-gold);
   color: var(--text-color);
-  border: none;
+  border: 1px solid var(--turquoise);
   border-radius: 8px;
-  padding: 10px;
+  padding: 15px;
   width: 100%;
   resize: vertical;
+  box-sizing: border-box;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+#discussion-forum textarea:focus {
+  outline: none;
+  border-color: #e46756;
 }
 
 #discussion-forum button {
-  margin-top: 10px;
-  padding: 10px 15px;
+  margin-top: 15px;
+  padding: 12px 20px;
   border: none;
   background: var(--turquoise);
   color: var(--pale-gold);
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #discussion-forum button:hover {
-  background: #9b3333; /* slightly darker turquoise for hover */
+  background: #a33838;
+  transform: translateY(-2px);
 }
 
 #postsContainer > div {
   background: var(--pale-gold);
-  border: 1px solid var(--turquoise);
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px;
+  border: 1px solid #f0c7b4;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
   color: var(--text-color);
-    max-width: 150%;         /* Allow full width (or specify a larger max-width) */
-  min-height: 100px;       /* Make it taller */
-  overflow-y: auto;        /* Keep vertical scroll if content overflows */
-  padding: 10px;           /* Optional padding */
-  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  line-height: 1.6;
 }
 
 #postsContainer small {
-  color: var(--turquoise);
+  display: block;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #7a3a3a;
 }
+
 .dropdown {
   position: relative;
   display: flex;          /* make it flex to align button like nav links */
@@ -527,7 +542,47 @@ align-items: center;
 
 
 
+/* New CSS for the Progress Chart */
+#progress h2 {
+  margin-bottom: 2rem;
+}
 
+#chart-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--pale-gold);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.chart-bar-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.chart-label {
+  font-weight: 600;
+  width: 120px;
+  flex-shrink: 0;
+  color: var(--text-color);
+}
+
+.chart-bar {
+  height: 25px;
+  background-color: var(--turquoise);
+  border-radius: 4px;
+  transition: width 0.8s ease-in-out;
+  margin-left: 10px;
+}
+
+.chart-time {
+  margin-left: 10px;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
 
 
 
@@ -669,7 +724,7 @@ align-items: center;
 <nav>
   <a class="active" href="#home">Home</a>
   <a href="#about">About Us</a>
-  <a href="#discussion-forum">Discussion</a>
+
   <div class="dropdown">
     <button class="dropbtn">Resources ▼</button>
     <div class="dropdown-content">
@@ -680,6 +735,14 @@ align-items: center;
       <a href="#flashcard">Flashcards</a>
     </div>
   </div>
+    <div class="dropdown">
+    <button class="dropbtn">Utilities ▼</button>
+    <div class="dropdown-content">
+        <a href="#discussion-forum">Discussion</a>
+      <a href="#progress">Progress</a>
+    </div>
+  </div>
+
   <button id="dark-mode-toggle">🌙</button>
 </nav>
 <!-- Login form section (hidden by default) -->
@@ -792,6 +855,87 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
 </div>
 </section>
 
+<section id="progress">
+  <h2>Progress - This visit</h2>
+  <div id="chart-container"></div>
+</section>
+<script>
+  let sessionStartTime = Date.now();
+  let timeSpent = {};
+  let currentSectionId = "home";
+
+  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = e.target.getAttribute('href').substring(1);
+      
+      const now = Date.now();
+      const timeElapsed = (now - sessionStartTime) / 1000; // time in seconds
+
+      if (!timeSpent[currentSectionId]) {
+        timeSpent[currentSectionId] = 0;
+      }
+      timeSpent[currentSectionId] += timeElapsed;
+      
+      sessionStartTime = now;
+      currentSectionId = targetId;
+
+      document.querySelectorAll('main section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(targetId).classList.add('active');
+
+      document.querySelectorAll('nav a').forEach(navLink => {
+        navLink.classList.remove('active');
+      });
+      e.target.classList.add('active');
+
+      if (targetId === 'progress') {
+        renderChart();
+      }
+    });
+  });
+
+  function renderChart() {
+    const chartContainer = document.getElementById('chart-container');
+    chartContainer.innerHTML = ''; // Clear previous chart
+
+    const totalTime = Object.values(timeSpent).reduce((sum, time) => sum + time, 0);
+
+    for (const section in timeSpent) {
+      if (timeSpent[section] > 0) {
+        const percentage = (timeSpent[section] / totalTime) * 100;
+        const timeFormatted = formatTime(timeSpent[section]);
+
+        const barWrapper = document.createElement('div');
+        barWrapper.classList.add('chart-bar-wrapper');
+
+        const label = document.createElement('div');
+        label.classList.add('chart-label');
+        label.textContent = section.charAt(0).toUpperCase() + section.slice(1);
+        
+        const bar = document.createElement('div');
+        bar.classList.add('chart-bar');
+        bar.style.width = percentage + '%';
+
+        const time = document.createElement('div');
+        time.classList.add('chart-time');
+        time.textContent = timeFormatted;
+
+        barWrapper.appendChild(label);
+        barWrapper.appendChild(bar);
+        barWrapper.appendChild(time);
+        chartContainer.appendChild(barWrapper);
+      }
+    }
+  }
+
+  function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    return `${minutes}m ${remainingSeconds}s`;
+  }
+</script>
 
 <section id="notes">
 <h2>Notes</h2>
@@ -2466,18 +2610,96 @@ Afrofuturist icon.
 
 </section>
 
-<section id="discussion-forum" style="padding:40px 20px; max-width:800px; margin:40px auto; border-radius:12px;">
-  <h2>Community Discussion Forum</h2>
+<section id="discussion-forum" 
+  style="padding: 40px 20px; width: 95%; max-width: 1400px; margin: 40px auto; 
+         border-radius: 16px; background: #ffffff; 
+         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); 
+         font-family: 'Segoe UI', sans-serif;">
   
-  <form id="postForm" style="margin-bottom:30px;">
-    <textarea id="postContent" placeholder="Write your question or comment here..." rows="3" required style="width:100%; padding:10px; border-radius:8px; border:1px solid #ccc;"></textarea>
-    <button type="submit" style="margin-top:10px; padding:10px 15px; border:none; border-radius:8px; cursor:pointer;">Post</button>
+  <h2 style="margin-bottom: 20px; font-size: 1.8rem; color: #333; text-align: center;">
+    💬 Community Discussion Forum
+  </h2>
+  
+  <form id="postForm" style="margin-bottom: 25px;">
+    <textarea id="postContent" 
+      placeholder="Write your question or comment..." 
+      rows="3" required 
+      style="width: 100%; padding: 14px 18px; border-radius: 10px; 
+             border: 1px solid #ddd; resize: none; font-size: 1rem; 
+             outline: none; transition: border 0.3s ease;">
+    </textarea>
+    
+    <button type="submit" 
+      style="margin-top: 12px; padding: 12px 20px; border: none; 
+             border-radius: 10px; cursor: pointer; 
+             background: linear-gradient(135deg, #4e73df, #2e59d9); 
+             color: white; font-size: 1rem; font-weight: 500; 
+             transition: background 0.3s ease;">
+      Post
+    </button>
   </form>
 
-  <div id="postsContainer" style="max-height:400px; overflow-y:auto;">
+  <div id="postsContainer" 
+    style="max-height: none; overflow-y: visible; padding: 10px; 
+           display: flex; flex-direction: column; gap: 18px;">
     <!-- Posts will appear here -->
   </div>
 </section>
+
+<script>
+  const textarea = document.getElementById('postContent');
+  const postsContainer = document.getElementById('postsContainer');
+  const postForm = document.getElementById('postForm');
+
+  // Focus effect
+  textarea.addEventListener('focus', () => {
+    textarea.style.border = '1px solid #4e73df';
+  });
+  textarea.addEventListener('blur', () => {
+    textarea.style.border = '1px solid #ddd';
+  });
+
+  // Add posts with time as H3
+  postForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const content = textarea.value.trim();
+    if (content) {
+      const postWrapper = document.createElement('div');
+      postWrapper.style.background = '#f9f9f9';
+      postWrapper.style.padding = '15px 20px';
+      postWrapper.style.borderRadius = '10px';
+      postWrapper.style.boxShadow = '0 2px 8px rgba(0,0,0,0.05)';
+
+      const post = document.createElement('h1');
+      post.textContent = content;
+      post.style.fontSize = '1.8rem';
+      post.style.fontWeight = 'bold';
+      post.style.color = '#222';
+      post.style.margin = '0 0 6px 0';
+      post.style.lineHeight = '1.4';
+
+      const time = document.createElement('h3');
+      const now = new Date();
+      time.textContent = now.toLocaleString();
+      time.style.fontSize = '1rem';
+      time.style.fontWeight = 'normal';
+      time.style.color = '#666';
+      time.style.margin = '0';
+
+      postWrapper.appendChild(post);
+      postWrapper.appendChild(time);
+      postsContainer.prepend(postWrapper);
+
+      textarea.value = '';
+    }
+  });
+</script>
+
+
+
+
+
+
 
 <script>
   const postForm = document.getElementById('postForm');
