@@ -670,21 +670,8 @@ align-items: center;
     margin: 25px auto 90px;
   }
 
-  .about-content {
-    flex-direction: column;
-  }
 
-  .about-photo,
-  .about-text {
-    flex: unset;
-    width: 100%;
-    margin-top: 2rem;
-  }
 
-  .about-photo img {
-    height: auto;
-    max-height: 300px;
-  }
 
   .hero-image {
     height: 220px;
@@ -796,9 +783,11 @@ align-items: center;
 <div class="about-content">
 <div class="about-photo">
 <img alt="Students collaborating" src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&amp;fit=crop&amp;w=600&amp;q=80"/>
-<img src="39a5cdbe-d6dd-4f7d-bbcd-53ba31225d93.jpg"/>
 <img src="f2c62936-3735-4da5-a96d-f4dd4f42b9e8.jpg"/>
 <img src="14e0f39f-14fb-4b4a-b405-593cf8e9e253.jpg"/>
+<img src="39a5cdbe-d6dd-4f7d-bbcd-53ba31225d93.jpg"/>
+
+
 
 <img src="unnamed.jpg"/>
 </div>
@@ -815,17 +804,17 @@ align-items: center;
         Whether you're burning the midnight oil or chasing alpaca-themed glory, we’ve got your back.
       </p>
 <h2>Our Achievements</h2>
-<p>Stockholm Globals:
+<p><b>Stockholm Globals:</b>
 Medals: 50<br>
 Trophy: 3/<br>
 Ranking: 8/<br>
-Bucharest Regionals:<br>
+<b>Bucharest Regionals:</b><br>
 Medals: 30/<br>
 Ranking: 12/<br>
-Yale ToC:<br>
+<b>Yale ToC:</b><br>
 Medals: 24/<br>
 Ranking: 30/<br>
-Istanbul Regionals:<br>
+<b>Istanbul Regionals:</b><br>
 Medals: 27/<br>
 Ranking: 1/<br>
 Trophy: 7</p><br>
@@ -2148,7 +2137,6 @@ Afrofuturist icon.
   function displayPosts() {
     postsContainer.innerHTML = '';
     if(posts.length === 0) {
-      postsContainer.innerHTML = '<p>No posts yet. Be the first to post!</p>';
       return;
     }
     posts.forEach((post, index) => {
@@ -2670,9 +2658,10 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <script>
 const images = [
+    "7affa499-0314-44fc-8252-71ff75018e5d.jpg",
   "d2cc9bbe-2ca0-4423-9a49-89e4fe896a84.jpg",
   "b7d87fc9-7a3b-4961-99d5-f10266d5e55e.jpg",
-  "7affa499-0314-44fc-8252-71ff75018e5d.jpg",
+
   "db7fc05e-f999-41d1-aee9-595eec0b5984.jpg"
 
 ];
