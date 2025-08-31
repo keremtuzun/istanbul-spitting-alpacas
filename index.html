@@ -904,6 +904,16 @@ And then there’s tennis, which helps me reset. It’s a sport I genuinely enjo
       }
     });
   });
+  
+  // Close mobile menu when a nav link or dropdown item is clicked
+document.querySelectorAll("nav a, .dropdown-content a").forEach(link => {
+  link.addEventListener("click", () => {
+    if (window.innerWidth <= 768) { // only close on mobile
+      document.querySelector("nav").classList.remove("show");
+    }
+  });
+});
+
 
   function renderChart() {
     const chartContainer = document.getElementById('chart-container');
