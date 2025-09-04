@@ -484,8 +484,9 @@ align-items: center;
 
 .dropdown {
   position: relative;
-  display: flex;          /* make it flex to align button like nav links */
+  display: inline-flex;
   align-items: center;
+  height: 100%;
 }
 
 .dropbtn {
@@ -493,11 +494,14 @@ align-items: center;
   border: none;
   cursor: pointer;
   font: inherit;
-  color: var(--turquoise); /* match nav links */
+  color: var(--turquoise);
   font-weight: 600;
   font-size: 1.1rem;
   padding: 5px 0;
   letter-spacing: normal;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
 }
 
 .dropbtn:hover,
@@ -585,7 +589,90 @@ align-items: center;
 
 
 
-
+#ai {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        #ai h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        #chatbox {
+            margin-top: 20px;
+        }
+        #chatlog {
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            height: 300px;
+            overflow-y: auto;
+            background: #fafafa;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .message {
+            margin-bottom: 12px;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+        .user-message {
+            background: #e3f2fd;
+            margin-left: auto;
+            color: #0d47a1;
+            border: 1px solid #bbdefb;
+        }
+        .ai-message {
+            background: #e8f5e9;
+            margin-right: auto;
+            color: #1b5e20;
+            border: 1px solid #c8e6c9;
+        }
+        .input-area {
+            display: flex;
+            gap: 10px;
+        }
+        #userInput {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .instructions {
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff8e1;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+        }
+        .instructions h3 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        .instructions ul {
+            padding-left: 20px;
+            color: #34495e;
+        }
+        .instructions li {
+            margin-bottom: 5px;
+        }
 
 
 
@@ -744,8 +831,10 @@ align-items: center;
     <div class="dropdown-content">
         <a href="#discussion-forum">Discussion</a>
       <a href="#progress">Progress</a>
+          <a href="#ai">AI</a>
     </div>
   </div>
+
 
   <button id="dark-mode-toggle">🌙</button>
 </nav>
@@ -842,7 +931,7 @@ Ranking: 34/</p>
 <br>
 <div class="about-text">
 <h2>Bio</h2>
-<h1> Meet Kerem Tüzün</h1>
+<h1> Meet Kerem Tüzün</h1>I
 <p>Hi, I’m Kerem. I’m someone who enjoys diving into different things — especially books, coding, WSC, and tennis. I’ve always loved reading because it lets me explore new ideas and stories, whether it’s fiction, history, or something random I find interesting.
 
 I’ve been part of the World Scholar’s Cup for 2 years now, and it’s honestly one of the most fun and challenging things I’ve done. The mix of debating, writing, and learning unusual topics makes it really different from regular school competitions — in a good way.
@@ -1704,73 +1793,94 @@ Fire: Humanity’s Primal Technology and Eternal Symbol
 <div id="punky-scroll-target"></div>
 
 <div class="note" data-category="Punky Futures">
-<h1>The Future Imagined: From Futurism to Solarpunk</h1>
-<h2>1. Origins of Futurism</h2>
-<p>In 1909, Italian poet <strong>Filippo Tommaso Marinetti</strong> published the <em>Futurist Manifesto</em>, a radical call for cultural transformation. He glorified speed, technology, youth, violence, and the machine—a break from tradition in favor of a future defined by dynamism and power.</p>
-<h3>Key Works:</h3>
-<p><strong>Giacomo Balla</strong> – <em>Dynamism of a Dog on a Leash</em> (1912): Balla’s painting captures a woman walking her small dachshund, but instead of freezing a single moment, it shows dozens of overlapping legs, tail movements, and pawsteps. This “motion blur” effect makes the ordinary scene look almost mechanical, reflecting the Futurists’ obsession with speed, movement, and modernity. The painting wasn’t just about a dog—it was a declaration that art could capture time and energy, not just stillness.
-</p>
-<p><strong>Umberto Boccioni</strong> – <em>Unique Forms of Continuity in Space</em> (1913): Boccioni’s bronze sculpture shows a humanlike figure striding forward, but its body is distorted into sleek, aerodynamic shapes, as if it’s part machine, part man. The figure has no clear face or features; instead, it looks like motion itself turned into metal. This embodies the Futurist dream of blending humans with technology and celebrating the beauty of forward movement.</p>
-<h3>Discussion:</h3>
-<p>How does futurism differ from science fiction? Is one aesthetic and the other narrative?</p>
-<p>Should we value unrealized predictions for what they say about hopes and fears?</p>
-<h2>2. Afrofuturism: Black Visions of the Future</h2>
-<p><strong>Afrofuturism</strong> merges African culture, history, and diaspora experiences with technology, speculative fiction, and cosmic visions. Emerging in the mid-20th century, it reimagines futures that center Black empowerment and survival.</p>
-<h3>Key Works:</h3>
-<p><strong>Sun Ra</strong> – <em>Space Is the Place</em> (1973): This experimental jazz piece—and the accompanying film—presents outer space as a place where Black people could escape oppression and imagine new futures. Sun Ra’s cosmic music and imagery laid the foundation for Afrofuturism, using space travel as a metaphor for liberation.
-</p>
-<p><strong>Marvel's Black Panther</strong>: 
- The 1977 comic introduced T’Challa, the king of Wakanda, one of the earliest depictions of a powerful African hero in science fiction. It used futuristic technology and African culture to challenge stereotypes in mainstream comics.Decades later, the blockbuster film brought Wakanda to life, showing a hidden African nation powered by advanced technology. It became a cultural milestone, cementing Afrofuturism in pop culture by blending heritage, technology, and empowerment.
-</p>
-<p><strong>Grace Jones</strong> – <em>Nightclubbing</em> (1981):  Grace Jones used music, fashion, and performance to craft a persona that was strikingly futuristic and androgynous. Her work mixed Jamaican roots, electronic sounds, and bold visuals, making her an early 
-Afrofuturist icon.
-</p>
-<p><strong>Flying Lotus</strong> – <em>Galaxy in Janaki</em> (2010): This instrumental track blends electronic beats and jazz into something dreamlike and cosmic. Flying Lotus reimagines the universe through sound, showing how Afrofuturism expands into experimental, boundary-pushing music.
-</p>
-<p><strong>Kendrick Lamar</strong> – <em>Black Panther Album</em> (2018): Created for the Black Panther film, Lamar’s music tied contemporary hip-hop to themes of African pride, struggle, and technological wonder, merging Afrofuturist ideas with modern rap storytelling.
-</p>
-<p><strong>Cyrus Kabiru</strong> – <em>Miyale Ya Blue</em> (2020): This Kenyan artist creates elaborate, futuristic eyewear sculptures from discarded materials. His work reimagines waste as techno-artifacts of a better future, symbolizing creativity, survival, and African innovation.
-</p>
-<h3>Discussion:</h3>
-<p>What defines Afrofuturism? Aesthetics, themes, or cultural standpoint?</p>
-<p>Could we have <em>Asiafuturism</em> or <em>Latinx-futurism</em>? What would they look like?</p>
-<h2>3. Solarpunk: Hope in Harmony</h2>
-<p><strong>Solarpunk</strong> envisions a world where sustainable technology and ecology coexist. It contrasts dystopias by emphasizing beauty, cooperation, and resilience. Think solar panels wrapped in vines, cities grown not built.</p>
-<h3>Key Works:</h3>
-<p><strong>Hayao Miyazaki</strong> – <em>Nausicaa of the Valley of the Wind</em> (1984) This animated film blends environmentalism with fantasy and sci-fi, showing a world healing after ecological collapse. Nausicaä’s compassion and balance with nature embody solarpunk ideals—technology serving restoration, not destruction.</p>
-<p><strong>Gojira</strong> – <em>Global Warming</em> (2005):  The French metal band warns of climate disaster, but their intense sound carries a hopeful call to action. By urging awareness, they spark the idea that human choices can still save the planet.</p>
-<p><strong>Overwatch</strong> (2016):  This video game imagines a near-future Earth with advanced technology and diverse heroes. Its bright, cooperative tone—rather than dystopian gloom—suggests that innovation can bring people together.</p>
-<p><strong>N.K. Jemisin</strong> – <em>The Ones Who Stay and Fight</em> (2020):  This short story describes a utopian city where justice and equality prevail. Though not naïve about challenges, it reflects the solarpunk belief in actively building better futures.</p>
-<p><strong>Common</strong> – <em>Imagine</em> (2021):  The rapper envisions a fairer, kinder world in this song, blending social hope with futuristic imagery—music as a form of solarpunk dreaming..</p>
-<p><strong>Christian Holland</strong> – <em>Wind Farmer</em> (2022):  This artwork celebrates renewable energy, showing turbines as graceful, almost sculptural parts of the landscape. It conveys harmony between nature and human innovation.</p>
-<p><strong>Free Lives</strong> – <em>Terra Nil</em> (2023):  This game reverses the usual “build and exploit” theme: players restore ecosystems instead of destroying them. It’s a literal, playful example of solarpunk values.</p>
-<p><strong>Utopian Art Machine</strong> – <em>SolarPunk Anthem</em> (2024):  A collaborative art/music project, this piece envisions a hopeful future where renewable energy and art merge—a soundtrack for a greener, tech-positive tomorrow.</p>
-<p><strong>Lynn D. Jung</strong> – <em>We Cast Our Eyes to the Unknowable Now</em> (2025):  This recent work reflects on the present moment’s uncertainty but frames the unknown as full of possibility, encouraging us to imagine optimistic futures rather than fear them.</p>
-<h3>Discussion:</h3>
-<p>Why are optimistic futures so rare in pop culture?</p>
-<p>Would you want to live in a solarpunk society?</p>
-<p>Which solarpunk ideas are already real—vertical farms, solar villages, etc?</p>
-<h2>4. Atompunk: Retro Futures and Atomic Aesthetics</h2>
-<p><strong>Atompunk</strong> draws from the Atomic Age—1945 to the 1960s—imagining a future of rayguns, rocket cars, and Cold War paranoia. It reflects mid-century optimism about nuclear power and space colonization, with a side of fallout shelters.</p>
-<h3>Key Works:</h3>
-<p><strong>Sons of the Pioneers</strong> – <em>Old Man Atom</em> (1945):  Released just months after the atomic bombings of Hiroshima and Nagasaki, this folk song takes a deceptively light tone to sing about something terrifying: nuclear power. “Old Man Atom” warns listeners about the double-edged nature of atomic energy—it could either light the world or end it. This blend of optimism and dread is central to the atompunk aesthetic, which imagines what might have happened if that Atomic Age mindset—fear and fascination—had shaped our world even more.</p>
-<p><strong>The Golden Gate Quartet</strong> – <em>Atom and Evil</em> (1946):  This gospel group turned the atom into a moral symbol, with lyrics about the struggle between “Atom” and “Evil.” It reflects how, even in the immediate postwar years, popular culture framed the atomic bomb in terms of right and wrong, hope and doom. It’s a reminder that the Atomic Age was as much about cultural storytelling as science.</p>
-<p><strong>Five Stars</strong> – <em>Atom Bomb Baby</em> (1957):  By the late 1950s, atomic energy had entered pop culture as a gimmick and brand. This rock ’n’ roll song makes the atomic bomb sound cute, fun—even romantic—singing about an “Atom Bomb Baby” who “can start a chain reaction in my heart.” It’s kitschy and absurd, yet it shows how the Atomic Age created a strange pop aesthetic where nuclear power symbolized modernity, glamour, and danger all at once.</p>
-<p><strong>Tom Lehrer</strong> – <em>So Long, Mom (A Song for World War III)</em> (1965):  Lehrer’s biting satire from the Cold War era envisions a cheery goodbye song for the “final war.” His humor makes the idea of nuclear annihilation disturbingly casual, mocking how society normalized the possibility of global destruction. It’s exactly the kind of ironic, retro-futuristic tone that atompunk draws on—old-fashioned style hiding terrifying implications.</p>
-<p><strong>Fallout</strong> franchise (1997–present): *Fallout* is a video game series set in a post-nuclear wasteland where 1950s-style optimism and design clash with brutal survival. Its retro-futuristic world is frozen in time, creating a darkly ironic contrast between cheerful propaganda and the grim reality.
-</p>
-<h3>Discussion:</h3>
-<p>What attracts people to the past’s version of the future?</p>
-<p>Is atompunk more hopeful or fearful at heart?</p>
-<p>Would you want to live in an atompunk society?</p>
-<h2>Summary: Visions of the Future</h2>
-<p>From the violent beauty of Marinetti’s manifesto to the ecological calm of solarpunk, artists across generations have imagined futures to escape, critique, or dream toward. Whether Afro-, solar-, or atom-punk, each movement reflects the values and fears of its time.</p>
-<blockquote>
-"Every act of futurism is also a reflection of the present—and what we wish it could become."
-</blockquote>
-<p>Which future speaks to you most—and why?</p>
-<p>Should more futures be imagined through non-Western lenses?</p>
-<p>What kind of future would you create?</p>
+  <h1>The Future Imagined: From Futurism to Solarpunk</h1>
+  
+  <h2>1. Origins of Futurism</h2>
+  <p>In 1909, Italian poet <strong>Filippo Tommaso Marinetti</strong> published the <em>Futurist Manifesto</em>, a radical call for cultural transformation. He glorified speed, technology, youth, violence, and the machine—a break from tradition in favor of a future defined by dynamism and power.</p>
+  
+  <h3>Key Works:</h3>
+  <p><strong>Giacomo Balla</strong> – <em>Dynamism of a Dog on a Leash</em> (1912): Balla's painting captures a woman walking her small dachshund, but instead of freezing a single moment, it shows dozens of overlapping legs, tail movements, and pawsteps. This "motion blur" effect makes the ordinary scene look almost mechanical, reflecting the Futurists' obsession with speed, movement, and modernity.</p>
+  
+  <p><strong>Umberto Boccioni</strong> – <em>Unique Forms of Continuity in Space</em> (1913): Boccioni's bronze sculpture shows a humanlike figure striding forward, but its body is distorted into sleek, aerodynamic shapes, as if it's part machine, part man. The figure has no clear face or features; instead, it looks like motion itself turned into metal.</p>
+  
+  <h3>Discussion:</h3>
+  <p>How does futurism differ from science fiction? Is one aesthetic and the other narrative?</p>
+  <p>Should we value unrealized predictions for what they say about hopes and fears?</p>
+
+  <h2>2. Afrofuturism: Black Visions of the Future</h2>
+  <p><strong>Afrofuturism</strong> merges African culture, history, and diaspora experiences with technology, speculative fiction, and cosmic visions. Emerging in the mid-20th century, it reimagines futures that center Black empowerment and survival.</p>
+  
+  <h3>Key Works:</h3>
+  <p><strong>Sun Ra</strong> – <em>Space Is the Place</em> (1973): This experimental jazz piece presents outer space as a place where Black people could escape oppression and imagine new futures.</p>
+  
+  <p><strong>Marvel's Black Panther</strong>: The 1977 comic introduced T'Challa, the king of Wakanda, one of the earliest depictions of a powerful African hero in science fiction.</p>
+  
+  <p><strong>Grace Jones</strong> – <em>Nightclubbing</em> (1981): Grace Jones used music, fashion, and performance to craft a persona that was strikingly futuristic and androgynous.</p>
+  
+  <p><strong>Flying Lotus</strong> – <em>Galaxy in Janaki</em> (2010): This instrumental track blends electronic beats and jazz into something dreamlike and cosmic.</p>
+  
+  <p><strong>Kendrick Lamar</strong> – <em>Black Panther Album</em> (2018): Lamar's music tied contemporary hip-hop to themes of African pride, struggle, and technological wonder.</p>
+  
+  <p><strong>Cyrus Kabiru</strong> – <em>Miyale Ya Blue</em> (2020): This Kenyan artist creates elaborate, futuristic eyewear sculptures from discarded materials.</p>
+  
+  <h3>Discussion:</h3>
+  <p>What defines Afrofuturism? Aesthetics, themes, or cultural standpoint?</p>
+  <p>Could we have <em>Asiafuturism</em> or <em>Latinx-futurism</em>? What would they look like?</p>
+
+  <h2>3. Solarpunk: Hope in Harmony</h2>
+  <p><strong>Solarpunk</strong> envisions a world where sustainable technology and ecology coexist. It contrasts dystopias by emphasizing beauty, cooperation, and resilience.</p>
+  
+  <h3>Key Works:</h3>
+  <p><strong>Hayao Miyazaki</strong> – <em>Nausicaa of the Valley of the Wind</em> (1984): This animated film blends environmentalism with fantasy and sci-fi, showing a world healing after ecological collapse.</p>
+  
+  <p><strong>Gojira</strong> – <em>Global Warming</em> (2005): The French metal band warns of climate disaster, but their intense sound carries a hopeful call to action.</p>
+  
+  <p><strong>Overwatch</strong> (2016): This video game imagines a near-future Earth with advanced technology and diverse heroes.</p>
+  
+  <p><strong>N.K. Jemisin</strong> – <em>The Ones Who Stay and Fight</em> (2020): This short story describes a utopian city where justice and equality prevail.</p>
+  
+  <p><strong>Common</strong> – <em>Imagine</em> (2021): The rapper envisions a fairer, kinder world in this song.</p>
+  
+  <p><strong>Christian Holland</strong> – <em>Wind Farmer</em> (2022): This artwork celebrates renewable energy, showing turbines as graceful parts of the landscape.</p>
+  
+  <p><strong>Free Lives</strong> – <em>Terra Nil</em> (2023): This game reverses the usual "build and exploit" theme: players restore ecosystems instead of destroying them.</p>
+  
+  <p><strong>Utopian Art Machine</strong> – <em>SolarPunk Anthem</em> (2024): A collaborative art/music project that envisions a hopeful future where renewable energy and art merge.</p>
+  
+  <p><strong>Lynn D. Jung</strong> – <em>We Cast Our Eyes to the Unknowable Now</em> (2025): This work reflects on the present moment's uncertainty but frames the unknown as full of possibility.</p>
+  
+  <h3>Discussion:</h3>
+  <p>Why are optimistic futures so rare in pop culture?</p>
+  <p>Would you want to live in a solarpunk society?</p>
+  <p>Which solarpunk ideas are already real—vertical farms, solar villages, etc?</p>
+
+  <h2>4. Atompunk: Retro Futures and Atomic Aesthetics</h2>
+  <p><strong>Atompunk</strong> draws from the Atomic Age—1945 to the 1960s—imagining a future of rayguns, rocket cars, and Cold War paranoia.</p>
+  
+  <h3>Key Works:</h3>
+  <p><strong>Sons of the Pioneers</strong> – <em>Old Man Atom</em> (1945): This folk song takes a deceptively light tone to sing about nuclear power.</p>
+  
+  <p><strong>The Golden Gate Quartet</strong> – <em>Atom and Evil</em> (1946): This gospel group turned the atom into a moral symbol.</p>
+  
+  <p><strong>Five Stars</strong> – <em>Atom Bomb Baby</em> (1957): This rock 'n' roll song makes the atomic bomb sound cute, fun—even romantic.</p>
+  
+  <p><strong>Tom Lehrer</strong> – <em>So Long, Mom (A Song for World War III)</em> (1965): Lehrer's biting satire envisions a cheery goodbye song for the "final war."</p>
+  
+  <p><strong>Fallout</strong> franchise (1997–present): A video game series set in a post-nuclear wasteland where 1950s-style optimism and design clash with brutal survival.</p>
+  
+  <h3>Discussion:</h3>
+  <p>What attracts people to the past's version of the future?</p>
+  <p>Is atompunk more hopeful or fearful at heart?</p>
+  <p>Would you want to live in an atompunk society?</p>
+
+  <h2>Summary: Visions of the Future</h2>
+  <p>From the violent beauty of Marinetti's manifesto to the ecological calm of solarpunk, artists across generations have imagined futures to escape, critique, or dream toward.</p>
+  
+  <blockquote>"Every act of futurism is also a reflection of the present—and what we wish it could become."</blockquote>
+  
+  <p>Which future speaks to you most—and why?</p>
+  <p>Should more futures be imagined through non-Western lenses?</p>
+  <p>What kind of future would you create?</p>
 </body>
 </html>
 </div>
@@ -2415,6 +2525,70 @@ function toggleFlashcard(card) {
 
 
 
+
+
+<section id="ai">
+  <h2>AI Assistant - Beta</h2>
+  <p>Ask me anything based on the Notes section!</p>
+  <div id="chatbox">
+    <div id="chatlog" style="border:1px solid #ccc; padding:10px; height:200px; overflow-y:auto; background:#fff;"></div>
+    <input type="text" id="userInput" placeholder="Type your question..." style="width:80%; padding:8px;"/>
+    <button onclick="askAI()">Send</button>
+  </div>
+</section>
+
+<script>
+  function askAI() {
+    const input = document.getElementById("userInput").value.trim();
+    const chatlog = document.getElementById("chatlog");
+
+    if (!input) return;
+
+    // Add user question
+    const userMessage = document.createElement("div");
+    userMessage.style.color = "blue";
+    userMessage.textContent = "You: " + input;
+    chatlog.appendChild(userMessage);
+
+    // Find the specific strong element that matches the query
+    const strongElements = document.querySelectorAll("#notes strong");
+    let bestMatch = "Sorry, I couldn't find information about that in the notes.";
+    const inputLower = input.toLowerCase();
+    
+    for (const strongEl of strongElements) {
+      if (strongEl.textContent.toLowerCase().includes(inputLower)) {
+        // Get the explanation text that follows the strong element
+        let explanation = "";
+        let nextNode = strongEl.nextSibling;
+        
+        // Collect text until we hit the next strong element or paragraph end
+        while (nextNode) {
+          if (nextNode.nodeType === 3) { // Text node
+            explanation += nextNode.textContent;
+          } else if (nextNode.nodeType === 1) { // Element node
+            if (nextNode.tagName === 'STRONG' || nextNode.tagName === 'H3') {
+              break; // Stop at next strong element or heading
+            }
+            explanation += nextNode.textContent;
+          }
+          nextNode = nextNode.nextSibling;
+        }
+        
+        bestMatch = strongEl.textContent + ": " + explanation.trim();
+        break;
+      }
+    }
+
+    // Add AI response
+    const aiMessage = document.createElement("div");
+    aiMessage.style.color = "green";
+    aiMessage.textContent = "AI: " + bestMatch;
+    chatlog.appendChild(aiMessage);
+
+    chatlog.scrollTop = chatlog.scrollHeight;
+    document.getElementById("userInput").value = "";
+  }
+</script>
 
 </main>
 <script>
