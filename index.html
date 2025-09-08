@@ -46,31 +46,38 @@ html, body {
 }
 
 header {
+  display: flex;
+  align-items: center;       /* vertically centers all items */
+  justify-content: space-between; /* logo left, title center, toggle right */
   background: linear-gradient(90deg, var(--turquoise), #751424);
   color: var(--pale-gold);
-  padding: 25px 20px;
+  padding: 15px 20px;
   font-weight: 800;
-  font-size: 2.2rem;
-  text-align: center;
-  position: relative;
+  font-size: 2rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   letter-spacing: 2px;
-  
 }
 
 header img.logo {
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
   height: 55px;
-  filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.3));
+  flex-shrink: 0;           /* prevents logo from shrinking */
 }
 
+header h1 {
+  flex: 1;
+  text-align: center;       /* keeps title centered between logo and toggle */
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+
 nav {
+  max-width: 1200px;
+  margin: 0 auto;
   background-color: var(--pale-gold);
   display: flex;
-  justify-content: center;
+  justify-content: center; /* horizontal alignment */
+  align-items: center;     /* vertical alignment */
   gap: 40px;
   padding: 15px 0;
   font-weight: 600;
@@ -79,17 +86,19 @@ nav {
   position: sticky;
   top: 0;
   z-index: 10000;
-  position: sticky; top: 0;
 }
 
 nav a {
   position: relative;
-  padding: 5px 0;
+  padding: 8px 0;          /* vertical padding */
   color: var(--turquoise);
   cursor: pointer;
   transition: color 0.3s ease;
   text-decoration: none;
+  display: flex;            /* ensures alignment inside link */
+  align-items: center;      /* vertically center text/icons */
 }
+
 
 nav a.active,
 nav a:hover {
@@ -831,8 +840,6 @@ align-items: center;
     </div>
   </div>
 
-
-  <button id="dark-mode-toggle">🌙</button>
 </nav>
 <!-- Login form section (hidden by default) -->
 
@@ -2138,54 +2145,54 @@ Fire: Humanity’s Primal Technology and Eternal Symbol
 
 <h1> Give this playlist a listen that encapsulates all the WSC 2025 curriculum tracks:</h1>
 <a href="https://open.spotify.com/playlist/2fhKux8jTHCuqTdOrXHp7y?si=SKhSmAmkQE6icx3DxEBlZg&pi=MUys1Cl-Si6MO&nd=1&dlsi=9c41d2e8164f47b1" target="_blank" style="color: var(--turquoise); font-weight: 600;">WSC 2025 Playlist</a>
-<hr class="hr">
+<hr>
 
 <h1> Give this podcast a listen that comprises The Best Is Yet To Be or Not To Be:</h1>
-<a href="Tunnels and Bri.mp3" target="_blank" style="color: var(--turquoise); font-weight: 600;">The Best Is Yet To Be or Not To Be</a><hr class="hr">
+<a href="Tunnels and Bri.mp3" target="_blank" style="color: var(--turquoise); font-weight: 600;">The Best Is Yet To Be or Not To Be</a><hr>
 
 <h1> Give this podcast a listen that comprises In Futurity Someone Prophetic Sees:</h1>
 <a href="Ancient Arts_ R.mp3" target="_blank" style="color: var(--turquoise); font-weight: 600;">In Futurity Someone Prophetic Sees</a>
-<hr class="hr">
+<hr>
 
 <h1> Give this podcast a listen that comprises The Future Wasn't Meant To Be:</h1>
 <a href="The Unknown and.mp3" target="_blank" style="color: var(--turquoise); font-weight: 600;">The Future Wasn't Meant To Be</a>
-<hr class="hr">
+<hr>
 
 <h1> Give this podcast a listen that comprises If At First You Fall, Try, Try Again:</h1>
 <a href="How the World I.mp3" target="_blank" style="color: var(--turquoise); font-weight: 600;">If At First You Fall, Try, Try Again</a>
-<hr class="hr">
+<hr>
 
 <h1> Give this podcast a listen that comprises Things Really Do catch Fire:</h1>
 <a href="Welcome to Igni.mp3" target="_blank" style="color: var(--turquoise); font-weight: 600;">Things Really Do catch Fire</a>
-<hr class="hr">
+<hr>
 
 <h1> Give this podcast a listen that comprises Speeches That Inspire, Speeches That Spit Fire:</h1>
 <a href="Speeches That C.mp3" target="_blank" style="color: var(--turquoise); font-weight: 600;">Speeches That Inspire, Speeches That Spit Fire</a>
-<hr class="hr">
+<hr>
 
 <h1> Give this podcast a listen that comprises Reliving It Up:</h1>
 <a href="The Difference .mp3" target="_blank" style="color: var(--turquoise); font-weight: 600;">Reliving It Up</a>
-<hr class="hr">
+<hr>
 
 <h1> Give this podcast a listen that comprises Entertaining Ourselves Back To Life:</h1>
 <a href="Entertaining Ou.mp3" target="_blank" style="color: var(--turquoise); font-weight: 600;">Entertaining Ourselves Back To Life</a>
-<hr class="hr">
+<hr>
 
 <h1> Give this podcast a listen that comprises Much Excite Much Ignite:</h1>
 <a href="Conflicts That .mp3" target="_blank" style="color: var(--turquoise); font-weight: 600;">Much Excite Much Ignite</a>
-<hr class="hr">
+<hr>
 
 <h1> Give this podcast a listen that comprises The Generative Area: A Mind For Imagination:</h1>
 <a href="HOST_ Hello and.mp3" target="_blank" style="color: var(--turquoise); font-weight: 600;">The Generative Area: A Mind For Imagination</a>
-<hr class="hr">
+<hr>
 
 <h1> Give this podcast a listen that comprises No Backup, But Restore:</h1>
 <a href="HOST_ Hello and.mp3" target="_blank" style="color: var(--turquoise); font-weight: 600;">No Backup, But Restore</a>
-<hr class="hr">
+<hr>
 
 <h1> Give this podcast a listen that comprises Punk Futures:</h1>
 <a href="Punky Futures - Visions of the Future_ Futurism, Afrofuturism, Solarpunk, and Atompunk.wav" target="_blank" style="color: var(--turquoise); font-weight: 600;">Punky Futures</a>
-<hr class="hr">
+<hr>
 
 </section>
 
@@ -2895,5 +2902,3 @@ function changeImage(direction) {
 
 
 </body>
-
-
