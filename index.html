@@ -46,38 +46,31 @@ html, body {
 }
 
 header {
-  display: flex;
-  align-items: center;       /* vertically centers all items */
-  justify-content: space-between; /* logo left, title center, toggle right */
   background: linear-gradient(90deg, var(--turquoise), #751424);
   color: var(--pale-gold);
-  padding: 15px 20px;
+  padding: 25px 20px;
   font-weight: 800;
-  font-size: 2rem;
+  font-size: 2.2rem;
+  text-align: center;
+  position: relative;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   letter-spacing: 2px;
+  
 }
 
 header img.logo {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   height: 55px;
-  flex-shrink: 0;           /* prevents logo from shrinking */
+  filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.3));
 }
-
-header h1 {
-  flex: 1;
-  text-align: center;       /* keeps title centered between logo and toggle */
-  margin: 0;
-  font-size: 2.2rem;
-}
-
 
 nav {
-  max-width: 1200px;
-  margin: 0 auto;
   background-color: var(--pale-gold);
   display: flex;
-  justify-content: center; /* horizontal alignment */
-  align-items: center;     /* vertical alignment */
+  justify-content: center;
   gap: 40px;
   padding: 15px 0;
   font-weight: 600;
@@ -86,19 +79,17 @@ nav {
   position: sticky;
   top: 0;
   z-index: 10000;
+  position: sticky; top: 0;
 }
 
 nav a {
   position: relative;
-  padding: 8px 0;          /* vertical padding */
+  padding: 5px 0;
   color: var(--turquoise);
   cursor: pointer;
   transition: color 0.3s ease;
   text-decoration: none;
-  display: flex;            /* ensures alignment inside link */
-  align-items: center;      /* vertically center text/icons */
 }
-
 
 nav a.active,
 nav a:hover {
@@ -493,8 +484,9 @@ align-items: center;
 
 .dropdown {
   position: relative;
-  display: flex;          /* make it flex to align button like nav links */
+  display: inline-flex;
   align-items: center;
+  height: 100%;
 }
 
 .dropbtn {
@@ -502,11 +494,14 @@ align-items: center;
   border: none;
   cursor: pointer;
   font: inherit;
-  color: var(--turquoise); /* match nav links */
+  color: var(--turquoise);
   font-weight: 600;
   font-size: 1.1rem;
   padding: 5px 0;
   letter-spacing: normal;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
 }
 
 .dropbtn:hover,
