@@ -2633,198 +2633,87 @@ function toggleFlashcard(card) {
 
 </main>
 <script>
-
-
-document.querySelectorAll('.category').forEach(category => {
-  category.addEventListener('click', () => {
-    const topicKey = category.getAttribute('data-topic');
-    document.getElementById('topic-text').innerHTML = notesData[topicKey] || '<p>Content coming soon. Check back later!</p>';
-    document.getElementById('topic-list').style.display = 'none';
-    document.getElementById('topic-content').style.display = 'block';
-
-    if (topicKey === 'topic2') {
-      document.getElementById('futurity-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
-    }
-        if (topicKey === 'topic3') {
-      document.getElementById('meant-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
-    }
-        if (topicKey === 'topic4') {
-      document.getElementById('fall-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
-    }
-        if (topicKey === 'topic5') {
-      document.getElementById('fire-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
-    }
-        if (topicKey === 'topic6') {
-      document.getElementById('speech-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
-    }
-        if (topicKey === 'topic8') {
-      document.getElementById('topic8-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
-    }
-            if (topicKey === 'topic7') {
-      document.getElementById('reliving-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
-    }
-        if (topicKey === 'topic9') {
-      document.getElementById('ignite-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
-    }
-        if (topicKey === 'topic10') {
-      document.getElementById('imagination-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
-    }
-            if (topicKey === 'topic11') {
-      document.getElementById('backup-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
-    }
-            if (topicKey === 'topic12') {
-      document.getElementById('punky-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
-    }
-       /* if (topicKey === 'topic11') {
-      document.getElementById('backup-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
-    }
-        if (topicKey === 'topic12') {
-      document.getElementById('punky-scroll-target')?.scrollIntoView({ behavior: 'smooth' });
-    }*/
-
-    setupUserNotes();
+  // --- Dark Mode Toggle ---
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
+  darkModeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
   });
-});
 
-window.addEventListener('DOMContentLoaded', setupUserNotes);
-</script>
-<script>
-    // --- Dark Mode Toggle ---
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    darkModeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+  // --- Navigation ---
+  const navLinks = document.querySelectorAll('nav a:not(#dark-mode-toggle)');
+  const sections = document.querySelectorAll('main section');
+
+  function activateSection(id) {
+    sections.forEach(section => {
+      section.classList.toggle('active', section.id === id);
     });
-
-    // --- Navigation ---
-    const navLinks = document.querySelectorAll('nav a:not(#dark-mode-toggle)');
-    const sections = document.querySelectorAll('main section');
-
-    function activateSection(id) {
-      sections.forEach(section => {
-        section.classList.toggle('active', section.id === id);
-      });
-
-      navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
-      });
-
-      // Reset Notes/Quizzes view if their sections are activated
-      if (id === 'notes') {
-        document.getElementById('topic-list').style.display = 'flex';
-        document.getElementById('topic-content').style.display = 'none';
-      } else if (id === 'quizzes') {
-        document.getElementById('quiz-list').style.display = 'block';
-        document.getElementById('quiz-interface').style.display = 'none';
-      }
-    }
 
     navLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').slice(1);
-        activateSection(targetId);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+      link.classList.toggle('active', link.getAttribute('href') === '#' + id);
     });
 
-    // Initialize page: show only home section
-    activateSection('home');
-
-    // --- Notes Functionality ---
- document.getElementById('back-to-topics').addEventListener('click', function() {
+    // Reset Notes/Quizzes view if their sections are activated
+    if (id === 'notes') {
       document.getElementById('topic-list').style.display = 'flex';
       document.getElementById('topic-content').style.display = 'none';
-      document.getElementById('notes').scrollIntoView({ behavior: 'smooth' });
-      document.getElementById('back-to-topics').style.display = 'block';
-      document.getElementById('notes').scrollIntoView({ behavior: 'smooth' });
-    });
+    } else if (id === 'quizzes') {
+      document.getElementById('quiz-list').style.display = 'block';
+      document.getElementById('quiz-interface').style.display = 'none';
+    }
+  }
 
-    // Real WSC notes content
-    // Replace the category click handler with this:
-document.querySelectorAll('.category').forEach(category => {
-  category.addEventListener('click', () => {
-    const selectedCategory = category.textContent.trim();
-    
-    // Hide the topic list and show the content area
-    document.getElementById('topic-list').style.display = 'none';
-    document.getElementById('topic-content').style.display = 'block';
-    
-    // Clear previous content
-    const topicText = document.getElementById('topic-text');
-    topicText.innerHTML = `<h3>${selectedCategory}</h3>`;
-    
-    // Find and append all notes for this category
-    document.querySelectorAll(`.note[data-category="${selectedCategory}"]`).forEach(note => {
-      // Clone the note to avoid removing it from its original position
-      const noteClone = note.cloneNode(true);
-      topicText.appendChild(noteClone);
-      
-      // Also include the HR before this note if it exists
-      const prev = note.previousElementSibling;
-      if (prev && prev.tagName === 'HR') {
-        const hrClone = prev.cloneNode(true);
-        topicText.appendChild(hrClone);
-      }
-    });
-    
-    // Scroll to top of notes
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-});
-// Notes toggle logic
-document.querySelectorAll('#topic-list .category').forEach(item => {
-  item.addEventListener('click', () => {
-    const topic = item.getAttribute('data-topic') || item.textContent.trim();
-    document.getElementById('topic-content').classList.add('active');
-    document.querySelectorAll('#topic-content .note').forEach(note => {
-      if (note.getAttribute('data-category') === item.textContent.trim() || 
-          note.getAttribute('data-topic') === topic) {
-        note.style.display = 'block';
-      } else {
-        note.style.display = 'none';
-      }
-    });
-  });
-});
-
-// Update the back button to this:
-document.getElementById('back-to-topics').addEventListener('click', function() {
-  document.getElementById('topic-list').style.display = 'flex';
-  document.getElementById('topic-content').style.display = 'none';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-    // Search notes
-    notesSearch.addEventListener('input', (e) => {
-      const searchTerm = e.target.value.toLowerCase();
-      document.querySelectorAll('#topic-list .category').forEach(category => {
-        const text = category.textContent.toLowerCase();
-        category.style.display = text.includes(searchTerm) ? 'flex' : 'none';
-      });
-    });
-    
-
-    // Show topic content
-    topicList.querySelectorAll('.category').forEach(category => {
-      category.addEventListener('click', () => {
-        const topicKey = category.getAttribute('data-topic');
-        topicText.innerHTML = notesData[topicKey] || '<p>Content coming soon. Check back later!</p>';
-        topicList.style.display = 'none';
-        topicContent.style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    });
-
-    backBtn.addEventListener('click', () => {
-      topicContent.style.display = 'none';
-      topicList.style.display = 'flex';
-      notesSearch.value = '';
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').slice(1);
+      activateSection(targetId);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+  });
 
+  // Initialize page: show only home section
+  activateSection('home');
+
+  // --- Notes Functionality ---
+  document.querySelectorAll('#topic-list .category').forEach(item => {
+    item.addEventListener('click', () => {
+      const topic = item.getAttribute('data-topic') || item.textContent.trim();
+
+      // Hide the list, show the content area
+      document.getElementById('topic-list').style.display = 'none';
+      document.getElementById('topic-content').style.display = 'block';
+
+      // Show only notes that match the topic
+      document.querySelectorAll('#topic-content .note').forEach(note => {
+        note.style.display =
+          note.getAttribute('data-category') === item.textContent.trim() ||
+          note.getAttribute('data-topic') === topic
+            ? 'block'
+            : 'none';
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // --- Back to Topics button ---
+  document.getElementById('back-to-topics').addEventListener('click', () => {
+    document.getElementById('topic-list').style.display = 'flex';
+    document.getElementById('topic-content').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // --- Search Notes ---
+  const notesSearch = document.getElementById('notes-search');
+  notesSearch.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    document.querySelectorAll('#topic-list .category').forEach(category => {
+      const text = category.textContent.toLowerCase();
+      category.style.display = text.includes(searchTerm) ? 'flex' : 'none';
+    });
+  });
 </script>
-
 
 <script>
 function startDebateTimer() {
