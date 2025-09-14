@@ -349,6 +349,10 @@ align-items: center;
   margin-top: 20px;
 }
 
+#notes #topic-content.active {
+  display: block;
+  }
+
 #notes #topic-content button#back-to-topics {
   margin-bottom: 20px;
   padding: 8px 15px;
@@ -1099,7 +1103,7 @@ document.querySelectorAll("nav a, .dropdown-content a").forEach(link => {
 <div class="category" data-topic="topic11">No Backup, But Restore</div>
 <div class="category" data-topic="topic12">Punky Futures</div>
 </div>
-<div id="notes">
+<div id="topic-content">
 <!-- The Best is Yet to Be, or Not To Be? -->
 
 
@@ -2766,6 +2770,21 @@ document.querySelectorAll('.category').forEach(category => {
     
     // Scroll to top of notes
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+// Notes toggle logic
+document.querySelectorAll('#topic-list .category').forEach(item => {
+  item.addEventListener('click', () => {
+    const topic = item.getAttribute('data-topic') || item.textContent.trim();
+    document.getElementById('topic-content').classList.add('active');
+    document.querySelectorAll('#topic-content .note').forEach(note => {
+      if (note.getAttribute('data-category') === item.textContent.trim() || 
+          note.getAttribute('data-topic') === topic) {
+        note.style.display = 'block';
+      } else {
+        note.style.display = 'none';
+      }
+    });
   });
 });
 
