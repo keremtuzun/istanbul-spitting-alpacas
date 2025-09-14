@@ -1,4 +1,5 @@
 
+make the top bars aligned:
 <!DOCTYPE html>
 
 <html lang="en">
@@ -484,9 +485,8 @@ align-items: center;
 
 .dropdown {
   position: relative;
-  display: inline-flex;
+  display: flex;          /* make it flex to align button like nav links */
   align-items: center;
-  height: 100%;
 }
 
 .dropbtn {
@@ -494,14 +494,11 @@ align-items: center;
   border: none;
   cursor: pointer;
   font: inherit;
-  color: var(--turquoise);
+  color: var(--turquoise); /* match nav links */
   font-weight: 600;
   font-size: 1.1rem;
   padding: 5px 0;
   letter-spacing: normal;
-  display: inline-flex;
-  align-items: center;
-  height: 100%;
 }
 
 .dropbtn:hover,
