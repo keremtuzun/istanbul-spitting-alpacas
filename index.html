@@ -674,6 +674,10 @@ align-items: center;
             margin-bottom: 5px;
         }
 
+        nav .bell {
+  margin-left: 20px; /* Creates space between Utilities and 🔔 */
+}
+
 
 
 @keyframes fadeIn {
@@ -834,6 +838,10 @@ align-items: center;
           <a href="#ai">AI</a>
     </div>
   </div>
+
+
+  <a href="#announcements">🔔</a>
+
 
 </nav>
 <!-- Login form section (hidden by default) -->
@@ -1818,9 +1826,19 @@ function toggleFlashcard(card) {
     document.getElementById("userInput").value = "";
   }
 </script>
+<section id="announcements" class="active">
+  <h2>Announcements</h2>
+  <p>We wish all the best for the Christchurch Global Round Competitors and advice them to train for this journey with us. /   <b>20.09.2025</b></p>
+  <p>We are excited to welcome our new member, Beren  /   <b>10.09.2025</b></p>
+  
+
+  </section>
 
 </main>
 <script>
+
+
+
 
 
 document.querySelectorAll('.category').forEach(category => {
