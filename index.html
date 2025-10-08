@@ -802,6 +802,84 @@ align-items: center;
     
   
 
+
+/* === Final About Us Styles === */
+#about {
+  padding: 4rem 1rem;
+  background: #f9f6f1;
+}
+#about h2 {
+  text-align: center;
+  font-size: 2.6rem;
+  margin-bottom: 1.5rem;
+  color: var(--turquoise);
+}
+#about .intro {
+  max-width: 760px;
+  margin: 0 auto 2rem auto;
+  font-size: 1.1rem;
+  text-align: center;
+  line-height: 1.6;
+  color: #444;
+}
+#about .about-text {
+  max-width: 900px;
+  margin: 0 auto;
+}
+#about .about-text h3 {
+  font-size: 1.4rem;
+  color: var(--turquoise);
+  margin: 1rem 0 0.5rem 0;
+}
+#about .about-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+#about .about-text ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  background: #fffdf8;
+  padding: 0.55rem 0.8rem;
+  border-left: 4px solid var(--turquoise);
+  border-radius: 6px;
+}
+#about .follow {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.05rem;
+}
+
+/* Team grid */
+#about .team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+#about .team-member img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  margin-bottom: 0.8rem;
+  transition: transform 0.25s ease;
+}
+#about .team-member img:hover {
+  transform: scale(1.04);
+}
+#about .team-member h4 {
+  font-size: 1.15rem;
+  color: var(--turquoise);
+  margin-bottom: 0.35rem;
+}
+#about .team-member p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.45;
+}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
 </head>
@@ -892,113 +970,61 @@ align-items: center;
 <!-- moved to Practice Lab -->
 </section>
 <section id="about">
-<div class="about-content">
-<div class="about-photo">
-<img alt="Students collaborating" src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&amp;fit=crop&amp;w=600&amp;q=80"/>
-<img alt="Students collaborating" src="download.jpg"/>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<img src="f2c62936-3735-4da5-a96d-f4dd4f42b9e8.jpg"/>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+  <div class="about-wrapper">
+    <h2>About Us</h2>
+    <p class="intro">
+      We’re the <strong>Istanbul Spitting Alpacas</strong> — a youth-led team helping students 
+      crush the <strong>World Scholar’s Cup</strong> with top-notch resources, strategies, 
+      and a community that makes learning exciting.
+    </p>
 
+    <div class="about-text" style="max-width:900px; margin:0 auto;">
+      <h3>Our Mission</h3>
+      <p>We make WSC prep practical and fun — through curated notes, debate tools, and quizzes — 
+         while keeping the Alpaca spirit alive.</p>
 
+      <h3>Achievements</h3>
+      <ul>
+        <li><strong>Stockholm Globals:</strong> 50 medals • 3 trophies • Ranked #8</li>
+        <li><strong>Bucharest Regionals:</strong> 30 medals • Ranked #12</li>
+        <li><strong>Yale ToC 2024:</strong> 24 medals • Ranked #30</li>
+        <li><strong>Istanbul Regionals:</strong> 27 medals • 7 trophies • Ranked #1</li>
+        <li><strong>Kuala Lumpur Globals:</strong> 32 medals • European / W. Middle Eastern Champion • Ranked #34</li>
+      </ul>
 
+      <h3>Meet the Team</h3>
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="14e0f39f-14fb-4b4a-b405-593cf8e9e253.jpg" alt="Kerem Tüzün">
+          <h4>Kerem Tüzün</h4>
+          <p>Coder, reader, and tennis enthusiast leading Alpacas’ learning tools.</p>
+        </div>
 
+        <div class="team-member">
+          <img src="unnamed.jpg" alt="Güney Keskinoğlu">
+          <h4>Güney Keskinoğlu</h4>
+          <p>Challenge-driven debater with sharp wit and a love for music.</p>
+        </div>
 
-<img src="14e0f39f-14fb-4b4a-b405-593cf8e9e253.jpg"/>
-<img src="unnamed.jpg"/>
-<img src="WhatsApp Image 2025-09-13 at 22.19.20 (2).jpeg">
-<img src="39a5cdbe-d6dd-4f7d-bbcd-53ba31225d93.jpg"/>
+        <div class="team-member">
+          <img src="WhatsApp Image 2025-09-13 at 22.19.20 (2).jpeg" alt="Beren Ayorak">
+          <h4>Beren Ayorak</h4>
+          <p>Creative soul blending ballet, piano, and WSC writing skills.</p>
+        </div>
 
-</div>
-<div class="about-text">
-  <h2>Our Objective</h2>
-<p>Officially preparing students with notes, quizzes, and guidance for the 2025 WSC season.</p>
-<p>Istanbul Spitting Alpacas is a youth-led organization committed to helping students prepare for the
-       World Scholar's Cup with passion and purpose.</p>
-<p>
-        We offer curated study materials, debate strategies, and fun community-driven content to make your WSC journey 
-        both effective and memorable.
-      </p>
-<p>
-        Whether you're burning the midnight oil or chasing alpaca-themed glory, we’ve got your back.
-      </p>
-<h2>Our Achievements</h2>
+        <div class="team-member">
+          <img src="39a5cdbe-d6dd-4f7d-bbcd-53ba31225d93.jpg" alt="Arda Sabri Tiryaki">
+          <h4>Arda Sabri Tiryaki</h4>
+          <p>Past contributor — swimmer and thinker who brought humor and energy.</p>
+        </div>
+      </div>
+    </div>
 
-<h1>KAG (Kerem,Arda,Güney)</h1>
-<p><b>Stockholm Globals:</b>
-Medals: 50<br>
-Trophy: 3/<br>
-Ranking: 8/<br>
-<b>Bucharest Regionals:</b><br>
-Medals: 30/<br>
-Ranking: 12/<br>
-<b>Yale ToC 2024:</b><br>
-Medals: 24/<br>
-Ranking: 30/<br>
-<b>Istanbul Regionals:</b><br>
-Medals: 27/<br>
-Ranking: 1/<br>
-Trophy: 7<br>
-<b>Kuala Lumpur Globals:</b><br>
-Medals: 32/<br>
-European, West Middle Eastern Champion/<br>
-Ranking: 34/</p>
-<br>
-
-<hr>
-
-<h1>BIG (Beren, İpek, Güney)</h1>
-
-
-<p>ToC 2025 awaits them - Good Luck !</p>
-
-<hr>
-
-<div class="about-text">
-<h2>Bio</h2>
-<h1> Meet Kerem Tüzün</h1>
-<p>Hi, I’m Kerem. I’m someone who enjoys diving into different things — especially books, coding, WSC, and tennis. I’ve always loved reading because it lets me explore new ideas and stories, whether it’s fiction, history, or something random I find interesting.
-
-I’ve been part of the World Scholar’s Cup for 2 years now, and it’s honestly one of the most fun and challenging things I’ve done. The mix of debating, writing, and learning unusual topics makes it really different from regular school competitions — in a good way.
-
-Outside of that, I spend a lot of time programming. I enjoy building websites and making projects that actually do something useful, especially when I get to combine design and logic. I like figuring things out through trial and error — whether it's debugging code or learning a new framework.
-
-And then there’s tennis, which helps me reset. It’s a sport I genuinely enjoy because it's both physical and mental, and I always leave the court feeling better, even if I lose a match.</p>
-
-<h1> Meet Güney Keskinoğlu</h1>
-<p>Hi I am Güney Keskinoğlu, no I am not one of those who enjoy the debates or the bowl, Im more of a challenge or writing guy. I also love table tennis, music and Kendrick Lamar. The G.O.A.T for real. I also lets say like the World Scholars Cup, tho if we put out the pain while trying to understand what a literature type has to do with scholars, it would change to love. Like my friends I won't say that I am a scholar for 2 years, I would like to say that I am trying to be a scholar since May 2024. Besides the ball at the globals and ToC, and blasting full on FE!N while jumping my soul off at a small hall, I would not say that the Scholars program exciting, I do enjoy the debates in one condition, if the opponent did not learn any English before the debate. The challenge tho i enjoy, if the question was not pulled out of the MUN curriculum of course. Although I "just" like those Im here, so lets enjoy our studying and scream till we die in the ball for a mere one and a half hours baby! Carpe Diem, Güney out</p>
-
-<h1> Meet Beren Ayorak</h1>
-<p>Hi, I'm Beren Ayorak. I mostly enjoy doing imaginative things, whether it's ballet I've been doing for 8 years, dancing, playing the piano, listening to tons of music and also singing.  These are the things I am passionate about in life, what brings me comfort and happiness. And for a while now I'm interested in WSC. I joined during March 2025, I can probably say I'm newly involved. The World Scholars Cup is totally challenging and from time to time overwhelming for me. However, I've embraced myself with the difficulties of the challenge, astounding parts of studying for the curriculum, and the chaos of the debates. The writing I'm more calm with. I prefer being with only me and my mind rather than the utter chaos in debate. Yet, I'm someone who can talk a lot. Ironically it makes my debates quite easier. Even so, WSC made learning about different topics interesting and fun, it also made me thrilled to connect with other cultures. On the other hand, I'm really excited to be here at Istanbul Spitting Alpacas. I'm eager to see what is yet to come.</p>
-
-
-
-<h1> Past Contributor: Arda Sabri Tiryaki</h1>
-<p>I’m Arda Sabri Tiryaki, a 14-year-old student at Koç High School, a licensed swimmer, and someone who loves movies, books, traveling, and drawing cartoons. I’ve been part of the World Scholar’s Cup for two years now — and honestly, I’ve never had this much fun while learning. The topics are always so unique, innovative, and full of surprises — from debating abstract ideas to exploring global issues with people from all around the world. It’s not just about facts, it’s about thinking, connecting, and having a great time doing it (yes, alpacas included!). WSC has made me love learning in a way I never expected, and I can’t wait for what’s next.</p>
-
-</div></div>
-<p>
-  📸More of us on Instagram:  
-  <a href="https://instagram.com/istanbul_spitting_alpacas" style="color: var(--turquoise); font-weight: bold;" target="_blank">
-    @istanbul_spitting_alpacas
-  </a>
-</p>
-</div>
+    <p class="follow">
+      📸 Follow us on Instagram:
+      <a href="https://instagram.com/istanbul_spitting_alpacas" target="_blank">@istanbul_spitting_alpacas</a>
+    </p>
+  </div>
 </section>
 
 <section id="progress">
