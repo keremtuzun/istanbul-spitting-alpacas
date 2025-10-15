@@ -880,6 +880,30 @@ align-items: center;
   color: #444;
   line-height: 1.45;
 }
+
+@media (max-width: 768px) {
+  #home .hero-text div {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+  }
+
+  #home .hero-text p {
+    font-size: 1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+
+  #home .hero-text a {
+    display: inline-block;
+    word-break: break-word;
+    max-width: 100%;
+    text-align: center;
+  }
+}
+
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
 </head>
@@ -913,7 +937,7 @@ align-items: center;
     <div class="dropdown-content">
         <a href="#discussion-forum">Discussion</a>
       <a href="#progress">Progress</a>
-          <a href="#ai">AI</a>
+          <a href="#ai">Search</a>
     </div>
   </div>
 
@@ -1791,7 +1815,7 @@ function toggleFlashcard(card) {
 
 
 <section id="ai">
-  <h2>AI Assistant - Beta</h2>
+  <h2>Search Assistant</h2>
   <p>Ask me anything based on the Notes section!</p>
   <div id="chatbox">
     <div id="chatlog" style="border:1px solid #ccc; padding:10px; height:200px; overflow-y:auto; background:#fff;"></div>
