@@ -315,14 +315,16 @@ align-items: center;
   box-shadow: 0 8px 18px rgba(0,0,0,0.22);
 }
 
-#notes #topic-list {
+#notes #topic-list,
+#notes #topic-list-2026 {
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
   justify-content: space-between;
 }
 
-#notes #topic-list .category {
+#notes #topic-list .category,
+#notes #topic-list-2026 .cat26 {
   flex: 1 1 calc(45% - 25px);
   background: #fffdf8cc;
   backdrop-filter: blur(8px);
@@ -338,9 +340,30 @@ align-items: center;
   user-select: none;
 }
 
-#notes #topic-list .category:hover {
+#notes #topic-list .category:hover,
+#notes #topic-list-2026 .cat26:hover {
   background-color: #fff9ee;
   transform: translateY(-7px);
+}
+
+/* Year switcher for Notes (2026 / 2025) */
+#notes-year-switch { display:flex; gap:12px; flex-wrap:wrap; margin: 4px 0 24px; }
+#notes-year-switch .year-btn {
+  cursor:pointer;
+  border:2px solid var(--turquoise);
+  background:#fffdf8cc;
+  color:var(--turquoise);
+  font-weight:700;
+  font-size:1rem;
+  padding:12px 20px;
+  border-radius:14px;
+  transition: background-color .25s ease, color .25s ease, transform .25s ease;
+}
+#notes-year-switch .year-btn:hover { transform: translateY(-3px); }
+#notes-year-switch .year-btn.active-year {
+  background:var(--turquoise);
+  color:#fff;
+  box-shadow:0 6px 16px rgb(0 0 0 / 0.18);
 }
 
 #notes #topic-content {
@@ -744,7 +767,8 @@ align-items: center;
     font-size: 1rem;
   }
 
-  #notes #topic-list .category {
+  #notes #topic-list .category,
+  #notes #topic-list-2026 .cat26 {
     flex: 1 1 100%;
   }
 
@@ -1152,6 +1176,30 @@ document.querySelectorAll("nav a, .dropdown-content a").forEach(link => {
 
 <section id="notes">
   <h2>Notes</h2>
+
+  <!-- Year switcher: 2026 is the current theme; 2025 stays fully accessible -->
+  <div id="notes-year-switch">
+    <button type="button" class="year-btn active-year" id="year-btn-2026" onclick="showNotesYear('2026')">2026 · Are We There Yet?</button>
+    <button type="button" class="year-btn" id="year-btn-2025" onclick="showNotesYear('2025')">2025 · Reigniting the Future</button>
+  </div>
+
+  <!-- 2026 topic list: "Are We There Yet?" -->
+  <div id="topic-list-2026">
+    <div class="cat26" data-topic="y26_1">Are We There Yet? The Question Behind the Theme</div>
+    <div class="cat26" data-topic="y26_2">Mind the Gap: The Space Between Here and There</div>
+    <div class="cat26" data-topic="y26_3">Heavy Lies the Crown: The History of Succession</div>
+    <div class="cat26" data-topic="y26_4">Out with the Old: When Societies Move On</div>
+    <div class="cat26" data-topic="y26_5">The Long Way Round: Maps, Navigation &amp; Wayfinding</div>
+    <div class="cat26" data-topic="y26_6">Mistakes Were Made: The Special Area of Errors &amp; Recoveries</div>
+    <div class="cat26" data-topic="y26_7">Run It Back: Reboots, Sequels &amp; Reconsiderations</div>
+    <div class="cat26" data-topic="y26_8">The Science of Getting There: Time, Speed &amp; Travel</div>
+    <div class="cat26" data-topic="y26_9">Forever Young? The Quest to Stop the Clock</div>
+    <div class="cat26" data-topic="y26_10">The Road Goes Ever On: Journeys in Art &amp; Music</div>
+    <div class="cat26" data-topic="y26_11">Almost Utopia: Have We Arrived Yet?</div>
+    <div class="cat26" data-topic="y26_12">The Destination Is the Journey: A Philosophy of Arrival</div>
+  </div>
+
+  <!-- 2025 topic list (kept accessible via the year switcher) -->
   <div id="topic-list">
     <div class="category" data-topic="topic1">The Best is Yet to Be, or Not To Be?</div>
     <div class="category" data-topic="topic2">In Futurity, Someone Prophetic Sees</div>
@@ -1989,7 +2037,11 @@ window.addEventListener('DOMContentLoaded', setupUserNotes);
 
       // Reset Notes/Quizzes view if their sections are activated
       if (id === 'notes') {
-        document.getElementById('topic-list').style.display = 'flex';
+        if (typeof showNotesYear === 'function') {
+          showNotesYear(window.currentNotesYear || '2026');
+        } else {
+          document.getElementById('topic-list').style.display = 'flex';
+        }
         document.getElementById('topic-content').style.display = 'none';
       } else if (id === 'quizzes') {
         document.getElementById('quiz-list').style.display = 'block';
@@ -3206,6 +3258,475 @@ topic9: `<p><strong>Things Can Explode Sometimes: The Fury of the Earth</strong>
     topicContent.style.display = 'none';
     topicList.style.display = 'flex';
   });
+</script>
+
+
+<!-- ===================================================================== -->
+<!-- 2026 THEME: "Are We There Yet?"  — self-contained notes + year switch  -->
+<!-- ===================================================================== -->
+<script>
+const notesData2026 = {
+
+  y26_1: ` <div class="note-content">
+    <h2>Are We There Yet? The Question Behind the 2026 Theme</h2>
+    <p>"Are we there yet?" is the eternal cry from the backseat of every long car trip &mdash; but in the World Scholar's Cup 2026 season it becomes a lens for examining the whole human story. The theme asks us to look at <strong>journeys</strong> rather than just destinations: how individuals, societies, technologies, and ideas move from where they were, to where they are, to where they hope to be &mdash; and how we decide whether we have "arrived" at all.</p>
+
+    <h3>What the Theme Is Really Asking</h3>
+    <p>On the surface the phrase is about impatience and travel. Underneath, it is about <strong>progress and its measurement</strong>. Every "are we there yet?" assumes three things: a <em>starting point</em>, a <em>destination</em>, and a <em>way to know the difference</em>. The 2026 curriculum challenges scholars to question all three. Who decides where "there" is? Is the destination fixed, or does it move as we approach it? And what happens to the people and places we leave behind on the way?</p>
+
+    <h3>The Six Subjects, One Journey</h3>
+    <p>As always, the theme threads through all six subject areas, each with its own subtheme:</p>
+    <ul>
+      <li><strong>Special Area &mdash; Mistakes &amp; Recoveries:</strong> the detours, wrong turns, failures, and second chances that shape every journey.</li>
+      <li><strong>History &mdash; The History of Succession:</strong> how power, leadership, and authority pass from one hand to the next.</li>
+      <li><strong>Social Studies &mdash; Out with the Old:</strong> how societies modernise, replace, abandon, and reinvent the systems they once relied on.</li>
+      <li><strong>Literature &amp; Media &mdash; Reboots, Sequels &amp; Reconsiderations:</strong> stories that get retold, continued, and reimagined for new audiences.</li>
+      <li><strong>Science &amp; Technology:</strong> the science of travel, time, navigation, and the long human effort to slow down ageing and reach new frontiers.</li>
+      <li><strong>Art &amp; Music:</strong> the road, the pilgrimage, and the journey as one of humanity's oldest creative subjects.</li>
+    </ul>
+
+    <h3>Recurring Tensions to Carry Through Every Topic</h3>
+    <ul>
+      <li><strong>Journey vs. destination:</strong> Is the value in arriving, or in the travelling itself?</li>
+      <li><strong>Progress vs. change:</strong> Movement is not always improvement. How do we tell the difference?</li>
+      <li><strong>Patience vs. urgency:</strong> When should we be content with "not yet," and when should we demand "now"?</li>
+      <li><strong>Who is left behind:</strong> Every advance has uneven costs &mdash; geographically, generationally, and socially.</li>
+    </ul>
+
+    <h3>How to Use These Notes</h3>
+    <p>The topics below mirror our 2025 structure: an opening overview, deep dives into each subject area, and a closing reflection. Read them as connected chapters of a single road trip &mdash; the best Scholar's Cup answers always link a science fact to a poem, a historical succession to a modern election, a famous mistake to a story about recovery. Keep asking the theme's own question of everything you study: <em>are we there yet &mdash; and how would we know?</em></p>
+  </div> `,
+
+  y26_2: ` <h2>Mind the Gap: The Space Between Here and There</h2>
+  <p>Before we study any single journey, it helps to understand the <strong>psychology and philosophy of the gap</strong> &mdash; the restless space between where we are and where we want to be. This is the emotional engine of the entire theme, and it shapes how humans plan, wait, hope, and despair.</p>
+
+  <h3>The Psychology of Anticipation</h3>
+  <p>Humans are uniquely future-oriented animals. Our brains constantly model what is coming next, which makes waiting both motivating and painful.</p>
+  <ul>
+    <li><strong>Delayed gratification:</strong> Walter Mischel's famous "marshmallow test" explored a child's ability to wait for a larger reward &mdash; an early study of the self-control a long journey demands.</li>
+    <li><strong>The goal-gradient effect:</strong> Motivation increases the closer we get to a goal (why loyalty cards with a "head start" get completed faster, and why the last mile feels longest yet most urgent).</li>
+    <li><strong>Hedonic adaptation:</strong> Reaching a goal rarely brings lasting satisfaction; we quickly reset and ask "what's next?" &mdash; the psychological reason "there" keeps moving.</li>
+    <li><strong>The arrival fallacy:</strong> the mistaken belief that achieving a destination (a grade, a title, a country) will finally make us happy.</li>
+  </ul>
+
+  <h3>Liminality: Life in the In-Between</h3>
+  <p>Anthropologists Arnold van Gennep and Victor Turner described the <strong>liminal stage</strong> &mdash; the threshold period inside a rite of passage when a person is "betwixt and between," no longer who they were but not yet who they will become. Airports, waiting rooms, adolescence, and migration are all liminal spaces. The 2026 theme lives in this in-between.</p>
+
+  <h3>Measuring Progress</h3>
+  <p>If we want to know whether we are "there," we need metrics &mdash; and every metric hides a choice about what matters.</p>
+  <ul>
+    <li><strong>GDP and its critics:</strong> economic growth as a proxy for progress, challenged by measures like the <strong>Human Development Index</strong> and Bhutan's <strong>Gross National Happiness</strong>.</li>
+    <li><strong>The UN Sustainable Development Goals:</strong> 17 global "destinations" with a 2030 deadline &mdash; a literal "are we there yet?" scorecard for humanity.</li>
+    <li><strong>Goodhart's Law:</strong> "When a measure becomes a target, it ceases to be a good measure" &mdash; a warning about chasing the wrong finish line.</li>
+  </ul>
+
+  <h3>The Philosophy of Progress</h3>
+  <p>Is history a straight line toward something better? Thinkers have disagreed for centuries.</p>
+  <ul>
+    <li><strong>Enlightenment optimism:</strong> the Marquis de Condorcet imagined the indefinite perfectibility of humankind.</li>
+    <li><strong>Cyclical views:</strong> from the ancient idea of golden and iron ages to historians who see civilisations rise and fall in repeating patterns.</li>
+    <li><strong>Progress questioned:</strong> after the World Wars, thinkers asked whether technological "advance" guaranteed any moral advance at all.</li>
+  </ul>
+
+  <h3>Why It Matters</h3>
+  <p>Understanding the gap teaches a key Scholar's Cup move: the same journey can be a triumph or a tragedy depending on where you place the finish line. Hold onto this idea &mdash; every topic that follows is, in some way, an argument about whether we have closed the gap or merely moved it.</p> `,
+
+  y26_3: ` <h2>Heavy Lies the Crown: The History of Succession</h2>
+  <p>The History subtheme, <strong>"The History of Succession,"</strong> asks one of politics' oldest and most dangerous questions: <em>what happens when the person in charge is gone?</em> Every society that has ever held power has had to answer it, and the answer often decides whether there is a peaceful journey forward or a violent detour.</p>
+
+  <h3>Why Succession Is So Fragile</h3>
+  <p>A transfer of power is a moment of maximum vulnerability. Authority that took a lifetime to build must pass &mdash; intact &mdash; in a single moment. Get it wrong and you risk civil war, usurpation, or collapse. The history of succession is therefore the history of humanity's attempts to make the handoff <strong>predictable, legitimate, and peaceful</strong>.</p>
+
+  <h3>Hereditary Succession</h3>
+  <ul>
+    <li><strong>Primogeniture:</strong> passing power to the eldest child &mdash; simple and clear, but vulnerable to weak or infant heirs.</li>
+    <li><strong>The Ottoman alternatives:</strong> the brutal practice of royal <em>fratricide</em>, later replaced by the <em>Kafes</em> ("cage") and seniority succession, shows how dynasties experimented to survive.</li>
+    <li><strong>The Year of the Four Emperors (69 CE):</strong> Rome's chaos after Nero proved how a missing succession rule could shatter an empire.</li>
+    <li><strong>Game of Thrones</strong> and other fiction dramatise these same anxieties for modern audiences &mdash; useful cultural touchstones for debate.</li>
+  </ul>
+
+  <h3>Elective and Institutional Succession</h3>
+  <ul>
+    <li><strong>The Roman Republic and elected magistracies</strong> vs. the imperial period's instability.</li>
+    <li><strong>The Holy Roman Empire's prince-electors</strong> and the elective monarchy of the Polish-Lithuanian Commonwealth.</li>
+    <li><strong>Papal conclave:</strong> the centuries-old, secretive system that still chooses the Pope &mdash; a living succession ritual.</li>
+    <li><strong>Constitutional succession:</strong> the U.S. line of succession and the 25th Amendment; the British rule "the King is dead, long live the King," where authority never lapses.</li>
+  </ul>
+
+  <h3>Succession Crises That Changed the World</h3>
+  <ul>
+    <li><strong>The Wars of the Roses</strong> &mdash; a dynastic dispute that reshaped England.</li>
+    <li><strong>The death of Alexander the Great</strong> &mdash; no clear heir, and an empire torn apart by his generals (the Diadochi).</li>
+    <li><strong>The Fitna and the Sunni&ndash;Shia split</strong> &mdash; a succession dispute after the Prophet Muhammad with consequences that endure today.</li>
+    <li><strong>Soviet and modern transitions</strong> &mdash; from Stalin's death to contested modern elections, the problem never disappears.</li>
+  </ul>
+
+  <h3>Modern Succession Beyond Thrones</h3>
+  <p>Succession is not only about crowns. <strong>Family businesses</strong>, <strong>corporate CEO transitions</strong>, and <strong>founder handoffs</strong> face the same dilemmas of legitimacy and continuity. The theme invites scholars to connect ancient dynasties to a modern tech company choosing its next leader.</p>
+
+  <h3>Connecting Threads</h3>
+  <p>Tie this topic to "Out with the Old" (when does a new generation deserve power?), to "Mistakes &amp; Recoveries" (botched successions and recoveries from them), and to the theme itself: succession is the ultimate "are we there yet?" &mdash; one era anxiously asking whether it is time to hand the journey to the next.</p> `,
+
+  y26_4: ` <h2>Out with the Old: When Societies Move On</h2>
+  <p>The Social Studies subtheme, <strong>"Out with the Old,"</strong> examines how societies <em>replace</em> what came before &mdash; old technologies, old institutions, old generations, old ways of life. Progress always involves discarding something, and this topic asks who decides what gets left by the roadside.</p>
+
+  <h3>Modernisation and Its Discontents</h3>
+  <p>Modernisation theory once imagined all societies travelling the same road from "traditional" to "modern." Critics argued this was too linear and too Western. Key tensions:</p>
+  <ul>
+    <li><strong>Creative destruction:</strong> economist Joseph Schumpeter's idea that capitalism constantly destroys old industries to build new ones &mdash; horse-drawn carriages giving way to cars, film to digital, taxis to apps.</li>
+    <li><strong>Path dependence:</strong> why old systems persist even when better ones exist (the QWERTY keyboard is the classic example).</li>
+    <li><strong>Leapfrogging:</strong> how some societies skip stages entirely &mdash; going straight to mobile phones without ever building landlines.</li>
+  </ul>
+
+  <h3>Generational Change</h3>
+  <p>"Out with the old" is also about people. Each generation inherits, resists, and eventually replaces the one before.</p>
+  <ul>
+    <li><strong>Generational labels</strong> (Boomers, Gen X, Millennials, Gen Z, Gen Alpha) and the debate over whether they are real or marketing.</li>
+    <li><strong>Demographic transitions:</strong> ageing societies like Japan and Italy vs. youthful populations across much of Africa &mdash; and the very different futures each implies.</li>
+    <li><strong>Gerontocracy vs. youth movements:</strong> from climate activism to student protest, the tension over when the young should take the wheel.</li>
+  </ul>
+
+  <h3>Letting Go of Institutions and Traditions</h3>
+  <ul>
+    <li><strong>Reform vs. revolution:</strong> changing a system gradually from within, or overthrowing it entirely.</li>
+    <li><strong>Cultural preservation vs. progress:</strong> UNESCO heritage protection, endangered languages, and the cost of "moving on."</li>
+    <li><strong>Decolonisation and renaming:</strong> tearing down statues, renaming streets and cities, rewriting national stories &mdash; literal acts of replacing the old.</li>
+    <li><strong>Planned obsolescence:</strong> when "out with the old" is engineered deliberately to keep us buying the new.</li>
+  </ul>
+
+  <h3>The Risks of Throwing Things Away</h3>
+  <p>Not all change is progress. <strong>Chesterton's Fence</strong> &mdash; the principle that you should understand why something exists before removing it &mdash; is a powerful caution. Discarded knowledge, abandoned institutions, and lost crafts can be impossible to recover. The topic links naturally to "Mistakes &amp; Recoveries": sometimes "out with the old" is itself the mistake.</p>
+
+  <h3>Debate Hooks</h3>
+  <ul>
+    <li>That every generation should be required to justify the institutions it inherits.</li>
+    <li>That societies move on too quickly from technologies they do not yet fully understand.</li>
+    <li>That nostalgia is the greatest obstacle to social progress.</li>
+  </ul> `,
+
+  y26_5: ` <h2>The Long Way Round: Maps, Navigation &amp; Wayfinding</h2>
+  <p>"Are we there yet?" is, most literally, a navigation question. This topic traces humanity's long effort to know <strong>where we are and how to reach somewhere else</strong> &mdash; from reading the stars to satellites that pinpoint us within a metre.</p>
+
+  <h3>Wayfinding Before Maps</h3>
+  <ul>
+    <li><strong>Polynesian wayfinding:</strong> navigators crossed thousands of kilometres of open Pacific using stars, swells, winds, and birds &mdash; without instruments. The voyaging canoe <em>Hokule&#8216;a</em> revived this knowledge in the modern era.</li>
+    <li><strong>Songlines:</strong> Aboriginal Australians encoded routes across the continent in song, a map you could sing.</li>
+    <li><strong>The Inuit and natural signs:</strong> reading snow, ice, and sky in a landscape with few fixed landmarks.</li>
+  </ul>
+
+  <h3>Instruments and the Science of Position</h3>
+  <ul>
+    <li><strong>The compass:</strong> a Chinese invention that transformed travel by giving direction without sight of the sky.</li>
+    <li><strong>Latitude and the longitude problem:</strong> latitude was readable from the sun and stars, but longitude required accurate time. <strong>John Harrison's marine chronometer</strong> solved it in the 18th century, after the British Longitude Act offered a prize for the answer.</li>
+    <li><strong>The sextant and dead reckoning:</strong> estimating position from speed, heading, and time &mdash; reliable but error-prone, the original "are we there yet?"</li>
+  </ul>
+
+  <h3>Mapping the World</h3>
+  <ul>
+    <li><strong>Projections and their politics:</strong> the <strong>Mercator projection</strong> distorts size (making Greenland look as large as Africa); the <strong>Peters projection</strong> was promoted as fairer. Every map is an argument.</li>
+    <li><strong>The blank spaces:</strong> "here be dragons," terra incognita, and the way maps revealed both knowledge and ignorance.</li>
+    <li><strong>Cartography as power:</strong> drawing borders, claiming land, and erasing peoples with a pen.</li>
+  </ul>
+
+  <h3>The GPS Revolution</h3>
+  <ul>
+    <li><strong>How GPS works:</strong> a constellation of satellites broadcasting time signals; your device trilaterates its position from at least four of them.</li>
+    <li><strong>Relativity in your pocket:</strong> GPS satellites must correct for <strong>Einstein's relativity</strong> &mdash; clocks tick differently in orbit &mdash; or positions would drift by kilometres each day. A perfect link to the Science topic.</li>
+    <li><strong>Digital wayfinding and its costs:</strong> "death by GPS," the loss of mental mapping skills, and the question of what we forget when machines always know the way.</li>
+  </ul>
+
+  <h3>Big Questions</h3>
+  <p>Does always knowing exactly where we are make the journey richer or poorer? When the destination is one tap away, do we lose the value of getting lost? Navigation turns the theme's question into a daily, literal experience.</p> `,
+
+  y26_6: ` <div class="note-content">
+    <h2>Mistakes Were Made: The Special Area of Errors &amp; Recoveries</h2>
+    <p>The 2026 Special Area is <strong>"Mistakes &amp; Recoveries."</strong> No journey runs in a straight line; it is shaped by wrong turns, accidents, failures &mdash; and the remarkable human capacity to recover, repair, and even benefit from error. This is the theme's beating heart.</p>
+
+    <h3>The Anatomy of a Mistake</h3>
+    <ul>
+      <li><strong>Slips vs. mistakes:</strong> psychologist James Reason distinguished <em>slips</em> (doing the wrong thing by accident) from <em>mistakes</em> (doing the wrong thing on purpose, with bad information).</li>
+      <li><strong>The Swiss Cheese Model:</strong> disasters happen when the "holes" in many layers of defence line up &mdash; a key idea in aviation and medical safety.</li>
+      <li><strong>Cognitive biases:</strong> overconfidence, sunk-cost fallacy, and groupthink that turn small errors into catastrophes.</li>
+    </ul>
+
+    <h3>Famous Mistakes That Changed History</h3>
+    <ul>
+      <li><strong>Productive accidents:</strong> <em>penicillin</em> (a contaminated petri dish), <em>the microwave</em> (a melted chocolate bar), <em>Post-it notes</em> (a failed adhesive), and <em>vulcanised rubber</em> &mdash; failures that became breakthroughs.</li>
+      <li><strong>Costly errors:</strong> the <em>Mars Climate Orbiter</em>, lost because one team used metric and another imperial units; the <em>Tacoma Narrows Bridge</em> collapse; the sinking of the <em>Titanic</em>.</li>
+      <li><strong>Near-misses and recovery:</strong> <em>Apollo 13</em> ("Houston, we've had a problem") as the gold standard of turning disaster into "a successful failure."</li>
+    </ul>
+
+    <h3>The Science and Art of Recovery</h3>
+    <ul>
+      <li><strong>Error correction in nature and machines:</strong> DNA repair enzymes, immune memory, and the error-correcting codes that keep your data and spacecraft signals intact.</li>
+      <li><strong>Resilience and antifragility:</strong> Nassim Taleb's idea that some systems do not merely survive shocks but grow stronger from them.</li>
+      <li><strong>Post-traumatic growth:</strong> the psychological finding that people can emerge from hardship with new strength and perspective.</li>
+    </ul>
+
+    <h3>Forgiveness, Repair, and Second Chances</h3>
+    <ul>
+      <li><strong>Kintsugi:</strong> the Japanese art of repairing broken pottery with gold, making the break part of the beauty &mdash; a perfect emblem for the Special Area.</li>
+      <li><strong>Restorative justice</strong> vs. punishment: societies recovering from wrongdoing.</li>
+      <li><strong>Truth and reconciliation commissions</strong> (South Africa, Rwanda) as national-scale recoveries.</li>
+      <li><strong>The right to be forgotten</strong> and whether a person should be defined forever by a past mistake.</li>
+    </ul>
+
+    <h3>Why It Matters to the Theme</h3>
+    <p>"Are we there yet?" assumes a smooth road. "Mistakes &amp; Recoveries" insists on the bumps. The deepest lesson of the season may be that recovery &mdash; not flawlessness &mdash; is the true measure of progress. Connect this everywhere: failed successions, abandoned reforms, rebooted stories that fix the originals' mistakes, and explorers who got hopelessly lost and found something new.</p>
+  </div> `,
+
+  y26_7: ` <h2>Run It Back: Reboots, Sequels &amp; Reconsiderations</h2>
+  <p>The Literature &amp; Media subtheme, <strong>"Reboots, Sequels &amp; Reconsiderations,"</strong> looks at stories that refuse to end &mdash; tales retold, continued, remade, and re-examined. Why do we keep returning to the same stories, and what changes when we do?</p>
+
+  <h3>The Endless Return of Story</h3>
+  <ul>
+    <li><strong>Adaptation and retelling:</strong> myths, fairy tales, and classics endlessly reworked &mdash; from Greek tragedy to modern film franchises.</li>
+    <li><strong>Sequels and continuations:</strong> what we owe to a story already told, and the risk of diminishing returns.</li>
+    <li><strong>Reboots:</strong> starting a familiar story over from scratch for a new generation &mdash; and the debates about "ruining" or "honouring" the original.</li>
+    <li><strong>Reconsiderations:</strong> retelling a story from a new point of view &mdash; the villain's side, the silenced character, the forgotten perspective.</li>
+  </ul>
+
+  <h3>Core Texts to Know</h3>
+  <p>The 2026 reading list draws together works about growth, journeys, and second chances:</p>
+  <ul>
+    <li><strong>"Flowers for Algernon" (Daniel Keyes):</strong> Charlie Gordon's intelligence is artificially raised and then lost &mdash; a heartbreaking arc of progress that cannot be kept. The ultimate "are we there yet?" answered with "and then we weren't."</li>
+    <li><strong>"Ender's Game" (Orson Scott Card):</strong> a child trained through endless simulations toward a destination he does not understand &mdash; a meditation on means, ends, and terrible mistakes.</li>
+    <li><strong>"The Little Prince" (Antoine de Saint-Exup&eacute;ry):</strong> a journey across planets that is really a journey into what matters; "what is essential is invisible to the eye."</li>
+    <li><strong>"Nightfall" (Isaac Asimov):</strong> a civilisation that experiences darkness only once in millennia &mdash; a story about cycles, collapse, and whether progress can survive being forgotten.</li>
+  </ul>
+
+  <h3>Why We Retell</h3>
+  <ul>
+    <li><strong>Cultural reflection:</strong> each retelling reveals the values of its own moment; compare a 1950s and a 2020s version of the same tale.</li>
+    <li><strong>The adaptation debate:</strong> fidelity to the source vs. creative reinvention &mdash; is a "faithful" adaptation even possible?</li>
+    <li><strong>Fan culture:</strong> fan fiction, fan edits, and audiences who demand the story go a different way.</li>
+    <li><strong>Intellectual property and the commons:</strong> who owns a story once it belongs to everyone? Public-domain works as endlessly remixable raw material.</li>
+  </ul>
+
+  <h3>Connecting Threads</h3>
+  <p>A reboot is a cultural "Out with the Old"; a sequel is a kind of succession; a reconsideration is often a recovery from the original's mistakes. Use these texts to argue both sides: is returning to old stories a failure of imagination, or the truest way we make sense of the journey?</p> `,
+
+  y26_8: ` <h2>The Science of Getting There: Time, Speed &amp; Travel</h2>
+  <p>This Science &amp; Technology topic takes the theme literally: what does physics actually say about journeys, distance, speed, and time? "Are we there yet?" turns out to be one of the deepest questions in science.</p>
+
+  <h3>The Physics of Motion and Time</h3>
+  <ul>
+    <li><strong>Relativity of simultaneity:</strong> Einstein showed there is no universal "now." Time passes differently depending on speed and gravity &mdash; <strong>time dilation</strong> means a fast traveller ages more slowly than those left behind (the "twin paradox").</li>
+    <li><strong>The cosmic speed limit:</strong> nothing with mass can reach the speed of light, setting a hard ceiling on how fast we can ever "get there."</li>
+    <li><strong>Zeno's paradox, revisited:</strong> the ancient puzzle of motion (to arrive you must first cover half the distance, then half again&hellip;) and how calculus resolves an infinite series into a finite arrival.</li>
+  </ul>
+
+  <h3>The Long History of Going Faster</h3>
+  <ul>
+    <li><strong>Transport revolutions:</strong> the wheel, the sail, the steam engine, the railway, the automobile, the jet &mdash; each collapsing time and distance.</li>
+    <li><strong>The sound barrier:</strong> Chuck Yeager and supersonic flight; the rise and fall of Concorde.</li>
+    <li><strong>Space travel:</strong> escape velocity, the rocket equation, gravity assists ("slingshots"), and why reaching even the nearest star with current technology would take tens of thousands of years.</li>
+  </ul>
+
+  <h3>The Frontier of Future Travel</h3>
+  <ul>
+    <li><strong>Maglev and hyperloop:</strong> reducing friction to push ground travel toward its limits.</li>
+    <li><strong>Ion drives and solar sails:</strong> slow but relentless propulsion for deep space.</li>
+    <li><strong>Theoretical shortcuts:</strong> wormholes and the Alcubierre "warp drive" &mdash; allowed by the mathematics of relativity but requiring exotic matter we cannot yet make.</li>
+    <li><strong>Autonomous vehicles and AI navigation:</strong> machines that not only carry us but decide the route &mdash; raising safety, ethics, and "trolley problem" questions.</li>
+  </ul>
+
+  <h3>Are We There Yet, Cosmically?</h3>
+  <ul>
+    <li><strong>The Fermi Paradox:</strong> if the universe is so vast and old, where is everyone? Maybe interstellar travel is simply too hard &mdash; the ultimate unfinished journey.</li>
+    <li><strong>Generation ships and suspended animation:</strong> how humans might survive journeys longer than a single lifetime.</li>
+  </ul>
+
+  <h3>Tie It Together</h3>
+  <p>This topic pairs naturally with navigation (knowing where "there" is) and with the philosophy of arrival (whether "there" is even a fixed place). The science is humbling: the faster we chase the destination, the stranger time itself becomes.</p> `,
+
+  y26_9: ` <h2>Forever Young? The Quest to Stop the Clock</h2>
+  <p>The longest journey each of us takes is the one through our own lifetime. This Science topic explores the biology of <strong>ageing</strong> and humanity's oldest dream: to slow, stop, or reverse the clock. Are we "there yet" in the quest to live longer &mdash; and should we want to be?</p>
+
+  <h3>Why Do We Age?</h3>
+  <ul>
+    <li><strong>Telomeres:</strong> protective caps on our chromosomes that shorten each time a cell divides &mdash; a kind of biological countdown.</li>
+    <li><strong>Cellular senescence:</strong> "zombie cells" that stop dividing but linger and cause inflammation.</li>
+    <li><strong>Oxidative damage and mitochondria:</strong> the wear-and-tear theories of ageing.</li>
+    <li><strong>Programmed vs. damage theories:</strong> is ageing a built-in design, or just accumulated breakdown?</li>
+  </ul>
+
+  <h3>Clues from the Living World</h3>
+  <ul>
+    <li><strong>The "immortal" jellyfish</strong> (<em>Turritopsis dohrnii</em>), which can revert to an earlier life stage.</li>
+    <li><strong>Naked mole-rats,</strong> which barely age and rarely get cancer.</li>
+    <li><strong>Blue Zones:</strong> regions like Okinawa and Sardinia where people live exceptionally long &mdash; lessons in diet, community, and movement.</li>
+    <li><strong>Caloric restriction</strong> and its surprising effect on lifespan in many species.</li>
+  </ul>
+
+  <h3>The Science of Intervention</h3>
+  <ul>
+    <li><strong>Senolytics:</strong> drugs that clear out senescent cells.</li>
+    <li><strong>Cellular reprogramming:</strong> using "Yamanaka factors" to rewind a cell's biological age in the lab.</li>
+    <li><strong>Gene editing and regenerative medicine:</strong> CRISPR, stem cells, and growing replacement tissue.</li>
+    <li><strong>The "longevity escape velocity" idea:</strong> the hope that science could one day add more than a year of lifespan for every year that passes.</li>
+  </ul>
+
+  <h3>Should We?</h3>
+  <ul>
+    <li><strong>Overpopulation and resources:</strong> what radically longer lives would mean for the planet.</li>
+    <li><strong>Inequality:</strong> would life extension be available to all, or only the wealthy &mdash; a new and deeper divide?</li>
+    <li><strong>Meaning and mortality:</strong> from the <em>Epic of Gilgamesh</em> to modern fiction, the warning that endless life may drain life of meaning. Tie this to the literature topic and the Tithonus myth &mdash; immortality without youth as a curse.</li>
+  </ul>
+
+  <h3>The Theme Question, Made Personal</h3>
+  <p>Ageing makes "are we there yet?" intimate. The destination &mdash; the end of the journey &mdash; is the one we both fear and, perhaps, give the journey its meaning. The science forces a values debate worthy of any Scholar's Cup table.</p> `,
+
+  y26_10: ` <h2>The Road Goes Ever On: Journeys in Art &amp; Music</h2>
+  <p>The journey is one of the oldest subjects in all of art. This Art &amp; Music topic explores how creators across cultures have used <strong>the road, the voyage, and the pilgrimage</strong> to capture what it feels like to be travelling, longing, and arriving.</p>
+
+  <h3>The Journey in Music</h3>
+  <ul>
+    <li><strong>Road and travelling songs:</strong> a global tradition, from American highway anthems to walking and marching songs that turn distance into rhythm.</li>
+    <li><strong>The leitmotif of movement:</strong> how composers depict trains, journeys, and arrival &mdash; Dvo&#345;&aacute;k's "New World" Symphony written from a journey to America; Smetana's "Vltava," which musically follows a river to the sea.</li>
+    <li><strong>The concept album as a journey:</strong> records designed to be travelled through from start to finish, telling one continuous story.</li>
+    <li><strong>Spirituals and songs of deliverance:</strong> music that imagines a journey to freedom, both literal and spiritual.</li>
+  </ul>
+
+  <h3>The Journey in Visual Art</h3>
+  <ul>
+    <li><strong>Romantic landscape and the sublime:</strong> Caspar David Friedrich's <em>Wanderer above the Sea of Fog</em> &mdash; a lone figure facing the vastness ahead, the very image of "not there yet."</li>
+    <li><strong>The road as subject:</strong> paths, rivers, bridges, and horizons that pull the eye toward a destination just out of frame.</li>
+    <li><strong>Journey in narrative art:</strong> scroll paintings and friezes that unfold a voyage across their length, asking the viewer to travel with the eye.</li>
+  </ul>
+
+  <h3>Pilgrimage and Sacred Journeys</h3>
+  <ul>
+    <li><strong>The pilgrimage as art and ritual:</strong> the Hajj, the Camino de Santiago, and the architecture, music, and objects created for travellers along the way.</li>
+    <li><strong>The journey as metaphor for life</strong> in religious art across traditions &mdash; the path, the gate, the crossing.</li>
+  </ul>
+
+  <h3>The Hero's Journey</h3>
+  <ul>
+    <li><strong>Joseph Campbell's monomyth:</strong> the recurring story shape of departure, trials, and return that underlies countless films, games, and songs.</li>
+    <li><strong>Why it endures:</strong> the journey structure mirrors how we understand our own lives &mdash; and why audiences keep asking, with the hero, "are we there yet?"</li>
+  </ul>
+
+  <h3>Connecting Threads</h3>
+  <p>Art reminds us that the journey's feeling &mdash; the longing, the awe, the homesickness &mdash; often matters more than the map. Pair this topic with the philosophy of arrival, and with literature's retold journeys, to argue that the destination is often just an excuse to set out.</p> `,
+
+  y26_11: ` <h2>Almost Utopia: Have We Arrived Yet?</h2>
+  <p>If "there" is a perfect society, humans have been trying to reach it for millennia. This topic examines <strong>utopias and dystopias</strong> &mdash; our visions of the destination &mdash; and asks whether arriving at perfection is possible, or even desirable.</p>
+
+  <h3>Imagining the Destination</h3>
+  <ul>
+    <li><strong>Thomas More's "Utopia" (1516):</strong> the book that named the genre &mdash; and whose title puns on "good place" and "no place," hinting that perfection may be unreachable by design.</li>
+    <li><strong>Earlier visions:</strong> Plato's <em>Republic</em>, the Garden of Eden, the Land of Cockaigne, and countless paradises promised at the end of the road.</li>
+    <li><strong>Intentional communities:</strong> real-world attempts to build utopia &mdash; from 19th-century experiments to modern eco-villages &mdash; and why so many fell apart.</li>
+  </ul>
+
+  <h3>When the Dream Curdles</h3>
+  <ul>
+    <li><strong>Dystopias as warnings:</strong> Orwell's <em>1984</em>, Huxley's <em>Brave New World</em>, and the recurring fear that someone else's "perfect destination" is a prison.</li>
+    <li><strong>"The Ones Who Walk Away from Omelas"</strong> (Ursula K. Le Guin): a paradise that depends on one child's suffering &mdash; a parable about the hidden cost of arrival.</li>
+    <li><strong>Revolutions that promised utopia</strong> and the gap between the dream and the reality that followed.</li>
+  </ul>
+
+  <h3>Measuring Whether We Have Arrived</h3>
+  <ul>
+    <li><strong>The "end of history" debate:</strong> Francis Fukuyama's claim that liberal democracy was the final destination of political evolution &mdash; and the many challenges to that idea since.</li>
+    <li><strong>Progress data:</strong> optimists point to falling poverty, longer lives, and rising literacy; pessimists point to inequality, climate change, and new risks. Are we closer to "there" or further away?</li>
+    <li><strong>The treadmill of rising expectations:</strong> as conditions improve, our standard for "there" rises too &mdash; so the destination keeps receding.</li>
+  </ul>
+
+  <h3>The Deeper Question</h3>
+  <p>Maybe a finished utopia would be unbearable &mdash; nothing left to strive for, no journey left to take. Many thinkers argue that an <em>improvable</em> world is better than a <em>perfect</em> one. This connects straight to the theme: perhaps the honest answer to "are we there yet?" is "no &mdash; and we never should be."</p> `,
+
+  y26_12: ` <div class="note-content">
+    <h2>The Destination Is the Journey: A Philosophy of Arrival</h2>
+    <p>We end where the theme really points: not at a place, but at an idea. After every history, science, and story, the 2026 season asks us to reconsider the question itself. What does it mean to "arrive" &mdash; and is arriving really the point?</p>
+
+    <h3>Ithaka and the Wisdom of the Road</h3>
+    <p>C. P. Cavafy's poem <strong>"Ithaka"</strong> tells the returning traveller not to hurry: "may there be many summer mornings&hellip; / Ithaka gave you the marvelous journey. / Without her you wouldn't have set out." The destination's true gift is the voyage it inspires. This is the theme's most hopeful answer to its own question.</p>
+
+    <h3>Process Over Product</h3>
+    <ul>
+      <li><strong>The arrival fallacy, revisited:</strong> the repeated discovery that reaching the goal rarely delivers the lasting joy we expected.</li>
+      <li><strong>Flow:</strong> psychologist Mihaly Csikszentmihalyi's finding that we are happiest fully absorbed in the doing, not the having-done.</li>
+      <li><strong>Eastern philosophy:</strong> Taoist and Buddhist traditions that locate meaning in the present step rather than the distant goal &mdash; "the journey of a thousand miles begins with a single step."</li>
+    </ul>
+
+    <h3>When Arrival Matters</h3>
+    <p>And yet &mdash; for the refugee seeking safety, the patient awaiting a cure, the society pursuing justice, "are we there yet?" is not philosophical but urgent. The theme refuses an easy answer. Sometimes the journey is the reward; sometimes only arrival will do, and "not yet" is a cry of suffering, not serenity. A great scholar can argue both.</p>
+
+    <h3>Pulling the Whole Season Together</h3>
+    <ul>
+      <li><strong>From succession:</strong> every generation hands on a journey it will never see completed.</li>
+      <li><strong>From "out with the old":</strong> progress means choosing what to carry and what to leave behind.</li>
+      <li><strong>From mistakes &amp; recoveries:</strong> the road is made of wrong turns survived.</li>
+      <li><strong>From reboots and retellings:</strong> we keep travelling the same stories to understand our own.</li>
+      <li><strong>From the science of time and ageing:</strong> the one destination none of us can outrun.</li>
+    </ul>
+
+    <h3>Your Turn</h3>
+    <p>So &mdash; are we there yet? Maybe the question matters more than the answer. Maybe "there" is a direction, not a place. As you prepare this season, keep asking it of everything: of history, of technology, of yourself.</p>
+    <blockquote>"It is good to have an end to journey toward; but it is the journey that matters, in the end."</blockquote>
+    <p>Where are you trying to get to &mdash; and how will you know when you have arrived?</p>
+  </div> `,
+
+};
+
+// --- Year switcher: 2026 is current, 2025 stays fully accessible ---
+window.currentNotesYear = '2026';
+function showNotesYear(year) {
+  window.currentNotesYear = year;
+  var list2025 = document.getElementById('topic-list');
+  var list2026 = document.getElementById('topic-list-2026');
+  var content  = document.getElementById('topic-content');
+  if (content)  content.style.display = 'none';
+  if (list2025) list2025.style.display = (year === '2025') ? 'flex' : 'none';
+  if (list2026) list2026.style.display = (year === '2026') ? 'flex' : 'none';
+  var btn2025 = document.getElementById('year-btn-2025');
+  var btn2026 = document.getElementById('year-btn-2026');
+  if (btn2025) btn2025.classList.toggle('active-year', year === '2025');
+  if (btn2026) btn2026.classList.toggle('active-year', year === '2026');
+}
+
+// --- 2026 topic cards open 2026 notes (independent of 2025 handlers) ---
+document.querySelectorAll('#topic-list-2026 .cat26').forEach(function (cat) {
+  cat.addEventListener('click', function () {
+    var key = cat.getAttribute('data-topic');
+    var topicText = document.getElementById('topic-text');
+    if (topicText) topicText.innerHTML = notesData2026[key] || '<p>Content coming soon. Check back later!</p>';
+    var l25 = document.getElementById('topic-list');
+    var l26 = document.getElementById('topic-list-2026');
+    if (l25) l25.style.display = 'none';
+    if (l26) l26.style.display = 'none';
+    var content = document.getElementById('topic-content');
+    if (content) content.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+// --- Make "Back to Topics" return to whichever year is active (runs last) ---
+var backBtn2026 = document.getElementById('back-to-topics');
+if (backBtn2026) {
+  backBtn2026.addEventListener('click', function () {
+    showNotesYear(window.currentNotesYear || '2026');
+  });
+}
+
+// --- Extend the notes search to also filter the 2026 list ---
+(function () {
+  var searchInput = document.getElementById('notesSearch') ||
+                    document.querySelector('#notes input[type="text"], #notes input[type="search"]');
+  if (searchInput) {
+    searchInput.addEventListener('input', function (e) {
+      var term = (e.target.value || '').toLowerCase();
+      document.querySelectorAll('#topic-list-2026 .cat26').forEach(function (cat) {
+        cat.style.display = cat.textContent.toLowerCase().includes(term) ? 'flex' : 'none';
+      });
+    });
+  }
+})();
+
+// Initialise: default to the 2026 view while keeping 2025 reachable
+showNotesYear('2026');
 </script>
 
 </body>
