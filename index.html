@@ -1234,6 +1234,27 @@ document.querySelectorAll("nav a, .dropdown-content a").forEach(link => {
 <div id="quiz-results"></div>
 </div>
 
+<!-- ===== Built-in interactive 2026 quizzes (no Google Form needed) ===== -->
+<div id="builtin-quiz">
+  <div id="bq-home">
+    <p class="bq-lead">No forms, no sign-ins, no waiting for us to mark it. 🦙 Pick a set below, answer at your own pace, and you'll get your score and the reasoning the second you hit submit. These follow the same style as our 2025 quizzes &mdash; a mix of "do you know it" recall and "do you get it" thinking &mdash; all built around the 2026 theme, <em>Are We There Yet?</em></p>
+    <div id="bq-list"></div>
+  </div>
+
+  <div id="bq-runner" style="display:none;">
+    <button id="bq-back" type="button">&larr; All quiz sets</button>
+    <h3 id="bq-title"></h3>
+    <p id="bq-blurb" class="bq-blurb"></p>
+    <form id="bq-form"></form>
+    <button id="bq-submit" type="button">Check my answers</button>
+    <div id="bq-result" style="display:none;"></div>
+  </div>
+</div>
+
+<hr class="hr" style="margin:40px 0;">
+<h3 style="color:var(--turquoise);">📁 2025 Quizzes — Google Forms Archive</h3>
+<p style="opacity:.85;">Our original 2025 "Reigniting the Future" quiz sets, kept here for revision.</p>
+
   
 
 
@@ -1330,7 +1351,7 @@ document.querySelectorAll("nav a, .dropdown-content a").forEach(link => {
 
 
   <h2>Practice Lab: Motions & Timer</h2>
-  <p>Use this space to simulate real WSC debate conditions. Generate thought-provoking motions from the 2025 theme “Reigniting The Future” and practice timed speeches with our 4-minute timer.</p>
+  <p>Use this space to simulate real WSC debate conditions. Generate thought-provoking motions from the 2026 theme “Are We There Yet?” and practice timed speeches with our 4-minute timer.</p>
 
   <!-- moved to Practice Lab -->
     <h3>🕒 Debate Timer</h3>
@@ -1339,7 +1360,7 @@ document.querySelectorAll("nav a, .dropdown-content a").forEach(link => {
     <p id="timerDisplay" style="font-size: 2rem; margin-top: 15px; color: var(--turquoise); font-weight: bold;"></p>
 
     <br><br>
-    <h3>🎲 WSC 2025 Motion Generator</h3>
+    <h3>🎲 WSC 2026 Motion Generator</h3>
     <button onclick="generateMotion()" style="padding: 10px 18px; font-size: 1rem; background: var(--turquoise); color: white; border: none; border-radius: 6px; font-weight: 600;">Generate Motion</button>
     <p id="motionDisplay" style="font-size: 1.3rem; background: #f9f5e9; border-left: 4px solid var(--turquoise); border-radius: 8px; padding: 15px; margin-top: 15px;"></p>
   </div>
@@ -2172,24 +2193,24 @@ function start1DebateTimer() {
   }, 1000);
 }
 
-// WSC 2025-Aligned Motions
+// WSC 2026-Aligned Motions — theme: "Are We There Yet?"
 const motions = [
-  "That the future should be built by artists, not engineers.",
-  "That the line between science and fiction should be erased.",
-  "That forgotten futures deserve a second chance.",
-  "That we should give AI the power to rewrite history.",
-  "That nostalgia is the greatest enemy of progress.",
-  "That extinct species should decide how we reimagine the world.",
-  "That the end of the world should be televised.",
-  "That rewarding those who fail is a spectacular idea.",
-  "That humanity should leave Earth to save it.",
-  "That we should reimagine time as a shared public resource.",
-  "That humanity should prioritize uploading consciousness over space colonization.",
-  "That AI-generated art is the true successor to human creativity.",
-  "That governments should mandate digital detox years to reclaim imagination.",
-  "That children should vote on policies affecting the next century.",
-  "That nostalgia should be taxed as a barrier to progress.",
-  "That extinct species (via de-extinction) should inherit Earth’s protected lands.",
+  "That the journey matters more than the destination.",
+  "That every generation should have to justify the institutions it inherits.",
+  "That we should stop measuring societies by how fast they change.",
+  "That progress is just change we happen to approve of.",
+  "That a perfect society would not be worth living in.",
+  "That we should celebrate our greatest mistakes, not hide them.",
+  "That a story should be allowed to end and never be rebooted.",
+  "That leaders should be chosen by lottery rather than by succession or election.",
+  "That humanity should pursue longer lives even if it deepens inequality.",
+  "That getting lost is more valuable than always knowing the way.",
+  "That we should abandon the goal of utopia entirely.",
+  "That the right to be forgotten matters more than the record of our errors.",
+  "That nostalgia is the greatest obstacle to social progress.",
+  "That societies move on from old technologies too quickly.",
+  "That 'are we there yet?' is a question we should never be able to answer 'yes' to.",
+  "That the old should step aside for the young by default.",
 ];
 
 function generateMotion() {
@@ -3727,6 +3748,403 @@ if (backBtn2026) {
 
 // Initialise: default to the 2026 view while keeping 2025 reachable
 showNotesYear('2026');
+</script>
+
+
+<!-- ===================================================================== -->
+<!-- Built-in interactive 2026 quizzes ("Are We There Yet?")               -->
+<!-- ===================================================================== -->
+<style>
+#builtin-quiz { margin: 10px 0 30px; }
+#builtin-quiz .bq-lead { font-size: 1.1rem; line-height: 1.6; margin-bottom: 22px; }
+#bq-list { display: flex; flex-wrap: wrap; gap: 18px; }
+.bq-card {
+  flex: 1 1 calc(50% - 18px);
+  background: #fffdf8cc;
+  backdrop-filter: blur(8px);
+  border: 2px solid var(--turquoise);
+  border-radius: 16px;
+  padding: 20px 22px;
+  cursor: pointer;
+  transition: transform .25s ease, background-color .25s ease, box-shadow .25s ease;
+  box-shadow: 5px 5px 16px rgb(0 0 0 / 0.10);
+}
+.bq-card:hover { transform: translateY(-6px); background:#fff9ee; box-shadow: 7px 9px 20px rgb(0 0 0 / 0.16); }
+.bq-card .bq-date { font-size: .82rem; font-weight: 700; letter-spacing: .04em; opacity:.7; text-transform: uppercase; }
+.bq-card .bq-name { font-size: 1.18rem; font-weight: 700; color: var(--turquoise); margin: 6px 0 8px; }
+.bq-card .bq-meta { font-size: .92rem; opacity:.85; }
+body.dark-mode .bq-card { background: #3a1416cc; }
+
+#bq-back {
+  background: none; border: none; color: var(--turquoise);
+  font-weight: 700; font-size: 1rem; cursor: pointer; padding: 6px 0; margin-bottom: 8px;
+}
+#bq-back:hover { text-decoration: underline; }
+.bq-blurb { font-style: italic; opacity:.85; margin-bottom: 18px; }
+
+.bq-q {
+  background: #fffdf8cc;
+  border: 2px solid var(--pale-gold);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+}
+body.dark-mode .bq-q { background:#3a1416cc; }
+.bq-q .bq-qnum { font-weight: 800; color: var(--turquoise); }
+.bq-q .bq-qtext { font-weight: 600; margin: 2px 0 12px; font-size: 1.05rem; }
+.bq-opt { display:flex; align-items:flex-start; gap:10px; padding:9px 12px; border-radius:10px; cursor:pointer; transition: background-color .15s ease; }
+.bq-opt:hover { background: rgba(183,62,62,0.07); }
+.bq-opt input { margin-top: 4px; accent-color: var(--turquoise); }
+.bq-opt.correct { background: rgba(40,160,90,0.16); border:1px solid rgba(40,160,90,0.5); }
+.bq-opt.wrong   { background: rgba(200,50,50,0.14);  border:1px solid rgba(200,50,50,0.5); }
+.bq-why { margin-top: 10px; font-size: .95rem; background:#f9f5e9; border-left:4px solid var(--turquoise); border-radius:8px; padding:10px 14px; }
+body.dark-mode .bq-why { background:#2c0b0e; }
+
+#bq-submit {
+  background: var(--turquoise); color:#fff; border:none; border-radius:10px;
+  font-weight:700; font-size:1.05rem; padding:13px 26px; cursor:pointer; margin-top:6px;
+  box-shadow: 0 5px 14px rgb(0 0 0 / 0.18);
+}
+#bq-submit:hover { filter: brightness(1.07); }
+#bq-result { margin-top: 22px; padding: 22px; border-radius: 16px; border: 2px solid var(--turquoise); background:#fffdf8cc; text-align:center; }
+body.dark-mode #bq-result { background:#3a1416cc; }
+#bq-result .bq-score { font-size: 2.2rem; font-weight: 800; color: var(--turquoise); }
+#bq-result .bq-msg { font-size: 1.1rem; margin-top: 6px; }
+#bq-result .bq-actions { margin-top: 16px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+#bq-result button { border:2px solid var(--turquoise); background:transparent; color:var(--turquoise); font-weight:700; border-radius:10px; padding:11px 20px; cursor:pointer; }
+#bq-result button:hover { background: var(--turquoise); color:#fff; }
+@media (max-width:600px){ .bq-card { flex: 1 1 100%; } }
+</style>
+<script>
+(function () {
+  // --- Quiz bank: same logic as our 2025 sets (recall + reasoning, 4 options) ---
+  const quizzes2026 = [
+    {
+      date: "Set 1",
+      title: "Warm-Up: Are We There Yet?",
+      meta: "Theme basics · 5 questions",
+      blurb: "Start here. The big ideas behind the 2026 theme before we dive into the subjects.",
+      questions: [
+        { q: "“Are we there yet?” quietly assumes three things: a starting point, a destination, and…?",
+          options: ["A vehicle to travel in", "A way to know the difference between them", "Someone to blame for delays", "A return ticket"],
+          answer: 1,
+          why: "Every progress question needs a way to MEASURE the gap between start and goal — that's what the whole theme interrogates." },
+        { q: "The “arrival fallacy” is the mistaken belief that…",
+          options: ["The journey never really ends", "Maps are always accurate", "Reaching a goal will finally make us lastingly happy", "Destinations don't exist"],
+          answer: 2,
+          why: "We expect the finish line to deliver lasting joy, but hedonic adaptation quickly resets us to 'what's next?'" },
+        { q: "Anthropologists call the “betwixt and between” threshold inside a rite of passage the…",
+          options: ["Liminal stage", "Terminal stage", "Nominal stage", "Final stage"],
+          answer: 0,
+          why: "Van Gennep and Victor Turner named this in-between state 'liminal' — think airports, adolescence, migration." },
+        { q: "Which country famously measures progress using “Gross National Happiness”?",
+          options: ["Norway", "Bhutan", "Singapore", "Costa Rica"],
+          answer: 1,
+          why: "Bhutan's GNH is the classic alternative to GDP as a yardstick for whether a society is 'there yet.'" },
+        { q: "Goodhart's Law warns that…",
+          options: ["The fastest route is never the shortest", "All maps lie", "When a measure becomes a target, it stops being a good measure", "Progress always slows near the end"],
+          answer: 2,
+          why: "Chase the metric and you distort it — a key caution about picking the wrong finish line." }
+      ]
+    },
+    {
+      date: "Set 2",
+      title: "Heavy Lies the Crown: Succession",
+      meta: "History · 5 questions",
+      blurb: "How power passes — and what happens when nobody agrees who's next.",
+      questions: [
+        { q: "Passing power to the eldest child is known as…",
+          options: ["Primogeniture", "Plutocracy", "Meritocracy", "Gerontocracy"],
+          answer: 0,
+          why: "Primogeniture is simple and clear — but vulnerable to weak or infant heirs." },
+        { q: "Rome's chaotic “Year of the Four Emperors” (69 CE) followed the death of…",
+          options: ["Julius Caesar", "Augustus", "Nero", "Constantine"],
+          answer: 2,
+          why: "With no succession rule after Nero, the empire nearly tore itself apart in a single year." },
+        { q: "The Ottoman practice of executing royal rivals was later replaced by confining heirs in the…",
+          options: ["Kafes (the “cage”)", "Forum", "Senate", "Conclave"],
+          answer: 0,
+          why: "The Kafes replaced fratricide — a dynasty experimenting to survive its own succession problem." },
+        { q: "Which centuries-old, secretive ritual still chooses the Pope?",
+          options: ["The Diet", "The Conclave", "The Curia vote", "The Synod lottery"],
+          answer: 1,
+          why: "The conclave is a living succession ritual — cardinals sealed away until they decide." },
+        { q: "After Alexander the Great died with no clear heir, his empire was carved up by his generals, the…",
+          options: ["Praetorians", "Diadochi", "Hoplites", "Satraps"],
+          answer: 1,
+          why: "The Diadochi (“successors”) fought for decades — a textbook succession crisis." }
+      ]
+    },
+    {
+      date: "Set 3",
+      title: "Out with the Old + The Long Way Round",
+      meta: "Social Studies & Navigation · 6 questions",
+      blurb: "When societies move on, and how humans ever found their way anywhere.",
+      questions: [
+        { q: "Schumpeter's term for capitalism endlessly destroying old industries to build new ones is…",
+          options: ["Creative destruction", "Planned obsolescence", "Path dependence", "Leapfrogging"],
+          answer: 0,
+          why: "Carriages to cars, film to digital, taxis to apps — creative destruction in action." },
+        { q: "The QWERTY keyboard surviving despite better layouts is a classic example of…",
+          options: ["Creative destruction", "Path dependence", "The goal-gradient effect", "Hedonic adaptation"],
+          answer: 1,
+          why: "Path dependence: old systems persist because everyone is already locked into them." },
+        { q: "“Chesterton's Fence” advises that before removing something, you should first…",
+          options: ["Ask permission", "Replace it with something newer", "Understand why it was put there", "Take a photo of it"],
+          answer: 2,
+          why: "A caution against throwing away institutions you don't yet understand — sometimes 'out with the old' IS the mistake." },
+        { q: "The 18th-century “longitude problem” at sea was finally solved by John Harrison's…",
+          options: ["Sextant", "Astrolabe", "Marine chronometer", "Compass"],
+          answer: 2,
+          why: "Longitude needs accurate time at sea; Harrison's chronometer kept it, winning the Longitude Prize." },
+        { q: "The Mercator map projection is famous for distorting…",
+          options: ["Coastlines", "The size of landmasses (especially near the poles)", "Ocean colours", "Compass directions"],
+          answer: 1,
+          why: "Mercator makes Greenland look as big as Africa — every map is an argument." },
+        { q: "Polynesian navigators crossed thousands of km of open Pacific using stars, swells and birds — knowledge revived by the voyaging canoe…",
+          options: ["Kon-Tiki", "Hokule‘a", "Endeavour", "Beagle"],
+          answer: 1,
+          why: "Hokule‘a's voyages from the 1970s on proved instrument-free wayfinding still works." }
+      ]
+    },
+    {
+      date: "Set 4",
+      title: "Mistakes Were Made (Special Area)",
+      meta: "Mistakes & Recoveries · 5 questions",
+      blurb: "The detours, accidents and second chances at the heart of the 2026 Special Area.",
+      questions: [
+        { q: "Penicillin was discovered because of…",
+          options: ["A government research grant", "A contaminated petri dish", "A failed rocket test", "A misread map"],
+          answer: 1,
+          why: "Fleming's mould-contaminated dish — a famous 'productive accident.'" },
+        { q: "The Mars Climate Orbiter was lost in 1999 because two teams mixed up…",
+          options: ["Two programming languages", "Metric and imperial units", "Two launch dates", "Two satellites"],
+          answer: 1,
+          why: "One team used newtons, the other pound-force — a tiny error, a lost spacecraft." },
+        { q: "Apollo 13 is often described as…",
+          options: ["“A successful failure”", "“The lost mission”", "“The quiet triumph”", "“A bridge too far”"],
+          answer: 0,
+          why: "Disaster turned into recovery — the crew came home against the odds." },
+        { q: "The Japanese art of mending broken pottery with gold, making the cracks beautiful, is…",
+          options: ["Origami", "Ikebana", "Kintsugi", "Bonsai"],
+          answer: 2,
+          why: "Kintsugi is the perfect emblem of the Special Area: the break becomes part of the value." },
+        { q: "James Reason's “Swiss Cheese Model” says disasters happen when…",
+          options: ["One person makes one big error", "The holes in many layers of defence line up", "A system is too complex to use", "Machines replace humans"],
+          answer: 1,
+          why: "Safety comes from layers; catastrophe needs the gaps in all of them to align." }
+      ]
+    },
+    {
+      date: "Set 5",
+      title: "Run It Back: Literature & Media",
+      meta: "Reboots, Sequels & Reconsiderations · 5 questions",
+      blurb: "Stories that refuse to end — and the core texts of the 2026 reading list.",
+      questions: [
+        { q: "In “Flowers for Algernon,” Charlie Gordon's intelligence is…",
+          options: ["Stolen by a rival", "Artificially raised, then lost again", "Hidden from everyone", "Passed to a machine"],
+          answer: 1,
+          why: "A heartbreaking arc of progress that can't be kept — the theme answered with 'and then we weren't.'" },
+        { q: "“The Little Prince” was written by…",
+          options: ["Albert Camus", "Antoine de Saint-Exupéry", "Jules Verne", "Victor Hugo"],
+          answer: 1,
+          why: "Saint-Exupéry, an aviator himself — 'what is essential is invisible to the eye.'" },
+        { q: "Isaac Asimov's “Nightfall” imagines a civilisation that experiences darkness…",
+          options: ["Every night", "Only once in thousands of years", "Never", "For exactly one century"],
+          answer: 1,
+          why: "A story about cycles, collapse, and whether progress survives being forgotten." },
+        { q: "Retelling a story from the villain's or a silenced character's point of view is best called a…",
+          options: ["Sequel", "Reboot", "Reconsideration", "Prequel"],
+          answer: 2,
+          why: "A reconsideration re-examines a familiar story from a new perspective." },
+        { q: "“Ender's Game” follows a child trained toward a goal he doesn't fully understand through endless…",
+          options: ["Exams", "Simulations and games", "Debates", "Journeys"],
+          answer: 1,
+          why: "The simulations blur means and ends — and lead to a terrible mistake." }
+      ]
+    },
+    {
+      date: "Set 6",
+      title: "Getting There & Forever Young",
+      meta: "Science & Technology · 6 questions",
+      blurb: "The physics of journeys and the biology of the longest journey — a human life.",
+      questions: [
+        { q: "Einstein's “time dilation” means a traveller moving very fast will…",
+          options: ["Age faster than those left behind", "Age more slowly than those left behind", "Stop ageing entirely", "Travel backwards in time"],
+          answer: 1,
+          why: "The 'twin paradox': the fast twin returns younger than the one who stayed home." },
+        { q: "GPS satellites must constantly correct their clocks for…",
+          options: ["Solar flares", "Relativity", "Magnetic north drift", "Ocean tides"],
+          answer: 1,
+          why: "Without relativity corrections, positions would drift by kilometres a day." },
+        { q: "Zeno's ancient paradox of motion is resolved mathematically by…",
+          options: ["Geometry", "Calculus (summing an infinite series to a finite total)", "Statistics", "Trigonometry"],
+          answer: 1,
+          why: "Infinitely many shrinking steps can still add up to a finite distance — so you do arrive." },
+        { q: "The protective caps on chromosomes that shorten each time a cell divides are…",
+          options: ["Ribosomes", "Telomeres", "Plasmids", "Synapses"],
+          answer: 1,
+          why: "Telomeres act like a biological countdown to cellular ageing." },
+        { q: "The so-called “immortal jellyfish,” Turritopsis dohrnii, is remarkable because it can…",
+          options: ["Live without water", "Revert to an earlier life stage", "Clone an entire reef", "Glow forever"],
+          answer: 1,
+          why: "It can roll its life cycle back — a real-world clue in the science of ageing." },
+        { q: "“Blue Zones” such as Okinawa and Sardinia are known for…",
+          options: ["Deep-sea research stations", "Unusually long-lived populations", "Rare blue minerals", "Cold-water surfing"],
+          answer: 1,
+          why: "These regions hint at how diet, movement and community stretch the human journey." }
+      ]
+    },
+    {
+      date: "Mock",
+      title: "Mixed Mock Challenge",
+      meta: "All subjects · 6 questions",
+      blurb: "A little of everything — closest thing to a real Scholar's Bowl. Good luck. 🦙",
+      questions: [
+        { q: "The World Scholar's Cup theme for 2026 is…",
+          options: ["Reigniting the Future", "Are We There Yet?", "A World Reimagined", "The Unknown"],
+          answer: 1,
+          why: "“Are We There Yet?” — journeys, progress, and how we'd know we've arrived." },
+        { q: "The 2026 Special Area is…",
+          options: ["Mistakes & Recoveries", "Crimes & Punishments", "Dreams & Nightmares", "Maps & Borders"],
+          answer: 0,
+          why: "Wrong turns and second chances — the theme's beating heart." },
+        { q: "Cavafy's poem that urges a traveller NOT to hurry home, because the journey is the gift, is…",
+          options: ["“The Odyssey”", "“Ithaka”", "“The Waste Land”", "“Ozymandias”"],
+          answer: 1,
+          why: "“Ithaka gave you the marvelous journey. Without her you wouldn't have set out.”" },
+        { q: "Thomas More's “Utopia” puns on the Greek for “good place” and…",
+          options: ["“Far place”", "“No place”", "“Lost place”", "“High place”"],
+          answer: 1,
+          why: "Hinting that the perfect destination may, by design, be unreachable." },
+        { q: "Ursula K. Le Guin's story about a paradise that depends on one child's suffering is…",
+          options: ["“The Lottery”", "“The Ones Who Walk Away from Omelas”", "“Harrison Bergeron”", "“The Veldt”"],
+          answer: 1,
+          why: "A parable about the hidden cost of 'arriving' at utopia." },
+        { q: "Caspar David Friedrich's painting of a lone figure on a peak facing the vast unknown is…",
+          options: ["“The Wanderer above the Sea of Fog”", "“The Hay Wain”", "“The Scream”", "“Nighthawks”"],
+          answer: 0,
+          why: "The very image of 'not there yet' — a traveller facing what lies ahead." }
+      ]
+    }
+  ];
+
+  const list   = document.getElementById('bq-list');
+  const home   = document.getElementById('bq-home');
+  const runner = document.getElementById('bq-runner');
+  const form   = document.getElementById('bq-form');
+  const result = document.getElementById('bq-result');
+  if (!list) return;
+
+  // Build the menu of quiz sets
+  quizzes2026.forEach(function (quiz, i) {
+    var card = document.createElement('div');
+    card.className = 'bq-card';
+    card.innerHTML =
+      '<div class="bq-date">' + quiz.date + '</div>' +
+      '<div class="bq-name">' + quiz.title + '</div>' +
+      '<div class="bq-meta">' + quiz.meta + '</div>';
+    card.addEventListener('click', function () { openQuiz(i); });
+    list.appendChild(card);
+  });
+
+  let current = null;
+
+  function openQuiz(i) {
+    current = i;
+    var quiz = quizzes2026[i];
+    document.getElementById('bq-title').textContent = quiz.title;
+    document.getElementById('bq-blurb').textContent = quiz.blurb;
+    result.style.display = 'none';
+    result.innerHTML = '';
+    document.getElementById('bq-submit').style.display = 'inline-block';
+
+    form.innerHTML = '';
+    quiz.questions.forEach(function (item, qi) {
+      var block = document.createElement('div');
+      block.className = 'bq-q';
+      block.setAttribute('data-q', qi);
+      var html = '<div class="bq-qnum">Question ' + (qi + 1) + '</div>' +
+                 '<div class="bq-qtext">' + item.q + '</div>';
+      // Shuffle the visual order of options (value/data-opt keep the ORIGINAL
+      // index, so grading is unaffected) — avoids the answer always sitting in
+      // the same slot.
+      var order = item.options.map(function (_, oi) { return oi; });
+      for (var s = order.length - 1; s > 0; s--) {
+        var r = Math.floor(Math.random() * (s + 1));
+        var tmp = order[s]; order[s] = order[r]; order[r] = tmp;
+      }
+      order.forEach(function (oi) {
+        html += '<label class="bq-opt" data-opt="' + oi + '">' +
+                  '<input type="radio" name="q' + qi + '" value="' + oi + '">' +
+                  '<span>' + item.options[oi] + '</span>' +
+                '</label>';
+      });
+      block.innerHTML = html;
+      form.appendChild(block);
+    });
+
+    home.style.display = 'none';
+    runner.style.display = 'block';
+    runner.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function gradeQuiz() {
+    var quiz = quizzes2026[current];
+    var score = 0;
+    quiz.questions.forEach(function (item, qi) {
+      var block = form.querySelector('[data-q="' + qi + '"]');
+      var chosen = form.querySelector('input[name="q' + qi + '"]:checked');
+      var chosenVal = chosen ? parseInt(chosen.value, 10) : -1;
+      if (chosenVal === item.answer) score++;
+
+      block.querySelectorAll('.bq-opt').forEach(function (label) {
+        var oi = parseInt(label.getAttribute('data-opt'), 10);
+        var input = label.querySelector('input');
+        input.disabled = true;
+        if (oi === item.answer) label.classList.add('correct');
+        else if (oi === chosenVal) label.classList.add('wrong');
+      });
+
+      var why = document.createElement('div');
+      why.className = 'bq-why';
+      var lead = (chosenVal === item.answer) ? '✅ Correct. '
+               : (chosenVal === -1 ? '⚠️ You skipped this. ' : '❌ Not quite. ');
+      why.innerHTML = '<strong>' + lead + '</strong>' + item.why;
+      block.appendChild(why);
+    });
+
+    var total = quiz.questions.length;
+    var pct = Math.round((score / total) * 100);
+    var msg;
+    if (pct === 100)      msg = "Flawless run. You're basically there. 🦙🏆";
+    else if (pct >= 80)   msg = "Strong — destination in sight.";
+    else if (pct >= 50)   msg = "Good progress. Re-read the notes and run it back.";
+    else                  msg = "Early days on this journey — that's what practice is for!";
+
+    document.getElementById('bq-submit').style.display = 'none';
+    result.innerHTML =
+      '<div class="bq-score">' + score + ' / ' + total + '</div>' +
+      '<div class="bq-msg">' + msg + '</div>' +
+      '<div class="bq-actions">' +
+        '<button type="button" id="bq-retake">Retake this set</button>' +
+        '<button type="button" id="bq-pick">Try another set</button>' +
+      '</div>';
+    result.style.display = 'block';
+    document.getElementById('bq-retake').addEventListener('click', function () { openQuiz(current); });
+    document.getElementById('bq-pick').addEventListener('click', backToList);
+    result.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function backToList() {
+    runner.style.display = 'none';
+    home.style.display = 'block';
+    home.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  document.getElementById('bq-submit').addEventListener('click', gradeQuiz);
+  document.getElementById('bq-back').addEventListener('click', backToList);
+})();
 </script>
 
 </body>
