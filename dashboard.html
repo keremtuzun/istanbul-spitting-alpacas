@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Dashboard · Istanbul Spitting Alpacas</title>
+<link rel="icon" href="0a435026-d202-4690-aa25-6e6c30fb994b.jpg" type="image/x-icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --turquoise:#b73e3e;
+    --pale-gold:#f0c7b4;
+    --bg-color:#fff5f2;
+    --text-color:#4b1f1f;
+    --card:#ffffff;
+    --muted:#8a6a63;
+    --line:#f0d9d1;
+    --shadow:0 10px 30px rgba(122,40,40,.10);
+  }
+  body.dark-mode{
+    --turquoise:#d64545;
+    --pale-gold:#49210e;
+    --bg-color:#2c0b0e;
+    --text-color:#e7c08a;
+    --card:#3a1417;
+    --muted:#b88a73;
+    --line:#52201f;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Poppins',sans-serif;
+    background:var(--bg-color);
+    color:var(--text-color);
+    line-height:1.5;
+    transition:background .3s,color .3s;
+  }
+  a{color:var(--turquoise);}
+
+  /* Top bar */
+  .topbar{
+    display:flex;align-items:center;gap:14px;
+    padding:16px 22px;
+    background:linear-gradient(120deg,var(--turquoise),#8f2b2b);
+    color:#fff;
+    box-shadow:var(--shadow);
+    position:sticky;top:0;z-index:10;
+  }
+  .topbar img{height:42px;width:42px;border-radius:10px;object-fit:cover;border:2px solid rgba(255,255,255,.5);}
+  .topbar .titles{display:flex;flex-direction:column;line-height:1.15;}
+  .topbar .titles b{font-weight:800;letter-spacing:.4px;font-size:1.02rem;}
+  .topbar .titles small{opacity:.85;font-size:.74rem;text-transform:uppercase;letter-spacing:1.5px;}
+  .topbar .spacer{flex:1;}
+  .topbar a.home-link,.topbar button{
+    font-family:inherit;font-size:.85rem;font-weight:600;
+    color:#fff;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.35);
+    padding:8px 14px;border-radius:999px;cursor:pointer;text-decoration:none;
+    transition:background .2s;
+  }
+  .topbar a.home-link:hover,.topbar button:hover{background:rgba(255,255,255,.3);}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:26px 20px 60px;}
+  .page-head{margin:6px 2px 18px;}
+  .page-head h1{font-size:1.7rem;font-weight:800;margin:0 0 4px;}
+  .page-head p{margin:0;color:var(--muted);font-size:.92rem;}
+
+  /* KPI cards */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:18px 0 26px;}
+  .kpi{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:18px 18px 16px;box-shadow:var(--shadow);
+  }
+  .kpi .label{font-size:.74rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);font-weight:600;}
+  .kpi .num{font-size:2rem;font-weight:800;margin-top:6px;line-height:1;}
+  .kpi .sub{font-size:.78rem;color:var(--muted);margin-top:6px;}
+  .kpi.hero .num{color:var(--turquoise);}
+
+  /* Panels */
+  .panel{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:20px;box-shadow:var(--shadow);margin-bottom:20px;
+  }
+  .panel h2{font-size:1.05rem;font-weight:700;margin:0 0 4px;}
+  .panel .hint{color:var(--muted);font-size:.8rem;margin:0 0 16px;}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+  /* Bar list (sources / devices / sections) */
+  .bars{display:flex;flex-direction:column;gap:12px;}
+  .bar-row{display:grid;grid-template-columns:120px 1fr 54px;align-items:center;gap:12px;}
+  .bar-row .name{font-size:.86rem;font-weight:600;display:flex;align-items:center;gap:7px;}
+  .bar-track{background:var(--line);border-radius:999px;height:12px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--turquoise),#e07a5f);width:0;transition:width .8s ease;}
+  .bar-row .val{font-size:.82rem;font-weight:700;text-align:right;color:var(--muted);}
+
+  /* Daily column chart */
+  .chart{display:flex;align-items:flex-end;gap:4px;height:170px;padding-top:8px;}
+  .chart .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;min-width:0;}
+  .chart .col .stem{
+    width:100%;max-width:26px;border-radius:6px 6px 0 0;
+    background:linear-gradient(180deg,var(--turquoise),#e07a5f);
+    min-height:3px;transition:height .8s ease;position:relative;
+  }
+  .chart .col .stem:hover::after{
+    content:attr(data-tip);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);
+    background:var(--text-color);color:var(--bg-color);font-size:.7rem;white-space:nowrap;
+    padding:3px 7px;border-radius:6px;margin-bottom:6px;font-weight:600;
+  }
+  .chart .col .tick{font-size:.6rem;color:var(--muted);transform:rotate(-90deg);white-space:nowrap;height:34px;}
+
+  .empty{color:var(--muted);font-size:.86rem;font-style:italic;padding:10px 0;}
+  .foot{color:var(--muted);font-size:.78rem;text-align:center;margin-top:18px;line-height:1.7;}
+  .updated{font-weight:600;}
+
+  @media(max-width:820px){
+    .kpis{grid-template-columns:repeat(2,1fr);}
+    .cols{grid-template-columns:1fr;}
+    .bar-row{grid-template-columns:96px 1fr 46px;}
+    .topbar .titles small{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <img src="0a435026-d202-4690-aa25-6e6c30fb994b.jpg" alt="Istanbul Spitting Alpacas logo"/>
+  <div class="titles">
+    <b>ISTANBUL SPITTING ALPACAS</b>
+    <small>Visitor Dashboard</small>
+  </div>
+  <div class="spacer"></div>
+  <button id="refresh" title="Reload the latest numbers">↻ Refresh</button>
+  <button id="theme" title="Toggle dark mode">🌙</button>
+  <a class="home-link" href="index.html">← Back to site</a>
+</div>
+
+<div class="wrap">
+  <div class="page-head">
+    <h1>Site Analytics</h1>
+    <p>Live visitor stats for istanbulspittingalpacas.com. Counting continues from the
+       last Google&nbsp;Analytics figure (577) before it was disabled.</p>
+  </div>
+
+  <!-- KPIs -->
+  <div class="kpis">
+    <div class="kpi hero">
+      <div class="label">Total Visitors</div>
+      <div class="num" id="kpi-total">…</div>
+      <div class="sub">includes 577 historical (pre-GA-shutdown)</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Today</div>
+      <div class="num" id="kpi-today">…</div>
+      <div class="sub" id="kpi-today-date"></div>
+    </div>
+    <div class="kpi">
+      <div class="label">Last 7 days</div>
+      <div class="num" id="kpi-week">…</div>
+      <div class="sub">rolling weekly visits</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Last 30 days</div>
+      <div class="num" id="kpi-month">…</div>
+      <div class="sub">rolling monthly visits</div>
+    </div>
+  </div>
+
+  <!-- Daily chart -->
+  <div class="panel">
+    <h2>Daily visits</h2>
+    <p class="hint">New sessions per day over the last 30 days (a session = one visit, de-duplicated within 30&nbsp;minutes).</p>
+    <div class="chart" id="chart"></div>
+    <div class="empty" id="chart-empty" style="display:none;">No daily visits recorded yet — numbers will appear here as people browse the site.</div>
+  </div>
+
+  <div class="cols">
+    <!-- Sources -->
+    <div class="panel">
+      <h2>Traffic sources</h2>
+      <p class="hint">Where new visits come from.</p>
+      <div class="bars" id="sources"></div>
+    </div>
+    <!-- Devices -->
+    <div class="panel">
+      <h2>Devices</h2>
+      <p class="hint">What people browse on.</p>
+      <div class="bars" id="devices"></div>
+    </div>
+  </div>
+
+  <!-- Sections -->
+  <div class="panel">
+    <h2>Most-viewed sections</h2>
+    <p class="hint">Which parts of the site get opened the most.</p>
+    <div class="bars" id="sections"></div>
+  </div>
+
+  <div class="foot">
+    <span class="updated" id="updated">Loading…</span><br/>
+    Privacy-friendly counting via the open-source Abacus counter — no cookies, no accounts, no personal data.
+  </div>
+</div>
+
+<script>
+(function () {
+  var NS = 'isa-wsc-stats-7q4x9';                       // keep in sync with index.html
+  var GET = 'https://abacus.jasoncameron.dev/get/';
+  var BASELINE = 577;                                   // last Google Analytics total before shutdown
+
+  // Sections that exist on the site, with friendly labels + icons.
+  var SECTIONS = [
+    ['home','Home','🏠'], ['about','About Us','🦙'], ['notes','Notes','📓'],
+    ['debate','Debate','🎤'], ['quizzes','Quizzes','🧠'], ['documents','Documents','📄'],
+    ['flashcard','Flashcards','🃏'], ['Audio','Audio','🎧'], ['discussion-forum','Discussion','💬'],
+    ['progress','Progress','📈'], ['ai','Search','🔎'], ['announcements','Announcements','🔔']
+  ];
+  var SOURCES = [
+    ['src_direct','Direct','🔗'], ['src_instagram','Instagram','📸'],
+    ['src_search','Search engines','🔎'], ['src_other','Other sites','🌐']
+  ];
+  var DEVICES = [
+    ['dev_desktop','Desktop','🖥️'], ['dev_mobile','Mobile','📱'], ['dev_tablet','Tablet','📲']
+  ];
+
+  function fmtDate(d){
+    var m = String(d.getMonth()+1).padStart(2,'0');
+    var day = String(d.getDate()).padStart(2,'0');
+    return d.getFullYear()+'-'+m+'-'+day;
+  }
+  // Last 30 days, oldest -> newest
+  var days = [];
+  for (var i = 29; i >= 0; i--){
+    var d = new Date(); d.setDate(d.getDate()-i);
+    days.push(d);
+  }
+
+  // Read one counter without incrementing it. Missing key -> 0.
+  function read(key){
+    return fetch(GET + NS + '/' + encodeURIComponent(key), {cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : {value:0}; })
+      .then(function(j){ return (j && typeof j.value === 'number') ? j.value : 0; })
+      .catch(function(){ return null; }); // null => network/error, distinguish from 0
+  }
+
+  function num(n){ return n.toLocaleString('en-US'); }
+
+  function renderBars(elId, rows, total){
+    var el = document.getElementById(elId);
+    el.innerHTML = '';
+    var max = Math.max.apply(null, rows.map(function(r){return r.value;}).concat([1]));
+    if (total === 0){
+      el.innerHTML = '<div class="empty">No data yet.</div>';
+      return;
+    }
+    rows.sort(function(a,b){return b.value-a.value;});
+    rows.forEach(function(r){
+      var pct = total ? Math.round(r.value/total*100) : 0;
+      var w = Math.round(r.value/max*100);
+      var row = document.createElement('div');
+      row.className = 'bar-row';
+      row.innerHTML =
+        '<div class="name">'+r.icon+' '+r.label+'</div>'+
+        '<div class="bar-track"><div class="bar-fill" style="width:'+w+'%"></div></div>'+
+        '<div class="val">'+num(r.value)+(total?' · '+pct+'%':'')+'</div>';
+      el.appendChild(row);
+    });
+  }
+
+  function setText(id, t){ var e=document.getElementById(id); if(e) e.textContent=t; }
+
+  function load(){
+    setText('updated','Loading…');
+    // Build the full key list and fetch in parallel.
+    var dayKeys = days.map(function(d){ return 'day_'+fmtDate(d); });
+    var jobs = [];
+    jobs.push(read('total'));
+    dayKeys.forEach(function(k){ jobs.push(read(k)); });
+    SOURCES.forEach(function(s){ jobs.push(read(s[0])); });
+    DEVICES.forEach(function(s){ jobs.push(read(s[0])); });
+    SECTIONS.forEach(function(s){ jobs.push(read('sec_'+s[0])); });
+
+    Promise.all(jobs).then(function(res){
+      var anyError = res.some(function(v){ return v === null; });
+      var idx = 0;
+      var total = res[idx++] || 0;
+      var dayVals = dayKeys.map(function(){ return res[idx++] || 0; });
+      var srcVals = SOURCES.map(function(s,i){ return {label:s[1],icon:s[2],value:res[idx++]||0}; });
+      var devVals = DEVICES.map(function(s,i){ return {label:s[1],icon:s[2],value:res[idx++]||0}; });
+      var secVals = SECTIONS.map(function(s,i){ return {label:s[1],icon:s[2],value:res[idx++]||0}; });
+
+      // KPIs
+      setText('kpi-total', num(BASELINE + total));
+      var today = dayVals[dayVals.length-1] || 0;
+      var week = dayVals.slice(-7).reduce(function(a,b){return a+b;},0);
+      var month = dayVals.reduce(function(a,b){return a+b;},0);
+      setText('kpi-today', num(today));
+      setText('kpi-today-date', fmtDate(new Date()));
+      setText('kpi-week', num(week));
+      setText('kpi-month', num(month));
+
+      // Daily chart
+      var chart = document.getElementById('chart');
+      var emptyMsg = document.getElementById('chart-empty');
+      chart.innerHTML = '';
+      var maxDay = Math.max.apply(null, dayVals.concat([1]));
+      if (month === 0){
+        chart.style.display = 'none';
+        emptyMsg.style.display = 'block';
+      } else {
+        chart.style.display = 'flex';
+        emptyMsg.style.display = 'none';
+        days.forEach(function(d,i){
+          var v = dayVals[i];
+          var h = Math.max(3, Math.round(v/maxDay*150));
+          var col = document.createElement('div');
+          col.className = 'col';
+          var label = d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+          col.innerHTML =
+            '<div class="stem" style="height:'+h+'px" data-tip="'+label+': '+v+'"></div>'+
+            '<div class="tick">'+(i%3===0? label : '')+'</div>';
+          chart.appendChild(col);
+        });
+      }
+
+      // Breakdowns
+      renderBars('sources', srcVals, srcVals.reduce(function(a,b){return a+b.value;},0));
+      renderBars('devices', devVals, devVals.reduce(function(a,b){return a+b.value;},0));
+      renderBars('sections', secVals, secVals.reduce(function(a,b){return a+b.value;},0));
+
+      var now = new Date();
+      setText('updated', anyError
+        ? '⚠️ Some numbers could not be loaded — showing what was available.'
+        : 'Updated ' + now.toLocaleString('en-US', {hour:'2-digit', minute:'2-digit', day:'numeric', month:'short'}));
+    }).catch(function(){
+      setText('updated','⚠️ Could not reach the counter service. Check your connection and refresh.');
+    });
+  }
+
+  // Dark mode (persisted) — matches the main site's toggle.
+  var themeBtn = document.getElementById('theme');
+  function applyTheme(dark){
+    document.body.classList.toggle('dark-mode', dark);
+    themeBtn.textContent = dark ? '☀️' : '🌙';
+  }
+  applyTheme(localStorage.getItem('isa_theme') === 'dark');
+  themeBtn.addEventListener('click', function(){
+    var dark = !document.body.classList.contains('dark-mode');
+    localStorage.setItem('isa_theme', dark ? 'dark' : 'light');
+    applyTheme(dark);
+  });
+
+  document.getElementById('refresh').addEventListener('click', load);
+  load();
+})();
+</script>
+</body>
+</html>
