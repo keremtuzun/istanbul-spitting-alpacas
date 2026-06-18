@@ -15,6 +15,59 @@
   gtag('config', 'G-5T42JCPGZ0');
 </script>
 
+<!-- Private visit tracking (feeds dashboard.html). Uses the free Abacus
+     counter API; no cookies, no personal data. Keep NS in sync with dashboard.html. -->
+<script>
+(function () {
+  var NS = 'isa-wsc-stats-7q4x9';
+  var API = 'https://abacus.jasoncameron.dev/hit/';
+  function hit(key) {
+    try {
+      fetch(API + NS + '/' + encodeURIComponent(key), {cache: 'no-store', keepalive: true});
+    } catch (e) {}
+  }
+  function dayKey() {
+    var d = new Date();
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0');
+    return 'day_' + d.getFullYear() + '-' + m + '-' + day;
+  }
+  function source() {
+    var r = document.referrer;
+    if (!r) return 'direct';
+    try {
+      var h = new URL(r).hostname.replace(/^www\./, '');
+      if (h === location.hostname.replace(/^www\./, '')) return 'direct';
+      if (/instagram\.com$/.test(h)) return 'instagram';
+      if (/(google\.|bing\.|duckduckgo\.|yahoo\.|yandex\.|search\.)/.test(h)) return 'search';
+      return 'other';
+    } catch (e) { return 'other'; }
+  }
+  function device() {
+    var ua = navigator.userAgent;
+    if (/iPad|Tablet/i.test(ua)) return 'tablet';
+    if (/Mobi|Android|iPhone/i.test(ua)) return 'mobile';
+    return 'desktop';
+  }
+  var now = Date.now();
+  var last = +(sessionStorage.getItem('isa_visit_ts') || 0);
+  sessionStorage.setItem('isa_visit_ts', String(now));
+  if (now - last > 30 * 60 * 1000) {
+    hit('total');
+    hit(dayKey());
+    hit('src_' + source());
+    hit('dev_' + device());
+  }
+  function section() {
+    var h = (location.hash || '#home').replace('#', '') || 'home';
+    return (h.replace(/[^a-z0-9_-]/gi, '').slice(0, 24)) || 'home';
+  }
+  function hitSection() { hit('sec_' + section()); }
+  hitSection();
+  window.addEventListener('hashchange', hitSection);
+})();
+</script>
+
 <style>
 
 
@@ -985,6 +1038,7 @@ body.dark-mode #topic-text .note-content blockquote { background: #2c0b0e; }
     <div class="dropdown-content">
         <a href="#discussion-forum">Discussion</a>
       <a href="#progress">Progress</a>
+      <a href="dashboard.html">📊 Dashboard</a>
           <a href="#ai">Search</a>
     </div>
   </div>
@@ -1104,6 +1158,9 @@ body.dark-mode #topic-text .note-content blockquote { background: #2c0b0e; }
 
 <section id="progress">
   <h2>Progress - This visit</h2>
+  <p style="margin-top:-6px;">This chart only covers your current visit. For site-wide visitor stats, open the
+    <a href="dashboard.html" style="color: var(--turquoise); font-weight:600;">📊 full dashboard →</a>
+  </p>
   <div id="chart-container"></div>
 </section>
 <script>
@@ -2093,8 +2150,10 @@ window.addEventListener('DOMContentLoaded', setupUserNotes);
 
     navLinks.forEach(link => {
       link.addEventListener('click', e => {
+        const href = link.getAttribute('href') || '';
+        if (href.charAt(0) !== '#') return; // real links (e.g. dashboard.html) navigate normally
         e.preventDefault();
-        const targetId = link.getAttribute('href').slice(1);
+        const targetId = href.slice(1);
         activateSection(targetId);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
