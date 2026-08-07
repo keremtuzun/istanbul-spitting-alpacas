@@ -656,9 +656,11 @@ embed {
 }
 
 /* Year switcher for Notes (2026 / 2025) */
-#notes-year-switch { display: flex; gap: 10px; flex-wrap: wrap; margin: 4px 0 24px; }
+#notes-year-switch,
+.year-switch { display: flex; gap: 10px; flex-wrap: wrap; margin: 4px 0 24px; }
 
-#notes-year-switch .year-btn {
+#notes-year-switch .year-btn,
+.year-switch .year-btn {
   cursor: pointer;
   border: 1.5px solid var(--turquoise);
   background: transparent;
@@ -671,13 +673,20 @@ embed {
   transition: background-color .25s ease, color .25s ease, transform .25s ease, box-shadow .25s ease;
 }
 
-#notes-year-switch .year-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+#notes-year-switch .year-btn:hover,
+.year-switch .year-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
 
-#notes-year-switch .year-btn.active-year {
+#notes-year-switch .year-btn.active-year,
+.year-switch .year-btn.active-year {
   background: var(--turquoise);
   color: #fff;
   box-shadow: var(--shadow-md);
 }
+
+/* Documents: the 2026 guide and the 2025 archive live under one switcher. */
+#docs-2026 .doc-lead { margin-bottom: 1.4rem; }
+#documents .doc-year { display: none; }
+#documents .doc-year.active-doc-year { display: block; }
 
 #notes #topic-content { display: none; margin-top: 20px; }
 
@@ -1294,25 +1303,26 @@ button:hover { background: var(--maroon-deep); transform: translateY(-1px); }
         <div class="team-member">
           <img src="14e0f39f-14fb-4b4a-b405-593cf8e9e253.jpg" alt="Kerem Tüzün">
           <h4>Kerem Tüzün</h4>
-          <p>Coder, reader, and tennis enthusiast leading Alpacas’ learning tools.</p>
         </div>
 
         <div class="team-member">
           <img src="unnamed.jpg" alt="Güney Keskinoğlu">
           <h4>Güney Keskinoğlu</h4>
-          <p>Challenge-driven debater with sharp wit and a love for music.</p>
         </div>
 
         <div class="team-member">
           <img src="WhatsApp Image 2025-09-13 at 22.19.20 (2).jpeg" alt="Beren Ayorak">
           <h4>Beren Ayorak</h4>
-          <p>Creative soul blending ballet, piano, and WSC writing skills.</p>
+        </div>
+
+        <div class="team-member">
+          <img src="kaan-akpara.jpg" alt="Kaan Akpara">
+          <h4>Kaan Akpara</h4>
         </div>
 
         <div class="team-member">
           <img src="39a5cdbe-d6dd-4f7d-bbcd-53ba31225d93.jpg" alt="Arda Sabri Tiryaki">
           <h4>Arda Sabri Tiryaki</h4>
-          <p>Past contributor: swimmer and thinker who brought humor and energy.</p>
         </div>
       </div>
     </div>
@@ -1619,6 +1629,26 @@ document.querySelectorAll("nav a, .dropdown-content a").forEach(link => {
 
 <section id="documents">
   <h2>Documents</h2>
+
+  <!-- Year switcher: 2026 is the current curriculum, 2025 stays fully available -->
+  <div class="year-switch" id="docs-year-switch">
+    <button type="button" class="year-btn active-year" id="doc-btn-2026" onclick="showDocsYear('2026')">2026 · Are We There Yet?</button>
+    <button type="button" class="year-btn" id="doc-btn-2025" onclick="showDocsYear('2025')">2025 · Reigniting the Future</button>
+  </div>
+
+  <div class="doc-year active-doc-year" id="docs-2026">
+    <p class="doc-lead">The full World Scholar's Cup 2026 curriculum, covering every subject area of Are We There Yet? Read it here or download it for offline study.</p>
+    <h1>WSC 2026 Curriculum: Are We There Yet?</h1>
+    <embed
+      src="Scholars 2026 Curriculum.pdf"
+      type="application/pdf"
+      width="100%"
+      height="1000"
+      title="Embedded PDF Viewer"
+    />
+  </div>
+
+  <div class="doc-year" id="docs-2025">
   <h1>The Best Is Yet To Be Or Not To Be:</h1>
   <embed
   src="Scholars 2025 Curriculum (3).pdf"
@@ -1748,6 +1778,8 @@ document.querySelectorAll("nav a, .dropdown-content a").forEach(link => {
   height="1000"
   title="Embedded PDF Viewer"
 />
+  </div>
+
 <br>
 <p class="colophon">© 2025 Istanbul Spitting Alpacas. All rights reserved.</p>
 </section>
@@ -3484,6 +3516,19 @@ function showNotesYear(year) {
   var btn2026 = document.getElementById('year-btn-2026');
   if (btn2025) btn2025.classList.toggle('active-year', year === '2025');
   if (btn2026) btn2026.classList.toggle('active-year', year === '2026');
+}
+
+// --- Documents year switcher: 2026 curriculum / 2025 archive ---
+function showDocsYear(year) {
+  window.currentDocsYear = year;
+  var d2026 = document.getElementById('docs-2026');
+  var d2025 = document.getElementById('docs-2025');
+  if (d2026) d2026.classList.toggle('active-doc-year', year === '2026');
+  if (d2025) d2025.classList.toggle('active-doc-year', year === '2025');
+  var b2026 = document.getElementById('doc-btn-2026');
+  var b2025 = document.getElementById('doc-btn-2025');
+  if (b2026) b2026.classList.toggle('active-year', year === '2026');
+  if (b2025) b2025.classList.toggle('active-year', year === '2025');
 }
 
 // --- 2026 topic cards open 2026 notes (independent of 2025 handlers) ---
