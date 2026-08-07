@@ -147,22 +147,22 @@
   <div class="kpis">
     <div class="kpi hero">
       <div class="eyebrow">Total Visitors</div>
-      <div class="num" id="kpi-total">&mdash;</div>
+      <div class="num" id="kpi-total">, </div>
       <div class="sub">includes 577 historical (pre-shutdown)</div>
     </div>
     <div class="kpi">
       <div class="eyebrow">Today</div>
-      <div class="num" id="kpi-today">&mdash;</div>
+      <div class="num" id="kpi-today">, </div>
       <div class="sub" id="kpi-today-date"></div>
     </div>
     <div class="kpi">
       <div class="eyebrow">Last 7 days</div>
-      <div class="num" id="kpi-week">&mdash;</div>
+      <div class="num" id="kpi-week">, </div>
       <div class="sub">rolling weekly visits</div>
     </div>
     <div class="kpi">
       <div class="eyebrow">Last 30 days</div>
-      <div class="num" id="kpi-month">&mdash;</div>
+      <div class="num" id="kpi-month">, </div>
       <div class="sub">rolling monthly visits</div>
     </div>
   </div>
@@ -194,7 +194,7 @@
 
   <div class="foot">
     <span class="updated" id="updated">Loading&hellip;</span><br/>
-    Privacy-friendly counting via the open-source Abacus counter &mdash; no cookies, no accounts, no personal data.
+    Privacy-friendly counting via the open-source Abacus counter , no cookies, no accounts, no personal data.
   </div>
 </div>
 
@@ -328,10 +328,10 @@
 
       var now = new Date();
       setText('updated', anyError
-        ? 'Note: some numbers could not be loaded — showing what was available.'
+        ? 'Note: some numbers could not be loaded, showing what was available.'
         : 'Updated ' + now.toLocaleString('en-US',{hour:'2-digit',minute:'2-digit',day:'numeric',month:'short'}));
     }).catch(function(){
-      setText('updated','Could not reach the counter service — check your connection and refresh.');
+      setText('updated','Could not reach the counter service, check your connection and refresh.');
     });
   }
 
